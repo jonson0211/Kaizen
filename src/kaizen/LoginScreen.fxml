@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.LoginScreenController">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@Images/LoginScreenImage.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="159.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@Images/KaizenInnovationsColour.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" layoutX="270.0" layoutY="288.0" prefHeight="50.0" prefWidth="250.0" text="Better every day." textAlignment="CENTER" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="288.0">
+         <font>
+            <Font name="Calibri Light" size="30.0" />
+         </font>
+      </Label>
+      <TextField fx:id="usernameInput" layoutX="86.0" layoutY="363.0" prefHeight="50.0" prefWidth="550.0" promptText="Username?" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="365.0">
+         <font>
+            <Font name="Calibri" size="30.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="passwordInput" layoutX="84.0" layoutY="445.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="550.0" promptText="Password?" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="445.0">
+         <font>
+            <Font name="Calibri" size="30.0" />
+         </font>
+      </PasswordField>
+      <Button fx:id="signInButton" layoutX="86.0" layoutY="524.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="550.0" text="Sign in" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="525.0">
+         <font>
+            <Font name="Calibri Light" size="30.0" />
+         </font>
+      </Button>
+      <Button fx:id="registerButton" layoutX="86.0" layoutY="599.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="550.0" text="New to Kaizen? Sign up here!" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="75.0" AnchorPane.topAnchor="605.0">
+         <font>
+            <Font name="Calibri Light" size="30.0" />
+         </font>
+      </Button>
+      <Label fx:id="loginOutput" alignment="CENTER" layoutX="373.0" layoutY="350.0" prefHeight="30.0" prefWidth="550.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="75.0">
+         <font>
+            <Font name="Calibri Light" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
