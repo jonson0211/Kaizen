@@ -1,10 +1,13 @@
 
 package kaizen;
 
+import java.io.IOException;
+import java.sql.ResultSet;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import kaizen.UserData.KaizenDatabase;
 
 public class LoginScreenController {
     
@@ -23,9 +26,31 @@ public class LoginScreenController {
     @FXML
     private Label loginOutput;
     
-    @FXML handleLoginButtonAction (Action event) {
+    KaizenDatabase userDatabase = new KaizenDatabase();
+    
+    //Action on login button click
+    @FXML
+    private void handleLoginButtonAction (Action event) {
+        
+        String loginUsername = usernameInput.getText();
+        String loginPassword = passwordInput.getText();
+        
+        try {
+            
+            ResultSet rs = userDatabase.getResultSet("SELECT USERNAME, PASSWORD FROM ACCOUNT WHERE "
+                    + "USERNAME = '" + loginUsername + "' AND "
+                    + "PASSWORD = '" + loginPassword + "' ");
+                    
+        }
         
     }
+    
+    
+    @FXML
+    private void handleRegisterButtonAction (Action event) throws IOException (String "An error occurred.") {
+        
+    }
+    
     
     
     
