@@ -97,6 +97,109 @@ public class KaizenDatabase {
                         + "'URGENT'"
                         + ");");
                 createDummyTasks.execute();
+                
+                
+                //insert dummy data 3
+                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
+                        + " VALUES ("
+                        + "'lienzhu', "
+                        + "'Watch new My Hero Academia new episode', "
+                        + "'Watch new episode 4 of My Hero Academia season 4', "
+                        + "07/11/2019, "
+                        + "011/11/2019, "
+                        + "'LOW'"
+                        + ");");
+                createDummyTasks.execute();
+                
+                //insert dummy data 4
+                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
+                        + " VALUES ("
+                        + "'lienzhu', "
+                        + "'Decide on movie for date', "
+                        + "'Decide on what movie to watch for date with Kara on 05/11', "
+                        + "02/11/2019, "
+                        + "04/11/2019, "
+                        + "'HIGH'"
+                        + ");");
+                createDummyTasks.execute();
+                
+                //insert dummy data 5
+                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
+                        + " VALUES ("
+                        + "'lienzhu', "
+                        + "'Apply for vacationer intern position', "
+                        + "'Apply for the vacationer program in the Product & Tech division of Super Bank', "
+                        + "02/11/2019, "
+                        + "020/11/2019, "
+                        + "'MEDIUM'"
+                        + ");");
+                createDummyTasks.execute();
+                
+                //insert dummy data 6
+                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
+                        + " VALUES ("
+                        + "'lienzhu', "
+                        + "'Learn how to code', "
+                        + "'Self learn the basics of Java coding', "
+                        + "06/11/2019, "
+                        + "17/11/2019, "
+                        + "'MEDIUM'"
+                        + ");");
+                createDummyTasks.execute();
+                
+                //insert dummy data 7
+                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
+                        + " VALUES ("
+                        + "'lienzhu', "
+                        + "'Finish Zelda', "
+                        + "'Finish the game The Legend of Zelda: Breath of the Wild on Nintendo Switch', "
+                        + "03/11/2019, "
+                        + "29/11/2019, "
+                        + "'LOW'"
+                        + ");");
+                createDummyTasks.execute();
+                
+                 //insert dummy data 8
+                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
+                        + " VALUES ("
+                        + "'lienzhu', "
+                        + "'Form oztag group', "
+                        + "'Gather people who are interested in forming an oztag team', "
+                        + "05/11/2019, "
+                        + "30/11/2019, "
+                        + "'MEDIUM'"
+                        + ");");
+                createDummyTasks.execute();
+                
+                 //insert dummy data 9
+                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
+                        + " VALUES ("
+                        + "'lienzhu', "
+                        + "'Organise Interfaculty Party', "
+                        + "'Plan and organise the logistics of the Annual Interfactulty Student Society Party ', "
+                        + "08/11/2019, "
+                        + "18/11/2019, "
+                        + "'HIGH'"
+                        + ");");
+                createDummyTasks.execute();
+                
+                 //insert dummy data 10
+                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
+                        + " VALUES ("
+                        + "'lienzhu', "
+                        + "'Shopping for groceries', "
+                        + "'Shopping for eggs, milk, bread, lettuce', "
+                        + "03/11/2019, "
+                        + "03/11/2019, "
+                        + "'HIGH'"
+                        + ");");
+                createDummyTasks.execute();
+                
+                
+                
+                
+                
+                
             } else {
                 System.out.println("TASKS table already exists");
             }
