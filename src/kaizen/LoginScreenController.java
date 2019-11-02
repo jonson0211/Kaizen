@@ -37,7 +37,7 @@ public class LoginScreenController {
         
         try {
             
-            ResultSet rs = userDatabase.getResultSet("SELECT USERNAME, PASSWORD FROM ACCOUNT WHERE "
+            ResultSet rs = userDatabase.getResultSet("SELECT USERNAME, PASSWORD FROM LOGIN WHERE "
                     + "USERNAME = '" + loginUsername + "' AND "
                     + "PASSWORD = '" + loginPassword + "' ");
                     
