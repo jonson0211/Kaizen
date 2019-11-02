@@ -157,15 +157,19 @@ public class KaizenDatabase {
             DatabaseMetaData dbmd = conn.getMetaData();
             rs = dbmd.getTables(null, null, "DAILYLEARNINGS", null);
             if (!rs.next()) {
-                createDailyLearningsTable = conn.prepareStatement("CREATE TABLE DAILYLEARNINGS (CATID INT PRIMARY KEY IDENTITY, CATNAME VARCHAR(50), START TIME, END TIME, DESCR VARCHAR(300))");
+                createDailyLearningsTable = conn.prepareStatement("CREATE TABLE DAILYLEARNINGS ("
+                        + "DOWELL TEXT NOT NULL,"
+                        + "DOBETTER TEXT NOT NULL, "
+                        );
                 createDailyLearningsTable.execute();
                 System.out.println("Daily Learnings table created");
-                createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATNAME,START,END,DESCR) "
-                        + "VALUES ('Work', , NOT NULL,'Today I had a productive day at the office!'), "
+                createDemoInstance = conn.prepareStatement("INSERT INTO DAILYLEARNINGS(DOWELL,DOBETTER) "
+                        + "VALUES ('Today I spent 40 minutes exercising intensely', "
+                        + "'Today I didn't watch the newest episode of MHA...'), "
                         );
                 createDemoInstance.execute();
             } else {
-                System.out.println("Timesheets table exists");
+                System.out.println("Daily Learnings table exists");
             }
         } catch (Exception e) {
             e.printStackTrace();
