@@ -29,7 +29,7 @@ public class KaizenDatabase {
         ResultSet rs = null;
         openConnection();
         try {
-            System.out.println("Checking Database Table");
+            System.out.println("Checking LOGIN Table");
             DatabaseMetaData dbmd = conn.getMetaData();
             rs = dbmd.getTables(null, null, "LOGIN", null);
             if (!rs.next()) {
@@ -37,7 +37,7 @@ public class KaizenDatabase {
                 createUserTable.execute();
                 System.out.println("User table created");
                 createDemoInstance = conn.prepareStatement("INSERT INTO LOGIN(USERNAME,PASSWORD) "
-                        + "VALUES ('Kaizen','Innovations')");
+                        + "VALUES ('lienzhu','blairwangisbae')");
                 createDemoInstance.execute();
             } else {
                 System.out.println("LOGIN table exists");
@@ -46,11 +46,6 @@ public class KaizenDatabase {
             e.printStackTrace();
         }
     }
-        
-        
-        
-
-    
 
     public static void createTasksTable() {
         PreparedStatement createTasksTable = null;
@@ -77,15 +72,27 @@ public class KaizenDatabase {
                 createTasksTable.execute();
                 System.out.println("TASKS table created");
 
-                //Insert dummy data
+                //Insert dummy data 1
                 createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
                         + "'lienzhu', "
                         + "'Finish ACF homework', "
                         + "'Finish the weekly homework for ACF Topic 7', "
-                        + "CURRENT_DATE, "
-                        + "CURRENT_DATE, "
+                        + "15/11/2019, "
+                        + "18/11/2019, "
                         + "'LOW'"
+                        + ");");
+                createDummyTasks.execute();
+                
+                //Insert dummy data 2
+                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
+                        + " VALUES ("
+                        + "'lienzhu', "
+                        + "'ACF Call', "
+                        + "'Discuss with the team on how we will handle presentation', "
+                        + "02/11/2019, "
+                        + "02/11/2019, "
+                        + "'URGENT'"
                         + ");");
                 createDummyTasks.execute();
             } else {
