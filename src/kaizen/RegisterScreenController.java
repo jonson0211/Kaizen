@@ -93,6 +93,20 @@ private void handleSignUp(ActionEvent event){
        apw.setContentText("Passwords must match");
        apw.show();       
        }
+    else if (addEmail = userDB.)
+    else {
+       try{ userDB.insertStatement("INSERT INTO LOGIN("
+               + "FNAME, "
+               + "LNAME, "
+               + "EMAIL, "
+               + "PASSWORD) "
+               + "VALUES('" + addFname + "', '" + addLname + "', '" + addEmail + "', '" + addPassword + "'?','?','?','?' ");
+       } catch(Exception e){
+           
+       }
+       
+       
+    }
 }
     
 public String getLoggedInUser(){
