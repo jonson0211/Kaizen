@@ -16,7 +16,14 @@ import kaizen.UserData.KaizenDatabase;
  *
  * @author Raymond
  */
-public class RegisterScreenController{
+
+
+//REMEMBER TO WRITE EXCEPTION FOR WHEN SOMEONE TRIES TO REGISTER USING THE 
+//SAME USERNAME AS USERNAME IS PRIMARY KEY AND UNIQUE
+
+
+
+public class RegisterScreenController {
     
     @FXML
     private TextField email;
