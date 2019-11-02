@@ -96,10 +96,6 @@ public class KaizenDatabase {
         }
     }
 
-public static void createTimesheetsTable() {
-
-    }
-
     public static void createTimesheetsTable() {
         PreparedStatement createTimesheetsTable = null;
         PreparedStatement createDemoInstance = null;
@@ -125,7 +121,7 @@ public static void createTimesheetsTable() {
         }
     }
         
-    }
+    
 
     public ResultSet getResultSet(String sqlstatement) throws SQLException {
         openConnection();
