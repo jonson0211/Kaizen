@@ -195,11 +195,6 @@ public class KaizenDatabase {
                         + ");");
                 createDummyTasks.execute();
                 
-                
-                
-                
-                
-                
             } else {
                 System.out.println("TASKS table already exists");
             }
@@ -240,8 +235,6 @@ public class KaizenDatabase {
             e.printStackTrace();
         }
     }
-        
-    
 
     public ResultSet getResultSet(String sqlstatement) throws SQLException {
         openConnection();
