@@ -7,6 +7,9 @@ package kaizen;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -55,6 +58,10 @@ public class RegisterScreenController implements Initializable{
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
     
     public static String loggedInUser;
+    
+    private PreparedStatement pst;
+    private Connection conn;
+    private ResultSet rs;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -67,8 +74,7 @@ private void handleCancel(ActionEvent event) throws IOException{
 pageSwitcher.switcher(event, "LoginScreen.fxml");
 }
 
-//Insert valuesd into user table
-
+//Insert values into user table
 @FXML
 private void handleSignUp(ActionEvent event){
     String addFname = fname.getText();
@@ -85,17 +91,31 @@ private void handleSignUp(ActionEvent event){
        Alert a = new Alert(AlertType.ERROR);
        a.setHeaderText("Required fields cannot be empty");
        a.setContentText("Please fill in all required fields");
-       a.show();
+       a.showAndWait();
         }
     else if (addPassword != addPasswordConfirm){
        Alert apw = new Alert(AlertType.ERROR);
        apw.setHeaderText("Password don't match");
        apw.setContentText("Passwords must match");
-       apw.show();       
+       apw.showAndWait();       
        }
-    else if (addEmail = userDB.)
     else {
-       try{ userDB.insertStatement("INSERT INTO LOGIN("
+        try {
+            pst = conn.prepareStatement("SELECT * FROM USER WHERE EMAIL = ?");
+            pst.setString(1, email.getText());
+            rs = pst.executeQuery();
+            while(rs.next()){
+                if(rs.getString(1).matches(email.getText())){
+                    Alert aemail = new Alert(AlertType.ERROR);
+                    aemail.setHeaderText("Invalid Email");
+                    aemail.setContentText("Email is already registered. Please use another email");
+                    aemail.showAndWait();
+                }
+            }
+            } catch (Exception e){
+            }
+    }
+    try{userDB.insertStatement("INSERT INTO LOGIN("
                + "FNAME, "
                + "LNAME, "
                + "EMAIL, "
@@ -104,10 +124,8 @@ private void handleSignUp(ActionEvent event){
        } catch(Exception e){
            
        }
-       
-       
     }
-}
+
     
 public String getLoggedInUser(){
         return loggedInUser;
