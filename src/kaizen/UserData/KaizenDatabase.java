@@ -33,7 +33,9 @@ public class KaizenDatabase {
             DatabaseMetaData dbmd = conn.getMetaData();
             rs = dbmd.getTables(null, null, "LOGIN", null);
             if (!rs.next()) {
-                createUserTable = conn.prepareStatement("CREATE TABLE LOGIN (USERNAME VARCHAR(150), PASSWORD VARCHAR(150))");
+                createUserTable = conn.prepareStatement("CREATE TABLE LOGIN ("
+                        + "USERNAME PRIMARY KEY VARCHAR(150),"
+                        + " PASSWORD VARCHAR(150))");
                 createUserTable.execute();
                 System.out.println("User table created");
                 createDemoInstance = conn.prepareStatement("INSERT INTO LOGIN(USERNAME,PASSWORD) "
@@ -104,13 +106,21 @@ public class KaizenDatabase {
         try {
             System.out.println("Checking Timesheets table ");
             DatabaseMetaData dbmd = conn.getMetaData();
-            rs = dbmd.getTables(null, null, "MUSICLIST", null);
+            rs = dbmd.getTables(null, null, "TIMESHEETS", null);
             if (!rs.next()) {
-                createTimesheetsTable = conn.prepareStatement("CREATE TABLE TIMESHEETS (CATID INT PRIMARY KEY IDENTITY, CATNAME VARCHAR(50), START TIME, END TIME, DESCR VARCHAR(300))");
+                createTimesheetsTable = conn.prepareStatement("CREATE TABLE TIMESHEETS ("
+                        + "CATID INT PRIMARY KEY AUTOINCREMENT, "
+                        + "CATNAME VARCHAR(50) NOT NULL, "
+                        + "START TIME(0) NOT NULL, "
+                        + "END TIME(0) NOT NULL, "
+                        + "DESCR VARCHAR(300) NOT NULL)");
                 createTimesheetsTable.execute();
                 System.out.println("Timesheets table created");
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATNAME,START,END,DESCR) "
-                        + "VALUES ('Work', , NOT NULL,'Today I had a productive day at the office!'), "
+                        + "VALUES ('Work', "
+                        + "'09:10:00',"
+                        + "'10:00:00',"
+                        + " 'Today I had a productive day at the office!'), "
                         );
                 createDemoInstance.execute();
             } else {
@@ -128,5 +138,30 @@ public class KaizenDatabase {
         java.sql.Statement statement = conn.createStatement();
         ResultSet RS = statement.executeQuery(sqlstatement);
         return RS;
+    }
+    
+    public static void createDailyLearningsTable() {
+        PreparedStatement createDailyLearningsTable = null;
+        PreparedStatement createDemoInstance = null;
+        ResultSet rs = null;
+        openConnection();
+        try {
+            System.out.println("Checking Daily Learnings table ");
+            DatabaseMetaData dbmd = conn.getMetaData();
+            rs = dbmd.getTables(null, null, "DAILYLEARNINGS", null);
+            if (!rs.next()) {
+                createDailyLearningsTable = conn.prepareStatement("CREATE TABLE DAILYLEARNINGS (CATID INT PRIMARY KEY IDENTITY, CATNAME VARCHAR(50), START TIME, END TIME, DESCR VARCHAR(300))");
+                createDailyLearningsTable.execute();
+                System.out.println("Daily Learnings table created");
+                createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATNAME,START,END,DESCR) "
+                        + "VALUES ('Work', , NOT NULL,'Today I had a productive day at the office!'), "
+                        );
+                createDemoInstance.execute();
+            } else {
+                System.out.println("Timesheets table exists");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }    
     }
 }
