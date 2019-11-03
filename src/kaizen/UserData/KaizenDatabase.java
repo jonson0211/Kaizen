@@ -34,12 +34,14 @@ public class KaizenDatabase {
             rs = dbmd.getTables(null, null, "LOGIN", null);
             if (!rs.next()) {
                 createUserTable = conn.prepareStatement("CREATE TABLE LOGIN ("
+                        + "FNAME CHAR(150),"
+                        + "LNAME CHAR(150),"
                         + "USERNAME PRIMARY KEY VARCHAR(150),"
-                        + " PASSWORD VARCHAR(150))");
+                        + "PASSWORD VARCHAR(150))");
                 createUserTable.execute();
                 System.out.println("User table created");
-                createDemoInstance = conn.prepareStatement("INSERT INTO LOGIN(USERNAME,PASSWORD) "
-                        + "VALUES ('lienzhu','blairwangisbae')");
+                createDemoInstance = conn.prepareStatement("INSERT INTO LOGIN(FNAME, LNAME, USERNAME,PASSWORD) "
+                        + "VALUES ('Lien', 'Zhu', 'lienzhu','blairwangisbae')");
                 createDemoInstance.execute();
             } else {
                 System.out.println("LOGIN table exists");

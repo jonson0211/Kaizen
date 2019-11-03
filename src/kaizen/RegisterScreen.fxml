@@ -27,7 +27,7 @@
       </Label>
       <TextField layoutX="204.0" layoutY="391.0" prefHeight="50.0" prefWidth="550.0" promptText="Choose your username" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="575.0">
          <font>
-            <Font size="30.0" />
+            <Font name="Calibri Light" size="30.0" />
          </font>
       </TextField>
       <PasswordField prefHeight="50.0" prefWidth="550.0" promptText="Choose your password" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="650.0">
@@ -50,5 +50,15 @@
             <Font name="Calibri Light" size="30.0" />
          </font>
       </Button>
+      <TextField layoutX="75.0" layoutY="298.0" prefHeight="55.0" prefWidth="243.0" promptText="First name">
+         <font>
+            <Font name="Calibri Light" size="30.0" />
+         </font>
+      </TextField>
+      <TextField layoutX="387.0" layoutY="298.0" prefHeight="55.0" prefWidth="227.0" promptText="Last name">
+         <font>
+            <Font name="Calibri Light" size="30.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>
