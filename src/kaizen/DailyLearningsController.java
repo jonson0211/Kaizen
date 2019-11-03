@@ -28,7 +28,11 @@ public class DailyLearningsController implements Initializable {
     private ComboBox answerTwo;
     
     @FXML
-    private Button addLearnings;
+    private Button addLearningOne;
+    
+    @FXML
+    private Button addLearningTwo;
+    
     
     KaizenDatabase userLearn = new KaizenDatabase();
     
@@ -43,7 +47,10 @@ public class DailyLearningsController implements Initializable {
     }    
     
     @FXML
-    private void handleCombo(ActionEvent event){
+    private void updateAnswerOne(ActionEvent event){
+        String 
+        String addAnswerOne = answerOne.getText();
+        String addAnswerTwo = answerTwo.getText();
         
     }
 }
