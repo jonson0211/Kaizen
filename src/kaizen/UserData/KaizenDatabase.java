@@ -255,14 +255,16 @@ public class KaizenDatabase {
             DatabaseMetaData dbmd = conn.getMetaData();
             rs = dbmd.getTables(null, null, "DAILYLEARNINGS", null);
             if (!rs.next()) {
-                createDailyLearningsTable = conn.prepareStatement("CREATE TABLE DAILYLEARNINGS ("
-                        + "DOWELL TEXT NOT NULL,"
-                        + "DOBETTER TEXT NOT NULL, "
+                createDailyLearningsTable = conn.prepareStatement("CREATE TABLE LEARNINGS ("
+                        + "USERNAME TEXT NOT NULL, "
+                        + "ENTRY_DATE DATE"
+                        + "DID_WELL TEXT NOT NULL,"
+                        + "BE_BETTER TEXT NOT NULL, "
                         );
                 createDailyLearningsTable.execute();
                 System.out.println("Daily Learnings table created");
-                createDemoInstance = conn.prepareStatement("INSERT INTO DAILYLEARNINGS(DOWELL,DOBETTER) "
-                        + "VALUES ('Today I spent 40 minutes exercising intensely', "
+                createDemoInstance = conn.prepareStatement("INSERT INTO LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
+                        + "VALUES ('lienzhu', TO_DATE('03/11/2019','DDMMYYY'), Today I spent 40 minutes exercising intensely', "
                         + "'Today I didn't watch the newest episode of MHA...'), "
                         );
                 createDemoInstance.execute();
