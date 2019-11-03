@@ -67,7 +67,7 @@ public class KaizenDatabase {
                         + ", DESCRIPTION TEXT NOT NULL"
                         + ", DO_DATE TEXT NOT NULL"
                         + ", DUE_DATE TEXT NOT NULL"
-                        + ", PRIORITY TEXT NOT NULL"
+                        + ", PRIORITY TEXT NOT NULL"    
                         + ", FOREIGN KEY (USERNAME)"
                         + " REFERENCES USER(USERNAME)"
                         + ");");

@@ -1,10 +1,26 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 02-Nov-2019, 12:41:16
-    Author     : Raymond
-*/
+.menubar {
+    
+  -fx-background-image: url('Resources/DEEPFOCUSTOGGLE.png');
+  -fx-background-size: 200px 75px;
+  -fx-background-position: center;
+    display: block;
+  color: #2eb2ff;
+  padding: 8px 16px;
+  text-decoration: none;
 
+}
+
+li a {
+  display: block;
+  color: #2eb2ff;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+  background-color: #555;
+  color: white;
+}
+  
+}
