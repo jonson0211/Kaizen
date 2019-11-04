@@ -20,45 +20,46 @@
             <Image url="@Resources/KaizenInnovationsColour.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" prefHeight="50.0" prefWidth="250.0" text="Welcome to Kaizen!" AnchorPane.leftAnchor="375.0" AnchorPane.topAnchor="500.0">
+      <Label alignment="CENTER" prefHeight="50.0" prefWidth="250.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Welcome to Kaizen!" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="500.0">
          <font>
             <Font name="Calibri Light" size="30.0" />
          </font>
       </Label>
-      <TextField layoutX="204.0" layoutY="391.0" prefHeight="50.0" prefWidth="550.0" promptText="Choose your username" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="575.0">
+      <TextField layoutX="204.0" layoutY="391.0" prefHeight="50.0" prefWidth="550.0" promptText="Choose your username" styleClass="input-fields" stylesheets="@stylesheet.css" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="575.0">
          <font>
             <Font name="Calibri Light" size="30.0" />
          </font>
       </TextField>
-      <PasswordField prefHeight="50.0" prefWidth="550.0" promptText="Choose your password" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="650.0">
+      <PasswordField prefHeight="50.0" prefWidth="550.0" promptText="Choose your password" styleClass="input-fields" stylesheets="@stylesheet.css" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="725.0">
          <font>
             <Font name="Calibri Light" size="30.0" />
          </font>
       </PasswordField>
-      <PasswordField prefHeight="50.0" prefWidth="550.0" promptText="Confirm password" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="725.0">
+      <PasswordField prefHeight="50.0" prefWidth="550.0" promptText="Confirm password" styleClass="input-fields" stylesheets="@stylesheet.css" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="800.0">
          <font>
             <Font name="Calibri Light" size="30.0" />
          </font>
       </PasswordField>
-      <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="Cancel" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="800.0">
+      <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Cancel" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="875.0">
          <font>
             <Font name="Calibri Light" size="30.0" />
          </font>
       </Button>
-      <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" text="Sign up" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="800.0">
+      <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Sign up" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="875.0">
          <font>
             <Font name="Calibri Light" size="30.0" />
          </font>
       </Button>
-      <TextField layoutX="75.0" layoutY="298.0" prefHeight="55.0" prefWidth="243.0" promptText="First name">
+      <TextField layoutX="75.0" layoutY="298.0" prefHeight="50.0" prefWidth="250.0" promptText="First name" styleClass="input-fields" stylesheets="@stylesheet.css" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="650.0">
          <font>
             <Font name="Calibri Light" size="30.0" />
          </font>
       </TextField>
-      <TextField layoutX="387.0" layoutY="298.0" prefHeight="55.0" prefWidth="227.0" promptText="Last name">
+      <TextField layoutX="387.0" layoutY="298.0" prefHeight="50.0" prefWidth="250.0" promptText="Last name" styleClass="input-fields" stylesheets="@stylesheet.css" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="650.0">
          <font>
             <Font name="Calibri Light" size="30.0" />
          </font>
       </TextField>
+      <Label prefHeight="50.0" prefWidth="550.0" styleClass="output-label" stylesheets="@stylesheet.css" text="Label" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="950.0" />
    </children>
 </AnchorPane>
