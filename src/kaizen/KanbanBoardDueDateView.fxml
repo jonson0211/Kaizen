@@ -74,7 +74,7 @@
             </Pane>
          </children>
       </FlowPane>
-      <ToggleButton fx:id="doDateView" layoutX="1163.0" layoutY="125.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="268.0" text="Do Date View" />
+      <ToggleButton fx:id="doDateView" layoutX="1163.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleDoDateView" prefHeight="51.0" prefWidth="268.0" text="Do Date View" />
       <ToggleButton fx:id="dueDateView" layoutX="1455.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleDueDateView" prefHeight="51.0" prefWidth="268.0" text="Due Date View" />
    </children>
 </AnchorPane>
