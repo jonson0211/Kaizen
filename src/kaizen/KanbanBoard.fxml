@@ -19,12 +19,7 @@
             <Image url="@Resources/Kaizen%20Innovations%20(All%20White).png" />
          </image>
       </ImageView>
-      <Button layoutY="660.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" AnchorPane.bottomAnchor="0.0">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <ToggleButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="KANBAN BOARD" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="350.0">
+      <ToggleButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="current-menu-toggle" stylesheets="@stylesheet.css" text="KANBAN BOARD" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="350.0">
          <font>
             <Font name="Calibri Light" size="24.0" />
          </font>
@@ -39,15 +34,30 @@
             <Font name="Calibri Light" size="20.0" />
          </font>
       </ToggleButton>
-      <ToggleButton layoutX="50.0" layoutY="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="0.0">
-         <font>
-            <Font name="Calibri Light" size="20.0" />
-         </font>
-      </ToggleButton>
       <ToggleButton layoutX="40.0" layoutY="40.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TIME DASHBOARD" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="575.0">
          <font>
             <Font name="Calibri Light" size="20.0" />
          </font>
       </ToggleButton>
+      <ToggleButton layoutX="90.0" layoutY="90.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="650.0">
+         <font>
+            <Font name="Calibri Light" size="20.0" />
+         </font>
+      </ToggleButton>
+      <ToggleButton layoutX="50.0" layoutY="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0">
+         <font>
+            <Font name="Calibri Light" size="20.0" />
+         </font>
+      </ToggleButton>
+      <Button layoutY="660.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="60.0" layoutY="720.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
