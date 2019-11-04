@@ -289,9 +289,9 @@ public class KaizenDatabase {
         ResultSet rs = null;
         openConnection();
         try {
-            System.out.println("Checking Daily Learnings table ");
+            System.out.println("Checking Learnings table ");
             DatabaseMetaData dbmd = conn.getMetaData();
-            rs = dbmd.getTables(null, null, "DAILYLEARNINGS", null);
+            rs = dbmd.getTables(null, null, "LEARNINGS", null);
             if (!rs.next()) {
                 createDailyLearningsTable = conn.prepareStatement("CREATE TABLE LEARNINGS ("
                         + "USERNAME TEXT NOT NULL, "
@@ -302,7 +302,7 @@ public class KaizenDatabase {
                 createDailyLearningsTable.execute();
                 System.out.println("Daily Learnings table created");
                 createDemoInstance = conn.prepareStatement("INSERT INTO LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
-                        + "VALUES ('lienzhu', TO_DATE('03/11/2019','DDMMYYY'), Today I spent 40 minutes exercising intensely', "
+                        + "VALUES ('lienzhu', TO_DATE('03/11/2019','DDMMYYY'), 'Today I spent 40 minutes exercising intensely', "
                         + "'Today I didn't watch the newest episode of MHA...'), "
                         );
                 createDemoInstance.execute();
@@ -312,5 +312,21 @@ public class KaizenDatabase {
         } catch (Exception e) {
             e.printStackTrace();
         }    
+    }
+    
+    public void insertStatement(String insert_query) throws SQLException {
+        java.sql.Statement stmt = null;
+        openConnection();
+        try {
+            System.out.println("database opened");
+            stmt = conn.createStatement();
+            System.out.println("the query was: " + insert_query);
+            stmt.executeUpdate(insert_query);
+            stmt.close();
+        } catch(Exception e){
+            System.err.println(e.getClass().getName() + ": " +e.getMessage());
+            System.exit(0);
+        }
+        stmt.close();
     }
 }
