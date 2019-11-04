@@ -55,7 +55,7 @@
             <Font name="Calibri Light" size="20.0" />
          </font>
       </ToggleButton>
-      <Button fx:id="signOutButton1" layoutX="10.0" layoutY="670.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0">
+      <Button fx:id="settingsButton" layoutX="10.0" layoutY="670.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0">
          <font>
             <Font size="20.0" />
          </font>
