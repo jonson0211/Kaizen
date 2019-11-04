@@ -49,6 +49,7 @@ public class DailyLearningsController implements Initializable {
     
     ResultSet rs;
     
+    
     /**
      * Initializes the controller class.
      */
@@ -56,20 +57,23 @@ public class DailyLearningsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    
+    
+    
     //update learnings
     @FXML
-    private void updateAnswerOne(ActionEvent event){
+    private void updateAnswerOne(ActionEvent event) throws SQLException{
         String answerOneString = (String) answerOne.getValue();
         userLearn.insertStatement("UPDATE LEARNINGS SET DID_WELL = " + answerOneString
-                + " WHERE USERNAME = '" + LoginScreenController.loggedUsername + "'"); //need to fix when LoginScreenController done
+                + " WHERE USERNAME = '" + LoginScreenController.usernameInput + "'"); //need to fix when LoginScreenController done
         System.out.println("Question 1 Learning updated in SQL");
         
         }
     @FXML
-    private void updateAnswerTwo(ActionEvent event){
+    private void updateAnswerTwo(ActionEvent event) throws SQLException{
         String answerTwoString = (String) answerTwo.getValue();
         userLearn.insertStatement("UPDATE LEARNINGS SET BE_BETTER = " + answerTwoString 
-                + "WHERE USERNAME = '" + LoginScreenController.loggedUsername + "'");
+                + "WHERE USERNAME = '" + LoginScreenController.usernameInput + "'");
         System.out.println("Question 2 Learning updated in SQL");
         
     //to do - update combo box values
@@ -97,10 +101,8 @@ public class DailyLearningsController implements Initializable {
             while(rs.next()){
                 String didwell = rs.getString("DID_WELL");
                 answerOne.addItem(didwell);
-                
-            } catch(Exception e){
-                    
-                    }
+            } 
+        } catch (Exception e) {
+            
         }
-    }
-}
+                
