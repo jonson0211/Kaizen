@@ -13,15 +13,12 @@
    <children>
       <Label layoutX="218.0" layoutY="31.0" prefHeight="100.0" prefWidth="700.0" styleClass="small-label" stylesheets="@stylesheet.css" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="100.0" />
       <Label layoutX="208.0" layoutY="21.0" prefHeight="100.0" prefWidth="400.0" styleClass="large-label" stylesheets="@stylesheet.css" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="25.0" />
-      <VBox prefHeight="1080.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" AnchorPane.topAnchor="0.0">
-         <children>
-            <ImageView fitHeight="325.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@Resources/Kaizen%20Innovations%20(All%20White).png" />
-               </image>
-            </ImageView>
-         </children>
-      </VBox>
+      <VBox prefHeight="1080.0" prefWidth="325.0" styleClass="vbox-bar" stylesheets="@stylesheet.css" AnchorPane.topAnchor="0.0" />
+      <ImageView fitHeight="325.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Resources/Kaizen%20Innovations%20(All%20White).png" />
+         </image>
+      </ImageView>
       <Button layoutY="660.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" AnchorPane.bottomAnchor="0.0">
          <font>
             <Font size="20.0" />
