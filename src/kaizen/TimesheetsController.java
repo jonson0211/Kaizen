@@ -53,12 +53,12 @@ public class TimesheetsController implements Initializable {
      */
     @FXML
     private void handleSubmitAction(ActionEvent event) {
-        String timeStart = start.getText().trim();
-        String timeEnd = end.getText();
-        String description = descr.getText();
+        String start = timeStart.getText().trim();
+        String end = timeEnd.getText();
+        String desc = description.getText();
         /** INSERT instead of SELECT?**/
         try {
-            ResultSet rs = addTimesheet.getResultSet("SELECT * FROM T WHERE "
+            ResultSet rs = addTimesheet.getResultSet("SELECT * FROM TIMESHEETS WHERE "
                     + "USERNAME = '" + timeStart + "' "
                     + "AND PASSWORD = '" + timeEnd + "'");
             if (!rs.next()) {
