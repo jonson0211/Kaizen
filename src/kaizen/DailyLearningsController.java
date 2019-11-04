@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +22,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import kaizen.UserData.KaizenDatabase;
 import static kaizen.UserData.KaizenDatabase.conn;
@@ -40,12 +43,9 @@ public class DailyLearningsController implements Initializable {
     
     @FXML
     private ComboBox<String> answerTwo;
-    
+       
     @FXML
-    private Button addLearningOne;
-    
-    @FXML
-    private Button addLearningTwo;
+    private Button addLearning;
     
     @FXML
     private ToggleButton kbBoard;
@@ -71,6 +71,12 @@ public class DailyLearningsController implements Initializable {
     @FXML
     private ToggleButton signOut;
     
+    @FXML
+    private DatePicker datePick;
+    
+    @FXML
+    private Label confirmEntry;
+    
     KaizenDatabase userLearn = new KaizenDatabase();
     
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
@@ -93,25 +99,18 @@ public class DailyLearningsController implements Initializable {
         answerTwo.setItems(answerTwos);
         FillComboOne();
         FillComboTwo();
-
+        confirmEntry.setVisible(false);
     }    
     
     
     //update learnings
     @FXML
-    private void updateAnswerOne(ActionEvent event) throws SQLException{
+    private void updateAnswers(ActionEvent event) throws SQLException{
         String answerOneString = (String) answerOne.getValue();
-        userLearn.insertStatement("UPDATE LEARNINGS SET DID_WELL = " + answerOneString
-                + " WHERE USERNAME = '" + LoginScreenController.usernameInput + "'"); //need to fix when LoginScreenController done
-        System.out.println("Question 1 Learning updated in SQL");
-        
-        }
-    @FXML
-    private void updateAnswerTwo(ActionEvent event) throws SQLException{
         String answerTwoString = (String) answerTwo.getValue();
-        userLearn.insertStatement("UPDATE LEARNINGS SET BE_BETTER = " + answerTwoString 
-                + "WHERE USERNAME = '" + LoginScreenController.usernameInput + "'");
-        System.out.println("Question 2 Learning updated in SQL");
+        String date = datePick.getValue().format(DateTimeFormatter.ofPattern("dd/mm/yyyy"));
+        userLearn.insertStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) VALUES (" + LoginScreenController.loggedUser + "," + date + "', " + answerOneString + ", " + answerTwoString + "');");
+        confirmEntry.setVisible(true);
         
     //to do - update combo box values
     }
@@ -122,7 +121,7 @@ public class DailyLearningsController implements Initializable {
         try{
             ResultSet currentAnswerOne = userLearn.getResultSet("SELECT USERNAME, DID_WELL FROM LEARNINGS"
                     + "WHERE USERNAME = " + LoginScreenController.loggedUsername + " ");
-            answerOne.setText(String.valueOf(currentAnswerOne.getString(3)));
+            answerOne.setValue(String.valueOf(currentAnswerOne.getString(3)));
         } catch(Exception e){
             System.out.println("New user");
             e.printStackTrace();
