@@ -67,6 +67,7 @@ public class DailyLearningsController implements Initializable {
         answerTwo.setValue("Your lesson today...");
         answerTwo.setItems(answerTwos);
         FillComboOne();
+        FillComboTwo();
 
     }    
     
@@ -132,7 +133,7 @@ public class DailyLearningsController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+                
     }
+}
                 
