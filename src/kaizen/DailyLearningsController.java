@@ -50,7 +50,7 @@ public class DailyLearningsController implements Initializable {
     private void updateAnswerOne(ActionEvent event){
         String answerOneString = String.parseString(answerOne.getText());
         userLearn.insertStatement("UPDATE LEARNINGS SET DID_WELL = " + answerOneString
-                + " WHERE USERNAME = '" + LoginScreenController.loggedInUsername + "'"); //need to fix when LoginScreenController done
+                + " WHERE USERNAME = '" + LoginScreenController.loggedUsername + "'"); //need to fix when LoginScreenController done
         
         
         }
