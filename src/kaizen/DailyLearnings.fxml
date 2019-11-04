@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
@@ -16,45 +17,119 @@
             <Image url="@Resources/Kaizen%20Innovations%20(All%20White).png" />
          </image>
       </ImageView>
-      <ToggleButton layoutX="40.0" layoutY="40.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="KANBAN BOARD" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="350.0">
+      <ToggleButton fx:id="kbBoard" layoutX="40.0" layoutY="40.0" mnemonicParsing="false" onAction="#kanbanBoard" onDragDetected="#handleKbBoard" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="KANBAN BOARD" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="350.0">
          <font>
             <Font name="Calibri Light" size="24.0" />
          </font>
       </ToggleButton>
-      <ToggleButton layoutX="50.0" layoutY="50.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DEEP FOCUS" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="425.0">
+      <ToggleButton fx:id="deepFocus" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#handleDeepFocus" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DEEP FOCUS" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="425.0">
          <font>
             <Font name="Calibri Light" size="20.0" />
          </font>
       </ToggleButton>
-      <ToggleButton layoutX="60.0" layoutY="60.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TASK TRACKER" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="500.0">
+      <ToggleButton fx:id="taskTracker" layoutX="60.0" layoutY="60.0" mnemonicParsing="false" onAction="#handleTaskTracker" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TASK TRACKER" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="500.0">
          <font>
             <Font name="Calibri Light" size="20.0" />
          </font>
       </ToggleButton>
-      <ToggleButton layoutX="70.0" layoutY="70.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TIME DASHBOARD" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="575.0">
+      <ToggleButton fx:id="timeDashboard" layoutX="70.0" layoutY="70.0" mnemonicParsing="false" onAction="#handleTimeSheets" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TIME DASHBOARD" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="575.0">
          <font>
             <Font name="Calibri Light" size="20.0" />
          </font>
       </ToggleButton>
-      <ToggleButton layoutX="80.0" layoutY="80.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="current-menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="650.0">
+      <ToggleButton fx:id="dailyLearnings" layoutX="80.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleDailyLearnings" prefHeight="75.0" prefWidth="325.0" styleClass="current-menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="650.0">
          <font>
             <Font name="Calibri Light" size="20.0" />
          </font>
       </ToggleButton>
-      <ToggleButton layoutX="80.0" layoutY="80.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0">
+      <ToggleButton fx:id="about" layoutX="80.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleAboutScreen" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0">
          <font>
             <Font name="Calibri Light" size="20.0" />
          </font>
       </ToggleButton>
-      <Button layoutX="30.0" layoutY="690.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+      <Button fx:id="signOut" layoutX="30.0" layoutY="690.0" mnemonicParsing="false" onAction="#handleSignOut" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button layoutX="40.0" layoutY="700.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0">
+      <Button fx:id="settings" layoutX="40.0" layoutY="700.0" mnemonicParsing="false" onAction="#handleSettings" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
+      <GridPane layoutX="384.0" layoutY="100.0" prefHeight="720.0" prefWidth="920.0" AnchorPane.bottomAnchor="260.0" AnchorPane.leftAnchor="384.0" AnchorPane.rightAnchor="616.0" AnchorPane.topAnchor="100.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1090.3333740234375" minWidth="10.0" prefWidth="725.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="684.0" minWidth="10.0" prefWidth="82.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="410.6666564941406" minHeight="0.0" prefHeight="147.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="464.0" minHeight="0.0" prefHeight="60.666656494140625" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="270.33331298828125" minHeight="0.0" prefHeight="102.33334350585938" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="591.6666259765625" minHeight="10.0" prefHeight="96.66665649414062" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="554.3333435058594" minHeight="10.0" prefHeight="105.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="554.3333435058594" minHeight="10.0" prefHeight="62.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="554.3333435058594" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Your daily learnings">
+               <font>
+                  <Font name="Arial Unicode MS" size="48.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="What did you do well today?" textAlignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="20.0" left="40.0" right="20.0" />
+               </GridPane.margin>
+            </Text>
+            <ComboBox fx:id="answerOne" onAction="#updateComboOneValue" prefHeight="53.0" prefWidth="693.0" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="40.0" right="-10.0" top="-50.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="What could you have done better today?" textAlignment="CENTER" GridPane.rowIndex="3">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="40.0" />
+               </GridPane.margin>
+            </Text>
+            <ComboBox fx:id="answerTwo" prefHeight="49.0" prefWidth="693.0" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="40.0" top="-50.0" />
+               </GridPane.margin>
+            </ComboBox>
+            <Button fx:id="addLearnings" mnemonicParsing="false" onAction="#updateAnswers" prefHeight="51.0" prefWidth="214.0" text="Add learnings" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="-80.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Button>
+            <DatePicker prefHeight="49.0" prefWidth="254.0" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="40.0" />
+               </GridPane.margin>
+            </DatePicker>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date of learnings" textAlignment="CENTER" GridPane.rowIndex="5">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="40.0" />
+               </GridPane.margin>
+            </Text>
+         </children>
+      </GridPane>
+      <Label fx:id="confirmEntry" layoutX="603.0" layoutY="879.0" text="Successfully updated learnings!">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
