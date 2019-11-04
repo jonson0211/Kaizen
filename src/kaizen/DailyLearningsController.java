@@ -48,7 +48,7 @@ public class DailyLearningsController implements Initializable {
     //update learnings
     @FXML
     private void updateAnswerOne(ActionEvent event){
-        String answerOneString = String.parseString(answerOne.getValue());
+        String answerOneString = (String) answerOne.getValue();
         userLearn.insertStatement("UPDATE LEARNINGS SET DID_WELL = " + answerOneString
                 + " WHERE USERNAME = '" + LoginScreenController.loggedUsername + "'"); //need to fix when LoginScreenController done
         System.out.println("Question 1 Learning updated in SQL");
@@ -56,7 +56,7 @@ public class DailyLearningsController implements Initializable {
         }
     @FXML
     private void updateAnswerTwo(ActionEvent event){
-        String answerTwoString = String.parseString(answerTwo.getValue());
+        String answerTwoString = (String) answerTwo.getValue();
         userLearn.insertStatement("UPDATE LEARNINGS SET BE_BETTER = " + answerTwoString 
                 + "WHERE USERNAME = '" + LoginScreenController.loggedUsername + "'");
         System.out.println("Question 2 Learning updated in SQL");
