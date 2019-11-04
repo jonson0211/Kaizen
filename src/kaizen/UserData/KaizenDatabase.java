@@ -116,7 +116,7 @@ public class KaizenDatabase {
                 createDummyTasks.execute();
                 
                 //Insert dummy data 2
-                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
+                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
                         + "'lienzhu', "
                         + "'ACF Call', "
@@ -130,7 +130,7 @@ public class KaizenDatabase {
                 
                 
                 //insert dummy data 3
-                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
+                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITYY) "
                         + " VALUES ("
                         + "'lienzhu', "
                         + "'Watch new My Hero Academia new episode', "
@@ -143,7 +143,7 @@ public class KaizenDatabase {
                 createDummyTasks.execute();
                 
                 //insert dummy data 4
-                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
+                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
                         + "'lienzhu', "
                         + "'Decide on movie for date', "
@@ -156,7 +156,7 @@ public class KaizenDatabase {
                 createDummyTasks.execute();
                 
                 //insert dummy data 5
-                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
+                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
                         + "'lienzhu', "
                         + "'Apply for vacationer intern position', "
@@ -169,7 +169,7 @@ public class KaizenDatabase {
                 createDummyTasks.execute();
                 
                 //insert dummy data 6
-                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
+                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
                         + "'lienzhu', "
                         + "'Learn how to code', "
@@ -182,7 +182,7 @@ public class KaizenDatabase {
                 createDummyTasks.execute();
                 
                 //insert dummy data 7
-                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
+                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
                         + "'lienzhu', "
                         + "'Finish Zelda', "
@@ -195,7 +195,7 @@ public class KaizenDatabase {
                 createDummyTasks.execute();
                 
                  //insert dummy data 8
-                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
+                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
                         + "'lienzhu', "
                         + "'Form oztag group', "
@@ -208,7 +208,7 @@ public class KaizenDatabase {
                 createDummyTasks.execute();
                 
                  //insert dummy data 9
-                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
+                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
                         + "'lienzhu', "
                         + "'Organise Interfaculty Party', "
@@ -221,7 +221,7 @@ public class KaizenDatabase {
                 createDummyTasks.execute();
                 
                  //insert dummy data 10
-                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
+                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
                         + "'lienzhu', "
                         + "'Shopping for groceries', "
