@@ -11,6 +11,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,11 +30,14 @@ import static kaizen.UserData.KaizenDatabase.conn;
  */
 public class DailyLearningsController implements Initializable {
 
-    @FXML
-    private ComboBox answerOne;
+    ObservableList<String> answerOnes = FXCollections.observableArrayList("I went to the gym today", "I played the piano");
+    ObservableList<String> answerTwos = FXCollections.observableArrayList("I want to spend more time with my family");
     
     @FXML
-    private ComboBox answerTwo;
+    private ComboBox<String> answerOne;
+    
+    @FXML
+    private ComboBox<String> answerTwo;
     
     @FXML
     private Button addLearningOne;
@@ -49,15 +56,19 @@ public class DailyLearningsController implements Initializable {
     
     ResultSet rs;
     
-    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        answerOne.setValue("Your lesson today...");
+        answerOne.setItems(answerOnes);
+        answerTwo.setValue("Your lesson today...");
+        answerTwo.setItems(answerTwos);
+        FillComboOne();
+
     }    
-    
     
     
     //update learnings
@@ -92,17 +103,36 @@ public class DailyLearningsController implements Initializable {
         }
     }
     //populating combobox
-    private void FillCombo() throws SQLException{
-        try{
+    private void FillComboOne() {
+        try {
             String queryOne = "SELECT * FROM LEARNINGS";
             pst = conn.prepareStatement(queryOne);
             rs = pst.executeQuery();
             
             while(rs.next()){
                 String didwell = rs.getString("DID_WELL");
-                answerOne.addItem(didwell);
+                answerOne.setValue(rs.getString("DID_WELL"));
             } 
-        } catch (Exception e) {
+            pst.close();
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+    }
+    private void FillComboTwo(){
+        String queryTwo = "SELECT * FROM LEARNINGS";
+        try {
+            pst = conn.prepareStatement(queryTwo);
+            rs = pst.executeQuery();
             
+            while(rs.next()){
+                String bebetter = rs.getString("BE_BETTER");
+                answerTwo.setValue(rs.getString("BE_BETTER"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
+    }
                 
