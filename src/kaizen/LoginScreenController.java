@@ -45,7 +45,7 @@ public class LoginScreenController {
         
     }
     
-    
+    // don't forget to include code that indicates which user is logged in
     @FXML
     private void handleRegisterButtonAction (Action event) throws IOException (String "An error occurred.") {
         

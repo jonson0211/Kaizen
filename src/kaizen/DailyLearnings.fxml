@@ -1,11 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.DailyLearningsController">
-    
+<AnchorPane id="AnchorPane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.DailyLearningsController">
+   <children>
+      <VBox layoutX="50.0" layoutY="308.0" prefHeight="858.0" prefWidth="420.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1500.0" AnchorPane.topAnchor="308.0">
+         <children>
+            <ToggleButton mnemonicParsing="false" prefHeight="95.0" prefWidth="421.0" text="ToggleButton" />
+         </children>
+      </VBox>
+      <Pane layoutX="464.0" layoutY="308.0" prefHeight="725.0" prefWidth="730.0">
+         <children>
+            <Text layoutX="159.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your daily learnings">
+               <font>
+                  <Font size="48.0" />
+               </font>
+            </Text>
+            <Text layoutX="21.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What did you do well today?">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+            <Text layoutX="22.0" layoutY="333.0" strokeType="OUTSIDE" strokeWidth="0.0" text="What could you have done better today?">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Text>
+            <ComboBox fx:id="answerOne" layoutX="20.0" layoutY="206.0" prefHeight="41.0" prefWidth="452.0" promptText="Your response" />
+            <ComboBox fx:id="answerTwo" layoutX="20.0" layoutY="361.0" prefHeight="41.0" prefWidth="452.0" promptText="Your response" />
+            <Button fx:id="addLearningOne" layoutX="546.0" layoutY="211.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="118.0" text="Add learning" />
+            <Button fx:id="addLearningTwo" layoutX="546.0" layoutY="366.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="118.0" text="Add learning" />
+         </children>
+      </Pane>
+      <Button layoutX="1760.0" layoutY="39.0" mnemonicParsing="false" text="Sign out">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

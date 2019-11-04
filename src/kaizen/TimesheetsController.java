@@ -11,6 +11,11 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import kaizen.UserData.KaizenDatabase;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
 
 public class TimesheetsController implements Initializable {
 
@@ -39,10 +44,16 @@ public class TimesheetsController implements Initializable {
     private TextField timeEnd;
     
     @FXML
+    private TextField duration;
+    
+    @FXML
     private TextArea description;
     
     @FXML
     private Button submit;
+    
+    @FXML
+    private Button back;
     
     KaizenDatabase addTimesheet = new KaizenDatabase();
     
@@ -56,6 +67,8 @@ public class TimesheetsController implements Initializable {
         String start = timeStart.getText().trim();
         String end = timeEnd.getText();
         String desc = description.getText();
+        Int actDuration = (timeStart-timeEnd);
+        
         /** INSERT instead of SELECT?**/
         try {
             ResultSet rs = addTimesheet.getResultSet("SELECT * FROM TIMESHEETS WHERE "
@@ -73,6 +86,16 @@ public class TimesheetsController implements Initializable {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-
+        
     }
+    @FXML
+    private void handleBackAction(ActionEvent event) throws IOException {
+        pageSwitcher.switcher(event, "KanbanBoard.fxml");
+    }
+    
+    @FXML
+    public void initialize(){
+        /** probably don't need this initialize^ unless hiding buttons or whatever**/
+    }
+    
 }
