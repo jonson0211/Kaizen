@@ -20,7 +20,7 @@
             <Image url="@Resources/Kaizen%20Innovations%20(All%20White).png" />
          </image>
       </ImageView>
-      <Button fx:id="signOutButton" layoutY="660.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" AnchorPane.bottomAnchor="0.0">
+      <Button fx:id="signOutButton" layoutY="660.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" AnchorPane.bottomAnchor="0.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -40,7 +40,7 @@
             <Font name="Calibri Light" size="20.0" />
          </font>
       </ToggleButton>
-      <ToggleButton fx:id="about" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="0.0">
+      <ToggleButton fx:id="about" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0">
          <font>
             <Font name="Calibri Light" size="20.0" />
          </font>
@@ -50,6 +50,16 @@
             <Font name="Calibri Light" size="20.0" />
          </font>
       </ToggleButton>
+      <ToggleButton layoutX="110.0" layoutY="110.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="650.0">
+         <font>
+            <Font name="Calibri Light" size="20.0" />
+         </font>
+      </ToggleButton>
+      <Button fx:id="signOutButton1" layoutX="10.0" layoutY="670.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
       <FlowPane layoutX="431.0" layoutY="217.0" prefHeight="790.0" prefWidth="1309.0">
          <children>
             <Pane prefHeight="790.0" prefWidth="327.0">
