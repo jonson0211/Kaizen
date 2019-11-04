@@ -1,11 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.PieChartController">
-    
+<AnchorPane id="AnchorPane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.PieChartController">
+   <children>
+      <VBox layoutX="20.0" layoutY="20.0" prefHeight="1080.0" prefWidth="325.0" styleClass="vbox-bar" stylesheets="@stylesheet.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="325.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Resources/Kaizen%20Innovations%20(All%20White).png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+      <ImageView fitHeight="325.0" fitWidth="325.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@Resources/Kaizen%20Innovations%20(All%20White).png" />
+         </image>
+      </ImageView>
+      <ToggleButton layoutX="20.0" layoutY="20.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="KANBAN BOARD" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="350.0">
+         <font>
+            <Font name="Calibri Light" size="24.0" />
+         </font>
+      </ToggleButton>
+      <ToggleButton mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DEEP FOCUS" AnchorPane.topAnchor="425.0">
+         <font>
+            <Font name="Calibri Light" size="20.0" />
+         </font>
+      </ToggleButton>
+      <ToggleButton layoutX="40.0" layoutY="40.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TASK TRACKER" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="500.0">
+         <font>
+            <Font name="Calibri Light" size="20.0" />
+         </font>
+      </ToggleButton>
+      <ToggleButton layoutX="50.0" layoutY="50.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="current-menu-toggle" stylesheets="@stylesheet.css" text="TIME DASHBOARD" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="575.0">
+         <font>
+            <Font name="Calibri Light" size="20.0" />
+         </font>
+      </ToggleButton>
+      <ToggleButton layoutX="100.0" layoutY="100.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="650.0">
+         <font>
+            <Font name="Calibri Light" size="20.0" />
+         </font>
+      </ToggleButton>
+      <ToggleButton layoutX="60.0" layoutY="60.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0">
+         <font>
+            <Font name="Calibri Light" size="20.0" />
+         </font>
+      </ToggleButton>
+      <Button layoutX="10.0" layoutY="670.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="60.0" layoutY="720.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

@@ -7,8 +7,8 @@
 }
 
 .menu-toggle {
-
     -fx-background-color: transparent;
+    -fx-opacity: 1.0;
     -fx-font-size: 24px;
     -fx-text-fill: #ffffff;
     -fx-font-family: "Arial Nova Light";
@@ -16,7 +16,8 @@
 
 .menu-toggle:hover {
 
-    -fx-opacity: 0.75;
+    -fx-background-color: rgba(0, 0, 0, 0.35);
+    -fx-opacity: 1.0;
     -fx-font-size: 24px;
     -fx-text-fill: #ffffff;
     -fx-font-family: "Arial Nova Light";
@@ -25,8 +26,19 @@
 
 .menu-toggle:pressed {
 
-    -fx-opacity: 0.50;
     -fx-box-shadow: inset 0 0 0 1px #ffffff;
+    -fx-background-color: rgba(0, 0, 0, 0.5);
+    -fx-opacity: 1.0;
+    -fx-font-size: 24px;
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Arial Nova Light";
+
+}
+
+.current-menu-toggle {
+
+    -fx-background-color: rgba(0, 0, 0, 0.50);
+    -fx-opacity: 1.0;
     -fx-font-size: 24px;
     -fx-text-fill: #ffffff;
     -fx-font-family: "Arial Nova Light";
@@ -60,6 +72,24 @@
 
 }
 
+.about-large-label {
+
+    -fx-font-size: 48px;
+    -fx-text-fill: #404040;
+    -fx-font-family: "Arial Nova Light";
+    -fx-wrap-text: true;
+
+}
+
+.about-small-label {
+
+    -fx-font-size: 28px;
+    -fx-text-fill: #404040;
+    -fx-font-family: "Arial Nova Light";
+    -fx-wrap-text: true;
+
+}
+
 .buttons {
 
     -fx-font-size: 28px;
@@ -87,19 +117,19 @@
 }
 
 .input-fields {
-    
+
     -fx-font-size: 28px;
     -fx-fill-color: #e1e1e1;
     -fx-text-fill: #4f4e52;
     -fx-font-family: "Arial Nova Light";
-    
+
 }
 
 .input-fields:focused {
-    
+
     -fx-font-size: 28px;
     -fx-fill-color: #ffffff;
     -fx-text-fill: #4f4e52;
     -fx-font-family: "Arial Nova Light";
-    
+
 }
