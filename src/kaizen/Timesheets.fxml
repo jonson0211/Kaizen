@@ -45,12 +45,22 @@
             <Font name="Calibri Light" size="20.0" />
          </font>
       </ToggleButton>
-      <ToggleButton layoutX="60.0" layoutY="60.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="0.0">
+      <ToggleButton layoutX="100.0" layoutY="100.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="current-menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="650.0">
          <font>
             <Font name="Calibri Light" size="20.0" />
          </font>
       </ToggleButton>
-      <Button layoutX="10.0" layoutY="670.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+      <ToggleButton layoutX="60.0" layoutY="60.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0">
+         <font>
+            <Font name="Calibri Light" size="20.0" />
+         </font>
+      </ToggleButton>
+      <Button layoutX="60.0" layoutY="720.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button layoutX="10.0" layoutY="670.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
          <font>
             <Font size="20.0" />
          </font>
@@ -104,12 +114,12 @@
             </RadioButton>
          </children>
       </GridPane>
-      <TextField layoutX="862.0" layoutY="485.0" prefHeight="75.0" prefWidth="287.0" promptText="Enter activity start time">
+      <TextField layoutX="862.0" layoutY="485.0" prefHeight="75.0" prefWidth="287.0" promptText="Enter activity start time" styleClass="input-fields" stylesheets="@stylesheet.css">
          <font>
             <Font size="24.0" />
          </font>
       </TextField>
-      <TextField layoutX="866.0" layoutY="575.0" prefHeight="75.0" prefWidth="287.0" promptText="Enter activity end time">
+      <TextField layoutX="866.0" layoutY="575.0" prefHeight="75.0" prefWidth="287.0" promptText="Enter activity end time" styleClass="input-fields" stylesheets="@stylesheet.css">
          <font>
             <Font size="24.0" />
          </font>
@@ -119,7 +129,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField layoutX="869.0" layoutY="665.0" prefHeight="75.0" prefWidth="292.0" promptText="Time spent on activity">
+      <TextField layoutX="869.0" layoutY="665.0" prefHeight="75.0" prefWidth="292.0" promptText="Time spent on activity" styleClass="input-fields" stylesheets="@stylesheet.css">
          <font>
             <Font size="24.0" />
          </font>
@@ -134,13 +144,13 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextArea layoutX="585.0" layoutY="847.0" prefHeight="72.0" prefWidth="680.0" promptText="Description of activity" />
+      <TextArea layoutX="585.0" layoutY="847.0" prefHeight="72.0" prefWidth="680.0" promptText="Description of activity" styleClass="input-fields" stylesheets="@stylesheet.css" />
       <Text layoutX="568.0" layoutY="816.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Describe your activity:">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Button layoutX="931.0" layoutY="992.0" mnemonicParsing="false" text="Submit">
+      <Button layoutX="931.0" layoutY="992.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@stylesheet.css" text="Submit">
          <font>
             <Font size="24.0" />
          </font>
