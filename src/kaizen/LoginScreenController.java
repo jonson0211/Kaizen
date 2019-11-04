@@ -71,7 +71,8 @@ public class LoginScreenController {
         }
 
     }
-
+    
+    // don't forget to include code that indicates which user is logged in
     @FXML
     private void handleRegisterButtonAction(ActionEvent event) throws IOException {
         pageSwitcher.switcher(event, "RegisterScreen.fxml");

@@ -45,12 +45,21 @@ public class DailyLearningsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
+    //update learnings
     @FXML
     private void updateAnswerOne(ActionEvent event){
-        String 
-        String addAnswerOne = answerOne.getText();
-        String addAnswerTwo = answerTwo.getText();
+        String answerOneString = (String) answerOne.getValue();
+        userLearn.insertStatement("UPDATE LEARNINGS SET DID_WELL = " + answerOneString
+                + " WHERE USERNAME = '" + LoginScreenController.loggedUsername + "'"); //need to fix when LoginScreenController done
+        System.out.println("Question 1 Learning updated in SQL");
         
+        }
+    @FXML
+    private void updateAnswerTwo(ActionEvent event){
+        String answerTwoString = (String) answerTwo.getValue();
+        userLearn.insertStatement("UPDATE LEARNINGS SET BE_BETTER = " + answerTwoString 
+                + "WHERE USERNAME = '" + LoginScreenController.loggedUsername + "'");
+        System.out.println("Question 2 Learning updated in SQL");
+
     }
 }
