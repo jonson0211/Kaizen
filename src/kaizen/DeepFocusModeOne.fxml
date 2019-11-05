@@ -60,5 +60,10 @@
             <Font size="20.0" />
          </font>
       </Button>
+      <ImageView fitHeight="1080.0" fitWidth="1595.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="325.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@Resources/Kaizen%20Innovations%20(All%20White).png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

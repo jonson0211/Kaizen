@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author Raymond
  */
-public class DeepFocusModeController implements Initializable {
+public class DeepFocusModeOneController implements Initializable {
 
     /**
      * Initializes the controller class.

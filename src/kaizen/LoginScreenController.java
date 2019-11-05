@@ -78,7 +78,7 @@ public class LoginScreenController {
         pageSwitcher.switcher(event, "RegisterScreen.fxml");
     }
 
-    public void initialise() {
+    public void initialize() {
 
         loginOutput.setVisible(false);
 
