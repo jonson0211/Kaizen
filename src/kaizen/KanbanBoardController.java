@@ -24,7 +24,7 @@ public class KanbanBoardController {
     @FXML
     private Button signOutButton;
     @FXML
-    private Button settingsButton;
+    private ToggleButton settingsButton;
     @FXML
     private ToggleButton kanbanBoard;
     @FXML
