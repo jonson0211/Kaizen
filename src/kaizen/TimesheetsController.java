@@ -83,9 +83,7 @@ public class TimesheetsController implements Initializable {
     private Button back;
     
     ToggleGroup toggleGroup = new ToggleGroup();
-       
-    
-    
+ 
     KaizenDatabase addTimesheet = new KaizenDatabase();
     
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
