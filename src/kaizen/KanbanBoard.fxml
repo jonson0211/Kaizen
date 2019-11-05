@@ -40,9 +40,9 @@
       </FlowPane>
       <ToggleButton fx:id="doDateView" layoutX="1163.0" layoutY="125.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="268.0" text="Do Date View" />
       <ToggleButton fx:id="dueDateView" layoutX="1455.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleDueDateView" prefHeight="51.0" prefWidth="268.0" text="Due Date View" />
-      <BorderPane prefHeight="1080.0" prefWidth="325.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane prefHeight="1080.0" prefWidth="325.0" styleClass="vbox-bar" stylesheets="@stylesheet.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-            <VBox maxHeight="1.7976931348623157E308" prefHeight="1080.0" prefWidth="325.0" styleClass="vbox-bar" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
+            <VBox maxHeight="1.7976931348623157E308" prefHeight="1080.0" prefWidth="325.0" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fitHeight="325.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -53,6 +53,9 @@
                      <font>
                         <Font name="Calibri Light" size="24.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets top="25.0" />
+                     </VBox.margin>
                   </ToggleButton>
                   <ToggleButton fx:id="deepFocus" mnemonicParsing="false" onAction="#handleDeepFocusMode" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DEEP FOCUS">
                      <font>
@@ -74,8 +77,13 @@
                         <Font name="Calibri Light" size="20.0" />
                      </font>
                   </ToggleButton>
-                  <ImageView fitHeight="325.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true" />
-                  <ToggleButton fx:id="about" mnemonicParsing="false" onAction="#handleAboutScreen" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT">
+               </children>
+            </VBox>
+         </center>
+         <bottom>
+            <VBox maxHeight="1.7976931348623157E308" prefWidth="325.0" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
+               <children>
+                  <ToggleButton fx:id="about1" mnemonicParsing="false" onAction="#handleAboutScreen" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT">
                      <font>
                         <Font name="Calibri Light" size="20.0" />
                      </font>
@@ -83,7 +91,7 @@
                         <Insets />
                      </VBox.margin>
                   </ToggleButton>
-                  <Button fx:id="settingsButton" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS">
+                  <Button fx:id="settingsButton1" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -95,7 +103,7 @@
                   </Button>
                </children>
             </VBox>
-         </center>
+         </bottom>
       </BorderPane>
    </children>
 </AnchorPane>
