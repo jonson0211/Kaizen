@@ -22,7 +22,7 @@ import kaizen.UserData.KaizenDatabase;
 public class LoginScreenController {
 
     @FXML
-    private TextField usernameInput;
+     TextField usernameInput;
 
     @FXML
     private TextField passwordInput;
