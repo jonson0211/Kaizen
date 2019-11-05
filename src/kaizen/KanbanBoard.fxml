@@ -1,109 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
+<?import java.net.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1080.0" minWidth="1920.0" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.KanbanBoardController">
-   <children>
-      <BorderPane prefHeight="1080.0" prefWidth="325.0" styleClass="menu-panel" stylesheets="@stylesheet.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="vbox-bar" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="menu-panel" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
          <center>
-            <VBox maxHeight="1.7976931348623157E308" prefHeight="1080.0" prefWidth="325.0" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="325.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Resources/Kaizen%20Innovations%20(All%20White).png" />
-                     </image>
-                  </ImageView>
-                  <ToggleButton fx:id="kanbanBoard" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="current-menu-toggle" stylesheets="@stylesheet.css" text="KANBAN BOARD" textFill="WHITE">
-                     <font>
-                        <Font name="Calibri Light" size="24.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="25.0" />
-                     </VBox.margin>
-                  </ToggleButton>
-                  <ToggleButton fx:id="deepFocus" mnemonicParsing="false" onAction="#handleDeepFocusMode" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DEEP FOCUS">
-                     <font>
-                        <Font name="Calibri Light" size="20.0" />
-                     </font>
-                  </ToggleButton>
-                  <ToggleButton fx:id="taskTracker" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TASK TRACKER">
-                     <font>
-                        <Font name="Calibri Light" size="20.0" />
-                     </font>
-                  </ToggleButton>
-                  <ToggleButton fx:id="timeDashboard" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TIME DASHBOARD">
-                     <font>
-                        <Font name="Calibri Light" size="20.0" />
-                     </font>
-                  </ToggleButton>
-                  <ToggleButton mnemonicParsing="false" onAction="#handleDailyLearnings" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS">
-                     <font>
-                        <Font name="Calibri Light" size="20.0" />
-                     </font>
-                  </ToggleButton>
+                  <ToggleButton mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="current-menu-toggle" stylesheets="@stylesheet.css" text="KANBAN BOARD" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DEEP FOCUS" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TASK TRACKER" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TIME DASHBOARD" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" />
                </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
             </VBox>
          </center>
          <bottom>
-            <VBox maxHeight="1.7976931348623157E308" prefWidth="325.0" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <ToggleButton fx:id="about1" mnemonicParsing="false" onAction="#handleAboutScreen" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT">
-                     <font>
-                        <Font name="Calibri Light" size="20.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </ToggleButton>
-                  <Button fx:id="settingsButton1" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="signOutButton" mnemonicParsing="false" onAction="#handleSignOut" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-               </children>
-            </VBox>
+                  <ToggleButton mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" />
+                  <ToggleButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" />
+                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" />
+               </children></VBox>
          </bottom>
+         <top>
+            <ImageView fitHeight="325.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true" styleClass="border-bar" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@Resources/Kaizen%20Innovations%20(All%20White).png" />
+               </image>
+            </ImageView>
+         </top>
       </BorderPane>
-      <Label fx:id="welcomeSubheading" layoutX="218.0" layoutY="31.0" prefHeight="100.0" prefWidth="700.0" styleClass="small-label" stylesheets="@stylesheet.css" text="What would you like to do today?" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="100.0" />
-      <Label fx:id="welcome" layoutX="350.0" layoutY="26.0" prefHeight="100.0" prefWidth="400.0" styleClass="large-label" stylesheets="@stylesheet.css" text="Welcome" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="26.0" />
-      <FlowPane layoutX="431.0" layoutY="217.0" prefHeight="790.0" prefWidth="1309.0">
-         <children>
-            <Pane prefHeight="790.0" prefWidth="327.0">
-               <children>
-                  <Label layoutX="80.0" layoutY="14.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Today's Tasks" textAlignment="CENTER" />
-               </children>
-            </Pane>
-            <Pane prefHeight="790.0" prefWidth="327.0">
-               <children>
-                  <Label layoutX="54.0" layoutY="14.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Completed Today" textAlignment="CENTER" />
-               </children>
-            </Pane>
-            <Pane prefHeight="790.0" prefWidth="327.0">
-               <children>
-                  <Label layoutX="53.0" layoutY="14.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Tomorrow's Tasks" textAlignment="CENTER" />
-               </children>
-            </Pane>
-            <Pane prefHeight="790.0" prefWidth="327.0">
-               <children>
-                  <Label layoutX="19.0" layoutY="14.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Tasks Over Next 7 Days" textAlignment="CENTER" />
-               </children>
-            </Pane>
-         </children>
-      </FlowPane>
-      <ToggleButton fx:id="doDateView" layoutX="1163.0" layoutY="125.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="268.0" text="Do Date View" />
-      <ToggleButton fx:id="dueDateView" layoutX="1455.0" layoutY="125.0" mnemonicParsing="false" onAction="#handleDueDateView" prefHeight="51.0" prefWidth="268.0" text="Due Date View" />
-   </children>
-</AnchorPane>
+   </left>
+   <right>
+      <BorderPane prefHeight="200.0" prefWidth="1595.0" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>

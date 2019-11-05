@@ -26,7 +26,7 @@
                   <Insets />
                </opaqueInsets>
                <BorderPane.margin>
-                  <Insets top="25.0" />
+                  <Insets />
                </BorderPane.margin>
             </VBox>
          </center>
