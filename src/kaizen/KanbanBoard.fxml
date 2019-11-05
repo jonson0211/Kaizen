@@ -10,27 +10,28 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.KanbanBoardController">
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="1080.0" minWidth="1920.0" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.KanbanBoardController">
    <children>
       <Label fx:id="welcomeSubheading" layoutX="218.0" layoutY="31.0" prefHeight="100.0" prefWidth="700.0" styleClass="small-label" stylesheets="@stylesheet.css" text="What would you like to do today?" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="100.0" />
       <Label fx:id="welcome" layoutX="350.0" layoutY="26.0" prefHeight="100.0" prefWidth="400.0" styleClass="large-label" stylesheets="@stylesheet.css" text="Welcome" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="26.0" />
-      <VBox prefHeight="1080.0" prefWidth="325.0" styleClass="vbox-bar" stylesheets="@stylesheet.css" AnchorPane.topAnchor="0.0" />
+      <VBox maxHeight="1.7976931348623157E308" prefHeight="1080.0" prefWidth="325.0" styleClass="vbox-bar" stylesheets="@stylesheet.css" AnchorPane.topAnchor="0.0" />
       <ImageView fitHeight="325.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Resources/Kaizen%20Innovations%20(All%20White).png" />
          </image>
       </ImageView>
-      <Button fx:id="signOutButton" layoutY="660.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" AnchorPane.bottomAnchor="0.0">
+      <Button fx:id="signOutButton" layoutY="660.0" mnemonicParsing="false" onAction="#handleSignOut" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" AnchorPane.bottomAnchor="0.0">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <ToggleButton fx:id="kanbanBoard" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="KANBAN BOARD" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="350.0">
+      <ToggleButton fx:id="kanbanBoard" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="current-menu-toggle" stylesheets="@stylesheet.css" text="KANBAN BOARD" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="350.0">
          <font>
             <Font name="Calibri Light" size="24.0" />
          </font>
       </ToggleButton>
-      <ToggleButton fx:id="deepFocus" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DEEP FOCUS" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="425.0">
+      <ToggleButton fx:id="deepFocus" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleDeepFocusMode" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DEEP FOCUS" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="425.0">
          <font>
             <Font name="Calibri Light" size="20.0" />
          </font>
@@ -40,7 +41,7 @@
             <Font name="Calibri Light" size="20.0" />
          </font>
       </ToggleButton>
-      <ToggleButton fx:id="about" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0">
+      <ToggleButton fx:id="about" layoutX="50.0" layoutY="50.0" mnemonicParsing="false" onAction="#handleAboutScreen" prefHeight="50.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0">
          <font>
             <Font name="Calibri Light" size="20.0" />
          </font>
@@ -50,7 +51,7 @@
             <Font name="Calibri Light" size="20.0" />
          </font>
       </ToggleButton>
-      <ToggleButton layoutX="110.0" layoutY="110.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="650.0">
+      <ToggleButton layoutX="110.0" layoutY="110.0" mnemonicParsing="false" onAction="#handleDailyLearnings" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="650.0">
          <font>
             <Font name="Calibri Light" size="20.0" />
          </font>

@@ -45,6 +45,9 @@ public class KanbanBoardController {
     private Label welcomeSubheading;
     
     
+    
+    
+    
     //method to change the scene from do date mode to due date mode
     @FXML
     public void handleDueDateView(ActionEvent event) throws IOException {
@@ -55,6 +58,36 @@ public class KanbanBoardController {
     @FXML
     public void handleDoDateView(ActionEvent event) throws IOException {
         psh.switcher(event, "KanbanBoardDateView.fxml");
+    }
+    
+    //switch to about
+    @FXML
+    public void handleAboutScreen(ActionEvent event) throws IOException {
+        psh.switcher(event, "AboutScreen.fxml");
+    }
+    
+    //switch to daily learnings
+    @FXML
+    public void handleDailyLearnings(ActionEvent event) throws IOException {
+        psh.switcher(event, "DailyLearnings.fxml");
+    }
+    
+    //switch to deep focus mode
+    @FXML
+    public void handleDeepFocusMode(ActionEvent event) throws IOException {
+        psh.switcher(event, "DeepFocusMode.fxml");
+    }
+    
+    //switch to register screen
+    @FXML
+    public void handleSignOut(ActionEvent event) throws IOException {
+        psh.switcher(event, "RegisterScreen.fxml");
+    }
+    
+    //switch to time dashboard
+    @FXML
+    public void handleTimeDashboard(ActionEvent event) throws IOException {
+        psh.switcher(event, "PieChart.fxml");
     }
     
     @FXML
