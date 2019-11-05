@@ -17,11 +17,26 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 
 public class TimesheetsController implements Initializable {
-
+    ObservableList<String> timeStartHour = FXCollections.observableArrayList("1", "2","3","4","5","6","7",
+            "8","9","10","11","12",
+            "13","14","15","16","17","18","19","20","21","22","23","24");
+    ObservableList<String> timeStartMin = FXCollections.observableArrayList("0","5","10","15","20","25","30",
+            "35","40", "45","50","55");
+    ObservableList<String> timeEndHour = FXCollections.observableArrayList("1", "2","3","4","5","6","7",
+            "8","9","10","11","12",
+            "13","14","15","16","17","18","19","20","21","22","23","24");
+    ObservableList<String> timeEndMin = FXCollections.observableArrayList("0","5","10","15","20","25","30",
+            "35","40", "45","50","55");
+    
     @FXML
     private ToggleButton kbBoard;
     
@@ -64,14 +79,13 @@ public class TimesheetsController implements Initializable {
     @FXML
     private RadioButton categoryProjects;
     
-    @FXML
-    private TextField timeStart;
+   
+    @FXML private TextField timeStart;
+    
+    @FXML private TextField timeEnd;
     
     @FXML
-    private TextField timeEnd;
-    
-    @FXML
-    private TextField duration;
+    private Label duration;
     
     @FXML
     private TextArea description;
@@ -91,30 +105,24 @@ public class TimesheetsController implements Initializable {
     /**
      * Initializes the controller class.
      */
+ 
+
     @FXML
     private void handleSubmitAction(ActionEvent event) {
-        String start = timeStart.getText().trim();
+        String start = timeStart.getText();
         String end = timeEnd.getText();
+        Toggle cat = toggleGroup.getSelectedToggle();
         String desc = description.getText();
-        Int actDuration = (timeStart-timeEnd);
+        int actDuration = (start-end);
         
-        /** INSERT instead of SELECT?**/
+        
         try {
-            ResultSet rs = addTimesheet.getResultSet("SELECT * FROM TIMESHEETS WHERE "
-                    + "USERNAME = '" + timeStart + "' "
-                    + "AND PASSWORD = '" + timeEnd + "'");
-            if (!rs.next()) {
-                loginOutput.setText("Incorrect username or password");
-                loginOutput.setVisible(true);
-            } else {
-                loginOutput.setText("Login successful");
-                loginOutput.setVisible(true);
-                nextBtn.setVisible(true);
-            }
-            rs.close();
+            addTimesheet.insertStatement("INSERT INTO TIMESHEETS (START, END, DESCR, CATEGORYNAME)"
+                    + " VALUES(" + start + ", "+  end + ", " + desc + ", "+ cat);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+     
         
     }
     @FXML
