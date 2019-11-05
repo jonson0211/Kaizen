@@ -74,26 +74,29 @@
                     </rowConstraints>
                      <children>
                         <RadioButton mnemonicParsing="false" text="Relaxation" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="toggleGroup" />
+                           </toggleGroup>
                            <font>
                               <Font size="24.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Work" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <RadioButton mnemonicParsing="false" text="Work" toggleGroup="$toggleGroup" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Projects" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <RadioButton mnemonicParsing="false" text="Projects" toggleGroup="$toggleGroup" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Daily" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <RadioButton mnemonicParsing="false" text="Daily" toggleGroup="$toggleGroup" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Relationships" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <RadioButton mnemonicParsing="false" text="Relationships" toggleGroup="$toggleGroup" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -104,7 +107,7 @@
                               <Insets left="25.0" />
                            </padding>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Wellness" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <RadioButton mnemonicParsing="false" text="Wellness" toggleGroup="$toggleGroup" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <font>
                               <Font size="24.0" />
                            </font>

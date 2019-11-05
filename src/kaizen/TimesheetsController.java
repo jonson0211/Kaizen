@@ -1,6 +1,7 @@
 
 package kaizen;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -16,9 +17,35 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 
 public class TimesheetsController implements Initializable {
 
+    @FXML
+    private ToggleButton kbBoard;
+    
+    @FXML
+    private ToggleButton deepFocus;
+    
+    @FXML
+    private ToggleButton taskTracker;
+    
+    @FXML
+    private ToggleButton timeDashboard;
+    
+    @FXML
+    private ToggleButton dailyLearnings;
+    
+    @FXML
+    private ToggleButton settings;
+    
+    @FXML
+    private ToggleButton about;
+    
+    @FXML
+    private ToggleButton signOut;
+    
     @FXML
     private RadioButton categoryWork;
     
@@ -54,6 +81,10 @@ public class TimesheetsController implements Initializable {
     
     @FXML
     private Button back;
+    
+    ToggleGroup toggleGroup = new ToggleGroup();
+       
+    
     
     KaizenDatabase addTimesheet = new KaizenDatabase();
     
@@ -94,8 +125,38 @@ public class TimesheetsController implements Initializable {
     }
     
     @FXML
-    public void initialize(){
-        /** probably don't need this initialize^ unless hiding buttons or whatever**/
+    private void handleKbBoard(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event, "KanbanBoard.fxml");
     }
+    @FXML
+    private void handleDeepFocus(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event,"DeepFocusMode.fxml");  
+    }
+    @FXML
+    private void handleTaskTracker(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event,"TaskTracker.fxml");//TO CHANGE WHEN PAGE IS MADE
+    }
+    @FXML
+    private void handleTimeSheets(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event,"Timesheets.fxml"); 
+    }
+    @FXML
+    private void handleDailyLearnings(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event,"DailyLearnings.fxml");
+    }
+    @FXML
+    private void handleSettings(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event,"Settings.fxml"); //TO CHANGE WHEN PAGE IS MADE
+    }
+    @FXML
+    private void handleSignOut(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event,"LoginScreen.fxml");
+    }
+    @FXML
+    private void handleAboutScreen(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event,"AboutScreen");
+    }
+
+   
     
 }
