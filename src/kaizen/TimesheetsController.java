@@ -136,9 +136,13 @@ public class TimesheetsController implements Initializable {
         String combinedEnd = endHR.concat(":"+ endMin);
         
         int startHRTime = Integer.parseInt(startHR);
-        int endHRtime = Integer.parseInt(endHR);
+        int endHRTime = Integer.parseInt(endHR);
         int startMinTime = Integer.parseInt(startMin);
         int endMinTime = Integer.parseInt(endMin);
+        
+        int startSum = (startHRTime*60 + startMinTime);
+        int endSum =(endHRTime*60 + endMinTime);
+        int duration = (endSum - startSum)/60;
         
         
         

@@ -206,6 +206,11 @@
                               <Insets left="165.0" />
                            </GridPane.margin>
                         </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="minutes" translateX="250.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
                      </children>
                   </GridPane>
                   <Button layoutX="690.0" layoutY="815.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="163.0" text="Submit">
