@@ -16,9 +16,9 @@ public class KaizenDatabase {
     public static void openConnection() {
         if (conn == null) {
             try {
-                conn = DriverManager.getConnection("jdbc:sqlite:KaizenDatabase.db");
-            } catch (SQLException e) {
-                e.printStackTrace();
+                conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
+            } catch (SQLException ex) {
+                ex.printStackTrace();
             }
         }
     }
