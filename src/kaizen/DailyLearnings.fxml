@@ -15,13 +15,13 @@
    <left>
       <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="menu-panel" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
          <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <ToggleButton fx:id="kbBoard" mnemonicParsing="false" onAction="#handleKbBoard" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="KANBAN BOARD" />
-                  <ToggleButton fx:id="deepFocus" mnemonicParsing="false" onAction="#handleDeepFocus" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DEEP FOCUS" />
-                  <ToggleButton fx:id="taskTracker" mnemonicParsing="false" onAction="#handleTaskTracker" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TASK TRACKER" />
-                  <ToggleButton fx:id="timeDashboard" mnemonicParsing="false" onAction="#handleTimeSheets" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TIME DASHBOARD" />
-                  <ToggleButton mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="current-menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" />
+                  <ToggleButton fx:id="kbBoard" mnemonicParsing="false" onAction="#handleKbBoard" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="KANBAN BOARD" />
+                  <ToggleButton fx:id="deepFocus" mnemonicParsing="false" onAction="#handleDeepFocus" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DEEP FOCUS" />
+                  <ToggleButton fx:id="taskTracker" mnemonicParsing="false" onAction="#handleTaskTracker" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TASK TRACKER" />
+                  <ToggleButton fx:id="timeDashboard" mnemonicParsing="false" onAction="#handleTimeSheets" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TIME DASHBOARD" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="current-menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" />
                </children>
                <opaqueInsets>
                   <Insets />
@@ -32,15 +32,15 @@
             </VBox>
          </center>
          <bottom>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <ToggleButton fx:id="about" mnemonicParsing="false" onAction="#handleAboutScreen" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" />
-                  <ToggleButton fx:id="settings" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleSettings" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" />
-                  <Button fx:id="signOut" mnemonicParsing="false" onAction="#handleSignOut" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" />
+                  <ToggleButton fx:id="about" mnemonicParsing="false" onAction="#handleAboutScreen" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" />
+                  <ToggleButton fx:id="settings" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleSettings" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" />
+                  <Button fx:id="signOut" mnemonicParsing="false" onAction="#handleSignOut" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" />
                </children></VBox>
          </bottom>
          <top>
-            <ImageView fitHeight="325.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true" styleClass="border-bar" BorderPane.alignment="CENTER">
+            <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="border-bar" BorderPane.alignment="CENTER">
                <image>
                   <Image url="@Resources/Kaizen%20Innovations%20(All%20White).png" />
                </image>
@@ -50,25 +50,23 @@
    </left>
    <center>
       <BorderPane prefHeight="200.0" prefWidth="1595.0" BorderPane.alignment="CENTER">
-         <left>
-            <GridPane prefHeight="994.0" prefWidth="820.0" BorderPane.alignment="CENTER">
+         <bottom>
+            <GridPane prefHeight="707.0" prefWidth="220.0" BorderPane.alignment="CENTER">
               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="636.6666870117188" minWidth="0.0" prefWidth="29.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1154.0" minWidth="10.0" prefWidth="632.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="670.0" minWidth="10.0" prefWidth="188.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1154.0" minWidth="10.0" prefWidth="398.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="670.0" minWidth="10.0" prefWidth="171.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="283.33332347869873" minHeight="10.0" prefHeight="150.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="489.33331298828125" minHeight="0.0" prefHeight="84.33334350585938" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="283.33332347869873" minHeight="10.0" prefHeight="113.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="489.33331298828125" minHeight="0.0" prefHeight="106.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="752.0" minHeight="0.0" prefHeight="57.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="752.0" minHeight="0.0" prefHeight="30.666656494140625" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="669.3333435058594" minHeight="0.0" prefHeight="61.6666259765625" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="669.3333435058594" minHeight="10.0" prefHeight="49.33331298828125" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="669.3333435058594" minHeight="10.0" prefHeight="395.33331298828125" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="687.3333740234375" minHeight="0.0" prefHeight="111.66668701171875" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="669.3333435058594" minHeight="0.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="669.3333435058594" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="669.3333435058594" minHeight="0.0" prefHeight="147.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="669.3333435058594" minHeight="10.0" prefHeight="149.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Your daily learnings" GridPane.columnIndex="1">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Your daily learnings">
                      <font>
                         <Font name="Arial" size="36.0" />
                      </font>
@@ -76,7 +74,7 @@
                         <Insets left="40.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="What did you learn today?" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="What did you learn today?" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="40.0" />
                      </GridPane.margin>
@@ -84,93 +82,94 @@
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <ComboBox fx:id="answerOne" prefHeight="31.0" prefWidth="515.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <ComboBox fx:id="answerOne" prefHeight="31.0" prefWidth="515.0" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets left="40.0" />
                      </GridPane.margin>
                   </ComboBox>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="What could you have done better today?" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="What could you have done better today?" GridPane.rowIndex="3">
                      <font>
-                        <Font size="36.0" />
+                        <Font size="18.0" />
                      </font>
                      <GridPane.margin>
                         <Insets left="40.0" />
                      </GridPane.margin>
                   </Text>
-                  <ComboBox fx:id="answerTwo" prefHeight="31.0" prefWidth="515.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <ComboBox fx:id="answerTwo" prefHeight="31.0" prefWidth="515.0" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets left="40.0" />
                      </GridPane.margin>
                   </ComboBox>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date of learnings" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="Date of learnings" GridPane.rowIndex="5">
                      <font>
-                        <Font size="36.0" />
+                        <Font size="18.0" />
                      </font>
+                     <GridPane.margin>
+                        <Insets left="40.0" top="-100.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <DatePicker fx:id="datePick" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets left="40.0" top="-300.0" />
                      </GridPane.margin>
-                  </Text>
-                  <DatePicker fx:id="datePick" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                     <GridPane.margin>
-                        <Insets left="40.0" top="-175.0" />
-                     </GridPane.margin>
                   </DatePicker>
-                  <Label fx:id="confirmEntry" text="Successfully updated learnings!" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <Label fx:id="confirmEntry" prefHeight="80.0" prefWidth="394.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Successfully updated learnings!" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets bottom="-200.0" left="100.0" />
                      </GridPane.margin>
                      <font>
-                        <Font size="36.0" />
+                        <Font size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="addLearning" mnemonicParsing="false" onAction="#updateAnswers" text="Add learnings" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                  <Button fx:id="addLearning" mnemonicParsing="false" onAction="#updateAnswers" text="Add learnings" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <GridPane.margin>
-                        <Insets bottom="200.0" />
+                        <Insets bottom="200.0" top="-100.0" />
                      </GridPane.margin>
                      <font>
-                        <Font size="18.0" />
+                        <Font size="13.0" />
                      </font>
                   </Button>
                </children>
             </GridPane>
-         </left>
-         <right>
-            <GridPane prefHeight="534.0" prefWidth="622.0" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="291.0" minHeight="10.0" prefHeight="197.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="348.0" minHeight="10.0" prefHeight="348.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="915.0" minHeight="10.0" prefHeight="21.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="915.0" minHeight="10.0" prefHeight="216.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="400.0" minHeight="2.0" prefHeight="356.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Summary of learnings">
-                     <font>
-                        <Font name="Arial" size="48.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets />
-                     </GridPane.margin>
-                  </Text>
-                  <ImageView fitHeight="144.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true">
-                     <GridPane.margin>
-                        <Insets left="550.0" />
-                     </GridPane.margin>
-                  </ImageView>
-                  <TableView maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="336.0" prefWidth="726.0" GridPane.rowIndex="1">
-                    <columns>
-                      <TableColumn prefWidth="313.0" text="Things you did well" />
-                      <TableColumn minWidth="0.0" prefWidth="283.0" text="Times entered" />
-                    </columns>
-                     <GridPane.margin>
-                        <Insets left="10.0" />
-                     </GridPane.margin>
-                  </TableView>
-               </children>
-            </GridPane>
-         </right></BorderPane>
+         </bottom></BorderPane>
    </center>
+   <right>
+      <GridPane prefHeight="720.0" prefWidth="511.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="283.33332347869873" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="283.33332347869873" minHeight="10.0" prefHeight="78.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="348.0" minHeight="10.0" prefHeight="348.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="915.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="915.0" minHeight="10.0" prefHeight="116.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="400.0" minHeight="2.0" prefHeight="117.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Summary of learnings" wrappingWidth="466.8515625" GridPane.rowIndex="1">
+               <font>
+                  <Font name="Arial" size="36.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="-40.0" />
+               </GridPane.margin>
+            </Text>
+            <ImageView fitHeight="144.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="550.0" />
+               </GridPane.margin>
+            </ImageView>
+            <TableView maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="296.0" prefWidth="464.0" GridPane.rowIndex="2">
+              <columns>
+                <TableColumn prefWidth="328.0" text="Things you did well" />
+                <TableColumn minWidth="-1.0" prefWidth="135.0" resizable="false" text="Times entered" />
+              </columns>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </TableView>
+         </children>
+      </GridPane>
+   </right>
 </BorderPane>
