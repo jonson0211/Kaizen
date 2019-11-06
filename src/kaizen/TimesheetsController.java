@@ -127,9 +127,20 @@ public class TimesheetsController implements Initializable {
         /** String start = timeStart.getText();
         String end = timeEnd.getText(); **/
         
-        String start = timeStartHourComboBox.getValue();
-        String end = timeEndHourComboBox.getValue();
-
+        String startHR = timeStartHourComboBox.getValue();
+        String endHR = timeEndHourComboBox.getValue();
+        String startMin = timeStartMinComboBox.getValue(); 
+        String endMin = timeEndMinComboBox.getValue();
+        
+        String combinedStart = startHR.concat(":"+ startMin);
+        String combinedEnd = endHR.concat(":"+ endMin);
+        
+        int startHRTime = Integer.parseInt(startHR);
+        int endHRtime = Integer.parseInt(endHR);
+        int startMinTime = Integer.parseInt(startMin);
+        int endMinTime = Integer.parseInt(endMin);
+        
+        
         
         Toggle cat = toggleGroup.getSelectedToggle();
         String desc = description.getText();
@@ -139,7 +150,7 @@ public class TimesheetsController implements Initializable {
         
         try {
             addTimesheet.insertStatement("INSERT INTO TIMESHEETS (START, END, DESCR, CATEGORYNAME)"
-                    + " VALUES(" + start + ", "+  end + ", " + desc + ", "+ cat);
+                    + " VALUES(" + combinedStart + ", "+  combinedEnd + ", " + desc + ", "+ cat);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
