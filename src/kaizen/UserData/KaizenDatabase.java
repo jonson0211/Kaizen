@@ -23,6 +23,29 @@ public class KaizenDatabase {
         }
     }
 
+     public ResultSet getResultSet(String sqlstatement) throws SQLException {
+        openConnection();
+        java.sql.Statement statement = conn.createStatement();
+        ResultSet RS = statement.executeQuery(sqlstatement);
+        return RS;
+    }
+     
+     public void insertStatement(String insert_query) throws SQLException {
+        java.sql.Statement stmt = null;
+        openConnection();
+        try {
+            System.out.println("database opened");
+            stmt = conn.createStatement();
+            System.out.println("the query was: " + insert_query);
+            stmt.executeUpdate(insert_query);
+            stmt.close();
+        } catch(Exception e){
+            System.err.println(e.getClass().getName() + ": " +e.getMessage());
+            System.exit(0);
+        }
+        stmt.close();
+    }
+    
     public static void createUserTable() {
         PreparedStatement createUserTable = null;
         PreparedStatement createDemoInstance = null;
@@ -40,7 +63,7 @@ public class KaizenDatabase {
                         + "PASSWORD VARCHAR(150))");
                 createUserTable.execute();
                 System.out.println("User table created");
-                createDemoInstance = conn.prepareStatement("INSERT INTO LOGIN(FNAME, LNAME, USERNAME,PASSWORD) "
+                createDemoInstance = conn.prepareStatement("INSERT INTO LOGIN(FNAME, LNAME, USERNAME, PASSWORD) "
                         + "VALUES ('Lien', 'Zhu', 'lienzhu','blairwangisbae')");
                 createDemoInstance.execute();
             } else {
@@ -276,12 +299,7 @@ public class KaizenDatabase {
         }
     }
 
-    public ResultSet getResultSet(String sqlstatement) throws SQLException {
-        openConnection();
-        java.sql.Statement statement = conn.createStatement();
-        ResultSet RS = statement.executeQuery(sqlstatement);
-        return RS;
-    }
+   
     
     public static void createDailyLearningsTable() {
         PreparedStatement createDailyLearningsTable = null;
@@ -313,20 +331,6 @@ public class KaizenDatabase {
             e.printStackTrace();
         }    
     }
-    
-    public void insertStatement(String insert_query) throws SQLException {
-        java.sql.Statement stmt = null;
-        openConnection();
-        try {
-            System.out.println("database opened");
-            stmt = conn.createStatement();
-            System.out.println("the query was: " + insert_query);
-            stmt.executeUpdate(insert_query);
-            stmt.close();
-        } catch(Exception e){
-            System.err.println(e.getClass().getName() + ": " +e.getMessage());
-            System.exit(0);
-        }
-        stmt.close();
-    }
 }
+    
+    
