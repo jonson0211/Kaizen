@@ -20,9 +20,11 @@ import javafx.scene.control.TextField;
 import kaizen.UserData.KaizenDatabase;
 
 public class LoginScreenController {
-
+    
+    public static String loginUsername;
+    
     @FXML
-     TextField usernameInput;
+    private TextField usernameInput;
 
     @FXML
     private TextField passwordInput;
@@ -44,7 +46,7 @@ public class LoginScreenController {
     @FXML
     private void handleLoginButtonAction(ActionEvent event) {
 
-        String loginUsername = usernameInput.getText();
+        loginUsername = usernameInput.getText();
         String loginPassword = passwordInput.getText();
 
         try {
