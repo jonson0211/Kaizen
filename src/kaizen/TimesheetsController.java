@@ -118,8 +118,7 @@ public class TimesheetsController implements Initializable {
         timeStartMinComboBox.setItems(TSM);
         timeEndHourComboBox.setItems(TEH);
         timeEndMinComboBox.setItems(TEM);
-        
-        
+           
     }
     
     @FXML
@@ -143,18 +142,13 @@ public class TimesheetsController implements Initializable {
         int startSum = (startHRTime*60 + startMinTime);
         int endSum =(endHRTime*60 + endMinTime);
         int duration = (endSum - startSum)/60;
-        
-        
-        
+       
         Toggle cat = toggleGroup.getSelectedToggle();
         String desc = description.getText();
-        
-        /** int actDuration = (start-end); **/
-        
-        
+
         try {
-            addTimesheet.insertStatement("INSERT INTO TIMESHEETS (START, END, DESCR, CATEGORYNAME)"
-                    + " VALUES(" + combinedStart + ", "+  combinedEnd + ", " + desc + ", "+ cat);
+            addTimesheet.insertStatement("INSERT INTO TIMESHEETS (START, END, DURATION, DESCR, CATEGORYNAME)"
+                    + " VALUES(" + combinedStart + ", "+  combinedEnd + ", " + duration+ ", " + desc + ", "+ cat);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
