@@ -59,12 +59,15 @@ public class LoginScreenController implements Initializable {
 
         loginUsername = usernameInput.getText();
         String loginPassword = passwordInput.getText();
+        System.out.println(loginUsername);
+        System.out.println(loginPassword);
 
         try {
 
             ResultSet rs = userDatabase.getResultSet("SELECT USERNAME, PASSWORD FROM LOGIN WHERE "
                     + "USERNAME = '" + loginUsername + "' AND "
                     + "PASSWORD = '" + loginPassword + "' ");
+            System.out.println("Login milestone 1");
 
             if (!rs.next()) {
 
@@ -73,8 +76,8 @@ public class LoginScreenController implements Initializable {
 
             } else {
                 loginOutput.setText("Welcome back to Kaizen.");
-                pageSwitcher.switcher(event, "KanbanBoard.fxml");
                 loginOutput.setVisible(true);
+                pageSwitcher.switcher(event, "KanbanBoard.fxml");                
             }
 
             rs.close();
