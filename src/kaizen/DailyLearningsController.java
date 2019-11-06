@@ -58,10 +58,7 @@ public class DailyLearningsController implements Initializable {
     
     @FXML
     private ToggleButton timeDashboard;
-    
-    @FXML
-    private ToggleButton dailyLearnings;
-    
+       
     @FXML
     private ToggleButton settings;
     
@@ -94,8 +91,10 @@ public class DailyLearningsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         answerOne.setValue("Your lesson today...");
+        answerOne.setEditable(true);
         answerOne.setItems(answerOnes);
         answerTwo.setValue("Your lesson today...");
+        answerTwo.setEditable(true);
         answerTwo.setItems(answerTwos);
         FillComboOne();
         FillComboTwo();
@@ -110,6 +109,7 @@ public class DailyLearningsController implements Initializable {
         String answerTwoString = (String) answerTwo.getValue();
         String date = datePick.getValue().format(DateTimeFormatter.ofPattern("dd/mm/yyyy"));
         userLearn.insertStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) VALUES (" + LoginScreenController.loggedUser + "," + date + "', " + answerOneString + ", " + answerTwoString + "');");
+        System.out.println("Entered in learnings");
         confirmEntry.setVisible(true);
         
     //to do - update combo box values
@@ -136,7 +136,7 @@ public class DailyLearningsController implements Initializable {
             
             while(rs.next()){
                 String didwell = rs.getString("DID_WELL");
-                answerOne.setValue(rs.getString("DID_WELL"));
+                answerOne.setValue(rs.getString(didwell));
             } 
             pst.close();
             rs.close();
@@ -152,7 +152,7 @@ public class DailyLearningsController implements Initializable {
             
             while(rs.next()){
                 String bebetter = rs.getString("BE_BETTER");
-                answerTwo.setValue(rs.getString("BE_BETTER"));
+                answerTwo.setValue(rs.getString(bebetter));
             }
         } catch (SQLException ex) {
             Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
@@ -189,7 +189,7 @@ public class DailyLearningsController implements Initializable {
     }
     @FXML
     private void handleAboutScreen(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"AboutScreen");
+        pageSwitcher.switcher(event,"AboutScreen.fxml");
     }
 }
                 

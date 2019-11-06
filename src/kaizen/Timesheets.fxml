@@ -73,7 +73,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <RadioButton mnemonicParsing="false" text="Relaxation" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <RadioButton fx:id="categoryRelaxation" mnemonicParsing="false" text="Relaxation" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <toggleGroup>
                               <ToggleGroup fx:id="toggleGroup" />
                            </toggleGroup>
@@ -81,22 +81,22 @@
                               <Font size="24.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Work" toggleGroup="$toggleGroup" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <RadioButton fx:id="categoryWork" mnemonicParsing="false" text="Work" toggleGroup="$toggleGroup" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Projects" toggleGroup="$toggleGroup" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <RadioButton fx:id="categoryProjects" mnemonicParsing="false" text="Projects" toggleGroup="$toggleGroup" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Daily" toggleGroup="$toggleGroup" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <RadioButton fx:id="categoryDaily" mnemonicParsing="false" text="Daily" toggleGroup="$toggleGroup" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Relationships" toggleGroup="$toggleGroup" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <RadioButton fx:id="categoryRelationships" mnemonicParsing="false" text="Relationships" toggleGroup="$toggleGroup" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -107,7 +107,7 @@
                               <Insets left="25.0" />
                            </padding>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Wellness" toggleGroup="$toggleGroup" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                        <RadioButton fx:id="categoryWellness" mnemonicParsing="false" text="Wellness" toggleGroup="$toggleGroup" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -145,7 +145,7 @@
                               <Font size="24.0" />
                            </font>
                         </Text>
-                        <Label text="Duration of Activity" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Label fx:id="duration" text="Duration of Activity" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -166,8 +166,8 @@
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </TextArea>
-                        <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" />
-                        <ChoiceBox layoutX="348.0" layoutY="30.0" prefWidth="150.0" GridPane.columnIndex="1">
+                        <ChoiceBox fx:id="timeStartHour" prefWidth="150.0" GridPane.columnIndex="1" />
+                        <ChoiceBox fx:id="timeStartMin" layoutX="348.0" layoutY="30.0" prefWidth="150.0" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets left="190.0" />
                            </GridPane.margin>
@@ -188,12 +188,12 @@
                               <Insets />
                            </GridPane.margin>
                         </Text>
-                        <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <ChoiceBox fx:id="timeEndHour" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets />
                            </GridPane.margin>
                         </ChoiceBox>
-                        <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <ChoiceBox fx:id="timeEndMin" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="190.0" />
                            </GridPane.margin>
