@@ -11,15 +11,18 @@ package kaizen;
  */
 
 import java.io.IOException;
+import java.net.URL;
 import java.sql.ResultSet;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import kaizen.UserData.KaizenDatabase;
 
-public class LoginScreenController {
+public class LoginScreenController implements Initializable {
     
     public static String loginUsername;
     
@@ -41,6 +44,14 @@ public class LoginScreenController {
     KaizenDatabase userDatabase = new KaizenDatabase();
 
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
+    
+    /**
+     * Initialises the controller class.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle rb){
+        
+    }
 
     //Action on login button click
     @FXML
@@ -77,6 +88,7 @@ public class LoginScreenController {
     // don't forget to include code that indicates which user is logged in
     @FXML
     private void handleRegisterButtonAction(ActionEvent event) throws IOException {
+        System.out.println("System milestone 1");
         pageSwitcher.switcher(event, "RegisterScreen.fxml");
     }
 

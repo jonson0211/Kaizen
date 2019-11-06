@@ -65,7 +65,7 @@ public class RegisterScreenController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //To change body of generated methods, choose Tools | Templates.
     }
 
     //When user clicks cancel
@@ -121,11 +121,18 @@ private void handleSignUp(ActionEvent event){
                + "EMAIL, "
                + "PASSWORD) "
                + "VALUES('" + addFname + "', '" + addLname + "', '" + addEmail + "', '" + addPassword + "'?','?','?','?' ");
+    
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+    alert.setTitle("Successful");
+    alert.setHeaderText("Registration was sucessful");
+    alert.setContentText("Please login to continue");
+    
+    pageSwitcher.switcher(event, "LoginScreen.fxml");
+    
        } catch(Exception e){
            
        }
     }
-
     
 public String getLoggedInUser(){
         return loggedInUser;
