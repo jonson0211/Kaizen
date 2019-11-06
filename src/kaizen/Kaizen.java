@@ -19,10 +19,11 @@ public class Kaizen extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        System.out.println("milestone 1");
+        Parent root = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
         
         Scene scene = new Scene(root);
-        
+        System.out.println("milestone 2");
         stage.setScene(scene);
         stage.show();
     }

@@ -28,6 +28,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleButton;
 import kaizen.DataModels.learningsDidWell;
+import kaizen.DataModels.learningsDoBetter;
 import kaizen.UserData.KaizenDatabase;
 import static kaizen.UserData.KaizenDatabase.conn;
 
@@ -81,7 +82,7 @@ public class DailyLearningsController implements Initializable {
     private TableView<learningsDidWell> didWellView;
     
     @FXML
-    private TableView<doWell> doBetterView;
+    private TableView<learningsDoBetter> doBetterView;
     
     @FXML
     private TableColumn<learningsDidWell, String> didWellColumn;
@@ -90,10 +91,10 @@ public class DailyLearningsController implements Initializable {
     private TableColumn<learningsDidWell, Number> didWellCount;
     
     @FXML
-    private TableColumn<doBetter, String> doBetterColumn;
+    private TableColumn<learningsDoBetter, String> doBetterColumn;
     
     @FXML
-    private TableColumn<doBetter, Number> doBetterCount;        
+    private TableColumn<learningsDoBetter, Number> doBetterCount;        
             
     KaizenDatabase userLearn = new KaizenDatabase();
     
@@ -142,6 +143,26 @@ public class DailyLearningsController implements Initializable {
             Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return FXCollections.observableArrayList(didWellList);
+    }
+    
+        public ObservableList<learningsDoBetter> getLearningsDoBetter(){
+        
+        ObservableList<learningsDoBetter> doBetterList = FXCollections.observableArrayList();
+        
+        try {
+            ResultSet rsDoBetterTable = userLearn.getResultSet("SELECT DO_BETTER, COUNT (*) FROM LEARNINGS "
+                    + "GROUP BY DID_WELL"
+                    + "HAVING COUNT(*) >1"
+                    + "ORDER BY COUNT(*) "
+                    + "WHERE USERNAME = '" + LoginScreenController.loginUsername + "';");
+            
+            while (rsDoBetterTable.next()){
+                doBetterList.add(new learningsDoBetter(rsDoBetterTable.getString(1), rsDoBetterTable.getInt(2)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return FXCollections.observableArrayList(doBetterList);
     }
     
     //input learnings into the table summary

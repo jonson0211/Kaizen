@@ -74,7 +74,7 @@
                         <Insets left="40.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="What did you learn today?" GridPane.rowIndex="1">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="What did you do well today?" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets left="40.0" />
                      </GridPane.margin>
@@ -146,31 +146,31 @@
                   <RowConstraints maxHeight="159.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Summary of learnings">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="7 day summary of learnings">
                      <font>
                         <Font name="Arial" size="36.0" />
                      </font>
                   </Text>
-                  <TableView prefHeight="294.0" prefWidth="554.0" GridPane.rowIndex="2">
+                  <TableView fx:id="didWellView" prefHeight="294.0" prefWidth="554.0" GridPane.rowIndex="2">
                     <columns>
-                      <TableColumn prefWidth="404.0" text="Things you learnt" />
+                      <TableColumn fx:id="didLearn" prefWidth="404.0" text="Things you learnt" />
                       <TableColumn minWidth="0.0" prefWidth="149.0" text="How many times" />
                     </columns>
                      <GridPane.margin>
                         <Insets bottom="40.0" right="20.0" />
                      </GridPane.margin>
                   </TableView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="Things you have learnt this week" GridPane.rowIndex="1">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="Things you have done well" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="Things you could have done better this week" GridPane.rowIndex="3">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="Things you could have done better" GridPane.rowIndex="3">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <TableView prefHeight="100.0" prefWidth="554.0" GridPane.rowIndex="4">
+                  <TableView fx:id="doBetterView" prefHeight="100.0" prefWidth="554.0" GridPane.rowIndex="4">
                     <columns>
                       <TableColumn prefWidth="403.0" text="Things you could have done better" />
                       <TableColumn minWidth="0.0" prefWidth="149.0" text="How many times" />
