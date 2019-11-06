@@ -20,6 +20,7 @@ import java.util.Scanner;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
@@ -27,21 +28,23 @@ import javafx.scene.control.ToggleGroup;
 
 public class TimesheetsController implements Initializable {
     @FXML
-    ChoiceBox timeStartHour = new ChoiceBox(FXCollections.observableArrayList("1", "2","3","4","5","6","7",
-            "8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"));
+    private ComboBox<String> timeStartHourComboBox;        
+    ObservableList<String> TSH = FXCollections.observableArrayList("1", "2","3","4","5","6","7",
+            "8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24");
     @FXML
-    ChoiceBox timeStartMin = new ChoiceBox(FXCollections.observableArrayList("0","5","10","15","20","25","30",
-            "35","40", "45","50","55"));
+    private ComboBox<String> timeStartMinComboBox;
+    ObservableList<String> TSM = FXCollections.observableArrayList("0","5","10","15","20","25","30",
+            "35","40", "45","50","55");
     @FXML
-    ObservableList<String> timeEndHour = FXCollections.observableArrayList("1", "2","3","4","5","6","7",
+    private ComboBox<String> timeEndHourComboBox;        
+    ObservableList<String> TEH = FXCollections.observableArrayList("1", "2","3","4","5","6","7",
             "8","9","10","11","12",
             "13","14","15","16","17","18","19","20","21","22","23","24");
     @FXML
-    ObservableList<String> timeEndMin = FXCollections.observableArrayList("0","5","10","15","20","25","30",
+    private ComboBox<String> timeEndMinComboBox;
+    ObservableList<String> TEM = FXCollections.observableArrayList("0","5","10","15","20","25","30",
             "35","40", "45","50","55");
-    
-    timeStartMin.getSelectionModel().selectedIndexProperty().addListener
-    
+      
     @FXML
     private ToggleButton kbBoard;
     
@@ -109,18 +112,28 @@ public class TimesheetsController implements Initializable {
     /**
      * Initializes the controller class.
      */
- 
-
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        timeStartHourComboBox.setItems(TSH);
+        timeStartMinComboBox.setItems(TSM);
+        timeEndHourComboBox.setItems(TEH);
+        timeEndMinComboBox.setItems(TEM);
+        
+        
+    }
+    
     @FXML
     private void handleSubmitAction(ActionEvent event) {
         /** String start = timeStart.getText();
         String end = timeEnd.getText(); **/
         
-        String start = (String) timeStartHour.getValue();
-        String end = (String) timeEndHour.getValue();
+        String start = timeStartHourComboBox.getValue();
+        String end = timeEndHourComboBox.getValue();
+
         
         Toggle cat = toggleGroup.getSelectedToggle();
         String desc = description.getText();
+        
         /** int actDuration = (start-end); **/
         
         
