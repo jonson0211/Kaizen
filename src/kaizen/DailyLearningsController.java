@@ -19,7 +19,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -27,6 +30,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleButton;
+import javafx.stage.Stage;
 import kaizen.DataModels.learningsDidWell;
 import kaizen.DataModels.learningsDoBetter;
 import kaizen.UserData.KaizenDatabase;
@@ -94,7 +98,10 @@ public class DailyLearningsController implements Initializable {
     private TableColumn<learningsDoBetter, String> doBetterColumn;
     
     @FXML
-    private TableColumn<learningsDoBetter, Number> doBetterCount;        
+    private TableColumn<learningsDoBetter, Number> doBetterCount;  
+    
+    @FXML
+    private Button viewPast;       
             
     KaizenDatabase userLearn = new KaizenDatabase();
     
@@ -121,6 +128,7 @@ public class DailyLearningsController implements Initializable {
         FillComboOne();
         FillComboTwo();
         confirmEntry.setVisible(false);
+        viewPast.setVisible(true);
     }    
     
     //return observable list of done well and do betters
@@ -222,6 +230,21 @@ public class DailyLearningsController implements Initializable {
             Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
         }
                 
+    }
+    
+    @FXML
+    private void handlePopUpScreenAction(ActionEvent event) throws IOException{
+        try{
+            FXMLLoader fxmlloader = new FXMLLoader(getClass(). getResource("Learnings Report.fxml"));
+            Parent r1 = (Parent) fxmlloader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Past 30 days Report");
+            stage.setScene(new Scene(r1));
+            stage.show();
+            
+        } catch (Exception e){
+            System.out.println("Can't display window");
+        }
     }
     @FXML
     private void handleKbBoard(ActionEvent event) throws IOException{
