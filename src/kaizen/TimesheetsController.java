@@ -26,9 +26,11 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 
 public class TimesheetsController implements Initializable {
+    @FXML
     ObservableList<String> timeStartHour = FXCollections.observableArrayList("1", "2","3","4","5","6","7",
             "8","9","10","11","12",
             "13","14","15","16","17","18","19","20","21","22","23","24");
+    
     ObservableList<String> timeStartMin = FXCollections.observableArrayList("0","5","10","15","20","25","30",
             "35","40", "45","50","55");
     ObservableList<String> timeEndHour = FXCollections.observableArrayList("1", "2","3","4","5","6","7",
@@ -109,8 +111,12 @@ public class TimesheetsController implements Initializable {
 
     @FXML
     private void handleSubmitAction(ActionEvent event) {
-        String start = timeStart.getText();
-        String end = timeEnd.getText();
+        /** String start = timeStart.getText();
+        String end = timeEnd.getText(); **/
+        
+        String start = (String) timeStartHour.getValue();
+        String end = (String) timeEndHour.getValue();
+        
         Toggle cat = toggleGroup.getSelectedToggle();
         String desc = description.getText();
         /** int actDuration = (start-end); **/
