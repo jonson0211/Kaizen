@@ -60,7 +60,7 @@
             </Text>
          </top>
          <center>
-            <AnchorPane BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="370.0" prefWidth="929.0" BorderPane.alignment="CENTER">
                <children>
                   <GridPane layoutX="195.0" layoutY="102.0" prefHeight="201.0" prefWidth="1184.0" BorderPane.alignment="CENTER">
                     <columnConstraints>
@@ -166,12 +166,6 @@
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </TextArea>
-                        <ChoiceBox fx:id="timeStartHour" prefWidth="150.0" GridPane.columnIndex="1" />
-                        <ChoiceBox fx:id="timeStartMin" layoutX="348.0" layoutY="30.0" prefWidth="150.0" GridPane.columnIndex="1">
-                           <GridPane.margin>
-                              <Insets left="190.0" />
-                           </GridPane.margin>
-                        </ChoiceBox>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text=":" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets left="165.0" />
@@ -185,24 +179,6 @@
                               <Font size="24.0" />
                            </font>
                            <GridPane.margin>
-                              <Insets />
-                           </GridPane.margin>
-                        </Text>
-                        <ChoiceBox fx:id="timeEndHour" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <GridPane.margin>
-                              <Insets />
-                           </GridPane.margin>
-                        </ChoiceBox>
-                        <ChoiceBox fx:id="timeEndMin" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <GridPane.margin>
-                              <Insets left="190.0" />
-                           </GridPane.margin>
-                        </ChoiceBox>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text=":" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                           <GridPane.margin>
                               <Insets left="165.0" />
                            </GridPane.margin>
                         </Text>
@@ -211,6 +187,18 @@
                               <Font size="24.0" />
                            </font>
                         </Text>
+                        <ComboBox fx:id="timeEndHourComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <ComboBox fx:id="timeEndMinComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="190.0" />
+                           </GridPane.margin>
+                        </ComboBox>
+                        <ComboBox fx:id="timeStartHourComboBox" prefWidth="150.0" GridPane.columnIndex="1" />
+                        <ComboBox fx:id="timeStartMinComboBox" prefWidth="150.0" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets left="190.0" />
+                           </GridPane.margin>
+                        </ComboBox>
                      </children>
                   </GridPane>
                   <Button layoutX="690.0" layoutY="815.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="163.0" text="Submit">
