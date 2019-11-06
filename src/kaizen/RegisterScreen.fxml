@@ -8,58 +8,58 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Resources/LoginScreenImage.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="700.0" fitWidth="700.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="0.0">
+      <ImageView fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@Resources/KaizenInnovationsColour.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" prefHeight="50.0" prefWidth="250.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Welcome to Kaizen!" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="500.0">
+      <Label alignment="CENTER" prefHeight="50.0" prefWidth="250.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Welcome to Kaizen!" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="225.0">
          <font>
             <Font name="Calibri Light" size="30.0" />
          </font>
       </Label>
-      <TextField layoutX="204.0" layoutY="391.0" prefHeight="50.0" prefWidth="550.0" promptText="Choose your username" styleClass="input-fields" stylesheets="@stylesheet.css" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="575.0">
+      <TextField layoutX="204.0" layoutY="391.0" prefHeight="50.0" prefWidth="550.0" promptText="Choose your username" styleClass="input-fields" stylesheets="@stylesheet.css" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="300.0">
          <font>
             <Font name="Calibri Light" size="30.0" />
          </font>
       </TextField>
-      <PasswordField prefHeight="50.0" prefWidth="550.0" promptText="Choose your password" styleClass="input-fields" stylesheets="@stylesheet.css" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="725.0">
+      <PasswordField prefHeight="50.0" prefWidth="550.0" promptText="Choose your password" styleClass="input-fields" stylesheets="@stylesheet.css" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="450.0">
          <font>
             <Font name="Calibri Light" size="30.0" />
          </font>
       </PasswordField>
-      <PasswordField prefHeight="50.0" prefWidth="550.0" promptText="Confirm password" styleClass="input-fields" stylesheets="@stylesheet.css" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="800.0">
+      <PasswordField prefHeight="50.0" prefWidth="550.0" promptText="Confirm password" styleClass="input-fields" stylesheets="@stylesheet.css" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="525.0">
          <font>
             <Font name="Calibri Light" size="30.0" />
          </font>
       </PasswordField>
-      <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Cancel" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="875.0">
+      <Button alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Cancel" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="600.0">
          <font>
             <Font name="Calibri Light" size="30.0" />
          </font>
       </Button>
-      <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="250.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Sign up" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="875.0">
+      <Button alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="250.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Sign up" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="600.0">
          <font>
             <Font name="Calibri Light" size="30.0" />
          </font>
       </Button>
-      <TextField layoutX="75.0" layoutY="298.0" prefHeight="50.0" prefWidth="250.0" promptText="First name" styleClass="input-fields" stylesheets="@stylesheet.css" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="650.0">
+      <TextField layoutX="75.0" layoutY="298.0" prefHeight="50.0" prefWidth="250.0" promptText="First name" styleClass="input-fields" stylesheets="@stylesheet.css" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="375.0">
          <font>
             <Font name="Calibri Light" size="30.0" />
          </font>
       </TextField>
-      <TextField layoutX="387.0" layoutY="298.0" prefHeight="50.0" prefWidth="250.0" promptText="Last name" styleClass="input-fields" stylesheets="@stylesheet.css" AnchorPane.leftAnchor="550.0" AnchorPane.topAnchor="650.0">
+      <TextField layoutX="387.0" layoutY="298.0" prefHeight="50.0" prefWidth="250.0" promptText="Last name" styleClass="input-fields" stylesheets="@stylesheet.css" AnchorPane.leftAnchor="400.0" AnchorPane.topAnchor="375.0">
          <font>
             <Font name="Calibri Light" size="30.0" />
          </font>
       </TextField>
-      <Label prefHeight="50.0" prefWidth="550.0" styleClass="output-label" stylesheets="@stylesheet.css" text="Label" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="950.0" />
+      <Label prefHeight="40.0" prefWidth="550.0" styleClass="output-label" stylesheets="@stylesheet.css" text="Label" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="675.0" />
    </children>
 </AnchorPane>

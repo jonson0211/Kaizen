@@ -10,17 +10,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" styleClass="vbox-bar" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="vbox-bar" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="menu-panel" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
          <center>
             <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                <children>
-                  <ToggleButton mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="KANBAN BOARD" />
-                  <ToggleButton mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="current-menu-toggle" stylesheets="@stylesheet.css" text="DEEP FOCUS" />
-                  <ToggleButton mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TASK TRACKER" />
-                  <ToggleButton mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TIME DASHBOARD" />
-                  <ToggleButton mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="KANBAN BOARD" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="current-menu-toggle" stylesheets="@stylesheet.css" text="DEEP FOCUS" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TASK TRACKER" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TIME DASHBOARD" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" />
                </children>
                <opaqueInsets>
                   <Insets />
@@ -31,15 +31,15 @@
             </VBox>
          </center>
          <bottom>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <ToggleButton mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" />
-                  <ToggleButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" />
-                  <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="325.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" />
+                  <ToggleButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" />
                </children></VBox>
          </bottom>
          <top>
-            <ImageView fitHeight="325.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true" styleClass="border-bar" BorderPane.alignment="CENTER">
+            <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="border-bar" BorderPane.alignment="CENTER">
                <image>
                   <Image url="@Resources/Kaizen%20Innovations%20(All%20White).png" />
                </image>
@@ -48,6 +48,6 @@
       </BorderPane>
    </left>
    <right>
-      <BorderPane prefHeight="200.0" prefWidth="1595.0" BorderPane.alignment="CENTER" />
+      <BorderPane prefHeight="720.0" prefWidth="1080.0" BorderPane.alignment="CENTER" />
    </right>
 </BorderPane>
