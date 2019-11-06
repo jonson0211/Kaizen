@@ -5,11 +5,13 @@
  */
 package kaizen;
 
+import java.sql.SQLException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import kaizen.UserData.KaizenDatabase;
 
 /**
  *
@@ -19,6 +21,7 @@ public class Kaizen extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
+        loadDatabase();
         System.out.println("milestone 1");
         Parent root = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
         
@@ -34,5 +37,8 @@ public class Kaizen extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+    public static void loadDatabase() throws ClassNotFoundException, SQLException {
+       KaizenDatabase.createUserTable();
+       
+    }
 }
