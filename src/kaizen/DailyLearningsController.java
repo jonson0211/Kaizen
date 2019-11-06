@@ -24,7 +24,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleButton;
+import kaizen.DataModels.learningsDidWell;
 import kaizen.UserData.KaizenDatabase;
 import static kaizen.UserData.KaizenDatabase.conn;
 
@@ -74,6 +77,24 @@ public class DailyLearningsController implements Initializable {
     @FXML
     private Label confirmEntry;
     
+    @FXML
+    private TableView<learningsDidWell> didWellView;
+    
+    @FXML
+    private TableView<doWell> doBetterView;
+    
+    @FXML
+    private TableColumn<learningsDidWell, String> didWellColumn;
+    
+    @FXML
+    private TableColumn<learningsDidWell, Number> didWellCount;
+    
+    @FXML
+    private TableColumn<doBetter, String> doBetterColumn;
+    
+    @FXML
+    private TableColumn<doBetter, Number> doBetterCount;        
+            
     KaizenDatabase userLearn = new KaizenDatabase();
     
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
@@ -101,7 +122,29 @@ public class DailyLearningsController implements Initializable {
         confirmEntry.setVisible(false);
     }    
     
+    //return observable list of done well and do betters
     
+    public ObservableList<learningsDidWell> getLearningsDidWell(){
+        
+        ObservableList<learningsDidWell> didWellList = FXCollections.observableArrayList();
+        
+        try {
+            ResultSet rsDidWellTable = userLearn.getResultSet("SELECT DID_WELL, COUNT (*) FROM LEARNINGS "
+                    + "GROUP BY DID_WELL"
+                    + "HAVING COUNT(*) >1"
+                    + "ORDER BY COUNT(*) "
+                    + "WHERE USERNAME = '" + LoginScreenController.loginUsername + "';");
+            
+            while (rsDidWellTable.next()){
+                didWellList.add(new learningsDidWell(rsDidWellTable.getString(1), rsDidWellTable.getInt(2)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return FXCollections.observableArrayList(didWellList);
+    }
+    
+    //input learnings into the table summary
     //update learnings
     @FXML
     private void updateAnswers(ActionEvent event) throws SQLException{
