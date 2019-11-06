@@ -51,19 +51,19 @@
    <right>
       <BorderPane prefHeight="720.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
          <left>
-            <GridPane prefHeight="1059.0" prefWidth="984.0" BorderPane.alignment="CENTER">
+            <GridPane prefHeight="720.0" prefWidth="506.0" BorderPane.alignment="CENTER">
               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1154.0" minWidth="10.0" prefWidth="398.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="670.0" minWidth="10.0" prefWidth="171.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1154.0" minWidth="10.0" prefWidth="378.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="670.0" minWidth="10.0" prefWidth="128.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="283.33332347869873" minHeight="10.0" prefHeight="113.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="489.33331298828125" minHeight="0.0" prefHeight="106.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="752.0" minHeight="0.0" prefHeight="57.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="669.3333435058594" minHeight="0.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="669.3333435058594" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="669.3333435058594" minHeight="0.0" prefHeight="147.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="669.3333435058594" minHeight="10.0" prefHeight="149.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="283.33332347869873" minHeight="10.0" prefHeight="88.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="489.33331298828125" minHeight="0.0" prefHeight="57.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="752.0" minHeight="0.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="669.3333435058594" minHeight="0.0" prefHeight="81.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="669.3333435058594" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="669.3333435058594" minHeight="0.0" prefHeight="145.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="669.3333435058594" minHeight="10.0" prefHeight="242.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Your daily learnings">
@@ -108,9 +108,9 @@
                         <Insets left="40.0" top="-100.0" />
                      </GridPane.margin>
                   </Text>
-                  <DatePicker fx:id="datePick" GridPane.rowIndex="6">
+                  <DatePicker fx:id="datePick" GridPane.rowIndex="5">
                      <GridPane.margin>
-                        <Insets left="40.0" top="-300.0" />
+                        <Insets left="40.0" />
                      </GridPane.margin>
                   </DatePicker>
                   <Label fx:id="confirmEntry" prefHeight="80.0" prefWidth="394.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Successfully updated learnings!" GridPane.rowIndex="5">
@@ -121,7 +121,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="addLearning" mnemonicParsing="false" onAction="#updateAnswers" text="Add learnings" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <Button fx:id="addLearning" mnemonicParsing="false" onAction="updateAnswers" text="Add learnings" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets bottom="200.0" top="-100.0" />
                      </GridPane.margin>
@@ -132,43 +132,72 @@
                </children>
             </GridPane>
          </left>
+         <center>
+            <GridPane prefHeight="657.0" prefWidth="574.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="138.0" minHeight="10.0" prefHeight="87.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="208.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="280.0" minHeight="10.0" prefHeight="227.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="157.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="266.0" minHeight="10.0" prefHeight="221.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="159.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Summary of learnings">
+                     <font>
+                        <Font name="Arial" size="36.0" />
+                     </font>
+                  </Text>
+                  <TableView prefHeight="294.0" prefWidth="554.0" GridPane.rowIndex="2">
+                    <columns>
+                      <TableColumn prefWidth="404.0" text="Things you learnt" />
+                      <TableColumn minWidth="0.0" prefWidth="149.0" text="How many times" />
+                    </columns>
+                     <GridPane.margin>
+                        <Insets bottom="40.0" right="20.0" />
+                     </GridPane.margin>
+                  </TableView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="Things you have learnt this week" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="Things you could have done better this week" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <TableView prefHeight="100.0" prefWidth="554.0" GridPane.rowIndex="4">
+                    <columns>
+                      <TableColumn prefWidth="403.0" text="Things you could have done better" />
+                      <TableColumn minWidth="0.0" prefWidth="149.0" text="How many times" />
+                    </columns>
+                     <GridPane.margin>
+                        <Insets right="20.0" />
+                     </GridPane.margin>
+                  </TableView>
+                  <Button mnemonicParsing="false" text="See past 30 days" GridPane.rowIndex="5" />
+               </children>
+            </GridPane>
+         </center>
       </BorderPane>
    </right>
-      <GridPane prefHeight="720.0" prefWidth="511.0" BorderPane.alignment="CENTER">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints maxHeight="283.33332347869873" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="283.33332347869873" minHeight="10.0" prefHeight="78.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="348.0" minHeight="10.0" prefHeight="348.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="915.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="915.0" minHeight="10.0" prefHeight="116.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="400.0" minHeight="2.0" prefHeight="117.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Summary of learnings" wrappingWidth="466.8515625" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Arial" size="36.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="-40.0" />
-               </GridPane.margin>
-            </Text>
-            <ImageView fitHeight="144.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="550.0" />
-               </GridPane.margin>
-            </ImageView>
-            <TableView maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="296.0" prefWidth="464.0" GridPane.rowIndex="2">
-              <columns>
-                <TableColumn prefWidth="328.0" text="Things you did well" />
-                <TableColumn minWidth="-1.0" prefWidth="135.0" resizable="false" text="Times entered" />
-              </columns>
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
-            </TableView>
-         </children>
-      </GridPane>
+   <children>
+         <GridPane prefHeight="720.0" prefWidth="511.0" BorderPane.alignment="CENTER">
+           <columnConstraints>
+             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+           </columnConstraints>
+           <rowConstraints>
+               <RowConstraints maxHeight="283.33332347869873" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+             <RowConstraints maxHeight="283.33332347869873" minHeight="10.0" prefHeight="78.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="348.0" minHeight="10.0" prefHeight="348.0" vgrow="SOMETIMES" />
+             <RowConstraints maxHeight="915.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="915.0" minHeight="10.0" prefHeight="116.0" vgrow="SOMETIMES" />
+             <RowConstraints maxHeight="400.0" minHeight="2.0" prefHeight="117.0" vgrow="SOMETIMES" />
+           </rowConstraints>
+         </GridPane>
+   </children>
 </BorderPane>
