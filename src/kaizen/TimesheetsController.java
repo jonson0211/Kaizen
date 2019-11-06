@@ -27,17 +27,20 @@ import javafx.scene.control.ToggleGroup;
 
 public class TimesheetsController implements Initializable {
     @FXML
-    ObservableList<String> timeStartHour = FXCollections.observableArrayList("1", "2","3","4","5","6","7",
-            "8","9","10","11","12",
-            "13","14","15","16","17","18","19","20","21","22","23","24");
-    
-    ObservableList<String> timeStartMin = FXCollections.observableArrayList("0","5","10","15","20","25","30",
-            "35","40", "45","50","55");
+    ChoiceBox timeStartHour = new ChoiceBox(FXCollections.observableArrayList("1", "2","3","4","5","6","7",
+            "8","9","10","11","12","13","14","15","16","17","18","19","20","21","22","23","24"));
+    @FXML
+    ChoiceBox timeStartMin = new ChoiceBox(FXCollections.observableArrayList("0","5","10","15","20","25","30",
+            "35","40", "45","50","55"));
+    @FXML
     ObservableList<String> timeEndHour = FXCollections.observableArrayList("1", "2","3","4","5","6","7",
             "8","9","10","11","12",
             "13","14","15","16","17","18","19","20","21","22","23","24");
+    @FXML
     ObservableList<String> timeEndMin = FXCollections.observableArrayList("0","5","10","15","20","25","30",
             "35","40", "45","50","55");
+    
+    timeStartMin.getSelectionModel().selectedIndexProperty().addListener
     
     @FXML
     private ToggleButton kbBoard;
@@ -58,14 +61,11 @@ public class TimesheetsController implements Initializable {
     private ToggleButton settings;
     
     @FXML
-    private ToggleButton about;
-    
+    private ToggleButton about;  
     @FXML
-    private ToggleButton signOut;
-    
+    private ToggleButton signOut;  
     @FXML
     private RadioButton categoryWork;
-    
     @FXML
     private RadioButton categoryDaily;
     
@@ -103,6 +103,8 @@ public class TimesheetsController implements Initializable {
     KaizenDatabase addTimesheet = new KaizenDatabase();
     
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
+    
+    
     
     /**
      * Initializes the controller class.
