@@ -108,7 +108,7 @@ public class DailyLearningsController implements Initializable {
         String answerOneString = (String) answerOne.getValue();
         String answerTwoString = (String) answerTwo.getValue();
         String date = datePick.getValue().format(DateTimeFormatter.ofPattern("dd/mm/yyyy"));
-        userLearn.insertStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) VALUES (" + LoginScreenController.loggedUser + "," + date + "', " + answerOneString + ", " + answerTwoString + "');");
+        userLearn.insertStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) VALUES (" + LoginScreenController.loginUsername + "," + date + "', " + answerOneString + ", " + answerTwoString + "');");
         System.out.println("Entered in learnings");
         confirmEntry.setVisible(true);
         
@@ -120,7 +120,7 @@ public class DailyLearningsController implements Initializable {
     private void updateComboOneValue(ActionEvent event){
         try{
             ResultSet currentAnswerOne = userLearn.getResultSet("SELECT USERNAME, DID_WELL FROM LEARNINGS"
-                    + "WHERE USERNAME = " + LoginScreenController.loggedUsername + " ");
+                    + "WHERE USERNAME = " + LoginScreenController.loginUsername + " ");
             answerOne.setValue(String.valueOf(currentAnswerOne.getString(3)));
         } catch(Exception e){
             System.out.println("New user");
@@ -174,10 +174,6 @@ public class DailyLearningsController implements Initializable {
     @FXML
     private void handleTimeSheets(ActionEvent event) throws IOException{
         pageSwitcher.switcher(event,"Timesheets.fxml"); 
-    }
-    @FXML
-    private void handleDailyLearnings(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"DailyLearnings.fxml");
     }
     @FXML
     private void handleSettings(ActionEvent event) throws IOException{
