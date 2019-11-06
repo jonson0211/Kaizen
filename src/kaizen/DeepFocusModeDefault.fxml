@@ -48,6 +48,24 @@
       </BorderPane>
    </left>
    <right>
-      <BorderPane prefHeight="720.0" prefWidth="1080.0" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="200.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="20.0" layoutY="20.0" prefHeight="50.0" prefWidth="200.0" styleClass="large-label" stylesheets="@stylesheet.css" text="Label" />
+            <Label layoutX="20.0" layoutY="70.0" prefHeight="40.0" prefWidth="400.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Choose a task, set the mood and focus." />
+            <Separator layoutX="50.0" layoutY="180.0" prefHeight="2.0" prefWidth="980.0" style="-fx-background-color: 000000;" stylesheets="@stylesheet.css" />
+            <ComboBox layoutX="50.0" layoutY="120.0" prefHeight="40.0" prefWidth="220.0" promptText="Task Category" styleClass="small-label" stylesheets="@stylesheet.css" />
+            <ComboBox layoutX="299.0" layoutY="120.0" prefHeight="40.0" prefWidth="220.0" promptText="Task" styleClass="small-label" stylesheets="@stylesheet.css" />
+            <Separator layoutX="539.0" layoutY="120.0" orientation="VERTICAL" prefHeight="40.0" prefWidth="2.0" stylesheets="@stylesheet.css" />
+            <Separator layoutX="539.0" layoutY="202.0" orientation="VERTICAL" prefHeight="498.0" prefWidth="2.0" stylesheets="@stylesheet.css" />
+            <ImageView fitHeight="40.0" fitWidth="471.0" layoutX="559.0" layoutY="120.0" pickOnBounds="true" style="-fx-opacity: 0.9;" styleClass="menu-panel">
+               <image>
+                  <Image url="@Resources/mood-toggle-background.png" />
+               </image>
+            </ImageView>
+            <ToggleButton layoutX="559.0" layoutY="120.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="157.0" styleClass="mood-toggle" stylesheets="@stylesheet.css" text="ToggleButton" />
+            <ToggleButton layoutX="716.0" layoutY="120.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="157.0" styleClass="mood-toggle" stylesheets="@stylesheet.css" text="ToggleButton" />
+            <ToggleButton layoutX="873.0" layoutY="120.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="157.0" styleClass="mood-toggle" stylesheets="@stylesheet.css" text="ToggleButton" />
+         </children>
+      </Pane>
    </right>
 </BorderPane>
