@@ -113,7 +113,7 @@ public class TimesheetsController implements Initializable {
         String end = timeEnd.getText();
         Toggle cat = toggleGroup.getSelectedToggle();
         String desc = description.getText();
-        int actDuration = (start-end);
+        /** int actDuration = (start-end); **/
         
         
         try {
@@ -128,8 +128,7 @@ public class TimesheetsController implements Initializable {
     @FXML
     private void handleBackAction(ActionEvent event) throws IOException {
         pageSwitcher.switcher(event, "KanbanBoard.fxml");
-    }
-    
+    }    
     @FXML
     private void handleKbBoard(ActionEvent event) throws IOException{
         pageSwitcher.switcher(event, "KanbanBoard.fxml");
@@ -162,7 +161,5 @@ public class TimesheetsController implements Initializable {
     private void handleAboutScreen(ActionEvent event) throws IOException{
         pageSwitcher.switcher(event,"AboutScreen");
     }
-
-   
-    
+ 
 }
