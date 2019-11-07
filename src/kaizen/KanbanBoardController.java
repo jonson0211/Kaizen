@@ -81,7 +81,7 @@ public class KanbanBoardController {
     //switch to register screen
     @FXML
     public void handleSignOut(ActionEvent event) throws IOException {
-        psh.switcher(event, "RegisterScreen.fxml");
+        psh.switcher(event, "LoginScreen.fxml");
     }
     
     //switch to time dashboard
