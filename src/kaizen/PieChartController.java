@@ -74,20 +74,20 @@ public class PieChartController implements Initializable {
    
         //Getting time spent data for piechart
     public PieChart buildPie() throws SQLException{    
-    ResultSet workRs = db.getResultSet("SELECT SUM(START) from TIMESHEETS "
+    ResultSet workRs = db.getResultSet("SELECT COUNT(START) from TIMESHEETS "
                     + "WHERE CATEGORYNAME = 'Work' "
                     );
         int workCount = workRs.getInt(1);
             //workLabel.setText(String.valueOf(workRs.getInt(1)));
     
-    ResultSet relationshipsRs = db.getResultSet("SELECT SUM(START) from TIMESHEETS "
+    ResultSet relationshipsRs = db.getResultSet("SELECT COUNT(START) from TIMESHEETS "
                     + "WHERE CATEGORYNAME = 'Relationships' "
                     );
         int relationshipCount = relationshipsRs.getInt(1);
             //relationshipsLabel.setText(String.valueOf(relationshipsRs.getInt(1)));
 
     ResultSet wellnessRs = db.getResultSet(
-            "SELECT SUM(START) from TIMESHEETS "
+            "SELECT COUNT(START) from TIMESHEETS "
                     //+ "WHERE CATEGORYNAME = 'Wellness' "
                     );
         int wellnessCount = wellnessRs.getInt(1);
@@ -101,7 +101,7 @@ public class PieChartController implements Initializable {
             //relaxationLabel.setText(String.valueOf(relaxationRs.getInt(1)));
                 
     ResultSet projectsRs = db.getResultSet(
-            "SELECT SUM(START) from TIMESHEETS "
+            "SELECT COUNT(START) from TIMESHEETS "
                     //+ "WHERE CATEGORYNAME = 'Projects' "
                     );
         int projectsCount = projectsRs.getInt(1);
@@ -119,10 +119,10 @@ public class PieChartController implements Initializable {
                 ObservableList<PieChart.Data> lifePieChartData = FXCollections.observableArrayList(
                     new PieChart.Data("Work", workRs.getInt(1)),
                     new PieChart.Data("Relationships", relationshipsRs.getInt(1)),
-                    new PieChart.Data("Projects", projectsRs.getInt(1)));
-                    new PieChart.Data("Wellness", wellnessRs.getInt(1));
-                    new PieChart.Data("Daily", dailyRs.getInt(1));
-                    new PieChart.Data("Relaxtion", relaxationRs.getInt(1));
+                    new PieChart.Data("Projects", projectsRs.getInt(1)),
+                    new PieChart.Data("Wellness", wellnessRs.getInt(1)),
+                    new PieChart.Data("Daily", dailyRs.getInt(1)),
+                    new PieChart.Data("Relaxtion", relaxationRs.getInt(1)));
                                       
                     System.out.println("Test");
                 lifePieChart.setData(lifePieChartData);
