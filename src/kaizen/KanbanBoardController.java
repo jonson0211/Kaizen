@@ -91,6 +91,11 @@ public class KanbanBoardController {
     }
     
     @FXML
+    public void handleTaskTracker(ActionEvent event) throws IOException{
+        psh.switcher(event, "Timesheets.fxml");
+    }
+    
+    @FXML
     public void initialize() {
         System.out.println("OAIdfjif");
     }

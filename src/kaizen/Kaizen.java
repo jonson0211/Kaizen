@@ -39,6 +39,11 @@ public class Kaizen extends Application {
     }
     public static void loadDatabase() throws ClassNotFoundException, SQLException {
        KaizenDatabase.createUserTable();
+       KaizenDatabase.createTimesheetsTable();
+       KaizenDatabase.createCategoryTable();
+       KaizenDatabase.createDailyLearningsTable();
+       KaizenDatabase.createTimesheetsTable();
+       KaizenDatabase.createTasksTable();
        
     }
 }

@@ -84,7 +84,6 @@ public class TimesheetsController implements Initializable {
     @FXML
     private RadioButton categoryProjects;
     
-   
     @FXML private TextField timeStart;
     
     @FXML private TextField timeEnd;
