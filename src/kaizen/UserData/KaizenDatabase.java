@@ -281,15 +281,17 @@ public class KaizenDatabase {
                         + "START TEXT NOT NULL, "
                         + "END TEXT NOT NULL, "
                         + "DESCR TEXT NOT NULL,"
+                        + "DURATION INTEGER NOT NULL"
                         + "FOREIGN KEY (CATEGORYNAME)"
                         + "REFERENCES CATEGORY(CATEGORYNAME)"
                         + ");");
                 createTimesheetsTable.execute();
                 System.out.println("Timesheets table created");
-                createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,START,END,DESCR) "
+                createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,START,END,DURATION,DESCR) "
                         + "VALUES ('Work', "
                         + "'09:10:00',"
                         + "'10:00:00',"
+                        + "50,"
                         + " 'Today I had a productive day at the office!'"
                         + ");"
                         );

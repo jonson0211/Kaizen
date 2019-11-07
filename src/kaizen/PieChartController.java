@@ -7,7 +7,11 @@ package kaizen;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,7 +23,7 @@ import kaizen.UserData.KaizenDatabase;
 
 public class PieChartController implements Initializable {
     
-    KaizenDatabase addTimesheet = new KaizenDatabase();
+    KaizenDatabase db = new KaizenDatabase();
     
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
     
@@ -55,12 +59,52 @@ public class PieChartController implements Initializable {
     @FXML private Button weeklyBreakdown;
     
     @FXML private Button weeklyTrends;
+    
+    @FXML private Label workLabel;
+    @FXML private Label relationshipsLabel;
+    @FXML private Label projectsLabel;
+    @FXML private Label wellnessLabel;
+    @FXML private Label dailyLabel;
+    @FXML private Label relaxationLabel;
             
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }  
+    }
+        //Getting time spent data for piechart
+    @FXML public void refreshPie() throws SQLException{    
+    ResultSet workRs = db.getResultSet("SELECT COUNT(duration) from TIMESHEETS "
+                    + "WHERE CATEGORYNAME = 'Work' "
+                    );
+        int workCount = workRs.getInt(1);
+            workLabel.setText(String.valueOf(workRs.getInt(1)));
+    
+    ResultSet relationshipsRs = db.getResultSet("SELECT COUNT(duration) from TIMESHEETS "
+                    + "WHERE CATEGORYNAME = 'Relationships' "
+                    );
+        int relationshipCount = workRs.getInt(1);
+            workLabel.setText(String.valueOf(workRs.getInt(1)));    
+
+        
+        try {
+                lifePieChart.getData().clear();
+                ObservableList<PieChart.Data> lifePieChartData = FXCollections.observableArrayList(
+                        new PieChart.Data("Work", workRs.getInt(1)),
+                        new PieChart.Data("Relationships", relationshipsRs.getInt(1)),
+                        new PieChart.Data("Projects", projectsRs.getInt(1)));
+                        new PieChart.Data("Wellness", wellnessRs.getInt(1));
+                        new PieChart.Data("Daily", dailyRs.getInt(1));
+                        new PieChart.Data("Relaxtion", relaxationRs.getInt(1));
+
+                lifePieChart.setData(lifePieChartData);
+
+            } catch (Exception e) {
+                System.out.println("can't produce Pie graph");
+                e.printStackTrace();
+
+    }
+    }
     
     //switch to daily learnings
     @FXML
