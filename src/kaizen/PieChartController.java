@@ -11,22 +11,51 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.PieChart;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import kaizen.UserData.KaizenDatabase;
 
-/**
- * FXML Controller class
- *
- * @author lienzhu
- */
 public class PieChartController implements Initializable {
-    
-    /**
-     * Initializes the controller class.
-     */
     
     KaizenDatabase addTimesheet = new KaizenDatabase();
     
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
+    
+    //menu underneath//
+    @FXML
+    private Button signOutButton;
+    @FXML
+    private ToggleButton settingsButton;
+    @FXML
+    private ToggleButton kanbanBoard;
+    @FXML
+    private ToggleButton deepFocus;
+    @FXML
+    private ToggleButton taskTracker;
+    @FXML
+    private ToggleButton about;
+    @FXML
+    private ToggleButton timeDashboard;
+    @FXML
+    private ToggleButton doDateView;
+    @FXML
+    private ToggleButton dueDateView;
+    @FXML
+    private Label welcome;
+    @FXML
+    private Label welcomeSubheading;
+    //menu^//
+    
+    @FXML private PieChart lifePieChart;
+    
+    @FXML private Button dailyBreakdown;
+    
+    @FXML private Button weeklyBreakdown;
+    
+    @FXML private Button weeklyTrends;
+            
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
