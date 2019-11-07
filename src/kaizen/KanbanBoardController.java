@@ -97,6 +97,7 @@ public class KanbanBoardController {
     
     @FXML
     public void initialize() {
+        //for every entry in database, display data
         System.out.println("OAIdfjif");
     }
     
