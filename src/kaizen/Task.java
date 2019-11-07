@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package kaizen;
+/**package kaizen;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -14,7 +14,7 @@ import javafx.beans.property.StringProperty;
  * 
  * //(USERNAME, TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY
  */
-public class Task {
+/**public class Task {
     private final StringProperty title = new SimpleStringProperty(this, "title");
     public StringProperty titleProperty() {
         return title;
@@ -24,7 +24,7 @@ public class Task {
         return titleProperty().get();
     }
     public final void setTitle(String firstName) {
-        titleProperty().set(titke);
+        titleProperty().set(title);
     }
 
     private final StringProperty lastName = new SimpleStringProperty(this, "lastName");
@@ -49,4 +49,4 @@ public class Task {
         emailProperty().set(email);
     }
 
-}
+}**/

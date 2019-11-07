@@ -23,7 +23,7 @@ public class Kaizen extends Application {
     public void start(Stage stage) throws Exception {
         
         System.out.println("milestone 1");
-        Parent root = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));        
+        Parent root = FXMLLoader.load(getClass().getResource("DailyLearnings.fxml"));        
         Scene scene = new Scene(root);
         System.out.println("milestone 2");
         stage.setScene(scene);

@@ -360,9 +360,9 @@ public class KaizenDatabase {
             e.printStackTrace();
         }
     }
-}
 
-    /**public static void createDailyLearningsTable() {
+
+        public static void createDailyLearningsTable() {
         PreparedStatement createDailyLearningsTable = null;
         PreparedStatement createDemoInstance = null;
         ResultSet rs = null;
@@ -390,6 +390,6 @@ public class KaizenDatabase {
             e.printStackTrace();
         }    
     }
-}**/
+}
     
     
