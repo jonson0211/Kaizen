@@ -278,9 +278,9 @@ public class KaizenDatabase {
             if (!rs.next()) {
                 createTimesheetsTable = conn.prepareStatement("CREATE TABLE TIMESHEETS ("
                         + "CATEGORYNAME TEXT NOT NULL,"
-                        + "START TEXT NOT NULL, "
-                        + "END TEXT NOT NULL, "
-                        + "DURATION INTEGER NOT NULL"
+                        + "START TEXT NOT NULL, " //integer
+                        + "END TEXT NOT NULL, " //integer
+                        + "DURATION INTEGER NOT NULL" 
                         + "DESCR TEXT NOT NULL,"
                         + "FOREIGN KEY (CATEGORYNAME)"
                         + "REFERENCES CATEGORY(CATEGORYNAME)"
@@ -291,12 +291,22 @@ public class KaizenDatabase {
                         + "VALUES ('Work', "
                         + "'540',"
                         + "'600',"
-                        + "'60',"
+                        + "'0',"
                         + " 'Today I had a productive day at the office!'"
                         + ");"
                         );
                 createDemoInstance.execute();
                 
+                createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,START,END,DURATION,DESCR) "
+                        + "VALUES ('Work', "
+                        + "'120',"
+                        + "'360',"
+                        + "'240',"
+                        + " 'Today I had a productive day at the office launch!'"
+                        + ");"
+                        );
+                
+                createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,START,END,DURATION,DESCR)" 
                         + "VALUES ('Relaxation',"
                         + "'660',"
