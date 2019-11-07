@@ -52,14 +52,25 @@
          <center>
             <Pane prefHeight="1066.0" prefWidth="1595.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="102.0" layoutY="52.0" styleClass="large-label" text="Welcome" />
-                  <Label layoutX="102.0" layoutY="142.0" styleClass="small-label" text="What would you like to do today?" />
-                  <ToggleButton fx:id="dueDateView" layoutX="1285.0" layoutY="137.0" mnemonicParsing="false" onAction="#handleDueDateView" text="Due Date View" />
-                  <ToggleButton fx:id="doDateView" layoutX="1055.0" layoutY="137.0" mnemonicParsing="false" onAction="#handleDoDateView" prefHeight="51.0" prefWidth="186.0" text="Do Date View" />
-                  <ListView layoutX="104.0" layoutY="238.0" prefHeight="803.0" prefWidth="346.0" />
-                  <ListView layoutX="450.0" layoutY="238.0" prefHeight="803.0" prefWidth="346.0" />
-                  <ListView layoutX="796.0" layoutY="238.0" prefHeight="803.0" prefWidth="346.0" />
-                  <ListView layoutX="1142.0" layoutY="238.0" prefHeight="803.0" prefWidth="346.0" />
+                  <Label layoutX="35.0" layoutY="32.0" styleClass="large-label" text="Welcome" />
+                  <Label layoutX="35.0" layoutY="92.0" styleClass="small-label" text="What would you like to do today?" />
+                  <ToggleButton fx:id="dueDateView" layoutX="861.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleDueDateView" text="Due Date View" />
+                  <ToggleButton fx:id="doDateView" layoutX="664.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleDoDateView" text="Do Date View" />
+                  <GridPane layoutX="59.0" layoutY="178.0" prefHeight="506.0" prefWidth="950.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
                </children>
             </Pane>
          </center></BorderPane>
