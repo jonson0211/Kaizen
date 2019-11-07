@@ -280,8 +280,8 @@ public class KaizenDatabase {
                         + "CATEGORYNAME TEXT NOT NULL,"
                         + "START TEXT NOT NULL, "
                         + "END TEXT NOT NULL, "
+                        +"DURATION INTEGER NOT NULL"
                         + "DESCR TEXT NOT NULL,"
-                        + "DURATION INTEGER NOT NULL"
                         + "FOREIGN KEY (CATEGORYNAME)"
                         + "REFERENCES CATEGORY(CATEGORYNAME)"
                         + ");");

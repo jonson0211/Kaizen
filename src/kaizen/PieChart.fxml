@@ -51,7 +51,7 @@
    <right>
       <BorderPane prefHeight="720.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
          <left>
-            <PieChart title="Pie Chart Of My Life" BorderPane.alignment="CENTER">
+            <PieChart fx:id="lifePieChart" title="Pie Chart Of My Life" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets top="30.0" />
                </BorderPane.margin>
