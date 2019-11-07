@@ -5,6 +5,8 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,6 +16,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.GridPane;
 import kaizen.UserData.KaizenDatabase;
 
 public class PieChartController implements Initializable {
@@ -38,7 +41,7 @@ public class PieChartController implements Initializable {
     @FXML private Label welcomeSubheading;
     //menu^//
     
-    @FXML private PieChart lifePieChart;
+    @FXML public PieChart lifePieChart;
     
     @FXML private Button dailyBreakdown;
     
@@ -52,50 +55,64 @@ public class PieChartController implements Initializable {
     @FXML private Label wellnessLabel;
     @FXML private Label dailyLabel;
     @FXML private Label relaxationLabel;
+    @FXML private GridPane grid;
             
+    ObservableList<PieChart.Data> lifePieChartData;
     
-    @Override
+    
+     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        
+        try {
+            buildPie();
+        } catch (SQLException ex) {
+            Logger.getLogger(PieChartController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       PieChart lifePieChart = new PieChart(lifePieChartData);
+       
+  
     }
+   
         //Getting time spent data for piechart
-    @FXML public void refreshPie() throws SQLException{    
-    ResultSet workRs = db.getResultSet("SELECT COUNT(duration) from TIMESHEETS "
+    public PieChart buildPie() throws SQLException{    
+    ResultSet workRs = db.getResultSet("SELECT SUM(START) from TIMESHEETS "
                     + "WHERE CATEGORYNAME = 'Work' "
                     );
         int workCount = workRs.getInt(1);
-            workLabel.setText(String.valueOf(workRs.getInt(1)));
+            //workLabel.setText(String.valueOf(workRs.getInt(1)));
     
-    ResultSet relationshipsRs = db.getResultSet("SELECT COUNT(duration) from TIMESHEETS "
+    ResultSet relationshipsRs = db.getResultSet("SELECT SUM(START) from TIMESHEETS "
                     + "WHERE CATEGORYNAME = 'Relationships' "
                     );
-        int relationshipRs = relationshipsRs.getInt(1);
-            relationshipsLabel.setText(String.valueOf(relationshipsRs.getInt(1)));
+        int relationshipCount = relationshipsRs.getInt(1);
+            //relationshipsLabel.setText(String.valueOf(relationshipsRs.getInt(1)));
 
-    ResultSet wellnessRs = db.getResultSet("SELECT COUNT(duration) from TIMESHEETS "
-                    + "WHERE CATEGORYNAME = 'Wellness' "
+    ResultSet wellnessRs = db.getResultSet(
+            "SELECT SUM(START) from TIMESHEETS "
+                    //+ "WHERE CATEGORYNAME = 'Wellness' "
                     );
         int wellnessCount = wellnessRs.getInt(1);
-            wellnessLabel.setText(String.valueOf(wellnessRs.getInt(1))); 
+            //wellnessLabel.setText(String.valueOf(wellnessRs.getInt(1))); 
     
-    ResultSet relaxationRs = db.getResultSet("SELECT COUNT(duration) from TIMESHEETS "
-                    + "WHERE CATEGORYNAME = 'Relaxation' "
+    ResultSet relaxationRs = db.getResultSet(
+            "SELECT SUM(START) from TIMESHEETS "
+                    //+ "WHERE CATEGORYNAME = 'Relaxation' "
                     );
         int relaxationCount = relaxationRs.getInt(1);
-            relaxationLabel.setText(String.valueOf(relaxationRs.getInt(1)));
+            //relaxationLabel.setText(String.valueOf(relaxationRs.getInt(1)));
                 
-    ResultSet projectsRs = db.getResultSet("SELECT COUNT(duration) from TIMESHEETS "
-                    + "WHERE CATEGORYNAME = 'Projects' "
+    ResultSet projectsRs = db.getResultSet(
+            "SELECT SUM(START) from TIMESHEETS "
+                    //+ "WHERE CATEGORYNAME = 'Projects' "
                     );
         int projectsCount = projectsRs.getInt(1);
-            projectsLabel.setText(String.valueOf(projectsRs.getInt(1))); 
+            //projectsLabel.setText(String.valueOf(projectsRs.getInt(1))); 
             
-    ResultSet dailyRs = db.getResultSet("SELECT COUNT(duration) from TIMESHEETS "
-                    + "WHERE CATEGORYNAME = 'Daily' "
+    ResultSet dailyRs = db.getResultSet(
+            "SELECT SUM(START) from TIMESHEETS "
+                    //+ "WHERE CATEGORYNAME = 'Daily' "
                     );
         int dailyCount = dailyRs.getInt(1);
-            dailyLabel.setText(String.valueOf(dailyRs.getInt(1)));        
+            //dailyLabel.setText(String.valueOf(dailyRs.getInt(1)));        
         
         try {
                 lifePieChart.getData().clear();
@@ -106,15 +123,18 @@ public class PieChartController implements Initializable {
                     new PieChart.Data("Wellness", wellnessRs.getInt(1));
                     new PieChart.Data("Daily", dailyRs.getInt(1));
                     new PieChart.Data("Relaxtion", relaxationRs.getInt(1));
-
+                                      
+                    System.out.println("Test");
                 lifePieChart.setData(lifePieChartData);
-
+                   
             } catch (Exception e) {
                 System.out.println("Unable to produce Pie Chart!");
                 e.printStackTrace();
 
         }
+    return lifePieChart;
     }
+    
     
     //switch to daily learnings
        
@@ -132,7 +152,7 @@ public class PieChartController implements Initializable {
     }
     @FXML
     private void handleTimeSheets(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"Timesheets.fxml"); 
+        //pageSwitcher.switcher(event,"Timesheets.fxml"); 
     }
     @FXML
     private void handleDailyLearnings(ActionEvent event) throws IOException{
@@ -144,7 +164,7 @@ public class PieChartController implements Initializable {
     }
     @FXML
     private void handleTimeDashboard(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"Timesheets.fxml"); 
+        pageSwitcher.switcher(event,"PieChart.fxml"); 
     }
     @FXML
     private void handleSignOut(ActionEvent event) throws IOException{
