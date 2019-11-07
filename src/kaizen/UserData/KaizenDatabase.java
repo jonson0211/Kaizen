@@ -289,9 +289,9 @@ public class KaizenDatabase {
                 System.out.println("Timesheets table created");
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,START,END,DURATION,DESCR) "
                         + "VALUES ('Work', "
-                        + "'09:10:00',"
-                        + "'10:00:00',"
-                        + "50,"
+                        + "'540',"
+                        + "'600',"
+                        + "60,"
                         + " 'Today I had a productive day at the office!'"
                         + ");"
                         );
@@ -304,8 +304,6 @@ public class KaizenDatabase {
         }
     }
 
-   
-    
     public static void createDailyLearningsTable() {
         PreparedStatement createDailyLearningsTable = null;
         PreparedStatement createDemoInstance = null;

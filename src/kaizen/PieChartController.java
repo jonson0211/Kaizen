@@ -33,8 +33,7 @@ public class PieChartController implements Initializable {
     @FXML private ToggleButton taskTracker;
     @FXML private ToggleButton about;
     @FXML private ToggleButton timeDashboard;
-    @FXML private ToggleButton doDateView;
-    @FXML private ToggleButton dueDateView;
+    
     @FXML private Label welcome;
     @FXML private Label welcomeSubheading;
     //menu^//
@@ -118,12 +117,9 @@ public class PieChartController implements Initializable {
     }
     
     //switch to daily learnings
+       
     @FXML
-    private void handleBackAction(ActionEvent event) throws IOException {
-        pageSwitcher.switcher(event, "KanbanBoard.fxml");
-    }    
-    @FXML
-    private void handleKbBoard(ActionEvent event) throws IOException{
+    private void handleKanbanBoard(ActionEvent event) throws IOException{
         pageSwitcher.switcher(event, "KanbanBoard.fxml");
     }
     @FXML
