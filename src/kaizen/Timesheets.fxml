@@ -201,7 +201,7 @@
                         </ComboBox>
                      </children>
                   </GridPane>
-                  <Button layoutX="690.0" layoutY="815.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="163.0" text="Submit">
+                  <Button fx:id="submit" layoutX="576.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleSubmitAction" prefHeight="58.0" prefWidth="163.0" text="Submit">
                      <font>
                         <Font size="30.0" />
                      </font>
