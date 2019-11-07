@@ -21,10 +21,9 @@ public class Kaizen extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        loadDatabase();
-        System.out.println("milestone 1");
-        Parent root = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));
         
+        System.out.println("milestone 1");
+        Parent root = FXMLLoader.load(getClass().getResource("LoginScreen.fxml"));        
         Scene scene = new Scene(root);
         System.out.println("milestone 2");
         stage.setScene(scene);
@@ -34,14 +33,15 @@ public class Kaizen extends Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        loadDatabase();
         launch(args);
     }
     public static void loadDatabase() throws ClassNotFoundException, SQLException {
        KaizenDatabase.createUserTable();
        KaizenDatabase.createTimesheetsTable();
        KaizenDatabase.createCategoryTable();
-       /** KaizenDatabase.createDailyLearningsTable(); **/
+       /**KaizenDatabase.createDailyLearningsTable();**/
        
        KaizenDatabase.createTasksTable();
        

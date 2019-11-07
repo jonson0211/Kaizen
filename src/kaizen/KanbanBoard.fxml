@@ -20,7 +20,7 @@
                   <ToggleButton fx:id="deepFocus" mnemonicParsing="false" onAction="#handleDeepFocusMode" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DEEP FOCUS" />
                   <ToggleButton fx:id="taskTracker" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TASK TRACKER" />
                   <ToggleButton fx:id="timeDashboard" mnemonicParsing="false" onAction="#handleTimeDashboard" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TIME DASHBOARD" />
-                  <ToggleButton mnemonicParsing="false" onAction="#handleDailyLearnings" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" />
+                  <ToggleButton fx:id="dailyLearnings" mnemonicParsing="false" onAction="#handleDailyLearnings" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" />
                </children>
                <opaqueInsets>
                   <Insets />

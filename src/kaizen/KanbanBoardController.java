@@ -6,8 +6,11 @@
 package kaizen;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
@@ -16,7 +19,7 @@ import javafx.scene.control.ToggleButton;
  *
  * @author Raymond
  */
-public class KanbanBoardController {
+public class KanbanBoardController implements Initializable{
     
     
     PageSwitchHelper psh = new PageSwitchHelper();
@@ -32,6 +35,8 @@ public class KanbanBoardController {
     @FXML
     private ToggleButton taskTracker;
     @FXML
+    private ToggleButton dailyLearnings;
+    @FXML
     private ToggleButton about;
     @FXML
     private ToggleButton timeDashboard;
@@ -45,7 +50,11 @@ public class KanbanBoardController {
     private Label welcomeSubheading;
     
     
-    
+    @Override
+    public void initialize(URL url, ResourceBundle rb){
+        System.out.println("Loeading Kanban board");
+        
+    }
     
     
     //method to change the scene from do date mode to due date mode

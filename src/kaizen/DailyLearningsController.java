@@ -30,11 +30,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import kaizen.DataModels.learningsDidWell;
 import kaizen.DataModels.learningsDoBetter;
 import kaizen.UserData.KaizenDatabase;
-import static kaizen.UserData.KaizenDatabase.conn;
 
 /**
  * FXML Controller class
@@ -43,6 +43,10 @@ import static kaizen.UserData.KaizenDatabase.conn;
  */
 public class DailyLearningsController implements Initializable {
 
+    KaizenDatabase userLearn = new KaizenDatabase();
+    
+    PageSwitchHelper pageSwitcher = new PageSwitchHelper();
+    
     ObservableList<String> answerOnes = FXCollections.observableArrayList("I went to the gym today", "I played the piano");
     ObservableList<String> answerTwos = FXCollections.observableArrayList("I want to spend more time with my family");
     
@@ -102,11 +106,7 @@ public class DailyLearningsController implements Initializable {
     
     @FXML
     private Button viewPast;       
-            
-    KaizenDatabase userLearn = new KaizenDatabase();
-    
-    PageSwitchHelper pageSwitcher = new PageSwitchHelper();
-    
+               
     PreparedStatement pst;
     
     Connection conn;
@@ -173,6 +173,15 @@ public class DailyLearningsController implements Initializable {
         return FXCollections.observableArrayList(doBetterList);
     }
     
+        private void loadTable(){
+        didWellColumn.setCellValueFactory(new PropertyValueFactory<learningsDidWell, String>("DID_WELL"));
+        doBetterColumn.setCellValueFactory(new PropertyValueFactory<learningsDoBetter, String>("DO_BETTER"));
+        didWellCount.setCellValueFactory(new PropertyValueFactory<learningsDidWell, Number>("COUNT(*)"));
+        doBetterCount.setCellValueFactory(new PropertyValueFactory<learningsDoBetter, Number>("COUNT(*)"));
+        
+        didWellView.setItems(getLearningsDidWell());
+        doBetterView.setItems(getLearningsDoBetter());
+    }
     //input learnings into the table summary
     //update learnings
     @FXML
@@ -235,7 +244,7 @@ public class DailyLearningsController implements Initializable {
     @FXML
     private void handlePopUpScreenAction(ActionEvent event) throws IOException{
         try{
-            FXMLLoader fxmlloader = new FXMLLoader(getClass(). getResource("Learnings Report.fxml"));
+            FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("PopUpLearnings.fxml"));
             Parent r1 = (Parent) fxmlloader.load();
             Stage stage = new Stage();
             stage.setTitle("Past 30 days Report");
@@ -249,7 +258,7 @@ public class DailyLearningsController implements Initializable {
     @FXML
     private void handleKbBoard(ActionEvent event) throws IOException{
         pageSwitcher.switcher(event, "KanbanBoard.fxml");
-    }
+            }
     @FXML
     private void handleDeepFocus(ActionEvent event) throws IOException{
         pageSwitcher.switcher(event,"DeepFocusMode.fxml");  
@@ -273,6 +282,10 @@ public class DailyLearningsController implements Initializable {
     @FXML
     private void handleAboutScreen(ActionEvent event) throws IOException{
         pageSwitcher.switcher(event,"AboutScreen.fxml");
+    }
+    @FXML
+    private void handlePopUpScreen(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event,"PopUpLearnings.fxml");
     }
 }
                 
