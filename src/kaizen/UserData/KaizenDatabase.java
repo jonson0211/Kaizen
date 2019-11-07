@@ -278,9 +278,9 @@ public class KaizenDatabase {
             if (!rs.next()) {
                 createTimesheetsTable = conn.prepareStatement("CREATE TABLE TIMESHEETS ("
                         + "CATEGORYNAME TEXT NOT NULL,"
-                        + "START TEXT NOT NULL, "
-                        + "END TEXT NOT NULL, "
-                        +"DURATION INTEGER NOT NULL"
+                        + "START TEXT NOT NULL, " //integer
+                        + "END TEXT NOT NULL, " //integer
+                        + "DURATION INTEGER NOT NULL" 
                         + "DESCR TEXT NOT NULL,"
                         + "FOREIGN KEY (CATEGORYNAME)"
                         + "REFERENCES CATEGORY(CATEGORYNAME)"
@@ -291,11 +291,68 @@ public class KaizenDatabase {
                         + "VALUES ('Work', "
                         + "'540',"
                         + "'600',"
-                        + "60,"
+                        + "'0',"
                         + " 'Today I had a productive day at the office!'"
                         + ");"
                         );
                 createDemoInstance.execute();
+                
+                createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,START,END,DURATION,DESCR) "
+                        + "VALUES ('Work', "
+                        + "'120',"
+                        + "'360',"
+                        + "'240',"
+                        + " 'Today I had a productive day at the office launch!'"
+                        + ");"
+                        );
+                
+                createDemoInstance.execute();
+                createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,START,END,DURATION,DESCR)" 
+                        + "VALUES ('Relaxation',"
+                        + "'660',"
+                        + "'780',"
+                        + "'120',"
+                        + "'Today I played League with my friends'"
+                        + ");"
+                        );
+                createDemoInstance.execute();
+                
+                createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,START,END,DURATION,DESCR)"
+                + "VALUES('Wellness',"
+                + "'1020',"
+                + "'1140',"
+                + "'120',"
+                + "'I ran with to the park with my dog'"
+                + ");"
+                );
+                
+                createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,START,END,DURATION,DESCR)"
+                + "VALUES('Projects',"
+                + "'1020',"
+                + "'1140',"
+                + "'120',"
+                + "'I completed my painting of my 2D girlfriend!'"
+                + ");"
+                );
+                
+                createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,START,END,DURATION,DESCR)"
+                + "VALUES('Daily',"
+                + "'1020',"
+                + "'1140',"
+                + "'120',"
+                + "'I went to Woolies to buy some groceries'"
+                + ");"
+                );
+                
+                createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,START,END,DURATION,DESCR)"
+                + "VALUES('Relationships',"
+                + "'1020',"
+                + "'1140',"
+                + "'120',"
+                + "'I had dinner with my family tonight'"
+                + ");"
+                );
+                
             } else {
                 System.out.println("Timesheets table exists");
             }
