@@ -85,8 +85,7 @@ public class PieChartController implements Initializable {
                     );
         int relationshipRs = relationshipsRs.getInt(1);
             relationshipsLabel.setText(String.valueOf(relationshipsRs.getInt(1)));
-            
-    
+
     ResultSet wellnessRs = db.getResultSet("SELECT COUNT(duration) from TIMESHEETS "
                     + "WHERE CATEGORYNAME = 'Wellness' "
                     );
@@ -98,8 +97,7 @@ public class PieChartController implements Initializable {
                     );
         int relaxationCount = relaxationRs.getInt(1);
             relaxationLabel.setText(String.valueOf(relaxationRs.getInt(1)));
-    
-            
+                
     ResultSet projectsRs = db.getResultSet("SELECT COUNT(duration) from TIMESHEETS "
                     + "WHERE CATEGORYNAME = 'Projects' "
                     );
@@ -111,18 +109,16 @@ public class PieChartController implements Initializable {
                     );
         int dailyCount = dailyRs.getInt(1);
             dailyLabel.setText(String.valueOf(dailyRs.getInt(1)));        
-            
-
         
         try {
                 lifePieChart.getData().clear();
                 ObservableList<PieChart.Data> lifePieChartData = FXCollections.observableArrayList(
-                        new PieChart.Data("Work", workRs.getInt(1)),
-                        new PieChart.Data("Relationships", relationshipsRs.getInt(1)),
-                        new PieChart.Data("Projects", projectsRs.getInt(1)));
-                        new PieChart.Data("Wellness", wellnessRs.getInt(1));
-                        new PieChart.Data("Daily", dailyRs.getInt(1));
-                        new PieChart.Data("Relaxtion", relaxationRs.getInt(1));
+                    new PieChart.Data("Work", workRs.getInt(1)),
+                    new PieChart.Data("Relationships", relationshipsRs.getInt(1)),
+                    new PieChart.Data("Projects", projectsRs.getInt(1)));
+                    new PieChart.Data("Wellness", wellnessRs.getInt(1));
+                    new PieChart.Data("Daily", dailyRs.getInt(1));
+                    new PieChart.Data("Relaxtion", relaxationRs.getInt(1));
 
                 lifePieChart.setData(lifePieChartData);
 
