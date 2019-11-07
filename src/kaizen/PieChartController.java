@@ -143,6 +143,10 @@ public class PieChartController implements Initializable {
         pageSwitcher.switcher(event,"Settings.fxml"); //TO CHANGE WHEN PAGE IS MADE
     }
     @FXML
+    private void handleTimeDashboard(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event,"Timesheets.fxml"); 
+    }
+    @FXML
     private void handleSignOut(ActionEvent event) throws IOException{
         pageSwitcher.switcher(event,"LoginScreen.fxml");
     }
