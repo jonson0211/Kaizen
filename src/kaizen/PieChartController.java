@@ -83,8 +83,35 @@ public class PieChartController implements Initializable {
     ResultSet relationshipsRs = db.getResultSet("SELECT COUNT(duration) from TIMESHEETS "
                     + "WHERE CATEGORYNAME = 'Relationships' "
                     );
-        int relationshipCount = workRs.getInt(1);
-            workLabel.setText(String.valueOf(workRs.getInt(1)));    
+        int relationshipRs = relationshipsRs.getInt(1);
+            relationshipsLabel.setText(String.valueOf(relationshipsRs.getInt(1)));
+            
+    
+    ResultSet wellnessRs = db.getResultSet("SELECT COUNT(duration) from TIMESHEETS "
+                    + "WHERE CATEGORYNAME = 'Wellness' "
+                    );
+        int wellnessCount = wellnessRs.getInt(1);
+            wellnessLabel.setText(String.valueOf(wellnessRs.getInt(1))); 
+    
+    ResultSet relaxationRs = db.getResultSet("SELECT COUNT(duration) from TIMESHEETS "
+                    + "WHERE CATEGORYNAME = 'Relaxation' "
+                    );
+        int relaxationCount = relaxationRs.getInt(1);
+            relaxationLabel.setText(String.valueOf(relaxationRs.getInt(1)));
+    
+            
+    ResultSet projectsRs = db.getResultSet("SELECT COUNT(duration) from TIMESHEETS "
+                    + "WHERE CATEGORYNAME = 'Projects' "
+                    );
+        int projectsCount = projectsRs.getInt(1);
+            projectsLabel.setText(String.valueOf(projectsRs.getInt(1))); 
+            
+    ResultSet dailyRs = db.getResultSet("SELECT COUNT(duration) from TIMESHEETS "
+                    + "WHERE CATEGORYNAME = 'Daily' "
+                    );
+        int dailyCount = dailyRs.getInt(1);
+            dailyLabel.setText(String.valueOf(dailyRs.getInt(1)));        
+            
 
         
         try {
@@ -100,7 +127,7 @@ public class PieChartController implements Initializable {
                 lifePieChart.setData(lifePieChartData);
 
             } catch (Exception e) {
-                System.out.println("can't produce Pie graph");
+                System.out.println("Unable to produce Pie Chart!");
                 e.printStackTrace();
 
     }
