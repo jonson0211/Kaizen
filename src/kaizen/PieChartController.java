@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package kaizen;
 
 import java.io.IOException;
@@ -34,22 +29,14 @@ public class PieChartController implements Initializable {
     private ToggleButton settingsButton;
     @FXML
     private ToggleButton kanbanBoard;
-    @FXML
-    private ToggleButton deepFocus;
-    @FXML
-    private ToggleButton taskTracker;
-    @FXML
-    private ToggleButton about;
-    @FXML
-    private ToggleButton timeDashboard;
-    @FXML
-    private ToggleButton doDateView;
-    @FXML
-    private ToggleButton dueDateView;
-    @FXML
-    private Label welcome;
-    @FXML
-    private Label welcomeSubheading;
+    @FXML private ToggleButton deepFocus;
+    @FXML private ToggleButton taskTracker;
+    @FXML private ToggleButton about;
+    @FXML private ToggleButton timeDashboard;
+    @FXML private ToggleButton doDateView;
+    @FXML private ToggleButton dueDateView;
+    @FXML private Label welcome;
+    @FXML private Label welcomeSubheading;
     //menu^//
     
     @FXML private PieChart lifePieChart;
@@ -71,6 +58,7 @@ public class PieChartController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
     }
         //Getting time spent data for piechart
     @FXML public void refreshPie() throws SQLException{    
@@ -126,7 +114,7 @@ public class PieChartController implements Initializable {
                 System.out.println("Unable to produce Pie Chart!");
                 e.printStackTrace();
 
-    }
+        }
     }
     
     //switch to daily learnings
