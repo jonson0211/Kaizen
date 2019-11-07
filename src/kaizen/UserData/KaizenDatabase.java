@@ -16,7 +16,7 @@ public class KaizenDatabase {
     public static void openConnection() {
         if (conn == null) {
             try {
-                conn = DriverManager.getConnection("jdbc:sqlite:mydatabase.db");
+                conn = DriverManager.getConnection("jdbc:sqlite:KaizenDatabase.db");
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
@@ -57,10 +57,10 @@ public class KaizenDatabase {
             rs = dbmd.getTables(null, null, "LOGIN", null);
             if (!rs.next()) {
                 createUserTable = conn.prepareStatement("CREATE TABLE LOGIN ("
-                        + "FNAME CHAR(150),"
-                        + "LNAME CHAR(150),"
-                        + "USERNAME PRIMARY KEY VARCHAR(150),"
-                        + "PASSWORD VARCHAR(150))");
+                        + "FNAME TEXT NOT NULL,"
+                        + "LNAME TEXT NOT NULL,"
+                        + "USERNAME TEXT PRIMARY KEY NOT NULL,"
+                        + "PASSWORD TEXT NOT NULL)");
                 createUserTable.execute();
                 System.out.println("User table created");
                 createDemoInstance = conn.prepareStatement("INSERT INTO LOGIN(FNAME, LNAME, USERNAME, PASSWORD) "
@@ -84,7 +84,7 @@ public class KaizenDatabase {
             rs = dbmd.getTables(null, null, "CATEGORY", null);
             if (!rs.next()) {
                 createCategoryTable = conn.prepareStatement("CREATE TABLE CATEGORY ("
-                        + "CATEGORYNAME VARCHAR(150) PRIMARY KEY"                        
+                        + "CATEGORYNAME TEXT PRIMARY KEY"                        
                         +");");
                 createCategoryTable.execute();
                 System.out.println("CATEGORY table created");
@@ -113,6 +113,8 @@ public class KaizenDatabase {
                         + " TASK_ID INTEGER PRIMARY KEY AUTOINCREMENT"
                         + ", USERNAME TEXT NOT NULL"
                         + ", TITLE TEXT NOT NULL"
+                        + ", CATEGORYNAME TEXT NOT NULL"
+                        
                         + ", DESCRIPTION TEXT NOT NULL"
                         + ", DO_DATE TEXT NOT NULL"
                         + ", DUE_DATE TEXT NOT NULL"
@@ -153,7 +155,7 @@ public class KaizenDatabase {
                 
                 
                 //insert dummy data 3
-                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITYY) "
+                createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
                         + "'lienzhu', "
                         + "'Watch new My Hero Academia new episode', "
@@ -275,9 +277,10 @@ public class KaizenDatabase {
             rs = dbmd.getTables(null, null, "TIMESHEETS", null);
             if (!rs.next()) {
                 createTimesheetsTable = conn.prepareStatement("CREATE TABLE TIMESHEETS ("
-                        + "START TIME(0) NOT NULL, "
-                        + "END TIME(0) NOT NULL, "
-                        + "DESCR VARCHAR(300) NOT NULL,"
+                        + "CATEGORYNAME TEXT NOT NULL,"
+                        + "START TEXT NOT NULL, "
+                        + "END TEXT NOT NULL, "
+                        + "DESCR TEXT NOT NULL,"
                         + "FOREIGN KEY (CATEGORYNAME)"
                         + "REFERENCES CATEGORY(CATEGORYNAME)"
                         + ");");
