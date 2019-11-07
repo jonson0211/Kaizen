@@ -51,7 +51,7 @@
    <right>
       <BorderPane prefHeight="720.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
          <center>
-            <GridPane BorderPane.alignment="CENTER">
+            <GridPane fx:id="grid" BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -61,6 +61,14 @@
               </rowConstraints>
                <children>
                   <PieChart fx:id="lifePieChart" title="Pie Chart Of My Life" />
+                  <Button fx:id="logInTime" mnemonicParsing="false" onAction="#handleLogInTime" text="Log in time">
+                     <GridPane.margin>
+                        <Insets left="40.0" top="250.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
                </children>
             </GridPane>
          </center></BorderPane>

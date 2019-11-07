@@ -11,12 +11,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import kaizen.UserData.KaizenDatabase;
 
 public class PieChartController implements Initializable {
@@ -55,6 +59,7 @@ public class PieChartController implements Initializable {
     @FXML private Label wellnessLabel;
     @FXML private Label dailyLabel;
     @FXML private Label relaxationLabel;
+    @FXML private Button logInTime;
     @FXML private GridPane grid;
             
     ObservableList<PieChart.Data> lifePieChartData;
@@ -137,7 +142,26 @@ public class PieChartController implements Initializable {
     
     
     //switch to daily learnings
-       
+//    @FXML
+//    private void handlePopUpScreenAction(ActionEvent event) throws IOException {
+//        try {
+//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Timesheets.fxml"));
+//            Parent root1 = (Parent) fxmlLoader.load();
+//            Stage stage = new Stage();
+//            stage.setTitle("New entry");
+//            stage.setScene(new Scene(root1));
+//            stage.show();
+
+//        } catch (Exception e) {
+//            System.out.println("Cannot load this new window!");
+//        }
+//    }
+
+    @FXML
+    private void handleLogInTime(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event, "Timesheets.fxml");
+    }
+    
     @FXML
     private void handleKanbanBoard(ActionEvent event) throws IOException{
         pageSwitcher.switcher(event, "KanbanBoard.fxml");
