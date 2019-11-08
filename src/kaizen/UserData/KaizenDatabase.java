@@ -13,7 +13,7 @@ public class KaizenDatabase {
 
     public static Connection conn;
 
-    public static void openConnection() {
+    public static Connection openConnection() {
         if (conn == null) {
             try {
                 conn = DriverManager.getConnection("jdbc:sqlite:KaizenDatabase.db");
@@ -21,6 +21,7 @@ public class KaizenDatabase {
                 ex.printStackTrace();
             }
         }
+        return conn;
     }
 
      public ResultSet getResultSet(String sqlstatement) throws SQLException {

@@ -174,9 +174,9 @@ public class DailyLearningsController implements Initializable {
     }
     
         private void loadTable(){
-        didWellColumn.setCellValueFactory(new PropertyValueFactory<learningsDidWell, String>("DID_WELL"));
+        didWellColumn.setCellValueFactory(new PropertyValueFactory<learningsDidWell, String>("didWell"));
         doBetterColumn.setCellValueFactory(new PropertyValueFactory<learningsDoBetter, String>("DO_BETTER"));
-        didWellCount.setCellValueFactory(new PropertyValueFactory<learningsDidWell, Number>("COUNT(*)"));
+        didWellCount.setCellValueFactory(new PropertyValueFactory<learningsDidWell, Number>("didWellCount"));
         doBetterCount.setCellValueFactory(new PropertyValueFactory<learningsDoBetter, Number>("COUNT(*)"));
         
         didWellView.setItems(getLearningsDidWell());

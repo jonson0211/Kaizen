@@ -75,7 +75,7 @@ public class PopUpLearningsController implements Initializable {
                     + "WHERE USERNAME = '" + LoginScreenController.loginUsername + "';");
             
             while (tableWell.next()){
-                well30View.add(new learningsDidWell(tableWell.getString(1), tableWell.getInt(2)));
+                well30View.add(new learningsDidWell(tableWell.getInt("didWellCount"), tableWell.getString("didWellCount")));
             }
         } catch (Exception e){
             e.printStackTrace();

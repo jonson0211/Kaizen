@@ -5,39 +5,40 @@
  */
 package kaizen.DataModels;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 /**
  *
  * @author wongad1
  */
 public class learningsDidWell {
-    private StringProperty didWell;
-    private IntegerProperty didWellCount;
-
-    public learningsDidWell(String didWell, int count){
-        this.didWell = new SimpleStringProperty(didWell);
-        this.didWellCount = new SimpleIntegerProperty(count);
-    } 
-
-    public String getDidWell(){
-        return didWell.get();
-    }
     
-    public StringProperty getDidWellProperty() {
+
+    String didWell;
+    Integer didWellCount;
+    
+    public learningsDidWell(Integer didWellCount, String didWell) {
+        this.didWellCount = didWellCount;
+        this.didWell = didWell;
+    }
+
+    public Integer getDidWellCount() {
+        return didWellCount;
+    }
+
+    public void setDidWellCount(Integer didWellCount) {
+        this.didWellCount = didWellCount;
+    }
+
+    public String getDidWell() {
         return didWell;
     }
 
-    public IntegerProperty getDidWellCount() {
-        return didWellCount;
+    public void setDidWell(String didWell) {
+        this.didWell = didWell;
     }
     
-    public IntegerProperty getDidWellCountProperty(){
-        return didWellCount;
-    }
     
 }
+
+    
+    
     
