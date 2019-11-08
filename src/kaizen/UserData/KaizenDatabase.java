@@ -277,11 +277,11 @@ public class KaizenDatabase {
             rs = dbmd.getTables(null, null, "TIMESHEETS", null);
             if (!rs.next()) {
                 createTimesheetsTable = conn.prepareStatement("CREATE TABLE TIMESHEETS ("
-                        + "CATEGORYNAME TEXT NOT NULL,"
-                        + "START TEXT NOT NULL, " //integer
-                        + "END TEXT NOT NULL, " //integer
-                        + "DURATION INTEGER NOT NULL" 
-                        + "DESCR TEXT NOT NULL,"
+                        + "CATEGORYNAME TEXT,"
+                        + "START TEXT, " //integer
+                        + "END TEXT, " //integer
+                        + "DURATION INTEGER," 
+                        + "DESCR TEXT,"
                         + "FOREIGN KEY (CATEGORYNAME)"
                         + "REFERENCES CATEGORY(CATEGORYNAME)"
                         + ");");
@@ -376,12 +376,12 @@ public class KaizenDatabase {
                         + ", ENTRY_DATE TEXT NOT NULL"
                         + ", DID_WELL TEXT NOT NULL "
                         + ", BE_BETTER TEXT NOT NULL "
-                        + ";)");
+                        + ");");
                 createDailyLearningsTable.execute();
                 System.out.println("Daily Learnings table created");
                 createDemoInstance = conn.prepareStatement("INSERT INTO LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
                         + "VALUES ('lienzhu', TO_DATE('03/11/2019','DDMMYYY'), 'Today I spent 40 minutes exercising intensely', "
-                        + "'Today I didn't watch the newest episode of MHA...'));");
+                        + "'Today I didn't watch the newest episode of MHA...');");
                 createDemoInstance.execute();
             } else {
                 System.out.println("Daily Learnings table exists");

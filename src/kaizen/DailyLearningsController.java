@@ -125,8 +125,8 @@ public class DailyLearningsController implements Initializable {
         answerTwo.setValue("Your lesson today...");
         answerTwo.setEditable(true);
         answerTwo.setItems(answerTwos);
-        FillComboOne();
-        FillComboTwo();
+        //FillComboOne();
+        //FillComboTwo();
         confirmEntry.setVisible(false);
         viewPast.setVisible(true);
     }    

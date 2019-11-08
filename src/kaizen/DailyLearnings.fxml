@@ -34,9 +34,9 @@
          <bottom>
             <VBox prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <ToggleButton fx:id="about" mnemonicParsing="false" onAction="handleAboutScreen" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" />
-                  <ToggleButton fx:id="settings" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="handleSettings" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" />
-                  <Button fx:id="signOut" mnemonicParsing="false" onAction="handleSignOut" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" />
+                  <ToggleButton fx:id="about" mnemonicParsing="false" onAction="#handleAboutScreen" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" />
+                  <ToggleButton fx:id="settings" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleSettings" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" />
+                  <ToggleButton fx:id="signOut" mnemonicParsing="false" onAction="#handleSignOut" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" />
                </children></VBox>
          </bottom>
          <top>
@@ -121,7 +121,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="addLearning" mnemonicParsing="false" onAction="updateAnswers" text="Add learnings" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <Button fx:id="addLearning" mnemonicParsing="false" onAction="#updateAnswers" text="Add learnings" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets bottom="200.0" top="-100.0" />
                      </GridPane.margin>
