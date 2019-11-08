@@ -10,5 +10,6 @@ package kaizen;
  * @author jonso
  */
 public class TaskDataAccessor {
-    
+    //Query
+    //"SELECT TITLE, CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY FROM TASKS"
 }
