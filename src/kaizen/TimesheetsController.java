@@ -25,6 +25,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
 public class TimesheetsController implements Initializable {
     @FXML
@@ -44,7 +48,12 @@ public class TimesheetsController implements Initializable {
     private ComboBox<String> timeEndMinComboBox;
     ObservableList<String> TEM = FXCollections.observableArrayList("0","5","10","15","20","25","30",
             "35","40", "45","50","55");
-      
+    
+    @FXML private AnchorPane anchor;
+    @FXML private BorderPane border;
+    @FXML private VBox box;
+    @FXML private Text text;
+    
     @FXML
     private ToggleButton kbBoard;
     
@@ -120,7 +129,9 @@ public class TimesheetsController implements Initializable {
         timeStartMinComboBox.setItems(TSM);
         timeEndHourComboBox.setItems(TEH);
         timeEndMinComboBox.setItems(TEM);
-    
+    TextArea description = new TextArea();
+    description.getText();
+    System.out.print(description);
        //TextArea description = new TextArea();
          
     }
@@ -150,9 +161,11 @@ public class TimesheetsController implements Initializable {
         
         
        
-        Toggle cat = toggleGroup.getSelectedToggle();
-        String desc = description.getText();
-        
+        Toggle cat;
+        cat = toggleGroup.getSelectedToggle();
+        String desc;
+        desc = description.getText();
+        System.out.println(desc);
 
         try {
             addTimesheet.insertStatement("INSERT INTO TIMESHEETS (START, END, DURATION, DESCR, CATEGORYNAME)"
