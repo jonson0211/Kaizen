@@ -279,8 +279,8 @@ public class KaizenDatabase {
             if (!rs.next()) {
                 createTimesheetsTable = conn.prepareStatement("CREATE TABLE TIMESHEETS ("
                         + "CATEGORYNAME TEXT,"
-                        + "START TEXT, " //integer
-                        + "END TEXT, " //integer
+                        + "START INTEGER, " //integer
+                        + "END INTEGER, " //integer
                         + "DURATION INTEGER," 
                         + "DESCR TEXT,"
                         + "FOREIGN KEY (CATEGORYNAME)"
