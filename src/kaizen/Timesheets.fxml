@@ -1,218 +1,171 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
-<?import java.net.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="vbox-bar" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.TimesheetsController">
-   <left>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="menu-panel" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
-         <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-               <children>
-                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="KANBAN BOARD" />
-                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DEEP FOCUS" />
-                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TASK TRACKER" />
-                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="current-menu-toggle" stylesheets="@stylesheet.css" text="TIME DASHBOARD" />
-                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" />
-               </children>
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.TimesheetsController">
+   <children>
+      <ImageView fitHeight="600.0" fitWidth="400.0" layoutX="7.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <GridPane layoutX="150.0" layoutY="5.0" prefHeight="783.0" prefWidth="460.0" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="5.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="121.0" minHeight="2.0" prefHeight="96.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="691.0" minHeight="10.0" prefHeight="406.274658203125" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="691.0" minHeight="10.0" prefHeight="338.95196533203125" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="343.6373291015625" minHeight="0.0" prefHeight="139.04803466796875" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label prefHeight="53.0" prefWidth="670.0" styleClass="large-label" stylesheets="@stylesheet.css" text="What did you spend time on today?">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Button fx:id="backToTimeDashboard" mnemonicParsing="false" onAction="#handleBackAction" prefHeight="33.0" prefWidth="73.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Back" GridPane.rowIndex="3" />
+            <ToggleButton fx:id="categoryWork" mnemonicParsing="false" text="Work" GridPane.rowIndex="1">
+               <toggleGroup>
+                  <ToggleGroup fx:id="toggleGroup" />
+               </toggleGroup>
+               <GridPane.margin>
+                  <Insets bottom="200.0" left="50.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="categoryDaily" mnemonicParsing="false" text="Daily" toggleGroup="$toggleGroup" GridPane.rowIndex="1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="categoryRelationships" mnemonicParsing="false" text="Relationships" toggleGroup="$toggleGroup" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="350.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="categoryRelaxation" mnemonicParsing="false" text="Relaxation " textAlignment="CENTER" toggleGroup="$toggleGroup" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="200.0" left="350.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="categoryWellness" mnemonicParsing="false" text="Wellness" toggleGroup="$toggleGroup" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="650.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton mnemonicParsing="false" text="Projects" toggleGroup="$toggleGroup" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="200.0" left="650.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </ToggleButton>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="What time did you start?" GridPane.rowIndex="1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="50.0" top="200.0" />
+               </GridPane.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="What time did you end?" GridPane.rowIndex="1">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="50.0" top="320.0" />
+               </GridPane.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time spent on activity:" GridPane.rowIndex="2">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="200.0" left="50.0" />
+               </GridPane.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Describe your activity:" GridPane.rowIndex="2">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="75.0" left="50.0" />
+               </GridPane.margin>
+            </Text>
+            <TextArea fx:id="descriptionText" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="350.0" right="150.0" top="100.0" />
+               </GridPane.margin>
+            </TextArea>
+            <Button fx:id="submit" mnemonicParsing="false" onAction="#handleSubmitAction" text="Submit" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="450.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <TextField fx:id="timeStartHrField" prefHeight="27.0" prefWidth="152.0" promptText="Hour" GridPane.rowIndex="1">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
-            </VBox>
-         </center>
-         <bottom>
-            <VBox prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" />
-                  <ToggleButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" />
-                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" />
-               </children></VBox>
-         </bottom>
-         <top>
-            <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="border-bar" BorderPane.alignment="CENTER">
-               <image>
-                  <Image url="@Resources/Kaizen%20Innovations%20(All%20White).png" />
-               </image>
-            </ImageView>
-         </top>
-      </BorderPane>
-   </left>
-   <right>
-      <BorderPane prefHeight="200.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
-         <top>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="What did you spend time on today?" translateY="75.0" BorderPane.alignment="TOP_CENTER">
+               <GridPane.margin>
+                  <Insets left="350.0" right="400.0" top="200.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label fx:id="duration" text="Duration of activity" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="200.0" left="350.0" right="150.0" />
+               </GridPane.margin>
                <font>
-                  <Font size="46.0" />
+                  <Font size="20.0" />
                </font>
-               <BorderPane.margin>
+            </Label>
+            <TextField fx:id="timeStartMinField" prefHeight="27.0" prefWidth="152.0" promptText="Minute" GridPane.rowIndex="1">
+               <opaqueInsets>
                   <Insets />
-               </BorderPane.margin>
-            </Text>
-         </top>
-         <center>
-            <AnchorPane prefHeight="370.0" prefWidth="929.0" BorderPane.alignment="CENTER">
-               <children>
-                  <GridPane layoutX="195.0" layoutY="102.0" prefHeight="201.0" prefWidth="1184.0" BorderPane.alignment="CENTER">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <RadioButton fx:id="categoryRelaxation" mnemonicParsing="false" text="Relaxation" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="toggleGroup" />
-                           </toggleGroup>
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </RadioButton>
-                        <RadioButton fx:id="categoryWork" mnemonicParsing="false" text="Work" toggleGroup="$toggleGroup" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </RadioButton>
-                        <RadioButton fx:id="categoryProjects" mnemonicParsing="false" text="Projects" toggleGroup="$toggleGroup" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </RadioButton>
-                        <RadioButton fx:id="categoryDaily" mnemonicParsing="false" text="Daily" toggleGroup="$toggleGroup" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </RadioButton>
-                        <RadioButton fx:id="categoryRelationships" mnemonicParsing="false" text="Relationships" toggleGroup="$toggleGroup" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets />
-                           </GridPane.margin>
-                           <padding>
-                              <Insets left="25.0" />
-                           </padding>
-                        </RadioButton>
-                        <RadioButton fx:id="categoryWellness" mnemonicParsing="false" text="Wellness" toggleGroup="$toggleGroup" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                           <padding>
-                              <Insets left="11.0" />
-                           </padding>
-                        </RadioButton>
-                     </children>
-                  </GridPane>
-                  <GridPane layoutX="337.0" layoutY="392.0" prefHeight="367.0" prefWidth="937.0" vgap="10.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="618.9674682617188" minWidth="10.0" prefWidth="359.553466796875" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="823.744384765625" minWidth="10.0" prefWidth="538.3817138671875" />
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="823.744384765625" minWidth="10.0" prefWidth="103.6182861328125" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints maxHeight="74.59051513671875" minHeight="10.0" prefHeight="39.30474853515625" vgrow="SOMETIMES" />
-                        <RowConstraints maxHeight="128.69525146484375" minHeight="10.0" prefHeight="128.69525146484375" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="What time did you start?">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="What time did you end?" GridPane.rowIndex="1">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time spent on activity:" GridPane.rowIndex="2">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <Label fx:id="duration" text="Duration of Activity" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Describe your activity:" GridPane.rowIndex="3" GridPane.valignment="TOP">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets top="10.0" />
-                           </GridPane.margin>
-                        </Text>
-                        <TextArea prefHeight="119.0" prefWidth="598.0" promptText="Enter activity description" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets top="10.0" />
-                           </GridPane.margin>
-                        </TextArea>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text=":" GridPane.columnIndex="1">
-                           <GridPane.margin>
-                              <Insets left="165.0" />
-                           </GridPane.margin>
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text=":" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                           <GridPane.margin>
-                              <Insets left="165.0" />
-                           </GridPane.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="minutes" translateX="250.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Text>
-                        <ComboBox fx:id="timeEndHourComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <ComboBox fx:id="timeEndMinComboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <GridPane.margin>
-                              <Insets left="190.0" />
-                           </GridPane.margin>
-                        </ComboBox>
-                        <ComboBox fx:id="timeStartHourComboBox" prefWidth="150.0" GridPane.columnIndex="1" />
-                        <ComboBox fx:id="timeStartMinComboBox" prefWidth="150.0" GridPane.columnIndex="1">
-                           <GridPane.margin>
-                              <Insets left="190.0" />
-                           </GridPane.margin>
-                        </ComboBox>
-                     </children>
-                  </GridPane>
-                  <Button fx:id="submit" layoutX="576.0" layoutY="338.0" mnemonicParsing="false" onAction="#handleSubmitAction" prefHeight="58.0" prefWidth="163.0" text="Submit">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Button>
-                  <Button layoutX="334.0" layoutY="821.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="163.0" text="Back">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
-         </center></BorderPane>
-   </right>
-</BorderPane>
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets left="500.0" right="250.0" top="200.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="timeEndHrField" prefHeight="27.0" prefWidth="152.0" promptText="Minute" text="Hour" GridPane.rowIndex="1">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets left="350.0" right="400.0" top="320.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="timeEndMinField" prefHeight="27.0" prefWidth="152.0" promptText="Minute" GridPane.rowIndex="1">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets left="500.0" right="250.0" top="320.0" />
+               </GridPane.margin>
+            </TextField>
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
