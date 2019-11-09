@@ -263,10 +263,10 @@ public class TimesheetsController implements Initializable {
             //System.out.print(catName);
             System.out.println(desc);
             System.out.println(duration);
-            System.out.println(toggleGroupValue);
+            //System.out.println(toggleGroupValue);
             
             addTimesheet.insertStatement("INSERT INTO TIMESHEETS (CATEGORYNAME, START, END, DURATION, DESCR)"
-                    + " VALUES('"+ toggleGroupValue + "', '"+ startCombined + "', '"+  endCombined + "', '" +
+                    + " VALUES('"+ workTest /**toggleGroupValue**/ + "', '"+ startCombined + "', '"+  endCombined + "', '" +
                     duration + "', '" + desc + "');");
             durationLabel.setText(durationText);
             durationLabel.setVisible(true);

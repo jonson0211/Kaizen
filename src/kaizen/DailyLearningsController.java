@@ -145,7 +145,7 @@ public class DailyLearningsController implements Initializable {
                     + "WHERE USERNAME = '" + LoginScreenController.loginUsername + "';");
             
             while (rsDidWellTable.next()){
-                didWellList.add(new learningsDidWell(rsDidWellTable.getString(1), rsDidWellTable.getInt(2)));
+                //didWellList.add(new learningsDidWell(rsDidWellTable.getString(1), rsDidWellTable.getInt(2)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
