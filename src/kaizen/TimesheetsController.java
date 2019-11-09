@@ -164,12 +164,16 @@ public class TimesheetsController implements Initializable {
         Toggle cat;
         cat = toggleGroup.getSelectedToggle();
         String desc;
-        desc = description.getText();
-        System.out.println(desc);
+        //desc = description.getText();
+        //System.out.println(desc);
 
         try {
             addTimesheet.insertStatement("INSERT INTO TIMESHEETS (START, END, DURATION, DESCR, CATEGORYNAME)"
-                    + " VALUES(" + combinedStart + ", "+  combinedEnd + ", " + duration+ ", " + desc + ", "+ cat);
+                    + " VALUES(" + combinedStart + ", "+  combinedEnd + ", " +
+                    //duration+ 
+                    ", " 
+                    //+ desc + ", "
+                    + cat);
        //**test if duration is calculated**// 
        System.out.println(duration);
         } catch (Exception ex) {

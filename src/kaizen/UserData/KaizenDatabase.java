@@ -380,7 +380,8 @@ public class KaizenDatabase {
                 createDailyLearningsTable.execute();
                 System.out.println("Daily Learnings table created");
                 createDemoInstance = conn.prepareStatement("INSERT INTO LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
-                        + "VALUES ('lienzhu', TO_DATE('03/11/2019','DDMMYYY'), 'Today I spent 40 minutes exercising intensely', "
+                        + "VALUES ('lienzhu', TO_DATE('03/11/2019','DDMMYYY'), "
+                        + "'Today I spent 40 minutes exercising intensely', "
                         + "'Today I didn't watch the newest episode of MHA...');");
                 createDemoInstance.execute();
             } else {
