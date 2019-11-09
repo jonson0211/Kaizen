@@ -170,7 +170,7 @@ public class TimesheetsController implements Initializable {
     description.getText();
     System.out.print(description);
     * **/
-    //durationLabel.setVisible(false);
+    durationLabel.setVisible(false);
        //TextArea description = new TextArea();
          
        
@@ -266,7 +266,7 @@ public class TimesheetsController implements Initializable {
             //System.out.println(toggleGroupValue);
             
             addTimesheet.insertStatement("INSERT INTO TIMESHEETS (CATEGORYNAME, START, END, DURATION, DESCR)"
-                    + " VALUES('"+ workTest /**toggleGroupValue**/ + "', '"+ startCombined + "', '"+  endCombined + "', '" +
+                    + " VALUES('"+ workTest.getText() /**toggleGroupValue**/ + "', '"+ startCombined + "', '"+  endCombined + "', '" +
                     duration + "', '" + desc + "');");
             durationLabel.setText(durationText);
             durationLabel.setVisible(true);

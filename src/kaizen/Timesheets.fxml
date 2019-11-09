@@ -133,7 +133,7 @@
                   <Insets left="350.0" right="400.0" top="200.0" />
                </GridPane.margin>
             </TextField>
-            <Label fx:id="duration" text="Duration of activity" GridPane.rowIndex="2">
+            <Label fx:id="durationLabel" text="Duration of activity" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="200.0" left="350.0" right="150.0" />
                </GridPane.margin>
