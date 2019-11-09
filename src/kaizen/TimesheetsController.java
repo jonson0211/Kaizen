@@ -1,6 +1,7 @@
 
 package kaizen;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -17,6 +18,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ChoiceBox;
@@ -96,6 +99,11 @@ public class TimesheetsController implements Initializable {
     @FXML
     private RadioButton categoryProjects;
      **/
+    
+    @FXML
+    private RadioButton workTest;
+    //RadioButton workTest.setText("Work");
+            
     @FXML
     private ToggleButton categoryWork;
     
@@ -136,8 +144,10 @@ public class TimesheetsController implements Initializable {
     @FXML
     private Button back;
     
-     
-    ToggleGroup toggleGroup = new ToggleGroup();
+     ToggleGroup toggleGroupTest = new ToggleGroup(); 
+    
+    
+    //ToggleGroup toggleGroup = new ToggleGroup();
  
     KaizenDatabase addTimesheet = new KaizenDatabase();
     
@@ -150,7 +160,9 @@ public class TimesheetsController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //timeStartHourComboBox.setItems(TSH);
+       
+
+//timeStartHourComboBox.setItems(TSH);
         //timeStartMinComboBox.setItems(TSM);
         //timeEndHourComboBox.setItems(TEH);
         //timeEndMinComboBox.setItems(TEM);
@@ -161,6 +173,10 @@ public class TimesheetsController implements Initializable {
     //durationLabel.setVisible(false);
        //TextArea description = new TextArea();
          
+       
+      
+       
+       
     }
     
     
@@ -186,7 +202,33 @@ public class TimesheetsController implements Initializable {
         //int endSum =(endHRTime*60 + endMinTime);
         //int duration = (endSum - startSum);
         
-        Toggle catName = toggleGroup.getSelectedToggle();
+        //Toggle catName = toggleGroup.getSelectedToggle();
+        
+        //RadioButton selectedRadioButton = (RadioButton) toggleGroupTest.getSelectedToggle();
+        //String toggleGroupValue = selectedRadioButton.getText();
+       // toggleGroupValue.setText(selectedRadioButton.getText());
+       
+       final ToggleGroup group = new ToggleGroup();
+       
+       group.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+      public void changed(ObservableValue<? extends Toggle> ov, Toggle toggle,Toggle new_toggle) {
+          System.out.println((Color) group.getSelectedToggle().getUserData());
+      }
+      }); 
+        
+       ToggleButton tb1 = new ToggleButton("A");
+    tb1.setToggleGroup(group);
+    tb1.setUserData(Color.LIGHTGREEN);
+    tb1.setSelected(true);
+       
+    ToggleButton tb2 = new ToggleButton("B");
+    tb2.setToggleGroup(group);
+    tb2.setUserData(Color.LIGHTBLUE);
+    ToggleButton tb3 = new ToggleButton("C");
+    tb3.setToggleGroup(group);
+    tb3.setUserData(Color.SALMON);
+    
+    
         String timeStartHr = timeStartHrField.getText();
         String timeStartMin = timeStartMinField.getText();
         String timeEndHr = timeEndHrField.getText();
@@ -206,6 +248,8 @@ public class TimesheetsController implements Initializable {
         String durationText = Double.toString(duration);
         String desc = descriptionText.getText();
         
+        //this.workTest.setToggleGroup(toggleGroupTest);
+        
         //Toggle cat;
         //cat = toggleGroup.getSelectedToggle();
         
@@ -216,12 +260,13 @@ public class TimesheetsController implements Initializable {
             System.out.print(duration);
             System.out.print(startCombined);
             System.out.print(endCombined);
-            System.out.print(catName);
+            //System.out.print(catName);
             System.out.println(desc);
             System.out.println(duration);
+            System.out.println(toggleGroupValue);
             
             addTimesheet.insertStatement("INSERT INTO TIMESHEETS (CATEGORYNAME, START, END, DURATION, DESCR)"
-                    + " VALUES('"+ catName + "', '"+ startCombined + "', '"+  endCombined + "', '" +
+                    + " VALUES('"+ toggleGroupValue + "', '"+ startCombined + "', '"+  endCombined + "', '" +
                     duration + "', '" + desc + "');");
             durationLabel.setText(durationText);
             durationLabel.setVisible(true);
