@@ -35,7 +35,7 @@ import javafx.stage.Stage;
 import kaizen.DataModels.learningsDidWell;
 import kaizen.DataModels.learningsDoBetter;
 import kaizen.UserData.KaizenDatabase;
-
+import java.time.format.DateTimeFormatter;
 /**
  * FXML Controller class
  *
@@ -47,8 +47,8 @@ public class DailyLearningsController implements Initializable {
     
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
     
-    ObservableList<String> answerOnes = FXCollections.observableArrayList("I went to the gym today", "I played the piano");
-    ObservableList<String> answerTwos = FXCollections.observableArrayList("I want to spend more time with my family");
+    ObservableList<String> answerOnes = FXCollections.observableArrayList("I went to the gym today", "I played the piano", "I didn't procrastinate", "I gave a good peer review");
+    ObservableList<String> answerTwos = FXCollections.observableArrayList("I want to spend more time with my family", "I could have given better marks to my peers", "I should not have marked too harshly");
     
     @FXML
     private ComboBox<String> answerOne;
@@ -132,7 +132,7 @@ public class DailyLearningsController implements Initializable {
     }    
     
     //return observable list of done well and do betters
-    
+ /*   
     public ObservableList<learningsDidWell> getLearningsDidWell(){
         
         ObservableList<learningsDidWell> didWellList = FXCollections.observableArrayList();
@@ -181,7 +181,7 @@ public class DailyLearningsController implements Initializable {
         
         didWellView.setItems(getLearningsDidWell());
         doBetterView.setItems(getLearningsDoBetter());
-    }
+    }*/
     //input learnings into the table summary
     //update learnings
     @FXML
@@ -189,7 +189,8 @@ public class DailyLearningsController implements Initializable {
         String answerOneString = (String) answerOne.getValue();
         String answerTwoString = (String) answerTwo.getValue();
         String date = datePick.getValue().format(DateTimeFormatter.ofPattern("dd/mm/yyyy"));
-        userLearn.insertStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) VALUES (" + LoginScreenController.loginUsername + "," + date + "', " + answerOneString + ", " + answerTwoString + "');");
+        
+        userLearn.insertStatement("INSERT INTO DAILY_LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) VALUES (" + LoginScreenController.loginUsername + "," + date + "', " + answerOneString + ", " + answerTwoString + "');");
         System.out.println("Entered in learnings");
         confirmEntry.setVisible(true);
         
@@ -200,7 +201,7 @@ public class DailyLearningsController implements Initializable {
     @FXML
     private void updateComboOneValue(ActionEvent event){
         try{
-            ResultSet currentAnswerOne = userLearn.getResultSet("SELECT USERNAME, DID_WELL FROM LEARNINGS"
+            ResultSet currentAnswerOne = userLearn.getResultSet("SELECT USERNAME, DID_WELL FROM DAILY_LEARNINGS"
                     + "WHERE USERNAME = " + LoginScreenController.loginUsername + " ");
             answerOne.setValue(String.valueOf(currentAnswerOne.getString(3)));
         } catch(Exception e){
