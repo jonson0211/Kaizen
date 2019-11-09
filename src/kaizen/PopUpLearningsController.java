@@ -6,11 +6,13 @@
 package kaizen;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -73,7 +75,7 @@ public class PopUpLearningsController implements Initializable {
                     + "WHERE USERNAME = '" + LoginScreenController.loginUsername + "';");
             
             while (tableWell.next()){
-                well30View.add(new learningsDidWell(tableWell.getString(1), tableWell.getInt(2)));
+                well30View.add(new learningsDidWell(tableWell.getInt("didWellCount"), tableWell.getString("didWellCount")));
             }
         } catch (Exception e){
             e.printStackTrace();
@@ -109,5 +111,10 @@ public class PopUpLearningsController implements Initializable {
         
         better30Report.setItems(getBetter30());
         well30Report.setItems(getWell30());
+    }
+    
+    @FXML
+    private void handleBack(ActionEvent event) throws IOException{
+        psh.switcher(event, "DailyLearnings.fxml");
     }
 }
