@@ -165,6 +165,15 @@
                   <Insets left="500.0" right="250.0" top="320.0" />
                </GridPane.margin>
             </TextField>
+            <RadioButton mnemonicParsing="false" text="RadioButton" GridPane.rowIndex="1" />
+            <RadioButton fx:id="workTest" mnemonicParsing="false" text="Work" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="100.0" />
+               </GridPane.margin>
+               <toggleGroup>
+                  <ToggleGroup fx:id="toggleGroupTest" />
+               </toggleGroup>
+            </RadioButton>
          </children>
       </GridPane>
    </children>
