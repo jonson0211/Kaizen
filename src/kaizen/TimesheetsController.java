@@ -145,8 +145,8 @@ public class TimesheetsController implements Initializable {
     private Button back;
     
      ToggleGroup toggleGroupTest = new ToggleGroup(); 
-    
-    
+     Toggle select = toggleGroupTest.getSelectedToggle();
+    //String option = select.getText();
     //ToggleGroup toggleGroup = new ToggleGroup();
  
     KaizenDatabase addTimesheet = new KaizenDatabase();
@@ -251,7 +251,11 @@ public class TimesheetsController implements Initializable {
         //this.workTest.setToggleGroup(toggleGroupTest);
         
         //Toggle cat;
-        //cat = toggleGroup.getSelectedToggle();
+        Toggle cat = toggleGroupTest.getSelectedToggle();
+        String catName = null;
+        if (workTest.isSelected())
+            catName = "Work";
+        
         
         //desc = description.getText();
         //System.out.println(desc);
@@ -266,7 +270,7 @@ public class TimesheetsController implements Initializable {
             //System.out.println(toggleGroupValue);
             
             addTimesheet.insertStatement("INSERT INTO TIMESHEETS (CATEGORYNAME, START, END, DURATION, DESCR)"
-                    + " VALUES('"+ workTest.getText() /**toggleGroupValue**/ + "', '"+ startCombined + "', '"+  endCombined + "', '" +
+                    + " VALUES('" + /**workTest.getText()**/ catName + "', '"+ startCombined + "', '"+  endCombined + "', '" +
                     duration + "', '" + desc + "');");
             durationLabel.setText(durationText);
             durationLabel.setVisible(true);
