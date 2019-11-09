@@ -9,7 +9,11 @@ package kaizen;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -28,7 +32,7 @@ import kaizen.UserData.KaizenDatabase;
  *
  * @author wongad1
  */
-public class PopUpLearningsController implements Initializable {
+public class PopUpLearningsController{
     
     @FXML
     private Button back;
@@ -54,28 +58,66 @@ public class PopUpLearningsController implements Initializable {
     KaizenDatabase db = new KaizenDatabase();
     
     PageSwitchHelper psh = new PageSwitchHelper();
-     
+        
     /**
      * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        System.out.println("Loading PopUp");
-    }    
+     
     
+    @FXML
+    public void initialize(){
+        wellColumn.setCellValueFactory(cellData -> cellData.getValue().getDidWellProperty());
+       
+        well30Report.setItems(this.getWell30());
+    }
+    
+    
+    
+    /*
+    @FXML
+    public void initialize(){
+        wellColumn.setCellValueFactory(new PropertyValueFactory<learningsDidWell, String>("didWell"));
+        wellCountColumn.setCellValueFactory(new PropertyValueFactory<learningsDidWell, Number>("didWellCount"));
+        
+        well30Report.setItems(getWell30());
+    }
+    
+    public ObservableList<learningsDidWell> getWell30(){
+        List<learningsDidWell> well30 = FXCollections.observableArrayList();
+        
+        try{
+            ResultSet tableRs = db.getResultSet("SELECT DID_WELL FROM DAILY_LEARNINGS"
+                    + "';");
+            
+            while (tableRs.next()){
+                well30.add(new learningsDidWell(tableRs.getString("DID_WELL")));
+            }
+        } catch (SQLException ex) {
+           ex.printStackTrace();
+        }
+        System.out.println(well30);
+        return FXCollections.observableArrayList(well30);
+}
+    private void loadTable(){
+        wellColumn.setCellValueFactory(new PropertyValueFactory<learningsDidWell, String>("didWell"));
+        wellCountColumn.setCellValueFactory(new PropertyValueFactory<learningsDidWell, Number>("didWellCount"));
+        
+        well30Report.setItems(getWell30());
+    }
+ /*   
     public ObservableList<learningsDidWell> getWell30(){
         ObservableList<learningsDidWell> well30View = FXCollections.observableArrayList();
         
         try {
             ResultSet tableWell = db.getResultSet("SELECT DID_WELL, COUNT (*) FROM LEARNINGS"
+    
+    
                     + "GROUP BY DID_WELL"
                     + "HAVING COUNT(*) >1 "
                     + "ORDER BY COUNT(*) " 
                     + "WHERE USERNAME = '" + LoginScreenController.loginUsername + "';");
             
             while (tableWell.next()){
-                well30View.add(new learningsDidWell(tableWell.getInt("didWellCount"), tableWell.getString("didWellCount")));
+                well30View.add(new learningsDidWell(tableWell.getString("didWell"), tableWell.getInt("didWellCount")));
             }
         } catch (Exception e){
             e.printStackTrace();
@@ -112,7 +154,7 @@ public class PopUpLearningsController implements Initializable {
         better30Report.setItems(getBetter30());
         well30Report.setItems(getWell30());
     }
-    
+*/    
     @FXML
     private void handleBack(ActionEvent event) throws IOException{
         psh.switcher(event, "DailyLearnings.fxml");

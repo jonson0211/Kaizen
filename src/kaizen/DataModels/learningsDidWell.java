@@ -5,6 +5,11 @@
  */
 package kaizen.DataModels;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  *
  * @author wongad1
@@ -12,33 +17,20 @@ package kaizen.DataModels;
 public class learningsDidWell {
     
 
-    String didWell;
-    Integer didWellCount;
+    private StringProperty didWell;
     
-    public learningsDidWell(Integer didWellCount, String didWell) {
-        this.didWellCount = didWellCount;
-        this.didWell = didWell;
+        public learningsDidWell(String didWell) {
+        this.didWell = new SimpleStringProperty(didWell);
     }
-
-    public Integer getDidWellCount() {
-        return didWellCount;
+    
+    public String getDidWell(){
+        return didWell.get();
     }
-
-    public void setDidWellCount(Integer didWellCount) {
-        this.didWellCount = didWellCount;
-    }
-
-    public String getDidWell() {
+    public StringProperty getDidWellProperty(){
         return didWell;
     }
-
-    public void setDidWell(String didWell) {
-        this.didWell = didWell;
+    public void setDidWell(String didWell){
+        this.didWell.set(didWell);
     }
-    
-    
-}
 
-    
-    
-    
+}

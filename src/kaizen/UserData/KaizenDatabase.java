@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.Date;
 
 public class KaizenDatabase {
 
@@ -363,7 +364,7 @@ public class KaizenDatabase {
     }
 
 
-        public static void createDailyLearningsTable() {
+/*      public static void createDailyLearningsTable() {
         PreparedStatement createDailyLearningsTable = null;
         PreparedStatement createDemoInstance = null;
         ResultSet rs = null;
@@ -385,13 +386,97 @@ public class KaizenDatabase {
                         + "'Today I spent 40 minutes exercising intensely', "
                         + "'Today I didn't watch the newest episode of MHA...');");
                 createDemoInstance.execute();
+                createDemoInstance = conn.prepareStatement("INSERT INTO LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
+                        + "VALUES ('lienzhu','03/11/2019', 'Today I spent 20 minutes exercising intensely', "
+                        + "'Today I could have spent more time with my family');");
+                createDemoInstance.execute();
             } else {
                 System.out.println("Daily Learnings table exists");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }    
+        }*/
+    
+    
+        public static void createDailyLearnings() {
+        PreparedStatement createDailyLearnings= null;
+        PreparedStatement createDemoInstance = null;
+        ResultSet rs = null;
+        openConnection();
+        try {
+            System.out.println("Checking Learnings table ");
+            DatabaseMetaData dbmd = conn.getMetaData();
+            rs = dbmd.getTables(null, null, "DAILY_LEARNINGS", null);
+            if (!rs.next()) {
+                createDailyLearnings = conn.prepareStatement("CREATE TABLE IF NOT EXISTS DAILY_LEARNINGS (USERNAME TEXT NOT NULL "
+                        + ", ENTRY_DATE TEXT NOT NULL"
+                        + ", DID_WELL TEXT NOT NULL "
+                        + ", BE_BETTER TEXT NOT NULL "
+                        + ");");
+                createDailyLearnings.execute();
+                System.out.println("Daily Learnings table created");
+                createDemoInstance = conn.prepareStatement("INSERT INTO DAILY_LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
+                        + "VALUES ('lienzhu','01/02/2019', 'Today I spent 40 minutes exercising intensely', "
+                        + "'Today I didn't watch the newest episode of MHA...');");
+                createDemoInstance.execute();
+                createDemoInstance = conn.prepareStatement("INSERT INTO DAILY_LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
+                        + "VALUES ('lienzhu','02/02/2019', 'Today I spent 40 minutes exercising intensely', "
+                        + "'Today I didn't watch the newest episode of MHA...');");
+                createDemoInstance.execute();
+                createDemoInstance = conn.prepareStatement("INSERT INTO DAILY_LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
+                        + "VALUES ('lienzhu','03/02/2019', 'Today I spent 40 minutes exercising intensely', "
+                        + "'Today I didn't watch the newest episode of MHA...');");
+                createDemoInstance.execute();
+                createDemoInstance = conn.prepareStatement("INSERT INTO DAILY_LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
+                        + "VALUES ('lienzhu','04/02/2019', 'I went to the gym', "
+                        + "'Today I didn't watch the newest episode of NBA...');");
+                createDemoInstance.execute();
+                createDemoInstance = conn.prepareStatement("INSERT INTO DAILY_LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
+                        + "VALUES ('lienzhu','05/02/2019', 'I played the piano', "
+                        + "'Today I didn't spend enough time with my family');");
+                createDemoInstance.execute();
+                createDemoInstance = conn.prepareStatement("INSERT INTO DAILY_LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
+                        + "VALUES ('lienzhu','06/02/2019', 'I played the violin', "
+                        + "'Today I didn't spend enough time with my family');");
+                createDemoInstance = conn.prepareStatement("INSERT INTO DAILY_LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
+                        + "VALUES ('lienzhu','07/02/2019', 'I gave good peer reviews', "
+                        + "'Today I didn't spend enough time with my family');");
+                createDemoInstance.execute();
+            } else {
+                System.out.println("Daily Learnings table exists");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }    
+        }
+        
+        public static void insertLearnings(){
+            PreparedStatement pst;
+            openConnection();
+            System.out.println("Pre-insertion of learnings");
+        try {
+            pst = conn.prepareStatement("INSERT INTO LEARNINGS VALUES(?,?,?,?)");
+            pst.setString(1,"lienzhu");
+            pst.setString(2,"01/11/2019");
+            pst.setString(3,"I went to the gym today");
+            pst.setString(4,"I didn't walk the dog");
+            pst.setString(1,"lienzhu");
+            pst.setString(2,"02/11/2019");
+            pst.setString(3,"I went to the gym today");
+            pst.setString(4,"I didn't walk the dog");
+            pst.setString(1,"lienzhu");
+            pst.setString(2,"31/11/2019");
+            pst.setString(3,"I went to the gym today");
+            pst.setString(4,"I didn't walk the dog");
+            
+            System.out.println("Learnings inserted");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+            
+        }
     }
-}
+
     
     
