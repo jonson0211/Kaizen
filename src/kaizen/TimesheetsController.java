@@ -255,7 +255,7 @@ public class TimesheetsController implements Initializable {
         
         //desc = description.getText();
         //System.out.println(desc);
-
+        
         try {
             System.out.print(duration);
             System.out.print(startCombined);
