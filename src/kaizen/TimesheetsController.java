@@ -216,7 +216,7 @@ public class TimesheetsController implements Initializable {
       }
       }); 
         
-       ToggleButton tb1 = new ToggleButton("A");
+       /**ToggleButton tb1 = new ToggleButton("A");
     tb1.setToggleGroup(group);
     tb1.setUserData(Color.LIGHTGREEN);
     tb1.setSelected(true);
@@ -227,7 +227,7 @@ public class TimesheetsController implements Initializable {
     ToggleButton tb3 = new ToggleButton("C");
     tb3.setToggleGroup(group);
     tb3.setUserData(Color.SALMON);
-    
+    **/
     
         String timeStartHr = timeStartHrField.getText();
         String timeStartMin = timeStartMinField.getText();
