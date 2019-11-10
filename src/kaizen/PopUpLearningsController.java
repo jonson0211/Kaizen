@@ -50,10 +50,10 @@ public class PopUpLearningsController{
     private TableColumn<learningsDoBetter, String> betterColumn;
     
     @FXML
-    private TableColumn<learningsDidWell, Number> wellCountColumn;
+    private TableColumn<learningsDidWell, Number> well30Count;
     
     @FXML
-    private TableColumn<learningsDoBetter, Number> betterCountColumn;
+    private TableColumn<learningsDoBetter, Number> better30Count;
     
     KaizenDatabase db = new KaizenDatabase();
     
@@ -63,8 +63,9 @@ public class PopUpLearningsController{
     @FXML
     public void initialize(){
         wellColumn.setCellValueFactory(cellData -> cellData.getValue().getDidWellProperty());
+        well30Count.setCellValueFactory(cellData -> cellData.getValue().getDidWellCountProperty());
         betterColumn.setCellValueFactory(cellData -> cellData.getValue().getBeBetterProperty());
-       
+        better30Count.setCellValueFactory(cellData -> cellData.getValue().getBeBetterCountProperty());
         well30Report.setItems(this.getWell30());
         better30Report.setItems(this.getBetter30());
     }
@@ -73,10 +74,10 @@ public class PopUpLearningsController{
         List<learningsDidWell> well30 = FXCollections.observableArrayList();
         
         try{
-            ResultSet tableRs = db.getResultSet("SELECT DID_WELL FROM LEARNINGS");
+            ResultSet tableRs = db.getResultSet("SELECT DID_WELL, COUNT(DID_WELL) FROM LEARNINGS GROUP BY DID_WELL ORDER BY COUNT(DID_WELL) DESC");
             
             while (tableRs.next()){
-                well30.add(new learningsDidWell(tableRs.getString("DID_WELL")));
+                well30.add(new learningsDidWell(tableRs.getString("DID_WELL"),tableRs.getInt("COUNT(DID_WELL)")));
             }
         } catch (SQLException ex) {
            ex.printStackTrace();
@@ -88,10 +89,10 @@ public class PopUpLearningsController{
         List<learningsDoBetter> better30 = FXCollections.observableArrayList();
         
         try{
-            ResultSet tableRs = db.getResultSet("SELECT BE_BETTER FROM LEARNINGS");
+            ResultSet tableRs = db.getResultSet("SELECT BE_BETTER, COUNT(BE_BETTER) FROM LEARNINGS GROUP BY BE_BETTER ORDER BY COUNT(BE_BETTER) DESC");
             
             while (tableRs.next()){
-                better30.add(new learningsDoBetter(tableRs.getString("BE_BETTER")));
+                better30.add(new learningsDoBetter(tableRs.getString("BE_BETTER"),tableRs.getInt("COUNT(BE_BETTER)")));
             }
         } catch (SQLException ex) {
            ex.printStackTrace();
@@ -99,53 +100,7 @@ public class PopUpLearningsController{
         System.out.println(better30);
         return FXCollections.observableArrayList(better30);
 }
-        /*
-    private void loadTable(){
-        wellColumn.setCellValueFactory(new PropertyValueFactory<learningsDidWell, String>("didWell"));
-        
-        well30Report.setItems(getWell30());
-    }
- /*
-    public ObservableList<learningsDidWell> getWell30(){
-        ObservableList<learningsDidWell> well30View = FXCollections.observableArrayList();
-        
-        try {
-            ResultSet tableWell = db.getResultSet("SELECT DID_WELL, COUNT (*) FROM LEARNINGS"
-    
-    
-                    + "GROUP BY DID_WELL"
-                    + "HAVING COUNT(*) >1 "
-                    + "ORDER BY COUNT(*) " 
-                    + "WHERE USERNAME = '" + LoginScreenController.loginUsername + "';");
-            
-            while (tableWell.next()){
-                well30View.add(new learningsDidWell(tableWell.getString("didWell")));
-            }
-        } catch (Exception e){
-            e.printStackTrace();
-            
-        }
-        return FXCollections.observableArrayList(well30View);
-    }
-    
-    public ObservableList<learningsDoBetter> getBetter30(){
-        ObservableList<learningsDoBetter> better30View = FXCollections.observableArrayList();
-        
-        try{
-            ResultSet tableBetter = db.getResultSet("SELECT DO_BETTER, COUNT(*) FROM LEARNINGS "
-                    + "GROUP BY DO_BETTER "
-                    + "HAVING COUNT (*)>1 "
-                    + "ORDER BY COUNT(*)>1 "
-                    + "WHERE USERNAME = " + LoginScreenController.loginUsername + "';");
-            
-            while (tableBetter.next()){
-                better30View.add(new learningsDoBetter(tableBetter.getString(1), tableBetter.getInt(2)));
-        }
-    } catch(Exception e){
-        e.printStackTrace();
-    }
-        return FXCollections.observableArrayList(better30View);
-}  */
+
     @FXML
     private void handleBack(ActionEvent event) throws IOException{
         psh.switcher(event, "DailyLearnings.fxml");

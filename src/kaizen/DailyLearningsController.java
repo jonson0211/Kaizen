@@ -132,6 +132,9 @@ public class DailyLearningsController {
         didWellColumn.setCellValueFactory(cellData -> cellData.getValue().getDidWellProperty());
         didWellCount.setCellValueFactory(cellData -> cellData.getValue().getDidWellCountProperty());
         didWellView.setItems(this.getLearningsDidWell());
+        doBetterColumn.setCellValueFactory(cellData -> cellData.getValue().getBeBetterProperty());
+        doBetterCount.setCellValueFactory(cellData -> cellData.getValue().getBeBetterCountProperty());
+        doBetterView.setItems(this.getLearningsDoBetter());
     }    
     
     //return observable list of done well and do betters
@@ -141,7 +144,7 @@ public class DailyLearningsController {
         ObservableList<learningsDidWell> didWellList = FXCollections.observableArrayList();
         
         try {
-            ResultSet rsDidWellTable = userLearn.getResultSet("SELECT DID_WELL, COUNT(DID_WELL) FROM LEARNINGS GROUP BY DID_WELL");
+            ResultSet rsDidWellTable = userLearn.getResultSet("SELECT DID_WELL, COUNT(DID_WELL) FROM LEARNINGS GROUP BY DID_WELL ORDER BY COUNT(DID_WELL) DESC");
                  //   + " WHERE USERNAME = '" + LoginScreenController.loginUsername + "';");
             
             while (rsDidWellTable.next()){
@@ -152,20 +155,16 @@ public class DailyLearningsController {
         }
         return FXCollections.observableArrayList(didWellList);
     }
-    /*
+    
         public ObservableList<learningsDoBetter> getLearningsDoBetter(){
         
         ObservableList<learningsDoBetter> doBetterList = FXCollections.observableArrayList();
         
         try {
-            ResultSet rsDoBetterTable = userLearn.getResultSet("SELECT DO_BETTER, COUNT (*) FROM LEARNINGS "
-                    + "GROUP BY DID_WELL"
-                    + "HAVING COUNT(*) >1"
-                    + "ORDER BY COUNT(*) "
-                    + "WHERE USERNAME = '" + LoginScreenController.loginUsername + "';");
+            ResultSet rsDoBetterTable = userLearn.getResultSet("SELECT BE_BETTER, COUNT(BE_BETTER) FROM LEARNINGS GROUP BY BE_BETTER ORDER BY COUNT(BE_BETTER) DESC");
             
             while (rsDoBetterTable.next()){
-                doBetterList.add(new learningsDoBetter(rsDoBetterTable.getString(1), rsDoBetterTable.getInt(2)));
+                doBetterList.add(new learningsDoBetter(rsDoBetterTable.getString("BE_BETTER"), rsDoBetterTable.getInt("COUNT(BE_BETTER)")));
             }
         } catch (SQLException ex) {
             Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
@@ -173,15 +172,6 @@ public class DailyLearningsController {
         return FXCollections.observableArrayList(doBetterList);
     }
     
-        private void loadTable(){
-        didWellColumn.setCellValueFactory(new PropertyValueFactory<learningsDidWell, String>("didWell"));
-        doBetterColumn.setCellValueFactory(new PropertyValueFactory<learningsDoBetter, String>("DO_BETTER"));
-        didWellCount.setCellValueFactory(new PropertyValueFactory<learningsDidWell, Number>("didWellCount"));
-        doBetterCount.setCellValueFactory(new PropertyValueFactory<learningsDoBetter, Number>("COUNT(*)"));
-        
-        didWellView.setItems(getLearningsDidWell());
-        doBetterView.setItems(getLearningsDoBetter());
-    }*/
     //input learnings into the table summary
     //update learnings
     
@@ -266,7 +256,7 @@ public class DailyLearningsController {
             Stage stage = new Stage();
             stage.setTitle("Past 30 days Report");
             stage.setScene(new Scene(r1));
-            stage.show();
+            stage.showAndWait();
             
         } catch (Exception e){
             System.out.println("Can't display window");
