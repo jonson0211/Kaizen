@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.ToggleButton;
 import kaizen.UserData.KaizenDatabase;
 
@@ -38,7 +39,10 @@ public class DailyBreakdownController implements Initializable {
     
     //barchart
     @FXML private BarChart<String, Number> dailyBarChart;
+    //datepicker
+    @FXML private DatePicker dailyChartDtPicker;
     
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

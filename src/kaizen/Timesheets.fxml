@@ -23,7 +23,7 @@
           <RowConstraints maxHeight="343.6373291015625" minHeight="0.0" prefHeight="139.04803466796875" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label prefHeight="53.0" prefWidth="670.0" styleClass="large-label" stylesheets="@stylesheet.css" text="What did you spend time on today?">
+            <Label prefHeight="53.0" prefWidth="670.0" styleClass="large-label" stylesheets="@stylesheet.css" text="What did you spend your time on?">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
@@ -165,6 +165,14 @@
                   <Font size="20.0" />
                </font>
             </RadioButton>
+            <DatePicker fx:id="DtPicker" promptText="Select your date" GridPane.rowIndex="1">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets left="350.0" top="100.0" />
+               </GridPane.margin>
+            </DatePicker>
          </children>
       </GridPane>
    </children>

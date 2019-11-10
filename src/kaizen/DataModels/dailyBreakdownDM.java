@@ -9,6 +9,6 @@ package kaizen.DataModels;
  *
  * @author lienzhu
  */
-public class dailyBreakdown {
+public class dailyBreakdownDM {
     
 }

@@ -15,6 +15,7 @@ import kaizen.UserData.KaizenDatabase;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Scanner;
 import javafx.beans.value.ChangeListener;
@@ -23,6 +24,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
@@ -99,6 +101,8 @@ public class TimesheetsController implements Initializable {
     @FXML
     private Button back;
     
+    @FXML private DatePicker DtPicker;
+    
     ToggleGroup toggleGroup = new ToggleGroup(); 
  
     KaizenDatabase addTimesheet = new KaizenDatabase();
@@ -118,6 +122,8 @@ public class TimesheetsController implements Initializable {
     
     @FXML
     private void handleSubmitAction(ActionEvent event) {
+        
+        String date = DtPicker.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         
         String timeStartHr = timeStartHrField.getText();
         String timeStartMin = timeStartMinField.getText();
@@ -154,8 +160,8 @@ public class TimesheetsController implements Initializable {
         
         try {
             
-            addTimesheet.insertStatement("INSERT INTO TIMESHEETS (CATEGORYNAME, START, END, DURATION, DESCR)"
-                    + " VALUES('" + catName + "', '"+ startCombined + "', '"+  endCombined + "', '" +
+            addTimesheet.insertStatement("INSERT INTO TIMESHEETS (CATEGORYNAME,DATE, START, END, DURATION, DESCR)"
+                    + " VALUES('" + catName + "', '" + date + "','" + startCombined + "', '"+  endCombined + "', '" +
                     duration + "', '" + desc + "');");
             durationLabel.setText(durationText + " minutes");
             durationLabel.setVisible(true);

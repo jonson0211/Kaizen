@@ -59,10 +59,6 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <PieChart fx:id="lifePieChart" legendSide="RIGHT" styleClass="small-label">
-                     <GridPane.margin>
-                        <Insets bottom="100.0" left="50.0" right="50.0" top="100.0" />
-                     </GridPane.margin></PieChart>
                   <Button fx:id="logInTime" mnemonicParsing="false" onAction="#handleLogInTime" text="Log in time">
                      <GridPane.margin>
                         <Insets left="70.0" top="575.0" />
@@ -71,7 +67,7 @@
                         <Font size="24.0" />
                      </font>
                   </Button>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Pie Chart Of My Life">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Daily Breakdown of Time Spent">
                      <GridPane.margin>
                         <Insets bottom="575.0" left="350.0" />
                      </GridPane.margin>
@@ -100,6 +96,22 @@
                         <Insets left="775.0" top="575.0" />
                      </GridPane.margin>
                   </Button>
+                  <BarChart fx:id="dailyBarChart">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                     <GridPane.margin>
+                        <Insets bottom="100.0" left="50.0" right="259.0" top="100.0" />
+                     </GridPane.margin>
+                  </BarChart>
+                  <DatePicker>
+                     <GridPane.margin>
+                        <Insets left="860.0" />
+                     </GridPane.margin>
+                  </DatePicker>
                </children>
             </GridPane>
          </center></BorderPane>

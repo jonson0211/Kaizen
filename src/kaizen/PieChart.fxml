@@ -100,6 +100,11 @@
                         <Insets left="775.0" top="575.0" />
                      </GridPane.margin>
                   </Button>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="add button to access list of time logged in">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Text>
                </children>
             </GridPane>
          </center></BorderPane>
