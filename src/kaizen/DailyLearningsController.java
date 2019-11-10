@@ -144,8 +144,7 @@ public class DailyLearningsController {
         ObservableList<learningsDidWell> didWellList = FXCollections.observableArrayList();
         
         try {
-            ResultSet rsDidWellTable = userLearn.getResultSet("SELECT DID_WELL, COUNT(DID_WELL) FROM LEARNINGS GROUP BY DID_WELL ORDER BY COUNT(DID_WELL) DESC");
-                 //   + " WHERE USERNAME = '" + LoginScreenController.loginUsername + "';");
+            ResultSet rsDidWellTable = userLearn.getResultSet("SELECT DID_WELL, COUNT(DID_WELL) FROM LEARNINGS GROUP BY DID_WELL ORDER BY DATE DESC LIMIT 7;");
             
             while (rsDidWellTable.next()){
                 didWellList.add(new learningsDidWell(rsDidWellTable.getString("DID_WELL"), rsDidWellTable.getInt("COUNT(DID_WELL)")));
@@ -161,7 +160,7 @@ public class DailyLearningsController {
         ObservableList<learningsDoBetter> doBetterList = FXCollections.observableArrayList();
         
         try {
-            ResultSet rsDoBetterTable = userLearn.getResultSet("SELECT BE_BETTER, COUNT(BE_BETTER) FROM LEARNINGS GROUP BY BE_BETTER ORDER BY COUNT(BE_BETTER) DESC");
+            ResultSet rsDoBetterTable = userLearn.getResultSet("SELECT BE_BETTER, COUNT(BE_BETTER) FROM LEARNINGS GROUP BY BE_BETTER ORDER BY DATE DESC LIMIT 7");
             
             while (rsDoBetterTable.next()){
                 doBetterList.add(new learningsDoBetter(rsDoBetterTable.getString("BE_BETTER"), rsDoBetterTable.getInt("COUNT(BE_BETTER)")));
@@ -218,7 +217,7 @@ public class DailyLearningsController {
     //populating combobox
     private void FillComboOne() {
         try {
-            String queryOne = "SELECT * FROM LEARNINGS";
+            String queryOne = "SELECT DO_WELL FROM LEARNINGS";
             pst = conn.prepareStatement(queryOne);
             rs = pst.executeQuery();
             
@@ -233,7 +232,7 @@ public class DailyLearningsController {
         }   
     }
     private void FillComboTwo(){
-        String queryTwo = "SELECT * FROM LEARNINGS";
+        String queryTwo = "SELECT BE_BETTER FROM LEARNINGS";
         try {
             pst = conn.prepareStatement(queryTwo);
             rs = pst.executeQuery();

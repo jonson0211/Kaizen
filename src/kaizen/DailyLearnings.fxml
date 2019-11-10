@@ -146,7 +146,7 @@
                   <RowConstraints maxHeight="159.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="7 day summary of learnings">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Top 7 Entries">
                      <font>
                         <Font name="Arial" size="36.0" />
                      </font>
