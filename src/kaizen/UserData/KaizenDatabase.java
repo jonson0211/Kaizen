@@ -399,80 +399,6 @@ public class KaizenDatabase {
             e.printStackTrace();
         }
     }
-    public static void createLearnings(){
-        PreparedStatement createLearnings;
-        PreparedStatement insertDemoData;
-        ResultSet rs;
-        openConnection();
-        try{
-            System.out.println("Checking LEARNINGS table");
-            DatabaseMetaData db = conn.getMetaData();
-            rs = db.getTables(null,null,"LEARNINGS", null);
-            if(!rs.next()){
-            createLearnings = conn.prepareStatement("CREATE TABLE IF NOT EXISTS LEARNINGS("
-                        + "LEARNINGS_ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + "DATE TEXT NOT NULL"
-                        + ", USERNAME TEXT NOT NULL"
-                        + ", DID_WELL TEXT NOT NULL"
-                        + ", BE_BETTER TEXT NOT NULL)");
-            createLearnings.execute();
-            System.out.println("LEARNINGS table created!");
-            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (LEARNINGS_ID, USERNAME, DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('1', 'lienzhu', '01/01/2019', 'went to the gym', 'spend time with family');");
-            insertDemoData.execute();
-            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('lienzhu', '02/01/2019', 'went to the gym', 'picked up java earlier');");
-            insertDemoData.execute();
-            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('lienzhu', '03/01/2019', 'went to the work', 'study 2605');");
-            insertDemoData.execute();
-            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('lienzhu', '04/01/2019', 'went to the class', 'spend time with family');");
-            insertDemoData.execute();
-            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('lienzhu', '05/01/2019', 'went to the gym', 'spend time with family');");
-            insertDemoData.execute();
-            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('lienzhu', '06/01/2019', 'went to the gym', 'spend time with family');");
-            insertDemoData.execute();
-            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('lienzhu', '07/01/2019', 'went to tutoring', 'spend time with family');");
-            insertDemoData.execute();
-            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('lienzhu', '08/01/2019', 'went to uni', 'spend time with family');");
-            insertDemoData.execute();
-            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('lienzhu', '09/01/2019', 'I gave good peer reviews', 'spend time with family');");
-            insertDemoData.execute();
-            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('lienzhu', '10/01/2019', 'Contributed to Blairs lecture', 'read more');");
-            insertDemoData.execute();
-            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('lienzhu', '08/01/2019', 'helped someone with their assignment', 'go to the gym');");
-            insertDemoData.execute();
-            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('lienzhu', '08/01/2019', 'looked cool', 'gave a compliment');");
-            insertDemoData.execute();
-            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('lienzhu', '08/01/2019', 'test1', 'test4');");
-            insertDemoData.execute();
-            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('lienzhu', '08/01/2019', 'went to uni', 'spend time with family');");
-            insertDemoData.execute();
-            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('lienzhu', '08/01/2019', 'went to uni', 'search for a job');");
-            insertDemoData.execute();
-            
-        } else{
-                System.out.println("LEARNINGS table exists!");
-                }
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-    }
-}
-   
-    
 
 
 /*      public static void createDailyLearningsTable() {
@@ -509,7 +435,7 @@ public class KaizenDatabase {
         }    
         }*/
     
-    /*
+    
         public static void createDailyLearnings() {
         PreparedStatement createDailyLearnings= null;
         PreparedStatement createDemoInstance = null;
@@ -519,9 +445,8 @@ public class KaizenDatabase {
             System.out.println("Checking Learnings table ");
             DatabaseMetaData dbmd = conn.getMetaData();
             rs = dbmd.getTables(null, null, "DAILY_LEARNINGS", null);
-            if (rs.next()) {
-                createDailyLearnings = conn.prepareStatement("DROP TABLE DAILY_LEARNINGS ("
-                        + "USERNAME TEXT NOT NULL "
+            if (!rs.next()) {
+                createDailyLearnings = conn.prepareStatement("CREATE TABLE IF NOT EXISTS DAILY_LEARNINGS (USERNAME TEXT NOT NULL "
                         + ", ENTRY_DATE TEXT NOT NULL"
                         + ", DID_WELL TEXT NOT NULL "
                         + ", BE_BETTER TEXT NOT NULL "
@@ -588,7 +513,7 @@ public class KaizenDatabase {
         }
             
         }
-    }*/
+    }
 
     
     

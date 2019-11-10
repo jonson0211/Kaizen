@@ -58,22 +58,35 @@ public class PopUpLearningsController{
     KaizenDatabase db = new KaizenDatabase();
     
     PageSwitchHelper psh = new PageSwitchHelper();
-   
-   
+        
+    /**
+     * Initializes the controller class.
+     
+    
     @FXML
     public void initialize(){
         wellColumn.setCellValueFactory(cellData -> cellData.getValue().getDidWellProperty());
-        betterColumn.setCellValueFactory(cellData -> cellData.getValue().getBeBetterProperty());
        
         well30Report.setItems(this.getWell30());
-        better30Report.setItems(this.getBetter30());
     }
     
-        public ObservableList<learningsDidWell> getWell30(){
+    
+    
+    /*
+    @FXML
+    public void initialize(){
+        wellColumn.setCellValueFactory(new PropertyValueFactory<learningsDidWell, String>("didWell"));
+        wellCountColumn.setCellValueFactory(new PropertyValueFactory<learningsDidWell, Number>("didWellCount"));
+        
+        well30Report.setItems(getWell30());
+    }
+    
+    public ObservableList<learningsDidWell> getWell30(){
         List<learningsDidWell> well30 = FXCollections.observableArrayList();
         
         try{
-            ResultSet tableRs = db.getResultSet("SELECT DID_WELL FROM LEARNINGS");
+            ResultSet tableRs = db.getResultSet("SELECT DID_WELL FROM DAILY_LEARNINGS"
+                    + "';");
             
             while (tableRs.next()){
                 well30.add(new learningsDidWell(tableRs.getString("DID_WELL")));
@@ -84,28 +97,13 @@ public class PopUpLearningsController{
         System.out.println(well30);
         return FXCollections.observableArrayList(well30);
 }
-        public ObservableList<learningsDoBetter> getBetter30(){
-        List<learningsDoBetter> better30 = FXCollections.observableArrayList();
-        
-        try{
-            ResultSet tableRs = db.getResultSet("SELECT BE_BETTER FROM LEARNINGS");
-            
-            while (tableRs.next()){
-                better30.add(new learningsDoBetter(tableRs.getString("BE_BETTER")));
-            }
-        } catch (SQLException ex) {
-           ex.printStackTrace();
-        }
-        System.out.println(better30);
-        return FXCollections.observableArrayList(better30);
-}
-        /*
     private void loadTable(){
         wellColumn.setCellValueFactory(new PropertyValueFactory<learningsDidWell, String>("didWell"));
+        wellCountColumn.setCellValueFactory(new PropertyValueFactory<learningsDidWell, Number>("didWellCount"));
         
         well30Report.setItems(getWell30());
     }
- /*
+ /*   
     public ObservableList<learningsDidWell> getWell30(){
         ObservableList<learningsDidWell> well30View = FXCollections.observableArrayList();
         
@@ -119,7 +117,7 @@ public class PopUpLearningsController{
                     + "WHERE USERNAME = '" + LoginScreenController.loginUsername + "';");
             
             while (tableWell.next()){
-                well30View.add(new learningsDidWell(tableWell.getString("didWell")));
+                well30View.add(new learningsDidWell(tableWell.getString("didWell"), tableWell.getInt("didWellCount")));
             }
         } catch (Exception e){
             e.printStackTrace();
@@ -145,7 +143,18 @@ public class PopUpLearningsController{
         e.printStackTrace();
     }
         return FXCollections.observableArrayList(better30View);
-}  */
+}
+
+    private void loadTable(){
+        wellColumn.setCellValueFactory(new PropertyValueFactory<learningsDidWell, String>("DID_WELL"));
+        betterColumn.setCellValueFactory(new PropertyValueFactory<learningsDoBetter, String>("DO_BETTER"));
+        wellCountColumn.setCellValueFactory(new PropertyValueFactory<learningsDidWell, Number>("COUNT(*)"));
+        betterCountColumn.setCellValueFactory(new PropertyValueFactory<learningsDoBetter, Number>("COUNT(*)"));
+        
+        better30Report.setItems(getBetter30());
+        well30Report.setItems(getWell30());
+    }
+*/    
     @FXML
     private void handleBack(ActionEvent event) throws IOException{
         psh.switcher(event, "DailyLearnings.fxml");

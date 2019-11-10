@@ -43,7 +43,7 @@ public class Kaizen extends Application {
        KaizenDatabase.createTimesheetsTable();
        
        KaizenDatabase.createCategoryTable(); 
-       KaizenDatabase.createLearnings();
+       KaizenDatabase.createDailyLearnings();
        KaizenDatabase.createTasksTable();
        
     }
