@@ -11,6 +11,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
+import kaizen.UserData.KaizenDatabase;
 
 /**
  * FXML Controller class
@@ -18,7 +21,26 @@ import javafx.fxml.Initializable;
  * @author Raymond
  */
 public class AboutScreenController implements Initializable {
+    
+    PageSwitchHelper pageSwitcher = new PageSwitchHelper();
+    
+    KaizenDatabase db = new KaizenDatabase();
 
+    @FXML
+    private ToggleButton handleKb;
+    
+    @FXML
+    private ToggleButton deepFocus;
+    @FXML
+    private ToggleButton taskTracker;
+    @FXML
+    private ToggleButton timesheets;
+    @FXML
+    private ToggleButton dailyLearnings;
+    @FXML
+    private ToggleButton settings;
+    @FXML
+    private Button signOut;
     /**
      * Initializes the controller class.
      */
@@ -27,8 +49,6 @@ public class AboutScreenController implements Initializable {
         // TODO
     }    
     
-}
-
     @FXML
     private void handleKbBoard(ActionEvent event) throws IOException{
         pageSwitcher.switcher(event, "KanbanBoard.fxml");
@@ -43,7 +63,7 @@ public class AboutScreenController implements Initializable {
     }
     @FXML
     private void handleTimeSheets(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"Timesheets.fxml"); 
+        pageSwitcher.switcher(event,"PieChart.fxml"); 
     }
     @FXML
     private void handleSettings(ActionEvent event) throws IOException{
@@ -54,11 +74,8 @@ public class AboutScreenController implements Initializable {
         pageSwitcher.switcher(event,"LoginScreen.fxml");
     }
     @FXML
-    private void handleAboutScreen(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"AboutScreen.fxml");
-    }
-    @FXML
-    private void handlePopUpScreen(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"PopUpLearnings.fxml");
-    }
+    private void handleLearnings(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event,"DailyLearnings.fxml");
+    
+}
 }
