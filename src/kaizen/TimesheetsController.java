@@ -168,7 +168,7 @@ public class TimesheetsController implements Initializable {
     }
     @FXML
     private void handleBackAction(ActionEvent event) throws IOException {
-        pageSwitcher.switcher(event, "KanbanBoard.fxml");
+        pageSwitcher.switcher(event, "PieChart.fxml");
     }    
     @FXML
     private void handleKbBoard(ActionEvent event) throws IOException{
