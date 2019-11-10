@@ -56,14 +56,6 @@
                   <Font size="20.0" />
                </font>
             </ToggleButton>
-            <ToggleButton fx:id="categoryRelaxation" mnemonicParsing="false" text="Relaxation " textAlignment="CENTER" toggleGroup="$toggleGroup" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets bottom="200.0" left="350.0" />
-               </GridPane.margin>
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </ToggleButton>
             <ToggleButton fx:id="categoryWellness" mnemonicParsing="false" text="Wellness" toggleGroup="$toggleGroup" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="650.0" />
@@ -173,6 +165,14 @@
                <toggleGroup>
                   <ToggleGroup fx:id="toggleGroupTest" />
                </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="categoryRelaxation" mnemonicParsing="false" text="Relaxation" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="200.0" left="350.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
             </RadioButton>
          </children>
       </GridPane>
