@@ -1,0 +1,107 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package kaizen;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.chart.BarChart;
+import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
+import kaizen.UserData.KaizenDatabase;
+
+
+public class DailyBreakdownController implements Initializable {
+
+    KaizenDatabase db = new KaizenDatabase();
+    PageSwitchHelper pageSwitcher = new PageSwitchHelper();
+    //menu buttons
+    @FXML private Button signOutButton;
+    @FXML private ToggleButton settingsButton;
+    @FXML private ToggleButton kanbanBoard;
+    @FXML private ToggleButton deepFocus;
+    @FXML private ToggleButton taskTracker;
+    @FXML private ToggleButton about;
+    @FXML private ToggleButton timeDashboard;
+    @FXML private ToggleButton dailyLearnings;
+    //chart buttons
+    @FXML private Button dailyBreakdown;
+    @FXML private Button weeklyBreakdown;
+    @FXML private Button weeklyTrends;
+    @FXML private Button logInTime;
+    
+    //barchart
+    @FXML private BarChart<String, Number> dailyBarChart;
+    
+    
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }    
+    
+    
+    
+    
+    
+    
+    @FXML
+    private void handleDailyBreakdown(ActionEvent event) throws IOException{
+        //pageSwitcher.switcher(event, "DailyBreakdown.fxml");
+    }
+    @FXML
+    private void handleWeeklyBreakdown(ActionEvent event) throws IOException{
+        //pageSwitcher.switcher(event, "WeeklyBreakdown.fxml");
+    }
+    @FXML
+    private void handleWeeklyTrends(ActionEvent event) throws IOException{
+        //pageSwitcher.switcher(event, "WeeklyTrends.fxml");
+    }
+    @FXML
+    private void handleLogInTime(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event, "Timesheets.fxml");
+    }
+    @FXML
+    private void handleKanbanBoard(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event, "KanbanBoard.fxml");
+    }
+    @FXML
+    private void handleDeepFocus(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event,"DeepFocusMode.fxml");  
+    }
+    @FXML
+    private void handleTaskTracker(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event,"TaskTracker.fxml");//TO CHANGE WHEN PAGE IS MADE
+    }
+    @FXML
+    private void handleTimeSheets(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event,"Timesheets.fxml"); 
+    }
+    @FXML
+    private void handleDailyLearnings(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event,"DailyLearnings.fxml");
+    }
+    @FXML
+    private void handleSettings(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event,"Settings.fxml"); //TO CHANGE WHEN PAGE IS MADE
+    }
+    @FXML
+    private void handleTimeDashboard(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event,"PieChart.fxml"); 
+    }
+    @FXML
+    private void handleSignOut(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event,"LoginScreen.fxml");
+    }
+    @FXML
+    private void handleAboutScreen(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event,"AboutScreen.fxml");
+    }
+    
+    
+}
