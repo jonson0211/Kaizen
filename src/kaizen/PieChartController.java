@@ -93,7 +93,7 @@ public class PieChartController implements Initializable {
 
     ResultSet wellnessRs = db.getResultSet(
             "SELECT SUM(DURATION) from TIMESHEETS "
-                    //+ "WHERE CATEGORYNAME = 'Wellness' "
+                    + "WHERE CATEGORYNAME = 'Wellness' "
                     );
         int wellnessCount = wellnessRs.getInt(1);
             //wellnessLabel.setText(String.valueOf(wellnessRs.getInt(1))); 
@@ -119,17 +119,34 @@ public class PieChartController implements Initializable {
         int dailyCount = dailyRs.getInt(1);
             //dailyLabel.setText(String.valueOf(dailyRs.getInt(1)));        
         
+    double totalDuration = (workRs.getInt(1)
+            +relationshipsRs.getInt(1)
+            +projectsRs.getInt(1)
+            +wellnessRs.getInt(1)
+            +dailyRs.getInt(1)
+            +relaxationRs.getInt(1));
+    
+    System.out.println( "*" + Math.round((workRs.getInt(1)/totalDuration)*100) );
+    
+    ResultSet totalDuration1=db.getResultSet("SELECT SUM(DURATION) from TIMESHEETS");
+                double totalDurationSum = totalDuration1.getInt(1);
+    System.out.println(workRs.getInt(1));
+    System.out.println(workRs.getInt(1)/totalDurationSum);
+    System.out.println(totalDuration);
+    System.out.println("*" + projectsRs.getInt(1));
+    
+    
         try {
                 lifePieChart.getData().clear();
                 ObservableList<PieChart.Data> lifePieChartData = FXCollections.observableArrayList(
-                    new PieChart.Data("Work", workRs.getInt(1)),
-                    new PieChart.Data("Relationships", relationshipsRs.getInt(1)),
-                    new PieChart.Data("Projects", projectsRs.getInt(1)),
-                    new PieChart.Data("Wellness", wellnessRs.getInt(1)),
-                    new PieChart.Data("Daily", dailyRs.getInt(1)),
-                    new PieChart.Data("Relaxtion", relaxationRs.getInt(1)));
+                    new PieChart.Data("Work " + (Math.round((workRs.getInt(1)/totalDuration)*100)) + "%", workRs.getInt(1)),
+                    new PieChart.Data("Relationships " + Math.round((relationshipsRs.getInt(1)/totalDuration)*100) + "%", relationshipsRs.getInt(1)),
+                    new PieChart.Data("Projects " + Math.round((projectsRs.getInt(1)/totalDuration)*100) + "%", projectsRs.getInt(1)),
+                    new PieChart.Data("Wellness " + Math.round((wellnessRs.getInt(1)/totalDuration)*100) + "%", wellnessRs.getInt(1)),
+                    new PieChart.Data("Daily "+ Math.round((dailyRs.getInt(1)/totalDuration)*100) + "%", dailyRs.getInt(1)),
+                    new PieChart.Data("Relaxation " + Math.round((relaxationRs.getInt(1)/totalDuration)*100) + "%", relaxationRs.getInt(1)));
                                       
-                    System.out.println("Test");
+                    //System.out.println("Test");
                 lifePieChart.setData(lifePieChartData);
                    
             } catch (Exception e) {

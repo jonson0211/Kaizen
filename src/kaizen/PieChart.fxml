@@ -59,7 +59,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <PieChart fx:id="lifePieChart" styleClass="small-label">
+                  <PieChart fx:id="lifePieChart" legendSide="RIGHT" styleClass="small-label">
                      <GridPane.margin>
                         <Insets bottom="100.0" left="50.0" right="50.0" top="100.0" />
                      </GridPane.margin></PieChart>

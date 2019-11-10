@@ -93,6 +93,21 @@ public class KaizenDatabase {
                 createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME) "
                         + "VALUES ('Work')");
                 createDemoInstance.execute();
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME) "
+                        + "VALUES ('Wellness')");
+                createDemoInstance.execute();
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME) "
+                        + "VALUES ('Relationships')");
+                createDemoInstance.execute();
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME) "
+                        + "VALUES ('Projects')");
+                createDemoInstance.execute();
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME) "
+                        + "VALUES ('Relaxation')");
+                createDemoInstance.execute();
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME) "
+                        + "VALUES ('Daily')");
+                createDemoInstance.execute();
             } else {
                 System.out.println("CATEGORY table exists");
             }
@@ -309,6 +324,7 @@ public class KaizenDatabase {
                         );
                 
                 createDemoInstance.execute();
+                
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,START,END,DURATION,DESCR)" 
                         + "VALUES ('Relaxation',"
                         + "'660',"
@@ -327,7 +343,7 @@ public class KaizenDatabase {
                 + "'I ran with to the park with my dog'"
                 + ");"
                 );
-                
+                createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,START,END,DURATION,DESCR)"
                 + "VALUES('Projects',"
                 + "'1020',"
@@ -336,7 +352,16 @@ public class KaizenDatabase {
                 + "'I completed my painting of my 2D girlfriend!'"
                 + ");"
                 );
-                
+                createDemoInstance.execute();
+                createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,START,END,DURATION,DESCR)"
+                + "VALUES('Projects',"
+                + "'1200',"
+                + "'1300',"
+                + "'100',"
+                + "'I made a wooden kennel for my dog!'"
+                + ");"
+                );
+                createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,START,END,DURATION,DESCR)"
                 + "VALUES('Daily',"
                 + "'1020',"
@@ -345,7 +370,7 @@ public class KaizenDatabase {
                 + "'I went to Woolies to buy some groceries'"
                 + ");"
                 );
-                
+                createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,START,END,DURATION,DESCR)"
                 + "VALUES('Relationships',"
                 + "'1020',"
@@ -354,6 +379,18 @@ public class KaizenDatabase {
                 + "'I had dinner with my family tonight'"
                 + ");"
                 );
+                createDemoInstance.execute();
+                
+                createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,START,END,DURATION,DESCR) "
+                        + "VALUES ('Projects', "
+                        + "'240',"
+                        + "'600',"
+                        + "'360',"
+                        + "'Today I learnt how to carve wood'"
+                        + ");"
+                        );
+                
+                createDemoInstance.execute();
                 
             } else {
                 System.out.println("Timesheets table exists");
