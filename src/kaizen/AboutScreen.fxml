@@ -10,8 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="vbox-bar" stylesheets="@stylesheet.css" 
-            xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.AboutScreenController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="vbox-bar" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.AboutScreenController">
    <left>
       <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="menu-panel" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
          <center>
@@ -72,16 +71,19 @@
                   <Insets left="40.0" />
                </GridPane.margin>
             </Text>
-            <Label text="Resources used:" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets bottom="400.0" left="40.0" />
-               </GridPane.margin>
-            </Label>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="SUBMISSION UUID: 8EB878A9-4F8D-4C3B-997A-89F8F67F7761">
                <GridPane.margin>
                   <Insets bottom="-70.0" left="40.0" />
                </GridPane.margin>
             </Text>
+            <TextArea maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="335.0" prefWidth="1000.0" text="Resources used: &#10;&#10;The Jazz Piano | Royalty Free Music. 2019. The Jazz Piano | Royalty Free Music. [ONLINE] &#10;Available at: https://www.bensound.com/royalty-free-music/track/the-jazz-piano. [Accessed 10 November 2019].&#10;&#10;Acoustic Breeze | Folk Guitar Royalty Free Music. 2019. Acoustic Breeze | Folk Guitar Royalty Free Music. [ONLINE] &#10;Available at: https://www.bensound.com/royalty-free-music/track/acoustic-breeze. [Accessed 10 November 2019].&#10;&#10;Free Music Public Domain. 2019. Royalty Free Classical Music - Free Music Public Domain. [ONLINE] &#10;Available at: https://www.freemusicpublicdomain.com/royalty-free-classical-music/. [Accessed 10 November 2019].&#10;&#10;Unsplash. 2019. brown guitar photo â&#128;&#147; Free Guitar Image on Unsplash. [ONLINE] &#10;Available at: https://unsplash.com/photos/4Hpljf9Y1ko. [Accessed 10 November 2019].&#10;&#10;Unsplash. 2019. person playing trumpet outdoor photo â&#128;&#147; Free Trumpet Image on Unsplash. [ONLINE] &#10;Available at: https://unsplash.com/photos/9HkBtMf_3TU. [Accessed 10 November 2019].&#10;&#10;Unsplash. 2019. white and black piano keyboard photo â&#128;&#147; Free Music Image on Unsplash. [ONLINE] &#10;Available at: https://unsplash.com/photos/RQ0_Fp2Hr2M. [Accessed 10 November 2019].&#10;&#10;Unsplash. 2019. selective focus photography of multicolored confetti lot photo â&#128;&#147; Free Confetti Image on Unsplash. [ONLINE] &#10;Available at: https://unsplash.com/photos/Xaanw0s0pMk. [Accessed 10 November 2019].&#10;&#10;Unsplash. 2019. Magic Keyboard beside mug and click pen photo â&#128;&#147; Free Desk Image on Unsplash. [ONLINE] &#10;Available at: https://unsplash.com/photos/VieM9BdZKFo. [Accessed 10 November 2019].&#10;&#10;&#10;&#10;&#10;" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <padding>
+                  <Insets left="40.0" right="40.0" />
+               </padding>
+            </TextArea>
          </children>
       </GridPane>
    </center>
