@@ -250,12 +250,13 @@ public class DailyLearningsController {
     @FXML
     private void handlePopUpScreenAction(ActionEvent event) throws IOException{
         try{
-            FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("PopUpLearnings.fxml"));
-            Parent r1 = (Parent) fxmlloader.load();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PopUpLearnings.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-            stage.setTitle("Past 30 days Report");
-            stage.setScene(new Scene(r1));
-            stage.showAndWait();
+            stage.setTitle("New entry");
+            stage.setScene(new Scene(root1));
+            stage.show();
+
             
         } catch (Exception e){
             System.out.println("Can't display window");

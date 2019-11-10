@@ -7,11 +7,15 @@ package kaizen;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ToggleButton;
@@ -49,7 +53,30 @@ public class DailyBreakdownController implements Initializable {
         // TODO
     }    
     
-    
+    @FXML
+    private void loadGraph(ActionEvent event){
+        dailyBarChart.getData().clear();
+        
+        try{
+            LocalDate date = dailyChartDtPicker.getValue();
+            XYChart.Series<String, Number> dailySeries = new XYChart.Series<String,Number>();
+            if(date.equals(today));
+            ResultSet daily = db.getResultSet("SELECT CATEGORYNAME, DURATION FROM TIMESHEETS");
+            ArrayList<String> categorynameList = new ArrayList();
+            ArrayList<Integer> durationList = new ArrayList();
+            
+            while (daily.next()){
+                categorynameList.add(daily.getString(1));
+                durationList.add(daily.getInt(2));
+                
+                for(int i = 0; i<categorynameList.size(); i++){
+                    dailySeries.getData().add(new XYChart.Data(categorynameList.get(i), durationList.get(i)));
+                }
+            }
+        } catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
     
     
     
