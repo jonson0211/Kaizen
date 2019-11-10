@@ -29,49 +29,6 @@
                </GridPane.margin>
             </Label>
             <Button fx:id="backToTimeDashboard" mnemonicParsing="false" onAction="#handleBackAction" prefHeight="33.0" prefWidth="73.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Back" GridPane.rowIndex="3" />
-            <ToggleButton fx:id="categoryWork" mnemonicParsing="false" text="Work" GridPane.rowIndex="1">
-               <toggleGroup>
-                  <ToggleGroup fx:id="toggleGroup" />
-               </toggleGroup>
-               <GridPane.margin>
-                  <Insets bottom="200.0" left="50.0" />
-               </GridPane.margin>
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </ToggleButton>
-            <ToggleButton fx:id="categoryDaily" mnemonicParsing="false" text="Daily" toggleGroup="$toggleGroup" GridPane.rowIndex="1">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="50.0" />
-               </GridPane.margin>
-            </ToggleButton>
-            <ToggleButton fx:id="categoryRelationships" mnemonicParsing="false" text="Relationships" toggleGroup="$toggleGroup" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="350.0" />
-               </GridPane.margin>
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </ToggleButton>
-            <ToggleButton fx:id="categoryWellness" mnemonicParsing="false" text="Wellness" toggleGroup="$toggleGroup" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="650.0" />
-               </GridPane.margin>
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </ToggleButton>
-            <ToggleButton mnemonicParsing="false" text="Projects" toggleGroup="$toggleGroup" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets bottom="200.0" left="650.0" />
-               </GridPane.margin>
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </ToggleButton>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="What time did you start?" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
@@ -157,18 +114,52 @@
                   <Insets left="500.0" right="250.0" top="320.0" />
                </GridPane.margin>
             </TextField>
-            <RadioButton mnemonicParsing="false" text="RadioButton" GridPane.rowIndex="1" />
-            <RadioButton fx:id="workTest" mnemonicParsing="false" text="Work" GridPane.rowIndex="1">
+            <RadioButton fx:id="categoryDaily" mnemonicParsing="false" text="Daily" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets bottom="100.0" />
+                  <Insets left="50.0" />
                </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
                <toggleGroup>
-                  <ToggleGroup fx:id="toggleGroupTest" />
+                  <ToggleGroup fx:id="toggleGroup" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="categoryRelaxation" mnemonicParsing="false" text="Relaxation" GridPane.rowIndex="1">
+            <RadioButton fx:id="categoryWork" mnemonicParsing="false" text="Work" toggleGroup="$toggleGroup" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="200.0" left="50.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="categoryRelaxation" mnemonicParsing="false" text="Relaxation" toggleGroup="$toggleGroup" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="200.0" left="350.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="categoryRelationships" mnemonicParsing="false" text="Relationships" toggleGroup="$toggleGroup" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="350.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="categoryWellness" mnemonicParsing="false" text="Wellness" toggleGroup="$toggleGroup" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="650.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </RadioButton>
+            <RadioButton fx:id="categoryProjects" mnemonicParsing="false" text="Projects" toggleGroup="$toggleGroup" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="200.0" left="650.0" />
                </GridPane.margin>
                <font>
                   <Font size="20.0" />

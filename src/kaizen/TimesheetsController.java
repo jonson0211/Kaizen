@@ -144,8 +144,8 @@ public class TimesheetsController implements Initializable {
     @FXML
     private Button back;
     
-     ToggleGroup toggleGroupTest = new ToggleGroup(); 
-     Toggle select = toggleGroupTest.getSelectedToggle();
+     ToggleGroup toggleGroup = new ToggleGroup(); 
+     Toggle select = toggleGroup.getSelectedToggle();
     //String option = select.getText();
     //ToggleGroup toggleGroup = new ToggleGroup();
  
@@ -250,12 +250,21 @@ public class TimesheetsController implements Initializable {
         
         //this.workTest.setToggleGroup(toggleGroupTest);
         
-        //Toggle cat;
-        Toggle cat = toggleGroupTest.getSelectedToggle();
-        String catName = null;
-        if (workTest.isSelected())
-            catName = "Work";
         
+        Toggle cat = toggleGroup.getSelectedToggle();
+        String catName = null;
+        if (categoryWork.isSelected())
+            catName = "Work";
+        if (categoryWellness.isSelected())
+            catName = "Wellness";
+        if (categoryProjects.isSelected())
+            catName = "Projects";
+        if (categoryRelaxation.isSelected())
+            catName = "Relaxation";
+        if (categoryProjects.isSelected())
+            catName = "Work";
+        if (categoryRelationships.isSelected())
+            catName = "Relationships";
         
         //desc = description.getText();
         //System.out.println(desc);
