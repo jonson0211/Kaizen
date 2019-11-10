@@ -184,6 +184,22 @@ public class DailyLearningsController implements Initializable {
     }*/
     //input learnings into the table summary
     //update learnings
+    
+    @FXML
+    private void handleAdd(ActionEvent event){
+        String date = datePick.getValue().format(DateTimeFormatter.ofPattern("dd/MM/YYYY"));
+        String did_well = answerOne.getValue();
+        String be_better = answerTwo.getValue();
+        
+        try{
+            userLearn.insertStatement("INSERT INTO DAILY_LEARNINGS (USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
+                    + "VALUES ('" + LoginScreenController.loginUsername + "','" + date + "','" + did_well + "','" + be_better + "');" );
+        confirmEntry.setVisible(true);
+        } catch(Exception e){
+            System.out.println("learnings update failed");
+            e.printStackTrace();
+        }
+    }
     @FXML
     private void updateAnswers(ActionEvent event) throws SQLException{
         String answerOneString = (String) answerOne.getValue();
