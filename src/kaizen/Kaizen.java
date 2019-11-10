@@ -23,13 +23,13 @@ public class Kaizen extends Application {
     public void start(Stage stage) throws Exception {
         
         System.out.println("milestone 1");
-        Parent root = FXMLLoader.load(getClass().getResource("PopUpLearnings.fxml"));        
+        Parent root = FXMLLoader.load(getClass().getResource("PieChart.fxml"));        
         Scene scene = new Scene(root);
         System.out.println("milestone 2");
         stage.setScene(scene);
         stage.show();
     }
-
+    
     /**
      * @param args the command line arguments
      */

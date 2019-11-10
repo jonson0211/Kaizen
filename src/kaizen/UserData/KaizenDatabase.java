@@ -293,7 +293,7 @@ public class KaizenDatabase {
                         + "VALUES ('Work', "
                         + "'540',"
                         + "'600',"
-                        + "'0',"
+                        + "'60',"
                         + " 'Today I had a productive day at the office!'"
                         + ");"
                         );
