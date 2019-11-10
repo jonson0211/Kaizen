@@ -19,29 +19,21 @@ import javafx.beans.property.StringProperty;
  * @author wongad1
  */
 public class learningsDoBetter {
-    String doBetter;
-    Integer doBetterCount;
-
-    public learningsDoBetter(String doBetter, Integer doBetterCount) {
-        this.doBetter = doBetter;
-        this.doBetterCount = doBetterCount;
-    }
-
-    public String getDoBetter() {
-        return doBetter;
-    }
-
-    public void setDoBetter(String doBetter) {
-        this.doBetter = doBetter;
-    }
-
-    public Integer getDoBetterCount() {
-        return doBetterCount;
-    }
-
-    public void setDoBetterCount(Integer doBetterCount) {
-        this.doBetterCount = doBetterCount;
+    
+    private StringProperty beBetter;
+    
+        public learningsDoBetter(String beBetter) {
+        this.beBetter = new SimpleStringProperty(beBetter);
     }
     
+    public String getBeBetter(){
+        return beBetter.get();
+    }
+    public StringProperty getBeBetterProperty(){
+        return beBetter;
+    }
+    public void setBeBetter(String beBetter){
+        this.beBetter.set(beBetter);
+    }
     
 }
