@@ -18,9 +18,11 @@ public class learningsDidWell {
     
 
     private StringProperty didWell;
+    private IntegerProperty didWellCount;
     
-        public learningsDidWell(String didWell) {
+        public learningsDidWell(String didWell, Integer didWellCount) {
         this.didWell = new SimpleStringProperty(didWell);
+        this.didWellCount = new SimpleIntegerProperty(didWellCount);
     }
     
     public String getDidWell(){
@@ -31,6 +33,16 @@ public class learningsDidWell {
     }
     public void setDidWell(String didWell){
         this.didWell.set(didWell);
+    }
+    
+    public Integer getDidWellCount(){
+        return didWellCount.get();
+    }
+    public IntegerProperty getDidWellCountProperty(){
+        return didWellCount;
+    }
+    public void setDidWellCount(Integer didWellCount){
+        this.didWellCount.set(didWellCount);
     }
 
 }

@@ -41,7 +41,7 @@ import java.time.format.DateTimeFormatter;
  *
  * @author wongad1
  */
-public class DailyLearningsController implements Initializable {
+public class DailyLearningsController {
 
     KaizenDatabase userLearn = new KaizenDatabase();
     
@@ -116,8 +116,8 @@ public class DailyLearningsController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    @FXML
+    public void initialize() {
         // TODO
         answerOne.setValue("Your lesson today...");
         answerOne.setEditable(true);
@@ -129,30 +129,30 @@ public class DailyLearningsController implements Initializable {
         //FillComboTwo();
         confirmEntry.setVisible(false);
         viewPast.setVisible(true);
+        didWellColumn.setCellValueFactory(cellData -> cellData.getValue().getDidWellProperty());
+        didWellCount.setCellValueFactory(cellData -> cellData.getValue().getDidWellCountProperty());
+        didWellView.setItems(this.getLearningsDidWell());
     }    
     
     //return observable list of done well and do betters
- /*   
+   
     public ObservableList<learningsDidWell> getLearningsDidWell(){
         
         ObservableList<learningsDidWell> didWellList = FXCollections.observableArrayList();
         
         try {
-            ResultSet rsDidWellTable = userLearn.getResultSet("SELECT DID_WELL, COUNT (*) FROM LEARNINGS "
-                    + "GROUP BY DID_WELL"
-                    + "HAVING COUNT(*) >1"
-                    + "ORDER BY COUNT(*) "
-                    + "WHERE USERNAME = '" + LoginScreenController.loginUsername + "';");
+            ResultSet rsDidWellTable = userLearn.getResultSet("SELECT DID_WELL, COUNT(DID_WELL) FROM LEARNINGS GROUP BY DID_WELL");
+                 //   + " WHERE USERNAME = '" + LoginScreenController.loginUsername + "';");
             
             while (rsDidWellTable.next()){
-                //didWellList.add(new learningsDidWell(rsDidWellTable.getString(1), rsDidWellTable.getInt(2)));
+                didWellList.add(new learningsDidWell(rsDidWellTable.getString("DID_WELL"), rsDidWellTable.getInt("COUNT(DID_WELL)")));
             }
         } catch (SQLException ex) {
             Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return FXCollections.observableArrayList(didWellList);
     }
-    
+    /*
         public ObservableList<learningsDoBetter> getLearningsDoBetter(){
         
         ObservableList<learningsDoBetter> doBetterList = FXCollections.observableArrayList();
@@ -192,7 +192,7 @@ public class DailyLearningsController implements Initializable {
         String be_better = answerTwo.getValue();
         
         try{
-            userLearn.insertStatement("INSERT INTO DAILY_LEARNINGS (USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
+            userLearn.insertStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) "
                     + "VALUES ('" + LoginScreenController.loginUsername + "','" + date + "','" + did_well + "','" + be_better + "');" );
         confirmEntry.setVisible(true);
         } catch(Exception e){
@@ -206,7 +206,7 @@ public class DailyLearningsController implements Initializable {
         String answerTwoString = (String) answerTwo.getValue();
         String date = datePick.getValue().format(DateTimeFormatter.ofPattern("dd/mm/yyyy"));
         
-        userLearn.insertStatement("INSERT INTO DAILY_LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) VALUES (" + LoginScreenController.loginUsername + "," + date + "', " + answerOneString + ", " + answerTwoString + "');");
+        userLearn.insertStatement("INSERT INTO LEARNINGS(USERNAME, DATE, DID_WELL, BE_BETTER) VALUES (" + LoginScreenController.loginUsername + "," + date + "', " + answerOneString + ", " + answerTwoString + "');");
         System.out.println("Entered in learnings");
         confirmEntry.setVisible(true);
         
@@ -217,7 +217,7 @@ public class DailyLearningsController implements Initializable {
     @FXML
     private void updateComboOneValue(ActionEvent event){
         try{
-            ResultSet currentAnswerOne = userLearn.getResultSet("SELECT USERNAME, DID_WELL FROM DAILY_LEARNINGS"
+            ResultSet currentAnswerOne = userLearn.getResultSet("SELECT USERNAME, DID_WELL FROM LEARNINGS"
                     + "WHERE USERNAME = " + LoginScreenController.loginUsername + " ");
             answerOne.setValue(String.valueOf(currentAnswerOne.getString(3)));
         } catch(Exception e){

@@ -121,7 +121,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="addLearning" mnemonicParsing="false" onAction="#updateAnswers" text="Add learnings" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <Button fx:id="addLearning" mnemonicParsing="false" onAction="#handleAdd" text="Add learnings" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets bottom="200.0" top="-100.0" />
                      </GridPane.margin>
