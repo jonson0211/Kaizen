@@ -11,12 +11,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import kaizen.UserData.KaizenDatabase;
@@ -53,6 +56,9 @@ public class RegisterScreenController implements Initializable{
     @FXML
     private Button signUp;
     
+    @FXML
+            private Label label;
+    
     KaizenDatabase userDB = new KaizenDatabase();
     
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
@@ -65,6 +71,7 @@ public class RegisterScreenController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        label.setVisible(false);
         //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -85,55 +92,36 @@ private void handleSignUp(ActionEvent event){
     loggedInUser = addEmail;
     System.out.println(loggedInUser);
     
-    if (addFname.isEmpty() || addLname.isEmpty() || addPassword.isEmpty() 
-            || addEmail.isEmpty() || addPasswordConfirm.isEmpty()){
-        
-       Alert a = new Alert(AlertType.ERROR);
-       a.setHeaderText("Required fields cannot be empty");
-       a.setContentText("Please fill in all required fields");
-       a.showAndWait();
-        }
-    else if (addPassword != addPasswordConfirm){
-       Alert apw = new Alert(AlertType.ERROR);
-       apw.setHeaderText("Password don't match");
-       apw.setContentText("Passwords must match");
-       apw.showAndWait();       
-       }
-    else {
-        try {
-            pst = conn.prepareStatement("SELECT * FROM USER WHERE EMAIL = ?");
-            pst.setString(1, email.getText());
-            rs = pst.executeQuery();
-            while(rs.next()){
-                if(rs.getString(1).matches(email.getText())){
-                    Alert aemail = new Alert(AlertType.ERROR);
-                    aemail.setHeaderText("Invalid Email");
-                    aemail.setContentText("Email is already registered. Please use another email");
-                    aemail.showAndWait();
-                }
-            }
-            } catch (Exception e){
-            }
-    }
-    try{userDB.insertStatement("INSERT INTO LOGIN("
+    if (addEmail.isEmpty() || addPassword.isEmpty() || addPasswordConfirm.isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error!");
+            alert.setHeaderText("Required fields cannot be empty!");
+            alert.setContentText("Please ensure fields are complete.");
+            alert.showAndWait();
+        } else if (!addPassword.equals(addPasswordConfirm)) {
+            Alert alertpw = new Alert(Alert.AlertType.ERROR);
+            alertpw.setTitle("Error!");
+            alertpw.setHeaderText("Passwords do not match!");
+            alertpw.setContentText("Please ensure passwords match.");
+            alertpw.showAndWait();
+        } else {
+    try{
+        userDB.insertStatement("INSERT INTO LOGIN("
                + "FNAME, "
                + "LNAME, "
-               + "EMAIL, "
+               + "USERNAME, "
                + "PASSWORD) "
-               + "VALUES('" + addFname + "', '" + addLname + "', '" + addEmail + "', '" + addPassword + "'?','?','?','?' ");
-    
-    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-    alert.setTitle("Successful");
-    alert.setHeaderText("Registration was sucessful");
-    alert.setContentText("Please login to continue");
-    
+               + "VALUES('" + addFname + "', '" + addLname + "', '" + addEmail + "', '" + addPassword + "')");
+
+    label.setVisible(true);
     pageSwitcher.switcher(event, "LoginScreen.fxml");
     
        } catch(Exception e){
-           
+           e.printStackTrace();
        }
-    }
-    
+        }
+}
+
 public String getLoggedInUser(){
         return loggedInUser;
 }

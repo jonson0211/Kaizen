@@ -27,7 +27,8 @@ public class Kaizen extends Application {
         Scene scene = new Scene(root);
         System.out.println("milestone 2");
         stage.setScene(scene);
-        stage.show();
+        stage.show();      
+ 
     }
     
     /**
