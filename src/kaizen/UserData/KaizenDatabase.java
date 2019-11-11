@@ -118,6 +118,8 @@ public class KaizenDatabase {
     public static void createTasksTable() {
         PreparedStatement createTasksTable = null;
         PreparedStatement createDummyTasks = null;
+        PreparedStatement dropTable = null;
+        
         ResultSet rs = null;
         openConnection();
         try {
@@ -126,6 +128,7 @@ public class KaizenDatabase {
             DatabaseMetaData dbmd = conn.getMetaData();
             rs = dbmd.getTables(null, null, "TASKS", null);
             if (!rs.next()) {
+                
                 createTasksTable = conn.prepareStatement("CREATE TABLE IF NOT EXISTS TASKS ("
                         + " TASK_ID INTEGER PRIMARY KEY AUTOINCREMENT"
                         + ", USERNAME TEXT NOT NULL"
@@ -151,9 +154,9 @@ public class KaizenDatabase {
                         + "'Finish ACF homework', "
                         + "'Work',"
                         + "'Finish the weekly homework for ACF Topic 7', "
-                        + "15/11/2019, "
-                        + "18/11/2019, "
-                        + "'LOW'"
+                        + "'2019-11-18', "
+                        + "'2019-11-19',"
+                        + "'70'"
                         + ");");
                 createDummyTasks.execute();
                 
@@ -164,9 +167,9 @@ public class KaizenDatabase {
                         + "'ACF Call', "
                         + "'Work',"
                         + "'Discuss with the team on how we will handle presentation', "
-                        + "02/11/2019, "
-                        + "02/11/2019, "
-                        + "'URGENT'"
+                        + "'2019-11-18', "
+                        + "'2019-11-18', "
+                        + "'100'"
                         + ");");
                 createDummyTasks.execute();
                 
@@ -178,9 +181,9 @@ public class KaizenDatabase {
                         + "'Watch new My Hero Academia new episode', "
                         + "'Relaxation',"
                         + "'Watch new episode 4 of My Hero Academia season 4', "
-                        + "07/11/2019, "
-                        + "011/11/2019, "
-                        + "'LOW'"
+                        + "'2019-11-19', "
+                        + "'2019-11-19', "
+                        + "'20'"
                         + ");");
                 createDummyTasks.execute();
                 
@@ -190,10 +193,10 @@ public class KaizenDatabase {
                         + "'lienzhu', "
                         + "'Decide on movie for date', "
                         + "'Relationships',"
-                        + "'Decide on what movie to watch for date with Kara on 05/11', "
-                        + "02/11/2019, "
-                        + "04/11/2019, "
-                        + "'HIGH'"
+                        + "'Decide on what movie to watch for date with Kara on her birthday', "
+                        + "'2019-11-20', "
+                        + "'2019-11-23', "
+                        + "'40'"
                         + ");");
                 createDummyTasks.execute();
                 
@@ -201,12 +204,12 @@ public class KaizenDatabase {
                 createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
                         + "'lienzhu', "
-                        + "'Apply for vacationer intern position', "
+                        + "'Apply for Microsoft', "
                         + "'Work',"
-                        + "'Apply for the vacationer program in the Product & Tech division of Super Bank', "
-                        + "02/11/2019, "
-                        + "020/11/2019, "
-                        + "'MEDIUM'"
+                        + "'Apply for an internship with Microsoft', "
+                        + "'2019-11-21', "
+                        + "'2019-11-25', "
+                        + "'70'"
                         + ");");
                 createDummyTasks.execute();
                 
@@ -217,9 +220,9 @@ public class KaizenDatabase {
                         + "'Learn how to code', "
                         + "'Projects',"
                         + "'Self learn the basics of Java coding', "
-                        + "06/11/2019, "
-                        + "17/11/2019, "
-                        + "'MEDIUM'"
+                        + "'2019-11-22', "
+                        + "'2019-11-25', "
+                        + "'80'"
                         + ");");
                 createDummyTasks.execute();
                 
@@ -230,9 +233,9 @@ public class KaizenDatabase {
                         + "'Finish Zelda', "
                         + "'Relaxation',"
                         + "'Finish the game The Legend of Zelda: Breath of the Wild on Nintendo Switch', "
-                        + "03/11/2019, "
-                        + "29/11/2019, "
-                        + "'LOW'"
+                        + "'2019-11-23', "
+                        + "'2019-11-25', "
+                        + "'10'"
                         + ");");
                 createDummyTasks.execute();
                 
@@ -240,12 +243,12 @@ public class KaizenDatabase {
                 createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (USERNAME, TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
                         + "'lienzhu', "
-                        + "'Form oztag group', "
+                        + "'Form Oztag group', "
                         + "'Wellness',"
-                        + "'Gather people who are interested in forming an oztag team', "
-                        + "05/11/2019, "
-                        + "30/11/2019, "
-                        + "'MEDIUM'"
+                        + "'Gather people who are interested in forming an Oztag team', "
+                        + "'2019-11-18', "
+                        + "'2019-11-25', "
+                        + "'40'"
                         + ");");
                 createDummyTasks.execute();
                 
@@ -256,9 +259,9 @@ public class KaizenDatabase {
                         + "'Organise Interfaculty Party', "
                         + "'Work',"
                         + "'Plan and organise the logistics of the Annual Interfactulty Student Society Party ', "
-                        + "08/11/2019, "
-                        + "18/11/2019, "
-                        + "'HIGH'"
+                        + "'2019-11-23', "
+                        + "'2019-11-24', "
+                        + "'60'"
                         + ");");
                 createDummyTasks.execute();
                 
@@ -269,14 +272,17 @@ public class KaizenDatabase {
                         + "'Shopping for groceries', "
                         + "'Daily',"
                         + "'Shopping for eggs, milk, bread, lettuce', "
-                        + "03/11/2019, "
-                        + "03/11/2019, "
-                        + "'HIGH'"
+                        + "'2019-11-19', "
+                        + "'2019-11-19', "
+                        + "'80'"
                         + ");");
                 createDummyTasks.execute();
                 
             } else {
-                System.out.println("TASKS table already exists");
+               System.out.println("TASKS table already exists");
+//        dropTable = conn.prepareStatement("DROP TABLE TASKS");
+//        dropTable.execute();
+//                System.out.println("dropped");
             }
         } catch (Exception e) {
             e.printStackTrace();
