@@ -252,6 +252,10 @@ public class DailyLearningsController {
         }
     }
     @FXML
+    private void handleRefresh(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event, "DailyLearnings.fxml");
+    }
+    @FXML
     private void handleKbBoard(ActionEvent event) throws IOException{
         pageSwitcher.switcher(event, "KanbanBoard.fxml");
             }
