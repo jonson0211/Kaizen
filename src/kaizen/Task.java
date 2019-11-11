@@ -14,80 +14,77 @@ import javafx.beans.property.StringProperty;
  * 
  * //(USERNAME, TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY
  */
+
+//
 public class Task {
-    private final StringProperty title = new SimpleStringProperty(this, "title");
-    public StringProperty titleProperty() {
+    
+    private StringProperty title;
+    private StringProperty category;
+    private StringProperty description;
+    private StringProperty doDate;
+    private StringProperty dueDate;
+    private StringProperty priority;
+    
+    
+    public Task(){
+        this("Title", "Description", "Category", "Do Date", "Due Date", "Priority");
+    }
+    public Task(String title, String description, String category, String doDate, String dueDate, String priority) {
+        this.title = new SimpleStringProperty(title);
+        this.description= new SimpleStringProperty(description);
+        this.category = new SimpleStringProperty(category);
+        this.doDate = new SimpleStringProperty(doDate);
+        this.dueDate = new SimpleStringProperty(dueDate);
+        this.priority = new SimpleStringProperty(priority);
+        
+    }
+
+    public StringProperty getTitle() {
         return title;
     }
 
-    public final String getTitle() {
-        return titleProperty().get();
-    }
-    public final void setTitle(String title) {
-        titleProperty().set(title);
+    public void setTitle(StringProperty title) {
+        this.title = title;
     }
 
-    private final StringProperty categoryName = new SimpleStringProperty(this, "categoryName");
-    public StringProperty categoryNameProperty() {
-        return categoryName;
-    }
-    public final String getCategoryName() {
-        return categoryNameProperty().get();
-    }
-    public final void setCategoryName(String categoryName) {
-        categoryNameProperty().set(categoryName);
+    public StringProperty getCategory() {
+        return category;
     }
 
-    private final StringProperty description = new SimpleStringProperty(this, "description");
-    public StringProperty descriptionProperty() {
+    public void setCategory(StringProperty category) {
+        this.category = category;
+    }
+
+    public StringProperty getDescription() {
         return description;
     }
-    public final String getDescription() {
-        return descriptionProperty().get();
+
+    public void setDescription(StringProperty description) {
+        this.description = description;
     }
-    public final void setDescription(String description) {
-        descriptionProperty().set(description);
-    }
-    
-    private final StringProperty priority = new SimpleStringProperty(this, "priority");
-    public StringProperty priorityProperty() {
-        return priority;
-    }
-    public final String getPriority() {
-        return priorityProperty().get();
-    }
-    public final void setPriority(String priority) {
-        priorityProperty().set(priority);
-    }
-    
-    private final StringProperty doDate = new SimpleStringProperty(this, "doDate");
-    public StringProperty doDateProperty() {
+
+    public StringProperty getDoDate() {
         return doDate;
     }
-    public final String getDoDate() {
-        return doDateProperty().get();
+
+    public void setDoDate(StringProperty doDate) {
+        this.doDate = doDate;
     }
-    public final void setDoDate(String doDate) {
-       doDateProperty().set(doDate);
-    }
-    
-    private final StringProperty dueDate = new SimpleStringProperty(this, "dueDate");
-    public StringProperty dueDateProperty() {
+
+    public StringProperty getDueDate() {
         return dueDate;
     }
-    public final String getDueDate() {
-        return dueDateProperty().get();
+
+    public void setDueDate(StringProperty dueDate) {
+        this.dueDate = dueDate;
     }
-    public final void setDueDate(String dueDate) {
-        dueDateProperty().set(dueDate);
+
+    public StringProperty getPriority() {
+        return priority;
+    }
+
+    public void setPriority(StringProperty priority) {
+        this.priority = priority;
     }
     
-    public Task(String title, String categoryName, String description, String priority, String doDate, String dueDate) {
-        setTitle(title);
-        setCategoryName(categoryName);
-        setDescription(description);
-        setPriority(priority);
-        setDoDate(doDate);
-        setDueDate(dueDate);
-    }
 }

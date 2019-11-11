@@ -10,15 +10,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="vbox-bar" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.KanbanBoardController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="vbox-bar" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.TaskTrackerController">
    <left>
       <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="menu-panel" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
          <center>
             <VBox prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <ToggleButton fx:id="kanbanBoard" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="current-menu-toggle" stylesheets="@stylesheet.css" text="KANBAN BOARD" />
+                  <ToggleButton fx:id="kanbanBoard" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="KANBAN BOARD" />
                   <ToggleButton fx:id="deepFocus" mnemonicParsing="false" onAction="#handleDeepFocusMode" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DEEP FOCUS" />
-                  <ToggleButton fx:id="taskTracker" mnemonicParsing="false" onAction="#handleTaskTracker" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TASK TRACKER" />
+                  <ToggleButton fx:id="taskTracker" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="current-menu-toggle" stylesheets="@stylesheet.css" text="TASK TRACKER" />
                   <ToggleButton fx:id="timeDashboard" mnemonicParsing="false" onAction="#handleTimeDashboard" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TIME DASHBOARD" />
                   <ToggleButton fx:id="dailyLearnings" mnemonicParsing="false" onAction="#handleDailyLearnings" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" />
                </children>
@@ -54,29 +54,21 @@
                <children>
                   <Label layoutX="35.0" layoutY="32.0" styleClass="large-label" text="Welcome" />
                   <Label layoutX="35.0" layoutY="92.0" styleClass="small-label" text="What would you like to do today?" />
-                  <ToggleButton fx:id="dueDateView" layoutX="861.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleDueDateView" text="Due Date View" />
-                  <ToggleButton fx:id="doDateView" layoutX="664.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleDoDateView" text="Do Date View" />
-                  <GridPane fx:id="grid" gridLinesVisible="true" layoutX="72.0" layoutY="196.0" prefHeight="498.0" prefWidth="950.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                  </GridPane>
-                  <Label layoutX="97.0" layoutY="147.0" text="Today's Tasks" />
-                  <Label layoutX="339.0" layoutY="147.0" text="Tomorrow's Tasks" />
-                  <Label layoutX="615.0" layoutY="147.0" text="Completed Tasks" />
-                  <Label layoutX="840.0" layoutY="147.0" text="Next 7 Day's Tasks" />
+                  <AnchorPane layoutX="55.0" layoutY="160.0" prefHeight="509.0" prefWidth="967.0">
+                     <children>
+                        <TableView fx:id="taskList" prefHeight="514.0" prefWidth="967.0">
+                          <columns>
+                            <TableColumn fx:id="titleColumn" prefWidth="150.0" text="Title" />
+                            <TableColumn minWidth="0.0" prefWidth="0.0" text="Category Name" />
+                              <TableColumn fx:id="descriptionColumn" prefWidth="281.0" text="Description" />
+                              <TableColumn fx:id="categoryNameColumn" prefWidth="129.0" text="Category" />
+                              <TableColumn fx:id="doDateColumn" prefWidth="150.0" text="Do Date" />
+                              <TableColumn fx:id="dueDateColumn" prefWidth="150.0" text="Due Date" />
+                              <TableColumn fx:id="priorityColumn" prefWidth="106.0" text="Priority" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
                </children>
             </Pane>
          </center></BorderPane>
