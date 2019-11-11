@@ -295,6 +295,7 @@ public class KaizenDatabase {
             if (!rs.next()) {
                 createTimesheetsTable = conn.prepareStatement("CREATE TABLE TIMESHEETS ("
                         + "CATEGORYNAME TEXT,"
+                        + "ACTIVITY TEXT,"
                         + "DATE TEXT,"
                         + "START INTEGER, " //integer
                         + "END INTEGER, " //integer
@@ -305,8 +306,9 @@ public class KaizenDatabase {
                         + ");");
                 createTimesheetsTable.execute();
                 System.out.println("Timesheets table created");
-                createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,DATE,START,END,DURATION,DESCR) "
+                createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,ACTIVITY,DATE,START,END,DURATION,DESCR) "
                         + "VALUES ('Work',"
+                        + "'Videography',"
                         + "'2019-11-14',"
                         + "'540',"
                         + "'600',"

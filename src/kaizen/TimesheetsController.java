@@ -40,30 +40,7 @@ public class TimesheetsController implements Initializable {
     @FXML private BorderPane border;
     @FXML private VBox box;
     @FXML private Text text;
-    
-    @FXML
-    private ToggleButton kbBoard;
-    
-    @FXML
-    private ToggleButton deepFocus;
-    
-    @FXML
-    private ToggleButton taskTracker;
-    
-    @FXML
-    private ToggleButton timeDashboard;
-    
-    @FXML
-    private ToggleButton dailyLearnings;
-    
-    @FXML
-    private ToggleButton settings;
-    
-    @FXML
-    private ToggleButton about;  
-    @FXML
-    private ToggleButton signOut;  
-    
+       
     @FXML
     private RadioButton categoryWork;
      
@@ -96,6 +73,9 @@ public class TimesheetsController implements Initializable {
     private TextArea descriptionText;
     
     @FXML
+    private ComboBox<String> tsCombo;
+    
+    @FXML
     private Button submit;
     
     @FXML
@@ -108,7 +88,7 @@ public class TimesheetsController implements Initializable {
     KaizenDatabase addTimesheet = new KaizenDatabase();
     
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
-    ObservableList<String> tsValues = FXCollections.observableArrayList("");
+    ObservableList<String> tsValues = FXCollections.observableArrayList("Exercise","Job-related","Videography","Socialising","Music","Life organisation","Food-related");
    
       
     /**
@@ -118,6 +98,9 @@ public class TimesheetsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
     durationLabel.setVisible(false);
+    tsCombo.setEditable(true);
+    tsCombo.setItems(tsValues);
+    
   
     }
     
@@ -131,6 +114,8 @@ public class TimesheetsController implements Initializable {
         String timeStartMin = timeStartMinField.getText();
         String timeEndHr = timeEndHrField.getText();
         String timeEndMin = timeEndMinField.getText();
+        
+        String act = (String) tsCombo.getValue();
         
         double timeStartHrNum = Double.parseDouble(timeStartHr);
         double timeStartMinNum = Double.parseDouble(timeStartMin);
@@ -162,8 +147,8 @@ public class TimesheetsController implements Initializable {
         
         try {
             
-            addTimesheet.insertStatement("INSERT INTO TIMESHEETS (CATEGORYNAME,DATE, START, END, DURATION, DESCR)"
-                    + " VALUES('" + catName + "', '" + date + "','" + startCombined + "', '"+  endCombined + "', '" +
+            addTimesheet.insertStatement("INSERT INTO TIMESHEETS (CATEGORYNAME, ACTIVITY,DATE, START, END, DURATION, DESCR)"
+                    + " VALUES('" + catName + "', '" + act + "' '" + date + "','" + startCombined + "', '"+  endCombined + "', '" +
                     duration + "', '" + desc + "');");
             durationLabel.setText(durationText + " minutes");
             durationLabel.setVisible(true);

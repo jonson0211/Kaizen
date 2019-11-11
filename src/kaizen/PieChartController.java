@@ -192,7 +192,7 @@ public class PieChartController implements Initializable {
     @FXML
     private void handlePopUpScreenAction(ActionEvent event) throws IOException {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Timesheets.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Timesheets1.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle("New entry");
