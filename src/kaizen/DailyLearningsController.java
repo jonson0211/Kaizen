@@ -119,10 +119,9 @@ public class DailyLearningsController {
     @FXML
     public void initialize() {
         // TODO
-        answerOne.setValue("Your lesson today...");
+        
         answerOne.setEditable(true);
         answerOne.setItems(answerOnes);
-        answerTwo.setValue("Your lesson today...");
         answerTwo.setEditable(true);
         answerTwo.setItems(answerTwos);
         //FillComboOne();
@@ -144,7 +143,7 @@ public class DailyLearningsController {
         ObservableList<learningsDidWell> didWellList = FXCollections.observableArrayList();
         
         try {
-            ResultSet rsDidWellTable = userLearn.getResultSet("SELECT DID_WELL, COUNT(DID_WELL) FROM LEARNINGS GROUP BY DID_WELL ORDER BY DATE DESC LIMIT 7 '" + LoginScreenController.loginUsername + "';");
+            ResultSet rsDidWellTable = userLearn.getResultSet("SELECT DID_WELL, COUNT(DID_WELL) FROM LEARNINGS GROUP BY DID_WELL ORDER BY DATE DESC LIMIT 7");
             
             while (rsDidWellTable.next()){
                 didWellList.add(new learningsDidWell(rsDidWellTable.getString("DID_WELL"), rsDidWellTable.getInt("COUNT(DID_WELL)")));
@@ -195,7 +194,7 @@ public class DailyLearningsController {
         String answerTwoString = (String) answerTwo.getValue();
         String date = datePick.getValue().format(DateTimeFormatter.ofPattern("dd/mm/yyyy"));
         
-        userLearn.insertStatement("INSERT INTO LEARNINGS(USERNAME, DATE, DID_WELL, BE_BETTER) VALUES (" + LoginScreenController.loginUsername + "," + date + "', " + answerOneString + ", " + answerTwoString + "');");
+        userLearn.insertStatement("INSERT INTO LEARNINGS(DATE, DID_WELL, BE_BETTER) VALUES ('" + date + "', " + answerOneString + ", " + answerTwoString + "');");
         System.out.println("Entered in learnings");
         confirmEntry.setVisible(true);
         
@@ -203,21 +202,11 @@ public class DailyLearningsController {
     }
     //see if user has already entered in previous answers
     //
-    @FXML
-    private void updateComboOneValue(ActionEvent event){
-        try{
-            ResultSet currentAnswerOne = userLearn.getResultSet("SELECT USERNAME, DID_WELL FROM LEARNINGS"
-                    + "WHERE USERNAME = " + LoginScreenController.loginUsername + " ");
-            answerOne.setValue(String.valueOf(currentAnswerOne.getString(3)));
-        } catch(Exception e){
-            System.out.println("New user");
-            e.printStackTrace();
-        }
-    }
+
     //populating combobox
     private void FillComboOne() {
         try {
-            String queryOne = "SELECT DO_WELL FROM LEARNINGS";
+            String queryOne = "SELECT DID_WELL FROM LEARNINGS";
             pst = conn.prepareStatement(queryOne);
             rs = pst.executeQuery();
             
