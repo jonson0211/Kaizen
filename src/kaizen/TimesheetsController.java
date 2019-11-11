@@ -80,8 +80,7 @@ public class TimesheetsController implements Initializable {
     private RadioButton categoryRelaxation;
     
     @FXML
-    private RadioButton categoryProjects;
-    
+    private RadioButton categoryProjects;    
     
     @FXML private TextField timeStartHrField;
     
@@ -109,6 +108,8 @@ public class TimesheetsController implements Initializable {
     KaizenDatabase addTimesheet = new KaizenDatabase();
     
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
+    ObservableList<String> tsValues = FXCollections.observableArrayList("");
+   
       
     /**
      * Initializes the controller class.
