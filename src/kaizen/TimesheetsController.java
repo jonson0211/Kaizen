@@ -148,7 +148,7 @@ public class TimesheetsController implements Initializable {
         try {
             
             addTimesheet.insertStatement("INSERT INTO TIMESHEETS (CATEGORYNAME, ACTIVITY,DATE, START, END, DURATION, DESCR)"
-                    + " VALUES('" + catName + "', '" + act + "' '" + date + "','" + startCombined + "', '"+  endCombined + "', '" +
+                    + " VALUES('" + catName + "', '" + act + "', '" + date + "','" + startCombined + "', '"+  endCombined + "', '" +
                     duration + "', '" + desc + "');");
             durationLabel.setText(durationText + " minutes");
             durationLabel.setVisible(true);
