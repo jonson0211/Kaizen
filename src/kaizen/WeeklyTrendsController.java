@@ -11,14 +11,19 @@ import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import kaizen.UserData.KaizenDatabase;
 
@@ -44,18 +49,26 @@ public class WeeklyTrendsController implements Initializable {
     
     //barchart
     @FXML private LineChart<String, Number> weeklyTrendsLineChart;
+    //barcharts variables
+    @FXML private Button loadGraphButton;
+    @FXML private TextField numWeeksTxtField;
+    //@FXML private ChoiceBox activityChoiceBox;
+    @FXML
+    private ChoiceBox<String> activityChoiceBox;        
+    ObservableList<String> TSH = FXCollections.observableArrayList("Work", "Projects","Relationships","Wellness","Daily","Relaxation");
+    
     //datepicker
     @FXML private DatePicker weeklyChartDtPicker;
     
-
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        
+        // TODO    
+    activityChoiceBox.setValue("Choose Type!");
+    activityChoiceBox.setItems(TSH);
     }    
-    
-    
+
     //choose number of weeks back, choose activity, load graph
     
     
@@ -63,32 +76,59 @@ public class WeeklyTrendsController implements Initializable {
     private void loadGraph(ActionEvent event){
         weeklyTrendsLineChart.getData().clear();
         
+        String numWeeksBack = numWeeksTxtField.getText();
+        
+        int numWeeks = Integer.parseInt(numWeeksBack);
+        String activity = activityChoiceBox.getValue().toString();
+        
+        //CategoryAxis xAxis = (CategoryAxis) weeklyTrendsLineChart.getXAxis();
+//        ObservableList<String> categories = weeklyTrendsLineChart.observableArrayList("Jan", "Feb", "Mar", "Apr", "May", "Jun",
+//                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+//        );
+        //xAxis.setCategories(categories);
+        
+        
         try{
             LocalDate date = weeklyChartDtPicker.getValue();
             //test date output:
             System.out.println("*"+ date);
+            System.out.println("*"+ activity);
+            System.out.println("*"+ numWeeks*7);
+            
+            //XYChart.Series series = new XYChart.Series();
             XYChart.Series<String, Number> weeklySeries = new XYChart.Series<String,Number>();
-            //if(date.equals(today);
+            weeklySeries.setName("Work");
             ResultSet weekly = db.getResultSet("SELECT CATEGORYNAME, DURATION FROM TIMESHEETS "
-                    + "WHERE DATE BETWEEN date('" + date + "') and date('" + date + "','+7 day')");
+                    + "WHERE DATE BETWEEN date('" + date + "','"
+                    + "- " + (numWeeks*7) + "days') "
+                    + "and date ('" + date + "')"
+                    + "AND "
+                    + "CATEGORYNAME = "
+                    + "'" + activity + "'"
+                    );
            
             
-            ArrayList<String> categoryNameList = new ArrayList();
+            //ArrayList<String> categoryNameList = new ArrayList();
             ArrayList<Integer> durationList = new ArrayList();
+            //ArrayList<Integer> numWeeksCount = new ArrayList();
+            
             //test arraylist output:
-            System.out.println(categoryNameList);
+            //System.out.println(categoryNameList);
             //test output:
             System.out.println(weekly);
             
             while (weekly.next()){
-                categoryNameList.add(weekly.getString(1));
-                durationList.add((weekly.getInt(2))/60);
+                //categoryNameList.add(weekly.getString(1));
+                //numWeeksCount.add((weekly.getInt(1)));
+                durationList.add((weekly.getInt(2)));
                 
-                for(int i = 0; i<categoryNameList.size(); i++){
-                    weeklySeries.getData().add(new XYChart.Data(categoryNameList.get(i), durationList.get(i)));
+                for(int i = 0; i<durationList.size(); i++){
+                    weeklySeries.getData().add(new XYChart.Data("Week " + (numWeeks), durationList.get(i)));
                 }
-
+                
             }
+            //test duration output
+            System.out.println(durationList);
             weeklyTrendsLineChart.getData().addAll(weeklySeries);
         } catch(Exception ex){
             ex.printStackTrace();
