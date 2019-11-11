@@ -188,7 +188,7 @@ public class DailyLearningsController {
         } catch (SQLException ex){
             ex.printStackTrace();
         }
-    return FXCollections.observableArrayList();
+    return FXCollections.observableArrayList(answerOnes);
         }
         
     @FXML
@@ -198,8 +198,8 @@ public class DailyLearningsController {
         String be_better = answerTwo.getValue();
         
         try{
-            userLearn.insertStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('" + LoginScreenController.loginUsername + "','" + date + "','" + did_well + "','" + be_better + "');" );
+            userLearn.insertStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
+                    + "VALUES ('" + date + "','" + did_well + "','" + be_better + "');" );
         confirmEntry.setVisible(true);
         } catch(Exception e){
             System.out.println("learnings update failed");
@@ -222,7 +222,7 @@ public class DailyLearningsController {
     //
 
     //populating combobox
-    private void FillComboOne() {
+   /* private void FillComboOne() {
         try {
             String queryOne = "SELECT DID_WELL FROM LEARNINGS";
             pst = conn.prepareStatement(queryOne);
@@ -252,7 +252,7 @@ public class DailyLearningsController {
             Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
         }
                 
-    }
+    }*/
     
     @FXML
     private void handlePopUpScreenAction(ActionEvent event) throws IOException{
