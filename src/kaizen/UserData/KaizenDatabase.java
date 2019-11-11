@@ -430,19 +430,18 @@ public class KaizenDatabase {
             createLearnings = conn.prepareStatement("CREATE TABLE IF NOT EXISTS LEARNINGS("
                         + "LEARNINGS_ID INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + "DATE TEXT NOT NULL"
-                        + ", USERNAME TEXT NOT NULL"
                         + ", DID_WELL TEXT NOT NULL"
                         + ", BE_BETTER TEXT NOT NULL)");
             createLearnings.execute();
             System.out.println("LEARNINGS table created!");
-            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (LEARNINGS_ID, USERNAME, DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('1', 'lienzhu', '01/01/2019', 'went to the gym', 'spend time with family');");
+            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
+                    + "VALUES ('01/01/2019', 'went to the gym', 'spend time with family');");
             insertDemoData.execute();
-            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('lienzhu', '02/01/2019', 'went to the gym', 'picked up java earlier');");
+            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
+                    + "VALUES ('02/01/2019', 'went to the gym', 'picked up java earlier');");
             insertDemoData.execute();
-            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('lienzhu', '03/01/2019', 'went to the work', 'study 2605');");
+            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
+                    + "VALUES ('03/01/2019', 'went to the work', 'study 2605');");
             insertDemoData.execute();           
         } else{
                 System.out.println("LEARNINGS table exists!");
