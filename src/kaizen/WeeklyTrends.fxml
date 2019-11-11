@@ -80,17 +80,6 @@
                         <Insets left="765.0" top="575.0" />
                      </GridPane.margin>
                   </Button>
-                  <BarChart fx:id="weeklyBarChart" legendVisible="false">
-                    <xAxis>
-                      <CategoryAxis side="BOTTOM" />
-                    </xAxis>
-                    <yAxis>
-                      <NumberAxis side="LEFT" />
-                    </yAxis>
-                     <GridPane.margin>
-                        <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
-                     </GridPane.margin>
-                  </BarChart>
                   <DatePicker fx:id="weeklyChartDtPicker" onAction="#loadGraph">
                      <GridPane.margin>
                         <Insets left="275.0" top="575.0" />
@@ -114,6 +103,17 @@
                         <Font size="15.0" />
                      </font>
                   </Text>
+                  <LineChart fx:id="weeklyTrendsLineChart">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                     <GridPane.margin>
+                        <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
+                     </GridPane.margin>
+                  </LineChart>
                </children>
             </GridPane>
          </center></BorderPane>

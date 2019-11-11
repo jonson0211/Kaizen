@@ -15,6 +15,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.BarChart;
+import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -42,7 +43,7 @@ public class WeeklyTrendsController implements Initializable {
     @FXML private Button backTimeDashboard;
     
     //barchart
-    @FXML private BarChart<String, Number> weeklyBarChart;
+    @FXML private LineChart<String, Number> weeklyTrendsLineChart;
     //datepicker
     @FXML private DatePicker weeklyChartDtPicker;
     
@@ -60,7 +61,7 @@ public class WeeklyTrendsController implements Initializable {
     
     @FXML
     private void loadGraph(ActionEvent event){
-        weeklyBarChart.getData().clear();
+        weeklyTrendsLineChart.getData().clear();
         
         try{
             LocalDate date = weeklyChartDtPicker.getValue();
@@ -88,7 +89,7 @@ public class WeeklyTrendsController implements Initializable {
                 }
 
             }
-            weeklyBarChart.getData().addAll(weeklySeries);
+            weeklyTrendsLineChart.getData().addAll(weeklySeries);
         } catch(Exception ex){
             ex.printStackTrace();
         }
