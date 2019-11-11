@@ -54,6 +54,10 @@ public class WeeklyTrendsController implements Initializable {
         
     }    
     
+    
+    //choose number of weeks back, choose activity, load graph
+    
+    
     @FXML
     private void loadGraph(ActionEvent event){
         weeklyBarChart.getData().clear();
