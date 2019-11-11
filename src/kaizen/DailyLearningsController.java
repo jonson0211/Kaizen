@@ -135,9 +135,9 @@ public class DailyLearningsController {
                 System.out.println(c.getDwProperty());
                 answerOne.getItems().addAll(c.getDw());
             answerTwos.setAll(this.getComboTwo());
-            for(learningsCombo c2 : answerTwos){
-                System.out.println(c2.getDwProperty());
-                answerTwo.getItems().addAll(c2.getDw());
+            for(learningsCombo d : answerTwos){
+                System.out.println(d.getDwProperty());
+                answerTwo.getItems().addAll(d.getDw());
             }
             }
         } catch(SQLException ex){
