@@ -6,13 +6,10 @@
 package kaizen;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.format.DateTimeFormatter;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -20,7 +17,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -30,12 +26,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import kaizen.DataModels.learningsDidWell;
 import kaizen.DataModels.learningsDoBetter;
 import kaizen.UserData.KaizenDatabase;
 import java.time.format.DateTimeFormatter;
+import kaizen.DataModels.learningsCombo;
 /**
  * FXML Controller class
  *
@@ -47,7 +43,7 @@ public class DailyLearningsController {
     
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
     
-    ObservableList<String> answerOnes = FXCollections.observableArrayList("I went to the gym today", "I played the piano", "I didn't procrastinate", "I gave a good peer review");
+    ObservableList<learningsCombo> answerOnes = FXCollections.observableArrayList();
     ObservableList<String> answerTwos = FXCollections.observableArrayList("I want to spend more time with my family", "I could have given better marks to my peers", "I should not have marked too harshly");
     
     @FXML
@@ -121,7 +117,7 @@ public class DailyLearningsController {
         // TODO
         
         answerOne.setEditable(true);
-        answerOne.setItems(answerOnes);
+        
         answerTwo.setEditable(true);
         answerTwo.setItems(answerTwos);
         //FillComboOne();
@@ -134,6 +130,16 @@ public class DailyLearningsController {
         doBetterColumn.setCellValueFactory(cellData -> cellData.getValue().getBeBetterProperty());
         doBetterCount.setCellValueFactory(cellData -> cellData.getValue().getBeBetterCountProperty());
         doBetterView.setItems(this.getLearningsDoBetter());
+        
+        try{
+            answerOnes.setAll(this.getComboOne());
+            for(learningsCombo c : answerOnes){
+                System.out.println(c.getDwProperty());
+                answerOne.getItems().addAll(c.getDw());
+            }
+        } catch(SQLException ex){
+            ex.printStackTrace();
+        }
     }    
     
     //return observable list of done well and do betters
@@ -172,7 +178,19 @@ public class DailyLearningsController {
     
     //input learnings into the table summary
     //update learnings
-    
+        
+        public ObservableList<learningsCombo> getComboOne() throws SQLException{
+            try{
+                ResultSet rs = userLearn.getResultSet("SELECT DID_WELL FROM LEARNINGS");
+                while(rs.next()){
+                    answerOnes.add(new learningsCombo(rs.getString("DID_WELL")));
+                }
+        } catch (SQLException ex){
+            ex.printStackTrace();
+        }
+    return FXCollections.observableArrayList();
+        }
+        
     @FXML
     private void handleAdd(ActionEvent event){
         String date = datePick.getValue().format(DateTimeFormatter.ofPattern("dd/MM/YYYY"));
