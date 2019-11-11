@@ -82,9 +82,9 @@ public class DailyBreakdownController implements Initializable {
                 for(int i = 0; i<categoryNameList.size(); i++){
                     dailySeries.getData().add(new XYChart.Data(categoryNameList.get(i), durationList.get(i)));
                 }
-            //test categoryNameList output
-            System.out.println("*" + categoryNameList);
-            System.out.println("*" + durationList);
+            //test categoryNameList output:
+            //System.out.println("*" + categoryNameList);
+            //System.out.println("*" + durationList);
             
             
             }

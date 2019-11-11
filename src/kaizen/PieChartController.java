@@ -139,12 +139,18 @@ public class PieChartController implements Initializable {
         try {
                 lifePieChart.getData().clear();
                 ObservableList<PieChart.Data> lifePieChartData = FXCollections.observableArrayList(
-                    new PieChart.Data("Work " + (Math.round((workRs.getInt(1)/totalDuration)*100)) + "%", workRs.getInt(1)),
-                    new PieChart.Data("Relationships " + Math.round((relationshipsRs.getInt(1)/totalDuration)*100) + "%", relationshipsRs.getInt(1)),
-                    new PieChart.Data("Projects " + Math.round((projectsRs.getInt(1)/totalDuration)*100) + "%", projectsRs.getInt(1)),
-                    new PieChart.Data("Wellness " + Math.round((wellnessRs.getInt(1)/totalDuration)*100) + "%", wellnessRs.getInt(1)),
-                    new PieChart.Data("Daily "+ Math.round((dailyRs.getInt(1)/totalDuration)*100) + "%", dailyRs.getInt(1)),
-                    new PieChart.Data("Relaxation " + Math.round((relaxationRs.getInt(1)/totalDuration)*100) + "%", relaxationRs.getInt(1)));
+                    new PieChart.Data("Work " + (Math.round((workRs.getInt(1)/totalDuration)*100)) + "%"
+                            + " (" + (Math.round((workRs.getInt(1)/60))) + " hours)", workRs.getInt(1)),
+                    new PieChart.Data("Relationships " + Math.round((relationshipsRs.getInt(1)/totalDuration)*100) + "%"
+                            + " (" + (Math.round((relationshipsRs.getInt(1)/60))) + " hours)", relationshipsRs.getInt(1)),
+                    new PieChart.Data("Projects " + Math.round((projectsRs.getInt(1)/totalDuration)*100) + "%"
+                            + " (" + (Math.round((projectsRs.getInt(1)/60))) + " hours)", projectsRs.getInt(1)),
+                    new PieChart.Data("Wellness " + Math.round((wellnessRs.getInt(1)/totalDuration)*100) + "%"
+                            + " (" + (Math.round((wellnessRs.getInt(1)/60))) + " hours)", wellnessRs.getInt(1)),
+                    new PieChart.Data("Daily "+ Math.round((dailyRs.getInt(1)/totalDuration)*100) + "%"
+                            + " (" + (Math.round((dailyRs.getInt(1)/60))) + " hours)", dailyRs.getInt(1)),
+                    new PieChart.Data("Relaxation " + Math.round((relaxationRs.getInt(1)/totalDuration)*100) + "%"
+                            + " (" + (Math.round((relaxationRs.getInt(1)/60))) + " hours)", relaxationRs.getInt(1)));
                                       
                     //System.out.println("Test");
                 lifePieChart.setData(lifePieChartData);
@@ -175,7 +181,7 @@ public class PieChartController implements Initializable {
 //    }
     @FXML
     private void handleDailyBreakdown(ActionEvent event) throws IOException{
-        //pageSwitcher.switcher(event, "DailyBreakdown.fxml");
+        pageSwitcher.switcher(event, "DailyBreakdown.fxml");
     }
     @FXML
     private void handleWeeklyBreakdown(ActionEvent event) throws IOException{
