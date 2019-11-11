@@ -42,7 +42,7 @@ public class WeeklyBreakdownController implements Initializable {
     @FXML private Button backTimeDashboard;
     
     //barchart
-    @FXML private BarChart<String, Number> dailyBarChart;
+    @FXML private BarChart<String, Number> weeklyBarChart;
     //datepicker
     @FXML private DatePicker weeklyChartDtPicker;
     
@@ -56,16 +56,16 @@ public class WeeklyBreakdownController implements Initializable {
     
     @FXML
     private void loadGraph(ActionEvent event){
-        dailyBarChart.getData().clear();
+        weeklyBarChart.getData().clear();
         
         try{
             LocalDate date = weeklyChartDtPicker.getValue();
             //test date output:
             System.out.println("*"+ date);
-            XYChart.Series<String, Number> dailySeries = new XYChart.Series<String,Number>();
+            XYChart.Series<String, Number> weeklySeries = new XYChart.Series<String,Number>();
             //if(date.equals(today);
-            ResultSet daily = db.getResultSet("SELECT CATEGORYNAME, DURATION FROM TIMESHEETS "
-                    + "WHERE DATE = '" + date + "'");
+            ResultSet weekly = db.getResultSet("SELECT CATEGORYNAME, DURATION FROM TIMESHEETS "
+                    + "WHERE DATE = WEEKDAY ('" + date + "',-7,GETDATE())");
            
             
             ArrayList<String> categoryNameList = new ArrayList();
@@ -73,14 +73,14 @@ public class WeeklyBreakdownController implements Initializable {
             //test arraylist output:
             System.out.println(categoryNameList);
             //test output:
-            System.out.println(daily);
+            System.out.println(weekly);
             
-            while (daily.next()){
-                categoryNameList.add(daily.getString(1));
-                durationList.add((daily.getInt(2))/60);
+            while (weekly.next()){
+                categoryNameList.add(weekly.getString(1));
+                durationList.add((weekly.getInt(2))/60);
                 
                 for(int i = 0; i<categoryNameList.size(); i++){
-                    dailySeries.getData().add(new XYChart.Data(categoryNameList.get(i), durationList.get(i)));
+                    weeklySeries.getData().add(new XYChart.Data(categoryNameList.get(i), durationList.get(i)));
                 }
             //test categoryNameList output:
             //System.out.println("*" + categoryNameList);
@@ -88,7 +88,7 @@ public class WeeklyBreakdownController implements Initializable {
             
             
             }
-            dailyBarChart.getData().addAll(dailySeries);
+            weeklyBarChart.getData().addAll(weeklySeries);
         } catch(Exception ex){
             ex.printStackTrace();
         }
@@ -99,11 +99,11 @@ public class WeeklyBreakdownController implements Initializable {
     
     @FXML
     private void handleDailyBreakdown(ActionEvent event) throws IOException{
-        //pageSwitcher.switcher(event, "DailyBreakdown.fxml");
+        pageSwitcher.switcher(event, "DailyBreakdown.fxml");
     }
     @FXML
     private void handleWeeklyBreakdown(ActionEvent event) throws IOException{
-        //pageSwitcher.switcher(event, "WeeklyBreakdown.fxml");
+        pageSwitcher.switcher(event, "WeeklyBreakdown.fxml");
     }
     @FXML
     private void handleWeeklyTrends(ActionEvent event) throws IOException{

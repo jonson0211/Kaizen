@@ -88,7 +88,7 @@
                         <Insets left="775.0" top="575.0" />
                      </GridPane.margin>
                   </Button>
-                  <BarChart fx:id="dailyBarChart" legendVisible="false">
+                  <BarChart fx:id="weeklyBarChart" legendVisible="false">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -99,7 +99,7 @@
                         <Insets bottom="100.0" left="50.0" right="259.0" top="100.0" />
                      </GridPane.margin>
                   </BarChart>
-                  <DatePicker fx:id="dailyChartDtPicker" onAction="#loadGraph">
+                  <DatePicker fx:id="weeklyChartDtPicker" onAction="#loadGraph">
                      <GridPane.margin>
                         <Insets left="860.0" />
                      </GridPane.margin>
