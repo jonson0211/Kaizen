@@ -144,7 +144,7 @@ public class DailyLearningsController {
         ObservableList<learningsDidWell> didWellList = FXCollections.observableArrayList();
         
         try {
-            ResultSet rsDidWellTable = userLearn.getResultSet("SELECT DID_WELL, COUNT(DID_WELL) FROM LEARNINGS GROUP BY DID_WELL ORDER BY DATE DESC LIMIT 7;");
+            ResultSet rsDidWellTable = userLearn.getResultSet("SELECT DID_WELL, COUNT(DID_WELL) FROM LEARNINGS GROUP BY DID_WELL ORDER BY DATE DESC LIMIT 7 '" + LoginScreenController.loginUsername + "';");
             
             while (rsDidWellTable.next()){
                 didWellList.add(new learningsDidWell(rsDidWellTable.getString("DID_WELL"), rsDidWellTable.getInt("COUNT(DID_WELL)")));

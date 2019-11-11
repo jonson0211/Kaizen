@@ -100,9 +100,4 @@ public class PopUpLearningsController{
         System.out.println(better30);
         return FXCollections.observableArrayList(better30);
 }
-
-    @FXML
-    private void handleBack(ActionEvent event) throws IOException{
-        psh.switcher(event, "DailyLearnings.fxml");
-    }
 }

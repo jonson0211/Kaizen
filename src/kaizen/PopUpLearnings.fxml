@@ -46,7 +46,6 @@
                   <Insets left="5.0" right="10.0" />
                </GridPane.margin>
             </TableView>
-            <Button fx:id="backToLearnings" mnemonicParsing="false" onAction="#handleBack" prefHeight="33.0" prefWidth="73.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Back" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>
