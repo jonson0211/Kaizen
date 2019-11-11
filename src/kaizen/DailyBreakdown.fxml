@@ -59,14 +59,6 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="logInTime" mnemonicParsing="false" onAction="#handleLogInTime" text="Log in time">
-                     <GridPane.margin>
-                        <Insets left="70.0" top="575.0" />
-                     </GridPane.margin>
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Daily Breakdown of Time Spent">
                      <GridPane.margin>
                         <Insets bottom="575.0" left="350.0" />

@@ -165,20 +165,20 @@ public class PieChartController implements Initializable {
     
     
     //switch to daily learnings
-//    @FXML
-//    private void handlePopUpScreenAction(ActionEvent event) throws IOException {
-//        try {
-//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Timesheets.fxml"));
-//            Parent root1 = (Parent) fxmlLoader.load();
-//            Stage stage = new Stage();
-//            stage.setTitle("New entry");
-//            stage.setScene(new Scene(root1));
-//            stage.show();
+    @FXML
+    private void handlePopUpScreenAction(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Timesheets.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("New entry");
+            stage.setScene(new Scene(root1));
+            stage.show();
 
-//        } catch (Exception e) {
-//            System.out.println("Cannot load this new window!");
-//        }
-//    }
+        } catch (Exception e) {
+            System.out.println("Cannot load this new window!");
+        }
+    }
     @FXML
     private void handleDailyBreakdown(ActionEvent event) throws IOException{
         pageSwitcher.switcher(event, "DailyBreakdown.fxml");

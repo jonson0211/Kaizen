@@ -63,7 +63,7 @@
                      <GridPane.margin>
                         <Insets bottom="100.0" left="50.0" right="50.0" top="100.0" />
                      </GridPane.margin></PieChart>
-                  <Button fx:id="logInTime" mnemonicParsing="false" onAction="#handleLogInTime" text="Log in time">
+                  <Button fx:id="logInTime" mnemonicParsing="false" onAction="#handlePopUpScreenAction" text="Log in time">
                      <GridPane.margin>
                         <Insets left="70.0" top="575.0" />
                      </GridPane.margin>

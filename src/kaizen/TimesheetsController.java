@@ -66,6 +66,7 @@ public class TimesheetsController implements Initializable {
     
     @FXML
     private RadioButton categoryWork;
+     
     @FXML
     private RadioButton categoryDaily;
     
@@ -172,10 +173,10 @@ public class TimesheetsController implements Initializable {
      
         
     }
-    @FXML
-    private void handleBackAction(ActionEvent event) throws IOException {
-        pageSwitcher.switcher(event, "PieChart.fxml");
-    }    
+//    @FXML
+//    private void handleBackAction(ActionEvent event) throws IOException {
+//        pageSwitcher.switcher(event, "PieChart.fxml");
+//    }    
     @FXML
     private void handleKbBoard(ActionEvent event) throws IOException{
         pageSwitcher.switcher(event, "KanbanBoard.fxml");

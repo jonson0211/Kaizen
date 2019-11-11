@@ -39,7 +39,7 @@ public class DailyBreakdownController implements Initializable {
     @FXML private Button dailyBreakdown;
     @FXML private Button weeklyBreakdown;
     @FXML private Button weeklyTrends;
-    @FXML private Button logInTime;
+    @FXML private Button backTimeDashboard;
     
     //barchart
     @FXML private BarChart<String, Number> dailyBarChart;

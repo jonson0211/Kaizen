@@ -28,7 +28,6 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Button fx:id="backToTimeDashboard" mnemonicParsing="false" onAction="#handleBackAction" prefHeight="33.0" prefWidth="73.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Back" GridPane.rowIndex="3" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="What time did you start?" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
@@ -116,7 +115,7 @@
             </TextField>
             <RadioButton fx:id="categoryDaily" mnemonicParsing="false" text="Daily" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="50.0" />
+                  <Insets bottom="75.0" left="50.0" />
                </GridPane.margin>
                <font>
                   <Font size="20.0" />
@@ -143,7 +142,7 @@
             </RadioButton>
             <RadioButton fx:id="categoryRelationships" mnemonicParsing="false" text="Relationships" toggleGroup="$toggleGroup" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="350.0" />
+                  <Insets bottom="75.0" left="350.0" />
                </GridPane.margin>
                <font>
                   <Font size="20.0" />
@@ -151,7 +150,7 @@
             </RadioButton>
             <RadioButton fx:id="categoryWellness" mnemonicParsing="false" text="Wellness" toggleGroup="$toggleGroup" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="650.0" />
+                  <Insets bottom="75.0" left="650.0" />
                </GridPane.margin>
                <font>
                   <Font size="20.0" />
@@ -173,6 +172,14 @@
                   <Insets left="350.0" top="100.0" />
                </GridPane.margin>
             </DatePicker>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select the date of the activity:" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="50.0" top="100.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
          </children>
       </GridPane>
    </children>
