@@ -1,5 +1,6 @@
 package kaizen;
 
+import com.sun.javafx.charts.Legend;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -13,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
@@ -154,7 +156,28 @@ public class PieChartController implements Initializable {
                                       
                     //System.out.println("Test");
                 lifePieChart.setData(lifePieChartData);
-                   
+                
+                String[] pieColors = {"#80bfff", "#cc99ff", "#ccffff", "#80ff80", "#ff80ff","#ffb84d"};
+        int i = 0;
+        for (PieChart.Data data : lifePieChartData) {
+            data.getNode().setStyle(
+                    "-fx-pie-color: " + pieColors[i % pieColors.length] + ";"
+            );
+            i++;
+        }
+        i = 0;
+        for (Node n : lifePieChart.getChildrenUnmodifiable()) {
+            if (n instanceof Legend) {
+                Legend l = (Legend) n;
+                for (Legend.LegendItem li : l.getItems()) {
+                    Node thisNode = li.getSymbol();
+                    thisNode.setStyle(
+                            "-fx-pie-color: " + pieColors[i % pieColors.length] + ";"
+                    );
+                    i++;
+                }
+            }
+        }   
             } catch (Exception e) {
                 System.out.println("Unable to produce Pie Chart!");
                 e.printStackTrace();
