@@ -179,7 +179,7 @@
                         <Insets right="20.0" />
                      </GridPane.margin>
                   </TableView>
-                  <Button fx:id="viewPast" mnemonicParsing="false" onAction="#handlePopUpScreen" text="See past 30 days" GridPane.rowIndex="5" />
+                  <Button fx:id="viewPast" mnemonicParsing="false" onAction="#handlePopUpScreenAction" text="See past 30 days" GridPane.rowIndex="5" />
                </children>
             </GridPane>
          </center>

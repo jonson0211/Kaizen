@@ -65,7 +65,7 @@ public class WeeklyBreakdownController implements Initializable {
             XYChart.Series<String, Number> weeklySeries = new XYChart.Series<String,Number>();
             //if(date.equals(today);
             ResultSet weekly = db.getResultSet("SELECT CATEGORYNAME, DURATION FROM TIMESHEETS "
-                    + "WHERE DATE = WEEKDAY ('" + date + "',-7,GETDATE())");
+                    + "WHERE DATE BETWEEN date('" + date + "') and date('" + date + "','+7 day')");
            
             
             ArrayList<String> categoryNameList = new ArrayList();
