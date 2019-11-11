@@ -92,7 +92,7 @@
                         <Insets left="500.0" top="575.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="weeklyBreakdown1" mnemonicParsing="false" onAction="#handleWeeklyTrends" text="Weekly Trends">
+                  <Button fx:id="weeklyTrends" mnemonicParsing="false" onAction="#handleWeeklyTrends" text="Weekly Trends">
                      <font>
                         <Font size="24.0" />
                      </font>

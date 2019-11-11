@@ -59,9 +59,9 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Daily Breakdown of Time Spent">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Weekly Breakdown of Time Spent">
                      <GridPane.margin>
-                        <Insets bottom="575.0" left="350.0" />
+                        <Insets bottom="575.0" left="250.0" />
                      </GridPane.margin>
                   </Text>
                   <Button fx:id="dailyBreakdown" mnemonicParsing="false" onAction="#handleDailyBreakdown" text="Daily Breakdown">
@@ -69,23 +69,15 @@
                         <Font size="24.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="250.0" top="575.0" />
+                        <Insets left="520.0" top="575.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="weeklyBreakdown" mnemonicParsing="false" onAction="#handleWeeklyBreakdown" text="Weekly Breakdown">
+                  <Button fx:id="weeklyTrends" mnemonicParsing="false" onAction="#handleWeeklyTrends" text="Weekly Trends">
                      <font>
                         <Font size="24.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="500.0" top="575.0" />
-                     </GridPane.margin>
-                  </Button>
-                  <Button fx:id="weeklyBreakdown1" mnemonicParsing="false" onAction="#handleWeeklyTrends" text="Weekly Trends">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <GridPane.margin>
-                        <Insets left="775.0" top="575.0" />
+                        <Insets left="765.0" top="575.0" />
                      </GridPane.margin>
                   </Button>
                   <BarChart fx:id="weeklyBarChart" legendVisible="false">
@@ -96,23 +88,31 @@
                       <NumberAxis side="LEFT" />
                     </yAxis>
                      <GridPane.margin>
-                        <Insets bottom="100.0" left="50.0" right="259.0" top="100.0" />
+                        <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
                      </GridPane.margin>
                   </BarChart>
                   <DatePicker fx:id="weeklyChartDtPicker" onAction="#loadGraph">
                      <GridPane.margin>
-                        <Insets left="860.0" />
+                        <Insets left="275.0" top="575.0" />
                      </GridPane.margin>
                   </DatePicker>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Duration">
                      <GridPane.margin>
-                        <Insets left="10.0" />
+                        <Insets left="50.0" />
                      </GridPane.margin>
                   </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="(hours)">
                      <GridPane.margin>
-                        <Insets left="10.0" top="35.0" />
+                        <Insets left="50.0" top="35.0" />
                      </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select a date to see the next 7 days' activities:" wrappingWidth="173.0">
+                     <GridPane.margin>
+                        <Insets left="102.0" top="575.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
                   </Text>
                </children>
             </GridPane>

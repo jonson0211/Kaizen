@@ -213,7 +213,7 @@ public class PieChartController implements Initializable {
     }
     @FXML
     private void handleWeeklyTrends(ActionEvent event) throws IOException{
-        //pageSwitcher.switcher(event, "WeeklyTrends.fxml");
+        pageSwitcher.switcher(event, "WeeklyTrends.fxml");
     }
     @FXML
     private void handleLogInTime(ActionEvent event) throws IOException{
