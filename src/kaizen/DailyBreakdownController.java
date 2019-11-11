@@ -77,7 +77,7 @@ public class DailyBreakdownController implements Initializable {
             
             while (daily.next()){
                 categoryNameList.add(daily.getString(1));
-                durationList.add(daily.getInt(2));
+                durationList.add((daily.getInt(2))/60);
                 
                 for(int i = 0; i<categoryNameList.size(); i++){
                     dailySeries.getData().add(new XYChart.Data(categoryNameList.get(i), durationList.get(i)));

@@ -96,7 +96,7 @@
                         <Insets left="775.0" top="575.0" />
                      </GridPane.margin>
                   </Button>
-                  <BarChart fx:id="dailyBarChart">
+                  <BarChart fx:id="dailyBarChart" legendVisible="false">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -112,6 +112,16 @@
                         <Insets left="860.0" />
                      </GridPane.margin>
                   </DatePicker>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Duration">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="(hours)">
+                     <GridPane.margin>
+                        <Insets left="10.0" top="35.0" />
+                     </GridPane.margin>
+                  </Text>
                </children>
             </GridPane>
          </center></BorderPane>
