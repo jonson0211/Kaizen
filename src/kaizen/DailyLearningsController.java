@@ -44,7 +44,7 @@ public class DailyLearningsController {
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
     
     ObservableList<learningsCombo> answerOnes = FXCollections.observableArrayList();
-    ObservableList<String> answerTwos = FXCollections.observableArrayList("I want to spend more time with my family", "I could have given better marks to my peers", "I should not have marked too harshly");
+    ObservableList<learningsCombo> answerTwos = FXCollections.observableArrayList();
     
     @FXML
     private ComboBox<String> answerOne;
@@ -116,10 +116,8 @@ public class DailyLearningsController {
     public void initialize() {
         // TODO
         
-        answerOne.setEditable(true);
-        
+        answerOne.setEditable(true);        
         answerTwo.setEditable(true);
-        answerTwo.setItems(answerTwos);
         //FillComboOne();
         //FillComboTwo();
         confirmEntry.setVisible(false);
@@ -136,6 +134,11 @@ public class DailyLearningsController {
             for(learningsCombo c : answerOnes){
                 System.out.println(c.getDwProperty());
                 answerOne.getItems().addAll(c.getDw());
+            answerTwos.setAll(this.getComboTwo());
+            for(learningsCombo d : answerTwos){
+                System.out.println(d.getDwProperty());
+                answerTwo.getItems().addAll(d.getDw());
+            }
             }
         } catch(SQLException ex){
             ex.printStackTrace();
@@ -181,16 +184,27 @@ public class DailyLearningsController {
         
         public ObservableList<learningsCombo> getComboOne() throws SQLException{
             try{
-                ResultSet rs = userLearn.getResultSet("SELECT DID_WELL FROM LEARNINGS");
+                ResultSet rs = userLearn.getResultSet("SELECT DID_WELL FROM LEARNINGS GROUP BY DID_WELL");
                 while(rs.next()){
                     answerOnes.add(new learningsCombo(rs.getString("DID_WELL")));
                 }
         } catch (SQLException ex){
             ex.printStackTrace();
         }
-    return FXCollections.observableArrayList();
+    return FXCollections.observableArrayList(answerOnes);
         }
         
+        public ObservableList<learningsCombo> getComboTwo() throws SQLException{
+            try{
+                ResultSet rs = userLearn.getResultSet("SELECT BE_BETTER FROM LEARNINGS GROUP BY BE_BETTER");
+                while (rs.next()){
+                    answerTwos.add(new learningsCombo(rs.getString("BE_BETTER")));
+                }
+            } catch(SQLException ex){
+                ex.printStackTrace();
+            } return FXCollections.observableArrayList(answerTwos);
+        } 
+
     @FXML
     private void handleAdd(ActionEvent event){
         String date = datePick.getValue().format(DateTimeFormatter.ofPattern("dd/MM/YYYY"));
@@ -198,8 +212,8 @@ public class DailyLearningsController {
         String be_better = answerTwo.getValue();
         
         try{
-            userLearn.insertStatement("INSERT INTO LEARNINGS (USERNAME, DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('" + LoginScreenController.loginUsername + "','" + date + "','" + did_well + "','" + be_better + "');" );
+            userLearn.insertStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
+                    + "VALUES ('" + date + "','" + did_well + "','" + be_better + "');" );
         confirmEntry.setVisible(true);
         } catch(Exception e){
             System.out.println("learnings update failed");
@@ -222,7 +236,7 @@ public class DailyLearningsController {
     //
 
     //populating combobox
-    private void FillComboOne() {
+   /* private void FillComboOne() {
         try {
             String queryOne = "SELECT DID_WELL FROM LEARNINGS";
             pst = conn.prepareStatement(queryOne);
@@ -252,7 +266,7 @@ public class DailyLearningsController {
             Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
         }
                 
-    }
+    }*/
     
     @FXML
     private void handlePopUpScreenAction(ActionEvent event) throws IOException{

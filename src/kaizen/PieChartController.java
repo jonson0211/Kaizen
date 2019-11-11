@@ -61,6 +61,7 @@ public class PieChartController implements Initializable {
     @FXML private Label relaxationLabel;
     @FXML private Button logInTime;
     @FXML private GridPane grid;
+    @FXML private Button tsBtn;
     
     @FXML public PieChart lifePieChart;
     
@@ -233,7 +234,7 @@ public class PieChartController implements Initializable {
     }
     @FXML
     private void handleTimeSheets(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"Timesheets.fxml"); 
+        pageSwitcher.switcher(event,"PieChart.fxml"); 
     }
     @FXML
     private void handleDailyLearnings(ActionEvent event) throws IOException{
@@ -246,6 +247,10 @@ public class PieChartController implements Initializable {
     @FXML
     private void handleTimeDashboard(ActionEvent event) throws IOException{
         pageSwitcher.switcher(event,"PieChart.fxml"); 
+    }
+    @FXML
+    private void handleEntries(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event,"EntriesScreen.fxml"); 
     }
     @FXML
     private void handleSignOut(ActionEvent event) throws IOException{

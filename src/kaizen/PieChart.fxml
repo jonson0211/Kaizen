@@ -63,48 +63,69 @@
                      <GridPane.margin>
                         <Insets bottom="100.0" left="50.0" right="50.0" top="100.0" />
                      </GridPane.margin></PieChart>
-                  <Button fx:id="logInTime" mnemonicParsing="false" onAction="#handlePopUpScreenAction" text="Log in time">
+                  <Button fx:id="logInTime" mnemonicParsing="false" onAction="#handlePopUpScreenAction" prefHeight="39.0" prefWidth="140.0" stylesheets="@stylesheet.css" text="Add Entry">
                      <GridPane.margin>
-                        <Insets left="70.0" top="575.0" />
+                        <Insets left="90.0" top="575.0" />
                      </GridPane.margin>
                      <font>
                         <Font size="24.0" />
                      </font>
+                     <styleClass>
+                        <String fx:value="small-label" />
+                        <String fx:value="buttons" />
+                     </styleClass>
                   </Button>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Pie Chart Of My Life">
                      <GridPane.margin>
                         <Insets bottom="575.0" left="350.0" />
                      </GridPane.margin>
                   </Text>
-                  <Button fx:id="dailyBreakdown" mnemonicParsing="false" onAction="#handleDailyBreakdown" text="Daily Breakdown">
+                  <Button fx:id="dailyBreakdown" mnemonicParsing="false" onAction="#handleDailyBreakdown" stylesheets="@stylesheet.css" text="Daily Breakdown">
                      <font>
                         <Font size="24.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="250.0" top="575.0" />
+                        <Insets left="445.0" top="575.0" />
                      </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="small-label" />
+                        <String fx:value="buttons" />
+                     </styleClass>
                   </Button>
-                  <Button fx:id="weeklyBreakdown" mnemonicParsing="false" onAction="#handleWeeklyBreakdown" text="Weekly Breakdown">
+                  <Button fx:id="weeklyBreakdown" mnemonicParsing="false" onAction="#handleWeeklyBreakdown" prefHeight="24.0" prefWidth="176.0" stylesheets="@stylesheet.css" text="Weekly Breakdown">
                      <font>
                         <Font size="24.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="500.0" top="575.0" />
+                        <Insets left="640.0" top="575.0" />
                      </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="small-label" />
+                        <String fx:value="buttons" />
+                     </styleClass>
                   </Button>
-                  <Button fx:id="weeklyTrends" mnemonicParsing="false" onAction="#handleWeeklyTrends" text="Weekly Trends">
+                  <Button fx:id="weeklyTrends" mnemonicParsing="false" onAction="#handleWeeklyTrends" stylesheets="@stylesheet.css" text="Weekly Trends">
                      <font>
                         <Font size="24.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="775.0" top="575.0" />
+                        <Insets left="850.0" top="575.0" />
                      </GridPane.margin>
+                     <styleClass>
+                        <String fx:value="small-label" />
+                        <String fx:value="buttons" />
+                     </styleClass>
                   </Button>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="add button to access list of time logged in">
                      <font>
                         <Font size="23.0" />
                      </font>
                   </Text>
+                  <Button fx:id="tsBtn" mnemonicParsing="false" onAction="#handleEntries" styleClass="buttons" stylesheets="@stylesheet.css" text="View Timesheet">
+                     <GridPane.margin>
+                        <Insets left="260.0" top="575.0" />
+                     </GridPane.margin>
+                  </Button>
                </children>
             </GridPane>
          </center></BorderPane>
