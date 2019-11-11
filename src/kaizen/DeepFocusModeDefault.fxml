@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="vbox-bar" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="menu-panel" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
+         <center>
+            <VBox prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="KANBAN BOARD" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="current-menu-toggle" stylesheets="@stylesheet.css" text="DEEP FOCUS" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TASK TRACKER" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TIME DASHBOARD" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </VBox>
+         </center>
+         <bottom>
+            <VBox prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" />
+                  <ToggleButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" />
+                  <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" />
+               </children></VBox>
+         </bottom>
+         <top>
+            <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="border-bar" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@Resources/Kaizen%20Innovations%20(All%20White).png" />
+               </image>
+            </ImageView>
+         </top>
+      </BorderPane>
+   </left>
+   <right>
+      <Pane prefHeight="200.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="20.0" layoutY="20.0" prefHeight="50.0" prefWidth="200.0" styleClass="large-label" stylesheets="@stylesheet.css" text="Label" />
+            <Label layoutX="20.0" layoutY="70.0" prefHeight="40.0" prefWidth="400.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Choose a task, set the mood and focus." />
+            <Separator layoutX="50.0" layoutY="180.0" prefHeight="2.0" prefWidth="980.0" style="-fx-background-color: 000000;" stylesheets="@stylesheet.css" />
+            <ComboBox layoutX="50.0" layoutY="120.0" prefHeight="40.0" prefWidth="220.0" promptText="Task Category" styleClass="small-label" stylesheets="@stylesheet.css" />
+            <ComboBox layoutX="299.0" layoutY="120.0" prefHeight="40.0" prefWidth="220.0" promptText="Task" styleClass="small-label" stylesheets="@stylesheet.css" />
+            <Separator layoutX="539.0" layoutY="120.0" orientation="VERTICAL" prefHeight="40.0" prefWidth="2.0" stylesheets="@stylesheet.css" />
+            <Separator layoutX="539.0" layoutY="202.0" orientation="VERTICAL" prefHeight="498.0" prefWidth="2.0" stylesheets="@stylesheet.css" />
+            <ImageView fitHeight="40.0" fitWidth="471.0" layoutX="559.0" layoutY="120.0" pickOnBounds="true" style="-fx-opacity: 0.9;" styleClass="menu-panel">
+               <image>
+                  <Image url="@Resources/mood-toggle-background.png" />
+               </image>
+            </ImageView>
+            <ToggleButton layoutX="559.0" layoutY="120.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="157.0" styleClass="mood-toggle" stylesheets="@stylesheet.css" text="ToggleButton" />
+            <ToggleButton layoutX="716.0" layoutY="120.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="157.0" styleClass="mood-toggle" stylesheets="@stylesheet.css" text="ToggleButton" />
+            <ToggleButton layoutX="873.0" layoutY="120.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="157.0" styleClass="mood-toggle" stylesheets="@stylesheet.css" text="ToggleButton" />
+         </children>
+      </Pane>
+   </right>
+</BorderPane>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="vbox-bar" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.TaskTrackerController">
+   <left>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="menu-panel" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
+         <center>
+            <VBox prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ToggleButton fx:id="kanbanBoard" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="KANBAN BOARD" />
+                  <ToggleButton fx:id="deepFocus" mnemonicParsing="false" onAction="#handleDeepFocusMode" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DEEP FOCUS" />
+                  <ToggleButton fx:id="taskTracker" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="current-menu-toggle" stylesheets="@stylesheet.css" text="TASK TRACKER" />
+                  <ToggleButton fx:id="timeDashboard" mnemonicParsing="false" onAction="#handleTimeDashboard" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TIME DASHBOARD" />
+                  <ToggleButton fx:id="dailyLearnings" mnemonicParsing="false" onAction="#handleDailyLearnings" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </VBox>
+         </center>
+         <bottom>
+            <VBox prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ToggleButton fx:id="about" mnemonicParsing="false" onAction="#handleAboutScreen" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" />
+                  <ToggleButton fx:id="settingsButton" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" />
+                  <Button fx:id="signOutButton" mnemonicParsing="false" onAction="#handleSignOut" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" />
+               </children></VBox>
+         </bottom>
+         <top>
+            <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="border-bar" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@Resources/Kaizen%20Innovations%20(All%20White).png" />
+               </image>
+            </ImageView>
+         </top>
+      </BorderPane>
+   </left>
+   <center>
+      <BorderPane prefHeight="720.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+         <center>
+            <Pane prefHeight="1066.0" prefWidth="1595.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="35.0" layoutY="32.0" styleClass="large-label" text="Welcome" />
+                  <Label layoutX="35.0" layoutY="92.0" styleClass="small-label" text="What would you like to do today?" />
+                  <AnchorPane layoutX="55.0" layoutY="160.0" prefHeight="509.0" prefWidth="967.0">
+                     <children>
+                        <TableView fx:id="taskList" prefHeight="514.0" prefWidth="967.0">
+                          <columns>
+                            <TableColumn fx:id="titleColumn" prefWidth="150.0" text="Title" />
+                            <TableColumn minWidth="0.0" prefWidth="0.0" text="Category Name" />
+                              <TableColumn fx:id="descriptionColumn" prefWidth="281.0" text="Description" />
+                              <TableColumn fx:id="categoryNameColumn" prefWidth="129.0" text="Category" />
+                              <TableColumn fx:id="doDateColumn" prefWidth="150.0" text="Do Date" />
+                              <TableColumn fx:id="dueDateColumn" prefWidth="150.0" text="Due Date" />
+                              <TableColumn fx:id="priorityColumn" prefWidth="106.0" text="Priority" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </Pane>
+         </center></BorderPane>
+   </center>
+</BorderPane>

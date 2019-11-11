@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="vbox-bar" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.DailyLearningsController">
+   <left>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="menu-panel" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
+         <center>
+            <VBox prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ToggleButton fx:id="kbBoard" mnemonicParsing="false" onAction="#handleKbBoard" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="KANBAN BOARD" />
+                  <ToggleButton fx:id="deepFocus" mnemonicParsing="false" onAction="#handleDeepFocus" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DEEP FOCUS" />
+                  <ToggleButton fx:id="taskTracker" mnemonicParsing="false" onAction="#handleTaskTracker" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TASK TRACKER" />
+                  <ToggleButton fx:id="timeDashboard" mnemonicParsing="false" onAction="#handleTimeSheets" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TIME DASHBOARD" />
+                  <ToggleButton mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="current-menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </VBox>
+         </center>
+         <bottom>
+            <VBox prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ToggleButton fx:id="about" mnemonicParsing="false" onAction="#handleAboutScreen" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" />
+                  <ToggleButton fx:id="settings" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleSettings" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" />
+                  <ToggleButton fx:id="signOut" mnemonicParsing="false" onAction="#handleSignOut" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" />
+               </children></VBox>
+         </bottom>
+         <top>
+            <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="border-bar" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@Resources/Kaizen%20Innovations%20(All%20White).png" />
+               </image>
+            </ImageView>
+         </top>
+      </BorderPane>
+   </left>
+   <right>
+      <BorderPane prefHeight="720.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+         <left>
+            <GridPane prefHeight="720.0" prefWidth="506.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1154.0" minWidth="10.0" prefWidth="378.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="670.0" minWidth="10.0" prefWidth="128.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="283.33332347869873" minHeight="10.0" prefHeight="88.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="489.33331298828125" minHeight="0.0" prefHeight="57.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="752.0" minHeight="0.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="669.3333435058594" minHeight="0.0" prefHeight="81.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="669.3333435058594" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="669.3333435058594" minHeight="0.0" prefHeight="145.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="669.3333435058594" minHeight="10.0" prefHeight="242.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Your daily learnings">
+                     <font>
+                        <Font name="Arial" size="36.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="40.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="What did you do well today?" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="40.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <ComboBox fx:id="answerOne" prefHeight="31.0" prefWidth="515.0" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="40.0" />
+                     </GridPane.margin>
+                  </ComboBox>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="What could you have done better today?" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="40.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <ComboBox fx:id="answerTwo" prefHeight="31.0" prefWidth="515.0" GridPane.rowIndex="4">
+                     <GridPane.margin>
+                        <Insets left="40.0" />
+                     </GridPane.margin>
+                  </ComboBox>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="Date of learnings" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="40.0" top="-100.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <DatePicker fx:id="datePick" GridPane.rowIndex="5">
+                     <GridPane.margin>
+                        <Insets left="40.0" />
+                     </GridPane.margin>
+                  </DatePicker>
+                  <Label fx:id="confirmEntry" prefHeight="80.0" prefWidth="394.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Successfully updated learnings!" GridPane.rowIndex="5">
+                     <GridPane.margin>
+                        <Insets bottom="-200.0" left="100.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="addLearning" mnemonicParsing="false" onAction="#handleAdd" text="Add learnings" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <GridPane.margin>
+                        <Insets bottom="200.0" top="-100.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </GridPane>
+         </left>
+         <center>
+            <GridPane prefHeight="657.0" prefWidth="574.0" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="138.0" minHeight="10.0" prefHeight="87.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="208.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="280.0" minHeight="10.0" prefHeight="227.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="157.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="266.0" minHeight="10.0" prefHeight="221.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="159.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Top 7 Entries">
+                     <font>
+                        <Font name="Arial" size="36.0" />
+                     </font>
+                  </Text>
+                  <TableView fx:id="didWellView" prefHeight="294.0" prefWidth="554.0" GridPane.rowIndex="2">
+                    <columns>
+                      <TableColumn fx:id="didWellColumn" prefWidth="404.0" text="Things you learnt" />
+                      <TableColumn fx:id="didWellCount" minWidth="0.0" prefWidth="149.0" text="How many times" />
+                    </columns>
+                     <GridPane.margin>
+                        <Insets bottom="40.0" right="20.0" />
+                     </GridPane.margin>
+                  </TableView>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="Things you have done well" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="Things you could have done better" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <TableView fx:id="doBetterView" prefHeight="100.0" prefWidth="554.0" GridPane.rowIndex="4">
+                    <columns>
+                      <TableColumn fx:id="doBetterColumn" prefWidth="403.0" text="Things you could have done better" />
+                      <TableColumn fx:id="doBetterCount" minWidth="0.0" prefWidth="149.0" text="How many times" />
+                    </columns>
+                     <GridPane.margin>
+                        <Insets right="20.0" />
+                     </GridPane.margin>
+                  </TableView>
+                  <Button fx:id="viewPast" mnemonicParsing="false" onAction="#handlePopUpScreenAction" text="See past 30 days" GridPane.rowIndex="5" />
+                  <Button fx:id="refreshBtn" mnemonicParsing="false" onAction="#handleRefresh" text="Refresh" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="485.0" />
+                     </GridPane.margin>
+                  </Button>
+               </children>
+            </GridPane>
+         </center>
+      </BorderPane>
+   </right>
+   <children>
+         <GridPane prefHeight="720.0" prefWidth="511.0" BorderPane.alignment="CENTER">
+           <columnConstraints>
+             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+           </columnConstraints>
+           <rowConstraints>
+               <RowConstraints maxHeight="283.33332347869873" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
+             <RowConstraints maxHeight="283.33332347869873" minHeight="10.0" prefHeight="78.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="348.0" minHeight="10.0" prefHeight="348.0" vgrow="SOMETIMES" />
+             <RowConstraints maxHeight="915.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="915.0" minHeight="10.0" prefHeight="116.0" vgrow="SOMETIMES" />
+             <RowConstraints maxHeight="400.0" minHeight="2.0" prefHeight="117.0" vgrow="SOMETIMES" />
+           </rowConstraints>
+         </GridPane>
+   </children>
+</BorderPane>

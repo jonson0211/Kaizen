@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="vbox-bar" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.WeeklyTrendsController">
+   <left>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="menu-panel" stylesheets="@stylesheet.css" BorderPane.alignment="CENTER">
+         <center>
+            <VBox prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ToggleButton fx:id="kanbanBoard" mnemonicParsing="false" onAction="#handleKanbanBoard" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="KANBAN BOARD" />
+                  <ToggleButton fx:id="deepFocus" mnemonicParsing="false" onAction="#handleDeepFocus" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DEEP FOCUS" />
+                  <ToggleButton fx:id="taskTracker" mnemonicParsing="false" onAction="#handleTaskTracker" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="TASK TRACKER" />
+                  <ToggleButton fx:id="timeDashboard" mnemonicParsing="false" onAction="#handleTimeDashboard" prefHeight="50.0" prefWidth="200.0" styleClass="current-menu-toggle" stylesheets="@stylesheet.css" text="TIME DASHBOARD" />
+                  <ToggleButton fx:id="dailyLearnings" mnemonicParsing="false" onAction="#handleDailyLearnings" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="DAILY LEARNINGS" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </VBox>
+         </center>
+         <bottom>
+            <VBox prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ToggleButton fx:id="settingsButton" mnemonicParsing="false" onAction="#handleSettings" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" />
+                  <ToggleButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" />
+                  <Button fx:id="signOutButtons" mnemonicParsing="false" onAction="#handleSignOut" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" />
+               </children></VBox>
+         </bottom>
+         <top>
+            <ImageView fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" styleClass="border-bar" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@Resources/Kaizen%20Innovations%20(All%20White).png" />
+               </image>
+            </ImageView>
+         </top>
+      </BorderPane>
+   </left>
+   <right>
+      <BorderPane prefHeight="720.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
+         <center>
+            <GridPane fx:id="grid" BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eef7ff80" height="328.0" stroke="BLACK" strokeType="INSIDE" width="217.0">
+                     <GridPane.margin>
+                        <Insets bottom="125.0" left="850.0" />
+                     </GridPane.margin>
+                  </Rectangle>
+                  <LineChart fx:id="weeklyTrendsLineChart">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                     <GridPane.margin>
+                        <Insets bottom="50.0" left="75.0" right="250.0" top="100.0" />
+                     </GridPane.margin>
+                  </LineChart>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Weekly Trends of Time Spent">
+                     <GridPane.margin>
+                        <Insets bottom="575.0" left="250.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Button fx:id="dailyBreakdown" mnemonicParsing="false" onAction="#handleDailyBreakdown" prefHeight="35.0" prefWidth="186.0" text="Daily Breakdown">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="875.0" top="425.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button fx:id="weeklyBreakdown" mnemonicParsing="false" onAction="#handleWeeklyBreakdown" prefWidth="186.0" text="Weekly Breakdown">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="875.0" top="550.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <DatePicker fx:id="weeklyChartDtPicker">
+                     <GridPane.margin>
+                        <Insets bottom="350.0" left="865.0" right="25.0" />
+                     </GridPane.margin>
+                  </DatePicker>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hours (%)">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select a start date:" wrappingWidth="173.0">
+                     <GridPane.margin>
+                        <Insets bottom="400.0" left="865.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="How many weeks back do you want to view?" wrappingWidth="173.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="250.0" left="865.0" right="25.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <TextField fx:id="numWeeksTxtField">
+                     <GridPane.margin>
+                        <Insets bottom="170.0" left="865.0" right="25.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <ChoiceBox fx:id="activityChoiceBox" prefHeight="27.0" prefWidth="191.0">
+                     <GridPane.margin>
+                        <Insets bottom="15.0" left="865.0" right="25.0" />
+                     </GridPane.margin>
+                  </ChoiceBox>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select an activity" wrappingWidth="173.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="75.0" left="865.0" right="25.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Button fx:id="loadGraphButton" mnemonicParsing="false" onAction="#loadGraph" prefHeight="29.0" prefWidth="112.0" text="Load graph">
+                     <GridPane.margin>
+                        <Insets left="865.0" right="25.0" top="100.0" />
+                     </GridPane.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+               </children>
+            </GridPane>
+         </center></BorderPane>
+   </right>
+</BorderPane>
