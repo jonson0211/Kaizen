@@ -307,7 +307,7 @@ public class KaizenDatabase {
                 System.out.println("Timesheets table created");
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,DATE,START,END,DURATION,DESCR) "
                         + "VALUES ('Work',"
-                        + "'14/11/2019',"
+                        + "'2019-11-14',"
                         + "'540',"
                         + "'600',"
                         + "'60',"
@@ -318,7 +318,7 @@ public class KaizenDatabase {
                 
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,DATE,START,END,DURATION,DESCR) "
                         + "VALUES ('Work', "
-                        + "'14/11/2019',"
+                        + "'2019-11-14',"
                         + "'120',"
                         + "'360',"
                         + "'240',"
@@ -330,7 +330,7 @@ public class KaizenDatabase {
                 
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,DATE,START,END,DURATION,DESCR)" 
                         + "VALUES ('Relaxation',"
-                        + "'15/11/2019',"
+                        + "'2019-11-14',"
                         + "'660',"
                         + "'780',"
                         + "'120',"
@@ -341,7 +341,7 @@ public class KaizenDatabase {
                 
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,DATE,START,END,DURATION,DESCR)"
                 + "VALUES('Wellness',"
-                + "'15/11/2019',"
+                + "'2019-11-15',"
                 + "'1020',"
                 + "'1140',"
                 + "'120',"
@@ -351,7 +351,7 @@ public class KaizenDatabase {
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,DATE,START,END,DURATION,DESCR)"
                 + "VALUES('Projects',"
-                + "'16/11/2019',"
+                + "'2019-11-15',"
                 + "'1020',"
                 + "'1140',"
                 + "'120',"
@@ -361,7 +361,7 @@ public class KaizenDatabase {
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,DATE,START,END,DURATION,DESCR)"
                 + "VALUES('Projects',"
-                + "'16/11/2019',"
+                + "'2019-11-16',"
                 + "'1200',"
                 + "'1300',"
                 + "'100',"
@@ -371,7 +371,7 @@ public class KaizenDatabase {
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,DATE,START,END,DURATION,DESCR)"
                 + "VALUES('Daily',"
-                + "'17/11/2019',"
+                + "'2019-11-17',"
                 + "'1020',"
                 + "'1140',"
                 + "'120',"
@@ -381,7 +381,7 @@ public class KaizenDatabase {
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,DATE,START,END,DURATION,DESCR)"
                 + "VALUES('Relationships',"
-                + "'17/11/2019',"
+                + "'2019-11-17',"
                 + "'1020',"
                 + "'1140',"
                 + "'120',"
@@ -392,7 +392,7 @@ public class KaizenDatabase {
                 
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,DATE,START,END,DURATION,DESCR) "
                         + "VALUES ('Projects', "
-                        + "'18/11/2019',"
+                        + "'2019-11-18',"
                         + "'240',"
                         + "'600',"
                         + "'360',"

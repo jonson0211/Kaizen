@@ -51,6 +51,7 @@ public class DailyBreakdownController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
     }    
     
     @FXML
@@ -59,20 +60,35 @@ public class DailyBreakdownController implements Initializable {
         
         try{
             LocalDate date = dailyChartDtPicker.getValue();
+            //test date output:
+            System.out.println("*"+ date);
             XYChart.Series<String, Number> dailySeries = new XYChart.Series<String,Number>();
-            if(date.equals(today));
-            ResultSet daily = db.getResultSet("SELECT CATEGORYNAME, DURATION FROM TIMESHEETS");
-            ArrayList<String> categorynameList = new ArrayList();
+            //if(date.equals(today);
+            ResultSet daily = db.getResultSet("SELECT CATEGORYNAME, DURATION FROM TIMESHEETS "
+                    + "WHERE DATE = '" + date + "'");
+           
+            
+            ArrayList<String> categoryNameList = new ArrayList();
             ArrayList<Integer> durationList = new ArrayList();
+            //test arraylist output:
+            System.out.println(categoryNameList);
+            //test output:
+            System.out.println(daily);
             
             while (daily.next()){
-                categorynameList.add(daily.getString(1));
+                categoryNameList.add(daily.getString(1));
                 durationList.add(daily.getInt(2));
                 
-                for(int i = 0; i<categorynameList.size(); i++){
-                    dailySeries.getData().add(new XYChart.Data(categorynameList.get(i), durationList.get(i)));
+                for(int i = 0; i<categoryNameList.size(); i++){
+                    dailySeries.getData().add(new XYChart.Data(categoryNameList.get(i), durationList.get(i)));
                 }
+            //test categoryNameList output
+            System.out.println("*" + categoryNameList);
+            System.out.println("*" + durationList);
+            
+            
             }
+            dailyBarChart.getData().addAll(dailySeries);
         } catch(Exception ex){
             ex.printStackTrace();
         }

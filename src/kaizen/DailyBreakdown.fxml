@@ -107,7 +107,7 @@
                         <Insets bottom="100.0" left="50.0" right="259.0" top="100.0" />
                      </GridPane.margin>
                   </BarChart>
-                  <DatePicker>
+                  <DatePicker fx:id="dailyChartDtPicker" onAction="#loadGraph">
                      <GridPane.margin>
                         <Insets left="860.0" />
                      </GridPane.margin>
