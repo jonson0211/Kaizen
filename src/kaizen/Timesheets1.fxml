@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
@@ -199,7 +200,7 @@
                   <Insets left="-30.0" top="10.0" />
                </GridPane.margin>
             </Label>
-            <RadioButton fx:id="categoryWork" mnemonicParsing="false" styleClass="work-radio-button" stylesheets="@../../../../../Downloads/stylesheet.css" text="Work" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <RadioButton fx:id="categoryWork" mnemonicParsing="false" styleClass="work-radio-button" stylesheets="@stylesheet.css" text="Work" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
@@ -207,23 +208,20 @@
                   <ToggleGroup fx:id="toggleGroup" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="categoryDaily" mnemonicParsing="false" styleClass="daily-radio-button" stylesheets="@../../../../../Downloads/stylesheet.css" text="Daily" toggleGroup="$toggleGroup" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <RadioButton fx:id="categoryDaily" mnemonicParsing="false" styleClass="daily-radio-button" stylesheets="@stylesheet.css" text="Daily" toggleGroup="$toggleGroup" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="20.0" />
                </font>
             </RadioButton>
-            <RadioButton fx:id="categoryRelaxation" mnemonicParsing="false" styleClass="relaxation-radio-button" stylesheets="@../../../../../Downloads/stylesheet.css" text="Relaxation" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <RadioButton fx:id="categoryRelaxation" mnemonicParsing="false" styleClass="relaxation-radio-button" stylesheets="@stylesheet.css" text="Relaxation" toggleGroup="$toggleGroup" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
-               <toggleGroup>
-                  <ToggleGroup fx:id="toggleGroup1" />
-               </toggleGroup>
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
             </RadioButton>
-            <RadioButton fx:id="categoryRelationships" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="37.0" prefWidth="165.0" styleClass="relationships-radio-button" stylesheets="@../../../../../Downloads/stylesheet.css" text="Relationships" toggleGroup="$toggleGroup" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <RadioButton fx:id="categoryRelationships" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="37.0" prefWidth="165.0" styleClass="relationships-radio-button" stylesheets="@stylesheet.css" text="Relationships" toggleGroup="$toggleGroup" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <font>
                   <Font size="20.0" />
                </font>
@@ -234,7 +232,7 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </RadioButton>
-            <RadioButton fx:id="categoryProjects" mnemonicParsing="false" styleClass="projects-radio-button" stylesheets="@../../../../../Downloads/stylesheet.css" text="Projects" toggleGroup="$toggleGroup" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <RadioButton fx:id="categoryProjects" mnemonicParsing="false" styleClass="projects-radio-button" stylesheets="@stylesheet.css" text="Projects" toggleGroup="$toggleGroup" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
@@ -242,7 +240,7 @@
                   <Insets left="210.0" />
                </GridPane.margin>
             </RadioButton>
-            <RadioButton fx:id="categoryWellness" mnemonicParsing="false" styleClass="wellness-radio-button" stylesheets="@../../../../../Downloads/stylesheet.css" text="Wellness" toggleGroup="$toggleGroup" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <RadioButton fx:id="categoryWellness" mnemonicParsing="false" styleClass="wellness-radio-button" stylesheets="@stylesheet.css" text="Wellness" toggleGroup="$toggleGroup" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <font>
                   <Font size="20.0" />
                </font>
