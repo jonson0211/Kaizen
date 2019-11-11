@@ -169,3 +169,30 @@
     -fx-font-family: "Arial Nova Light";
 
 }
+
+.daily-radio-button .dot {
+  -fx-mark-highlight-color: #ff80ff ;
+  -fx-mark-color: #ff80ff ;
+}
+.wellness-radio-button .dot {
+  -fx-mark-highlight-color: #80ff80 ;
+  -fx-mark-color: #80ff80 ;
+}
+.projects-radio-button .dot {
+  -fx-mark-highlight-color: #ccffff ;
+  -fx-mark-color: #ccffff ;
+}
+.work-radio-button .dot {
+  -fx-mark-highlight-color: #80bfff ;
+  -fx-mark-color: #80bfff ;
+}
+.relationships-radio-button .dot {
+  -fx-mark-highlight-color: #cc99ff ;
+  -fx-mark-color: #cc99ff ;
+}
+.relaxation-radio-button .dot {
+  -fx-mark-highlight-color: #ffb84d ;
+  -fx-mark-color: #ffb84d ;
+}
+
+

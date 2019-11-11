@@ -156,8 +156,9 @@ public class PieChartController implements Initializable {
                                       
                     //System.out.println("Test");
                 lifePieChart.setData(lifePieChartData);
-                
-                String[] pieColors = {"#80bfff", "#cc99ff", "#ccffff", "#80ff80", "#ff80ff","#ffb84d"};
+        
+//colors - please REFERENCE BLAIR'S DEMO IN THE ABOUT SCREEN WHEN WE FINISH- taken straight from the demo:       
+        String[] pieColors = {"#80bfff", "#cc99ff", "#ccffff", "#80ff80", "#ff80ff","#ffb84d"};
         int i = 0;
         for (PieChart.Data data : lifePieChartData) {
             data.getNode().setStyle(
@@ -208,7 +209,7 @@ public class PieChartController implements Initializable {
     }
     @FXML
     private void handleWeeklyBreakdown(ActionEvent event) throws IOException{
-        //pageSwitcher.switcher(event, "WeeklyBreakdown.fxml");
+        pageSwitcher.switcher(event, "WeeklyBreakdown.fxml");
     }
     @FXML
     private void handleWeeklyTrends(ActionEvent event) throws IOException{
