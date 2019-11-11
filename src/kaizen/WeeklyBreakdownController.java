@@ -82,11 +82,7 @@ public class WeeklyBreakdownController implements Initializable {
                 for(int i = 0; i<categoryNameList.size(); i++){
                     weeklySeries.getData().add(new XYChart.Data(categoryNameList.get(i), durationList.get(i)));
                 }
-            //test categoryNameList output:
-            //System.out.println("*" + categoryNameList);
-            //System.out.println("*" + durationList);
-            
-            
+
             }
             weeklyBarChart.getData().addAll(weeklySeries);
         } catch(Exception ex){
