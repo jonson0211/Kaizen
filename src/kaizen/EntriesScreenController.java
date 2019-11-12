@@ -81,6 +81,6 @@ public class EntriesScreenController implements Initializable {
 }
     @FXML
     private void handleTimeSheets(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"Timesheets.fxml");
+        pageSwitcher.switcher(event,"PieChart.fxml");
     }
 }
