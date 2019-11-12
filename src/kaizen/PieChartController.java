@@ -134,7 +134,8 @@ public class PieChartController implements Initializable {
     
     ResultSet totalDuration1=db.getResultSet("SELECT SUM(DURATION) from TIMESHEETS");
                 double totalDurationSum = totalDuration1.getInt(1);
-    System.out.println(workRs.getInt(1));
+    
+                System.out.println(workRs.getInt(1));
     System.out.println(workRs.getInt(1)/totalDurationSum);
     System.out.println(totalDuration);
     System.out.println("*" + projectsRs.getInt(1));
@@ -201,8 +202,11 @@ public class PieChartController implements Initializable {
             stage.setScene(new Scene(root1));
             stage.show();
 
-        } catch (Exception e) {
-            System.out.println("Cannot load this new window!");
+        } catch (Exception e) { 
+            e.printStackTrace();
+            
+            System.out.println("Cannot load this new window!!");
+            
         }
     }
     @FXML

@@ -21,6 +21,8 @@ import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -37,14 +39,12 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import kaizen.DataModels.activityCombo;
+import kaizen.DataModels.categoryCombo;
+import kaizen.DataModels.learningsDidWell;
+import kaizen.DataModels.timesheetsDM;
 
 public class TimesheetsController implements Initializable {
-       
-    @FXML private AnchorPane anchor;
-    @FXML private BorderPane border;
-    @FXML private VBox box;
-    @FXML private Text text;
-       
        
     
     @FXML private TextField timeStartHrField;
@@ -62,8 +62,7 @@ public class TimesheetsController implements Initializable {
     
     @FXML
     private ComboBox<String> tsCombo;
-    @FXML
-    private ChoiceBox<String> categoryComboBox;
+    
     
     @FXML private Rectangle categoryColourShape;
     
@@ -80,49 +79,126 @@ public class TimesheetsController implements Initializable {
     KaizenDatabase addTimesheet = new KaizenDatabase();
     
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
-    ObservableList<String> tsValues = FXCollections.observableArrayList("Exercise","Job-related","Videography","Socialising","Music","Life organisation","Food-related");
     
-ObservableList<String> categoryValues = FXCollections.observableArrayList(""
-            + "Work","Projects","Relaxation","Wellness","Relationships","Daily","Food-related");
-      
+    @FXML
+    private ComboBox<String> categoryComboBox;
+    @FXML ComboBox<String> activityComboBox;
+    ObservableList<categoryCombo> categoryComboList = FXCollections.observableArrayList();
+    ObservableList<activityCombo> activityComboList = FXCollections.observableArrayList();
+    
+    //List cateogryValues = new ArrayList();
+    //ObservableList<String> categoryValues = FXCollections.observableArrayList("Doctor", "Dentist", "Optometrist");
+    //ObservableList<String> tsValues = FXCollections.observableArrayList("Doctor", "Dentist", "Optometrist");
+   
+    
+//   public ObservableList<timesheetsDM> getTimesheets() throws SQLException{
+//
+//    ObservableList<timesheetsDM> timesheets = FXCollections.observableArrayList();
+//    
+//        
+// try{
+//            ResultSet tableRs = addTimesheet.getResultSet(
+//                    "SELECT FROM TIMESHEETS (CATEGORYNAME,COLOUR,ACTIVITY,DATE, START, END, DURATION, DESCR)"
+//                    );
+//            while (tableRs.next()) {
+//                timesheets.add(new timesheetsDM(
+//                        tableRs.getString(1), 
+//                        tableRs.getString(2), 
+//                        tableRs.getString(3),
+//                        tableRs.getString(4),
+//                        tableRs.getString(5),
+//                        tableRs.getInt(6),
+//                        tableRs.getString(7),
+//                        tableRs.getString(8)));
+//            }
+//            }catch(Exception ex){
+//            ex.printStackTrace();
+//        }
+//    //System.out.println((timesheets));   
+//    return FXCollections.observableArrayList(timesheets);
+//    
+//    }
+   
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    public void initialize(URL url, ResourceBundle rb){
 
     durationLabel.setVisible(false);
+    categoryComboBox.setEditable(true);
+    activityComboBox.setEditable(true);
     
-    categoryColourShape.setVisible(false);
     
     
-    tsCombo.setEditable(true);
-    tsCombo.setItems(tsValues);
-    categoryComboBox.setItems(categoryValues);
+    categoryComboList.setAll(this.getCatChoice());
+    for(categoryCombo c : categoryComboList){
+        System.out.println(c.getCatChoiceProperty());
+        categoryComboBox.getItems().addAll(c.getCatChoice());
+    }
+    activityComboList.setAll(this.getActChoice());
+    for(activityCombo d : activityComboList){
+        System.out.println(d.getActChoiceProperty());
+        activityComboBox.getItems().addAll(d.getActChoice());
+    }
     
   
     }
-    
-    @FXML
-    private void handleInputChangedAction(ActionEvent event) throws SQLException {
-     String catName = categoryComboBox.getValue();
-        ResultSet catColourRs = addTimesheet.getResultSet("SELECT CATEGORYNAME, COLOUR from CATEGORY "
-                + "WHERE CATEGORYNAME = '" + catName + "'"
-        );
-        String colourShape = catColourRs.getString(2);
-        String colour = '"' +colourShape+ '"';
-        System.out.println("*" + colourShape);
-        System.out.println(colour);
-        //categoryColourShape.setFill(Color.RED);
-        categoryColourShape.setFill(Color.web(colour));
-        //categoryColourShape.setFill(Color.web("#80bfff"));
-        categoryColourShape.setVisible(true);
+    //get Category Choice for combo box
+    public ObservableList<categoryCombo> getCatChoice(){
         
-        //if doesn't work, jsut switch to color.RED etc and change data
-
+        ObservableList<categoryCombo> categoryComboList = FXCollections.observableArrayList();
         
-        
+        try {
+            ResultSet rsCategoryComboTable = addTimesheet.getResultSet("SELECT CATEGORYNAME FROM CATEGORY");
+            
+            while (rsCategoryComboTable.next()){
+                categoryComboList.add(new categoryCombo(rsCategoryComboTable.getString(1)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return FXCollections.observableArrayList(categoryComboList);
     }
+    //get activity choice for combo box
+    public ObservableList<activityCombo> getActChoice(){
+        
+        ObservableList<activityCombo> activityComboList = FXCollections.observableArrayList();
+        
+        try {
+            ResultSet rsActivityComboTable = addTimesheet.getResultSet("SELECT ACTIVITY FROM TIMESHEETS");
+            
+            while (rsActivityComboTable.next()){
+                activityComboList.add(new activityCombo(rsActivityComboTable.getString(1)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return FXCollections.observableArrayList(activityComboList);
+    }
+    
+   
+    
+//    @FXML
+//    private void handleInputChangedAction(ActionEvent event) throws SQLException {
+//        String catName = categoryComboBox.getValue();
+//        ResultSet catColourRs = addTimesheet.getResultSet("SELECT CATEGORYNAME, COLOUR from CATEGORY "
+//                + "WHERE CATEGORYNAME = '" + catName + "'"
+//        );
+//        String colourShape = catColourRs.getString(2);
+//        String colour = '"' +colourShape+ '"';
+//        System.out.println("*" + colourShape);
+//        //System.out.println(colour);
+//        //categoryColourShape.setFill(Color.RED);
+//        //categoryColourShape.setFill(Color.web(colour,1));
+//        categoryColourShape.setFill(Color.web("#80bfff",1));
+//        categoryColourShape.setVisible(true);
+//        
+//        //if doesn't work, jsut switch to color.RED etc and change data
+//    }
+        
+        
+    
     
     @FXML
     private void handleSubmitAction(ActionEvent event) throws SQLException {
@@ -154,20 +230,6 @@ ObservableList<String> categoryValues = FXCollections.observableArrayList(""
         String durationText = Double.toString(duration);
         String desc = descriptionText.getText();
        
-//        Toggle cat = toggleGroup.getSelectedToggle();
-//        String catName = null;
-//        if (categoryWork.isSelected())
-//            catName = "Work";
-//        if (categoryWellness.isSelected())
-//            catName = "Wellness";
-//        if (categoryProjects.isSelected())
-//            catName = "Projects";
-//        if (categoryRelaxation.isSelected())
-//            catName = "Relaxation";
-//        if (categoryProjects.isSelected())
-//            catName = "Work";
-//        if (categoryRelationships.isSelected())
-//            catName = "Relationships";
         
         try {
             

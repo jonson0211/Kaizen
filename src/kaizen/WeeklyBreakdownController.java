@@ -7,7 +7,10 @@ package kaizen;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -24,6 +27,9 @@ import kaizen.UserData.KaizenDatabase;
 
 public class WeeklyBreakdownController implements Initializable {
 
+    
+   
+    
     KaizenDatabase db = new KaizenDatabase();
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
     //menu buttons
@@ -64,8 +70,9 @@ public class WeeklyBreakdownController implements Initializable {
             System.out.println("*"+ date);
             XYChart.Series<String, Number> weeklySeries = new XYChart.Series<String,Number>();
             //if(date.equals(today);
+            //db.insertStatement(UPDATE TIMSHEETS);
             ResultSet weekly = db.getResultSet("SELECT CATEGORYNAME, DURATION FROM TIMESHEETS "
-                    + "WHERE DATE BETWEEN date('" + date + "') and date('" + date + "','+7 day')");
+                    + "WHERE DATE BETWEEN date('" + date + "') and date('" + date + "','+7 days')");
            
             
             ArrayList<String> categoryNameList = new ArrayList();
