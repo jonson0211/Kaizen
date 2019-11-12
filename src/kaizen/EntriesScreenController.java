@@ -80,6 +80,7 @@ public class EntriesScreenController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         entriesView.setVisible(true);
+        entriesView.setItems(this.getEntries());
         dateClm.setCellValueFactory(cellData -> cellData.getValue().getDateProperty());
         categoryClm.setCellValueFactory(cellData -> cellData.getValue().getCategoryProperty());
         activityClm.setCellValueFactory(cellData -> cellData.getValue().getActivityProperty());
@@ -96,7 +97,7 @@ public class EntriesScreenController implements Initializable {
             ResultSet rs = db.getResultSet("SELECT * FROM TIMESHEETS");
             
             while (rs.next()){
-                entries.add(new timesheetsDM(rs.getString("ACTIVITY"), rs.getString("CATEGORY"), rs.getString("DATE"), rs.getString("DESCR"), rs.getInt("DURATION"), rs.getString("START"), rs.getString("END")));
+                entries.add(new timesheetsDM(rs.getString("ACTIVITY"), rs.getString("CATEGORYNAME"), rs.getString("DATE"), rs.getString("DESCR"), rs.getInt("DURATION"), rs.getString("START"), rs.getString("END")));
             }
         } catch (SQLException ex) {
             Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
