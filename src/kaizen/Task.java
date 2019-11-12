@@ -25,25 +25,6 @@ public class Task {
     private StringProperty dueDate;
     private StringProperty priority;
     
-    try {
-            ResultSet rs = KanbanDatabase.getResultSet("SELECT TITLE FROM TASKS WHERE DO_DATE = '2019-11-18'");
-
-            for (int i = 0; i < 7; i++) {
-                if (rs.next()) {
-
-                } else {
-                    break;
-                }
-                Label taskToday = new Label();
-                System.out.println("label created");
-                taskToday.setText(rs.getString("TITLE"));
-                grid.add(taskToday, 0, i);
-
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    
     public Task(){
         this("Title", "Description", "Category", "Do Date", "Due Date", "Priority");
     }
