@@ -65,11 +65,12 @@ public class EntriesScreenController implements Initializable {
     @FXML
     private TableColumn<timesheetsDM, String> endClm;
     @FXML
-    private TableColumn<timesheetsDM, String> durationClm;
+    private TableColumn<timesheetsDM, Number> durationClm;
     @FXML
     private TableColumn<timesheetsDM, String> descriptionClm;
     @FXML
     private Button backBtn;
+    
     
         
     /**
