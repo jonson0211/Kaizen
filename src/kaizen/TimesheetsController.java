@@ -150,7 +150,7 @@ public class TimesheetsController implements Initializable {
         ObservableList<categoryCombo> categoryComboList = FXCollections.observableArrayList();
         
         try {
-            ResultSet rsCategoryComboTable = addTimesheet.getResultSet("SELECT CATEGORYNAME FROM CATEGORY");
+            ResultSet rsCategoryComboTable = addTimesheet.getResultSet("SELECT DISTINCT(CATEGORYNAME) FROM CATEGORY");
             
             while (rsCategoryComboTable.next()){
                 categoryComboList.add(new categoryCombo(rsCategoryComboTable.getString(1)));
@@ -166,7 +166,7 @@ public class TimesheetsController implements Initializable {
         ObservableList<activityCombo> activityComboList = FXCollections.observableArrayList();
         
         try {
-            ResultSet rsActivityComboTable = addTimesheet.getResultSet("SELECT ACTIVITY FROM TIMESHEETS");
+            ResultSet rsActivityComboTable = addTimesheet.getResultSet("SELECT DISTINCT(ACTIVITY) FROM TIMESHEETS");
             
             while (rsActivityComboTable.next()){
                 activityComboList.add(new activityCombo(rsActivityComboTable.getString(1)));
