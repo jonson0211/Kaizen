@@ -41,6 +41,9 @@ public class EntriesScreenController implements Initializable {
     private ToggleButton settings;
     @FXML
     private Button signOut;
+    
+    @FXML
+    private TabeleView<
     /**
      * Initializes the controller class.
      */
