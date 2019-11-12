@@ -1,8 +1,11 @@
 
 package kaizen;
 
+import javafx.scene.shape.Rectangle;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,6 +35,7 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 public class TimesheetsController implements Initializable {
@@ -41,23 +45,7 @@ public class TimesheetsController implements Initializable {
     @FXML private VBox box;
     @FXML private Text text;
        
-    @FXML
-    private RadioButton categoryWork;
-     
-    @FXML
-    private RadioButton categoryDaily;
-    
-    @FXML
-    private RadioButton categoryRelationships;
-    
-    @FXML
-    private RadioButton categoryWellness;
-    
-    @FXML
-    private RadioButton categoryRelaxation;
-    
-    @FXML
-    private RadioButton categoryProjects;    
+       
     
     @FXML private TextField timeStartHrField;
     
@@ -74,6 +62,10 @@ public class TimesheetsController implements Initializable {
     
     @FXML
     private ComboBox<String> tsCombo;
+    @FXML
+    private ChoiceBox<String> categoryComboBox;
+    
+    @FXML private Rectangle categoryColourShape;
     
     @FXML
     private Button submit;
@@ -89,7 +81,9 @@ public class TimesheetsController implements Initializable {
     
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
     ObservableList<String> tsValues = FXCollections.observableArrayList("Exercise","Job-related","Videography","Socialising","Music","Life organisation","Food-related");
-   
+    
+ObservableList<String> categoryValues = FXCollections.observableArrayList(""
+            + "Work","Projects","Relaxation","Wellness","Relationships","Daily","Food-related");
       
     /**
      * Initializes the controller class.
@@ -98,15 +92,45 @@ public class TimesheetsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
     durationLabel.setVisible(false);
+    
+    categoryColourShape.setVisible(false);
+    
+    
     tsCombo.setEditable(true);
     tsCombo.setItems(tsValues);
+    categoryComboBox.setItems(categoryValues);
     
   
     }
     
+    @FXML
+    private void handleInputChangedAction(ActionEvent event) throws SQLException {
+     String catName = categoryComboBox.getValue();
+        ResultSet catColourRs = addTimesheet.getResultSet("SELECT CATEGORYNAME, COLOUR from CATEGORY "
+                + "WHERE CATEGORYNAME = '" + catName + "'"
+        );
+        String colourShape = catColourRs.getString(2);
+        String colour = '"' +colourShape+ '"';
+        System.out.println("*" + colourShape);
+        System.out.println(colour);
+        //categoryColourShape.setFill(Color.RED);
+        categoryColourShape.setFill(Color.web(colour));
+        //categoryColourShape.setFill(Color.web("#80bfff"));
+        categoryColourShape.setVisible(true);
+        
+        //if doesn't work, jsut switch to color.RED etc and change data
+
+        
+        
+    }
     
     @FXML
-    private void handleSubmitAction(ActionEvent event) {
+    private void handleSubmitAction(ActionEvent event) throws SQLException {
+        
+        String catName = categoryComboBox.getValue();
+        
+        //pull the category's corresponding colour from database
+        
         
         String date = DtPicker.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         
@@ -130,25 +154,25 @@ public class TimesheetsController implements Initializable {
         String durationText = Double.toString(duration);
         String desc = descriptionText.getText();
        
-        Toggle cat = toggleGroup.getSelectedToggle();
-        String catName = null;
-        if (categoryWork.isSelected())
-            catName = "Work";
-        if (categoryWellness.isSelected())
-            catName = "Wellness";
-        if (categoryProjects.isSelected())
-            catName = "Projects";
-        if (categoryRelaxation.isSelected())
-            catName = "Relaxation";
-        if (categoryProjects.isSelected())
-            catName = "Work";
-        if (categoryRelationships.isSelected())
-            catName = "Relationships";
+//        Toggle cat = toggleGroup.getSelectedToggle();
+//        String catName = null;
+//        if (categoryWork.isSelected())
+//            catName = "Work";
+//        if (categoryWellness.isSelected())
+//            catName = "Wellness";
+//        if (categoryProjects.isSelected())
+//            catName = "Projects";
+//        if (categoryRelaxation.isSelected())
+//            catName = "Relaxation";
+//        if (categoryProjects.isSelected())
+//            catName = "Work";
+//        if (categoryRelationships.isSelected())
+//            catName = "Relationships";
         
         try {
             
             addTimesheet.insertStatement("INSERT INTO TIMESHEETS (CATEGORYNAME, ACTIVITY,DATE, START, END, DURATION, DESCR)"
-                    + " VALUES('" + catName + "', '" + act + "' '" + date + "','" + startCombined + "', '"+  endCombined + "', '" +
+                    + " VALUES('" + catName + "', '" + act + "', '" + date + "','" + startCombined + "', '"+  endCombined + "', '" +
                     duration + "', '" + desc + "');");
             durationLabel.setText(durationText + " minutes");
             durationLabel.setVisible(true);

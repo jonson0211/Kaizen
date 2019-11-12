@@ -25,7 +25,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import kaizen.UserData.KaizenDatabase;
 
-public class PieChartController implements Initializable {
+public class SettingsController implements Initializable {
     
     KaizenDatabase db = new KaizenDatabase();
     
@@ -43,26 +43,20 @@ public class PieChartController implements Initializable {
     @FXML private ToggleButton about;
     @FXML private ToggleButton timeDashboard;
     @FXML private ToggleButton dailyLearnings;
-    @FXML private ToggleButton settings;
     
     @FXML private Label welcome;
     @FXML private Label welcomeSubheading;
     //menu^//
     
-    @FXML private Button dailyBreakdown;
-    @FXML private Button weeklyBreakdown;
+    @FXML private Button editActivities;
+    @FXML private Button editCategories;
     @FXML private Button weeklyTrends;
     
-    
-    @FXML private Label workLabel;
-    @FXML private Label relationshipsLabel;
-    @FXML private Label projectsLabel;
-    @FXML private Label wellnessLabel;
-    @FXML private Label dailyLabel;
-    @FXML private Label relaxationLabel;
+   
     @FXML private Button logInTime;
     @FXML private GridPane grid;
     @FXML private Button tsBtn;
+   
     
     @FXML public PieChart lifePieChart;
     
@@ -192,7 +186,21 @@ public class PieChartController implements Initializable {
     
     //switch to daily learnings
     @FXML
-    private void handlePopUpScreenAction(ActionEvent event) throws IOException {
+    private void handlePopUpEditCategories(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Timesheets.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("New entry");
+            stage.setScene(new Scene(root1));
+            stage.show();
+
+        } catch (Exception e) {
+            System.out.println("Cannot load this new window!");
+        }
+    }
+    @FXML
+    private void handlePopUpEditActivities(ActionEvent event) throws IOException {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Timesheets.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
@@ -243,7 +251,7 @@ public class PieChartController implements Initializable {
     }
     @FXML
     private void handleSettings(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"Settings.fxml"); //TO CHANGE WHEN PAGE IS MADE
+        pageSwitcher.switcher(event,"Settings.fxml"); 
     }
     @FXML
     private void handleTimeDashboard(ActionEvent event) throws IOException{
