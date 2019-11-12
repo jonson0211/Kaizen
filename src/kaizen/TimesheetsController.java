@@ -126,6 +126,7 @@ public class TimesheetsController implements Initializable {
     public void initialize(URL url, ResourceBundle rb){
 
     durationLabel.setVisible(false);
+    categoryColourShape.setVisible(false);
     categoryComboBox.setEditable(true);
     activityComboBox.setEditable(true);
     
@@ -179,23 +180,25 @@ public class TimesheetsController implements Initializable {
     
    
     
-//    @FXML
-//    private void handleInputChangedAction(ActionEvent event) throws SQLException {
-//        String catName = categoryComboBox.getValue();
-//        ResultSet catColourRs = addTimesheet.getResultSet("SELECT CATEGORYNAME, COLOUR from CATEGORY "
-//                + "WHERE CATEGORYNAME = '" + catName + "'"
-//        );
-//        String colourShape = catColourRs.getString(2);
-//        String colour = '"' +colourShape+ '"';
-//        System.out.println("*" + colourShape);
-//        //System.out.println(colour);
-//        //categoryColourShape.setFill(Color.RED);
-//        //categoryColourShape.setFill(Color.web(colour,1));
-//        categoryColourShape.setFill(Color.web("#80bfff",1));
-//        categoryColourShape.setVisible(true);
-//        
-//        //if doesn't work, jsut switch to color.RED etc and change data
-//    }
+    @FXML
+    private void handleInputChangedAction(ActionEvent event) throws SQLException {
+        String catName = categoryComboBox.getValue();
+        ResultSet catColourRs = addTimesheet.getResultSet("SELECT CATEGORYNAME, COLOUR from CATEGORY "
+                + "WHERE CATEGORYNAME = '" + catName + "'"
+        );
+        String colourShape = catColourRs.getString(2);
+        String colour = '"' +colourShape+ '"';
+        System.out.println("*" + colourShape);
+        //System.out.println(colour);
+        //categoryColourShape.setFill(Color.RED);
+        //categoryColourShape.setFill(Color.web(colour,1));
+        //if(catName.equals("Work");
+        categoryColourShape.setFill(Color.web("#80bfff",1));
+        
+        categoryColourShape.setVisible(true);
+        
+        //if doesn't work, jsut switch to color.RED etc and change data
+    }
         
         
     
