@@ -25,7 +25,6 @@ public class Task {
     private StringProperty dueDate;
     private StringProperty priority;
     
-    
     public Task(){
         this("Title", "Description", "Category", "Do Date", "Due Date", "Priority");
     }
