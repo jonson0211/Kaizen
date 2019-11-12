@@ -4,6 +4,8 @@ package kaizen;
 import javafx.scene.shape.Rectangle;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -81,7 +83,7 @@ public class TimesheetsController implements Initializable {
     ObservableList<String> tsValues = FXCollections.observableArrayList("Exercise","Job-related","Videography","Socialising","Music","Life organisation","Food-related");
     
 ObservableList<String> categoryValues = FXCollections.observableArrayList(""
-            + "Exercise","Job-related","Videography","Socialising","Music","Life organisation","Food-related");
+            + "Work","Projects","Relaxation","Wellness","Relationships","Daily","Food-related");
       
     /**
      * Initializes the controller class.
@@ -101,16 +103,31 @@ ObservableList<String> categoryValues = FXCollections.observableArrayList(""
   
     }
     
+    @FXML
+    private void handleInputChangedAction(ActionEvent event) throws SQLException {
+     String catName = categoryComboBox.getValue();
+        ResultSet catColourRs = addTimesheet.getResultSet("SELECT CATEGORYNAME, COLOUR from CATEGORY "
+                + "WHERE CATEGORYNAME = '" + catName + "'"
+        );
+        String colourShape = catColourRs.getString(2);
+        System.out.println("*" + colourShape);
+        System.out.println('"' + colourShape + '"');
+        categoryColourShape.setFill(Color.RED);
+        categoryColourShape.setVisible(true);
+//categoryColourShape.setFill(Color.web('"' + colourShape + '"'));
+        
+        
+    }
     
     @FXML
-    private void handleSubmitAction(ActionEvent event) {
+    private void handleSubmitAction(ActionEvent event) throws SQLException {
         
         String catName = categoryComboBox.getValue();
         
         //pull the category's corresponding colour from database
-        //categoryColourShape.setFill(Color.TRANSPARENT);
         
-        String date = DtPicker.getValue().format(DateTimeFormatter.ofPattern("YYYY-MM-DD"));
+        
+        String date = DtPicker.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         
         String timeStartHr = timeStartHrField.getText();
         String timeStartMin = timeStartMinField.getText();

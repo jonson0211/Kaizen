@@ -169,7 +169,7 @@
                   <ToggleGroup fx:id="toggleGroup" />
                </toggleGroup>
             </RadioButton>
-            <Rectangle fx:id="categoryColourShape" arcHeight="5.0" arcWidth="5.0" fill="#ff80ff" height="39.0" mouseTransparent="true" stroke="#ff82ff00" strokeType="INSIDE" width="304.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Rectangle fx:id="categoryColourShape" arcHeight="5.0" arcWidth="5.0" fill="#ff80ff" height="39.0" mouseTransparent="true" stroke="#ff82ff" strokeType="INSIDE" width="304.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <effect>
                   <Glow />
                </effect>
@@ -185,7 +185,7 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <ChoiceBox fx:id="categoryComboBox" prefHeight="27.0" prefWidth="294.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <ChoiceBox fx:id="categoryComboBox" onAction="#handleInputChangedAction" prefHeight="27.0" prefWidth="294.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
