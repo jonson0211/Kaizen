@@ -169,7 +169,7 @@
                   <ToggleGroup fx:id="toggleGroup" />
                </toggleGroup>
             </RadioButton>
-            <Rectangle fx:id="categoryColourShape" arcHeight="5.0" arcWidth="5.0" fill="#ff80ff" height="39.0" mouseTransparent="true" stroke="#ff82ff" strokeType="INSIDE" width="304.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Rectangle fx:id="categoryColourShape" arcHeight="5.0" arcWidth="5.0" fill="#ff80ff" height="39.0" mouseTransparent="true" stroke="#ffffff00" strokeType="INSIDE" width="304.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <effect>
                   <Glow />
                </effect>
