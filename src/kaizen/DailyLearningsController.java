@@ -134,12 +134,13 @@ public class DailyLearningsController {
             for(learningsCombo c : answerOnes){
                 System.out.println(c.getDwProperty());
                 answerOne.getItems().addAll(c.getDw());
+            }
             answerTwos.setAll(this.getComboTwo());
             for(learningsCombo d : answerTwos){
                 System.out.println(d.getDwProperty());
                 answerTwo.getItems().addAll(d.getDw());
             }
-            }
+            
         } catch(SQLException ex){
             ex.printStackTrace();
         }
