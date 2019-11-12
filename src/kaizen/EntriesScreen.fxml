@@ -65,7 +65,7 @@
                   <Insets bottom="-20.0" />
                </GridPane.margin>
             </Label>
-            <TableView prefHeight="552.0" prefWidth="950.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TableView fx:id="entriesView" prefHeight="552.0" prefWidth="950.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
               <columns>
                 <TableColumn fx:id="dateClm" prefWidth="100.0" text="Date" />
                 <TableColumn fx:id="categoryClm" minWidth="5.0" prefWidth="181.0" text="Category" />

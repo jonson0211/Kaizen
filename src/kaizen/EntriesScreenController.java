@@ -7,12 +7,22 @@ package kaizen;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleButton;
+import kaizen.DataModels.learningsDidWell;
+import kaizen.DataModels.timesheetsDM;
 import kaizen.UserData.KaizenDatabase;
 
 /**
@@ -43,14 +53,55 @@ public class EntriesScreenController implements Initializable {
     private Button signOut;
     
     @FXML
-    private TabeleView<
+    private TableView<timesheetsDM> entriesView;    
+    @FXML
+    private TableColumn<timesheetsDM, String> dateClm;    
+    @FXML
+    private TableColumn<timesheetsDM, String> categoryClm;
+    @FXML
+    private TableColumn<timesheetsDM, String> activityClm;
+    @FXML
+    private TableColumn<timesheetsDM, String> startClm;
+    @FXML
+    private TableColumn<timesheetsDM, String> endClm;
+    @FXML
+    private TableColumn<timesheetsDM, String> durationClm;
+    @FXML
+    private TableColumn<timesheetsDM, String> descriptionClm;
+    @FXML
+    private Button backBtn;
+    
+        
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        entriesView.setVisible(true);
+        dateClm.setCellValueFactory(cellData -> cellData.getValue().getDateProperty());
+        categoryClm.setCellValueFactory(cellData -> cellData.getValue().getCategoryProperty());
+        activityClm.setCellValueFactory(cellData -> cellData.getValue().getActivityProperty());
+        startClm.setCellValueFactory(cellData -> cellData.getValue().getStartProperty());
+        endClm.setCellValueFactory(cellData -> cellData.getValue().getEndProperty());
+        durationClm.setCellValueFactory(cellData -> cellData.getValue().getDurationProperty());
+        descriptionClm.setCellValueFactory(cellData -> cellData.getValue().getDescProperty());
     }    
+    public ObservableList<timesheetsDM> getEntries(){
+        
+        ObservableList<timesheetsDM> entries = FXCollections.observableArrayList();
+        
+        try {
+            ResultSet rs = db.getResultSet("SELECT * FROM TIMESHEETS");
+            
+            while (rs.next()){
+                entries.add(new timesheetsDM(rs.getString("ACTIVITY"), rs.getString("CATEGORY"), rs.getString("DATE"), rs.getString("DESCR"), rs.getInt("DURATION"), rs.getString("START"), rs.getString("END")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return FXCollections.observableArrayList(entries);
+    }
     
     @FXML
     private void handleKbBoard(ActionEvent event) throws IOException{
