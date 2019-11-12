@@ -190,6 +190,7 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </ComboBox>
+            <ColorPicker editable="true" GridPane.columnIndex="2" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </children>
