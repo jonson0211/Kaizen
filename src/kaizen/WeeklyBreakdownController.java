@@ -72,7 +72,7 @@ public class WeeklyBreakdownController implements Initializable {
             //if(date.equals(today);
             //db.insertStatement(UPDATE TIMSHEETS);
             ResultSet weekly = db.getResultSet("SELECT CATEGORYNAME, DURATION FROM TIMESHEETS "
-                    + "WHERE DATE BETWEEN date('" + date + "') and date('" + date + "','+7 day')");
+                    + "WHERE DATE BETWEEN date('" + date + "') and date('" + date + "','+7 days')");
            
             
             ArrayList<String> categoryNameList = new ArrayList();

@@ -148,7 +148,7 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <ComboBox fx:id="tsCombo" editable="true" prefHeight="31.0" prefWidth="294.0" promptText="Type" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <ComboBox fx:id="activityComboBox" editable="true" prefHeight="31.0" prefWidth="294.0" promptText="Type" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
@@ -185,11 +185,11 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <ChoiceBox fx:id="categoryComboBox" onAction="#handleInputChangedAction" prefHeight="27.0" prefWidth="294.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <ComboBox fx:id="categoryComboBox" editable="true" prefHeight="31.0" prefWidth="294.0" promptText="Type" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
-            </ChoiceBox>
+            </ComboBox>
          </children>
       </GridPane>
    </children>

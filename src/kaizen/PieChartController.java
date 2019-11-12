@@ -202,8 +202,11 @@ public class PieChartController implements Initializable {
             stage.setScene(new Scene(root1));
             stage.show();
 
-        } catch (Exception e) {
-            System.out.println("Cannot load this new window!");
+        } catch (Exception e) { 
+            e.printStackTrace();
+            
+            System.out.println("Cannot load this new window!!");
+            
         }
     }
     @FXML
