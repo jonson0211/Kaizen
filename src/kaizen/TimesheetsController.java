@@ -112,10 +112,10 @@ ObservableList<String> categoryValues = FXCollections.observableArrayList(""
         String colourShape = catColourRs.getString(2);
         String colour = '"' +colourShape+ '"';
         System.out.println("*" + colourShape);
-        System.out.println(colour);
+        //System.out.println(colour);
         //categoryColourShape.setFill(Color.RED);
-        categoryColourShape.setFill(Color.web(colour));
-        //categoryColourShape.setFill(Color.web("#80bfff"));
+        //categoryColourShape.setFill(Color.web(colour,1));
+        categoryColourShape.setFill(Color.web("#80bfff",1));
         categoryColourShape.setVisible(true);
         
         //if doesn't work, jsut switch to color.RED etc and change data

@@ -93,27 +93,39 @@ public class KaizenDatabase {
                 System.out.println("CATEGORY table created");
                 createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
                         + "VALUES ('Work',"
-                        + "'#80bfff')");
+                        + "'RED')"
+                        //+ "'#80bfff')"
+                );
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
                         + "VALUES ('Wellness',"
-                        + "'#80ff80')");
+                        +"'GREEN')"
+                        //+ "'#80ff80')"
+                );
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
                         + "VALUES ('Relationships',"
-                        + "'#cc99ff')");
+                        + "'BLUE'"
+                        //+ "'#cc99ff'"
+                        + ")");
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
                         + "VALUES ('Projects',"
-                        + "'#ccffff')");
+                        +"'YELLOW'"
+                        //+ "'#ccffff'"
+                        + ")");
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
                         + "VALUES ('Daily',"
-                        + "'#ff80ff')");
+                        +"'MAGENTA'"
+                        //+ "'#ff80ff'"
+                        + ")");
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
                         + "VALUES ('Relaxation',"
-                        + "'#ffb84d')");
+                        +"'PURPLE'"
+                        //+ "'#ffb84d'"
+                        + ")");
                 createDemoInstance.execute();
             } else {
                 System.out.println("CATEGORY table exists");
