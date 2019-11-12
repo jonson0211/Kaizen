@@ -72,7 +72,7 @@
                   <TableColumn fx:id="activityClm" prefWidth="161.0" text="Activity" />
                   <TableColumn fx:id="startClm" prefWidth="100.0" text="Start Time" />
                   <TableColumn fx:id="endClm" prefWidth="100.0" text="End Time" />
-                  <TableColumn fx:id="durationClm" prefWidth="100.0" text="Duration" />
+                  <TableColumn fx:id="durationClm" prefWidth="100.0" text="Minutes" />
                   <TableColumn fx:id="descriptionClm" prefWidth="214.0" text="Description" />
               </columns>
             </TableView>
