@@ -43,6 +43,7 @@ public class PieChartController implements Initializable {
     @FXML private ToggleButton about;
     @FXML private ToggleButton timeDashboard;
     @FXML private ToggleButton dailyLearnings;
+    @FXML private ToggleButton settings;
     
     @FXML private Label welcome;
     @FXML private Label welcomeSubheading;

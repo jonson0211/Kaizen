@@ -35,7 +35,7 @@
             <VBox prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
                   <ToggleButton fx:id="settingsButton" mnemonicParsing="false" onAction="#handleSettings" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" />
-                  <ToggleButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" />
+                  <ToggleButton fx:id="settings" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleSettings" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" />
                   <Button fx:id="signOutButtons" mnemonicParsing="false" onAction="#handleSignOut" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" />
                </children></VBox>
          </bottom>
