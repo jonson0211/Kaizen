@@ -69,6 +69,7 @@
                         </TableView>
                      </children>
                   </AnchorPane>
+                  <Button layoutX="848.0" layoutY="80.0" mnemonicParsing="false" text="Update Tasks" />
                </children>
             </Pane>
          </center></BorderPane>

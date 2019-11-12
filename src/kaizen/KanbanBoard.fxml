@@ -73,10 +73,10 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                   </GridPane>
-                  <Label layoutX="97.0" layoutY="147.0" text="Today's Tasks" />
-                  <Label layoutX="339.0" layoutY="147.0" text="Tomorrow's Tasks" />
-                  <Label layoutX="615.0" layoutY="147.0" text="Completed Tasks" />
-                  <Label layoutX="840.0" layoutY="147.0" text="Next 7 Day's Tasks" />
+                  <Label layoutX="132.0" layoutY="147.0" text="Do Today" />
+                  <Label layoutX="319.0" layoutY="147.0" text="Completed Today" />
+                  <Label layoutX="590.0" layoutY="147.0" text="Do Tomorrow" />
+                  <Label layoutX="801.0" layoutY="147.0" text="Do Over Next Week" />
                </children>
             </Pane>
          </center></BorderPane>
