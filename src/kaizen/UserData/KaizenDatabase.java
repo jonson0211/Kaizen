@@ -86,27 +86,34 @@ public class KaizenDatabase {
             rs = dbmd.getTables(null, null, "CATEGORY", null);
             if (!rs.next()) {
                 createCategoryTable = conn.prepareStatement("CREATE TABLE CATEGORY ("
-                        + "CATEGORYNAME TEXT PRIMARY KEY"                        
+                        + "CATEGORYNAME TEXT PRIMARY KEY,"
+                        + "COLOUR TEXT"                        
                         +");");
                 createCategoryTable.execute();
                 System.out.println("CATEGORY table created");
-                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME) "
-                        + "VALUES ('Work')");
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
+                        + "VALUES ('Work',"
+                        + "'#80bfff')");
                 createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME) "
-                        + "VALUES ('Wellness')");
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
+                        + "VALUES ('Wellness',"
+                        + "'#80ff80')");
                 createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME) "
-                        + "VALUES ('Relationships')");
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
+                        + "VALUES ('Relationships',"
+                        + "'#cc99ff')");
                 createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME) "
-                        + "VALUES ('Projects')");
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
+                        + "VALUES ('Projects',"
+                        + "'#ccffff')");
                 createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME) "
-                        + "VALUES ('Relaxation')");
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
+                        + "VALUES ('Daily',"
+                        + "'#ff80ff')");
                 createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME) "
-                        + "VALUES ('Daily')");
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
+                        + "VALUES ('Relaxation',"
+                        + "'#ffb84d')");
                 createDemoInstance.execute();
             } else {
                 System.out.println("CATEGORY table exists");

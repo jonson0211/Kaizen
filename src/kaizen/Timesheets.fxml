@@ -33,48 +33,6 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#80ff80" height="39.0" mouseTransparent="true" stroke="#80ff80" strokeType="INSIDE" width="147.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <effect>
-                  <Glow />
-               </effect>
-               <GridPane.margin>
-                  <Insets left="210.0" />
-               </GridPane.margin>
-            </Rectangle>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ccffff" height="39.0" mouseTransparent="true" stroke="#ccffff" strokeType="INSIDE" width="146.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <effect>
-                  <Glow />
-               </effect>
-               <GridPane.margin>
-                  <Insets left="210.0" />
-               </GridPane.margin>
-            </Rectangle>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#cd9cff" height="39.0" mouseTransparent="true" stroke="#cc99ff" strokeType="INSIDE" width="168.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <effect>
-                  <Glow />
-               </effect>
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin>
-            </Rectangle>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff80ff" height="39.0" mouseTransparent="true" stroke="#ff80ff" strokeType="INSIDE" width="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <effect>
-                  <Glow />
-               </effect>
-            </Rectangle>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffb84d" height="39.0" mouseTransparent="true" stroke="#ffb84d" strokeType="INSIDE" width="169.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <effect>
-                  <Glow />
-               </effect>
-               <GridPane.margin>
-                  <Insets left="20.0" />
-               </GridPane.margin>
-            </Rectangle>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#80bfff" height="39.0" mouseTransparent="true" stroke="#80bfff" strokeType="INSIDE" width="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <effect>
-                  <Glow />
-               </effect>
-            </Rectangle>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font size="20.0" />
@@ -200,54 +158,38 @@
                   <Insets left="-30.0" top="10.0" />
                </GridPane.margin>
             </Label>
-            <RadioButton fx:id="categoryWork" mnemonicParsing="false" styleClass="work-radio-button" stylesheets="@stylesheet.css" text="Work" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <RadioButton fx:id="categoryProjects" mnemonicParsing="false" styleClass="projects-radio-button" stylesheets="@stylesheet.css" text="Projects" GridPane.columnIndex="3">
                <font>
                   <Font size="20.0" />
                </font>
+               <GridPane.margin>
+                  <Insets left="210.0" />
+               </GridPane.margin>
                <toggleGroup>
                   <ToggleGroup fx:id="toggleGroup" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="categoryDaily" mnemonicParsing="false" styleClass="daily-radio-button" stylesheets="@stylesheet.css" text="Daily" toggleGroup="$toggleGroup" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </RadioButton>
-            <RadioButton fx:id="categoryRelaxation" mnemonicParsing="false" styleClass="relaxation-radio-button" stylesheets="@stylesheet.css" text="Relaxation" toggleGroup="$toggleGroup" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Rectangle fx:id="categoryColourShape" arcHeight="5.0" arcWidth="5.0" fill="#ff80ff" height="39.0" mouseTransparent="true" stroke="#ffffff00" strokeType="INSIDE" width="304.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <effect>
+                  <Glow />
+               </effect>
+               <GridPane.margin>
+                  <Insets left="15.0" />
+               </GridPane.margin>
+            </Rectangle>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Category" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="20.0" />
                </font>
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
-            </RadioButton>
-            <RadioButton fx:id="categoryRelationships" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="37.0" prefWidth="165.0" styleClass="relationships-radio-button" stylesheets="@stylesheet.css" text="Relationships" toggleGroup="$toggleGroup" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
+            </Text>
+            <ChoiceBox fx:id="categoryComboBox" onAction="#handleInputChangedAction" prefHeight="27.0" prefWidth="294.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
-            </RadioButton>
-            <RadioButton fx:id="categoryProjects" mnemonicParsing="false" styleClass="projects-radio-button" stylesheets="@stylesheet.css" text="Projects" toggleGroup="$toggleGroup" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="210.0" />
-               </GridPane.margin>
-            </RadioButton>
-            <RadioButton fx:id="categoryWellness" mnemonicParsing="false" styleClass="wellness-radio-button" stylesheets="@stylesheet.css" text="Wellness" toggleGroup="$toggleGroup" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets left="210.0" />
-               </GridPane.margin>
-            </RadioButton>
+            </ChoiceBox>
          </children>
       </GridPane>
    </children>
