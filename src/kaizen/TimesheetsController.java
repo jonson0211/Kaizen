@@ -41,6 +41,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import kaizen.DataModels.activityCombo;
 import kaizen.DataModels.categoryCombo;
+import kaizen.DataModels.colourDM;
 import kaizen.DataModels.learningsDidWell;
 import kaizen.DataModels.timesheetsDM;
 
@@ -178,7 +179,21 @@ public class TimesheetsController implements Initializable {
         return FXCollections.observableArrayList(activityComboList);
     }
     
-   
+//   public ObservableList<colourDM> getColourChoice(){
+//        
+//        ObservableList<colourDM> colourList = FXCollections.observableArrayList();
+//        
+//        try {
+//            ResultSet rsActivityComboTable = addTimesheet.getResultSet("SELECT DISTINCT(ACTIVITY) FROM TIMESHEETS");
+//            
+//            while (rsActivityComboTable.next()){
+//                activityComboList.add(new activityCombo(rsActivityComboTable.getString(1)));
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return FXCollections.observableArrayList(activityComboList);
+//    }
     
     @FXML
     private void handleInputChangedAction(ActionEvent event) throws SQLException {
@@ -187,10 +202,12 @@ public class TimesheetsController implements Initializable {
                 + "WHERE CATEGORYNAME = '" + catName + "'"
         );
         String colourShape = catColourRs.getString(2);
+        //return colourShape;
         String colour = '"' +colourShape+ '"';
         System.out.println("*" + colourShape);
+        
         //System.out.println(colour);
-        //categoryColourShape.setFill(Color.RED);
+        categoryColourShape.setFill(Color.RED);
         //categoryColourShape.setFill(Color.web(colour,1));
         //if(catName.equals("Work");
         categoryColourShape.setFill(Color.web("#80bfff",1));
