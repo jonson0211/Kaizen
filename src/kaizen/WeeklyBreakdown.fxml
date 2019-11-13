@@ -64,15 +64,15 @@
                         <Insets bottom="575.0" left="250.0" />
                      </GridPane.margin>
                   </Text>
-                  <Button fx:id="dailyBreakdown" mnemonicParsing="false" onAction="#handleDailyBreakdown" text="Daily Breakdown">
+                  <Button fx:id="dailyBreakdown" mnemonicParsing="false" onAction="#handleDailyBreakdown" prefHeight="39.0" prefWidth="174.0" styleClass="buttons" text="Daily Breakdown">
                      <font>
                         <Font size="24.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="520.0" top="575.0" />
+                        <Insets left="575.0" top="575.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="weeklyTrends" mnemonicParsing="false" onAction="#handleWeeklyTrends" text="Weekly Trends">
+                  <Button fx:id="weeklyTrends" mnemonicParsing="false" onAction="#handleWeeklyTrends" prefHeight="39.0" prefWidth="174.0" styleClass="buttons" text="Weekly Trends">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -91,9 +91,9 @@
                         <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
                      </GridPane.margin>
                   </BarChart>
-                  <DatePicker fx:id="weeklyChartDtPicker" onAction="#loadGraph">
+                  <DatePicker fx:id="weeklyChartDtPicker" onAction="#loadGraph" promptText="Date of week">
                      <GridPane.margin>
-                        <Insets left="275.0" top="575.0" />
+                        <Insets left="300.0" top="575.0" />
                      </GridPane.margin>
                   </DatePicker>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Duration">
@@ -106,14 +106,19 @@
                         <Insets left="50.0" top="35.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select a date to see the next 7 days' activities:" wrappingWidth="173.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select start of week:" wrappingWidth="117.0">
                      <GridPane.margin>
-                        <Insets left="102.0" top="575.0" />
+                        <Insets left="200.0" top="575.0" />
                      </GridPane.margin>
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Text>
+                  <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleTimeSheets" prefHeight="39.0" prefWidth="75.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Back">
+                     <GridPane.margin>
+                        <Insets left="50.0" top="575.0" />
+                     </GridPane.margin>
+                  </Button>
                </children>
             </GridPane>
          </center></BorderPane>

@@ -127,7 +127,7 @@ public class DailyBreakdownController implements Initializable {
     }
     @FXML
     private void handleTimeSheets(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"Timesheets.fxml"); 
+        pageSwitcher.switcher(event,"PieChart.fxml"); 
     }
     @FXML
     private void handleDailyLearnings(ActionEvent event) throws IOException{

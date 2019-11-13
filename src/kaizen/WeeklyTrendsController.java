@@ -46,7 +46,7 @@ public class WeeklyTrendsController implements Initializable {
     @FXML private Button weeklyBreakdown;
     @FXML private Button weeklyTrends;
     @FXML private Button backTimeDashboard;
-    
+    @FXML private Button backBtn;
     //barchart
     @FXML private LineChart<String, Number> weeklyTrendsLineChart;
     //barcharts variables
@@ -144,9 +144,11 @@ public class WeeklyTrendsController implements Initializable {
         }
     }
     
-    
-    
-    
+    @FXML 
+    private void handlePieChart(ActionEvent event) throws IOException{
+        pageSwitcher.switcher(event, "PieChart.fxml");
+    }
+        
     @FXML
     private void handleDailyBreakdown(ActionEvent event) throws IOException{
         pageSwitcher.switcher(event, "DailyBreakdown.fxml");

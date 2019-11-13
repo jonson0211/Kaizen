@@ -139,4 +139,6 @@ public class EntriesScreenController implements Initializable {
     private void handleTimeSheets(ActionEvent event) throws IOException{
         pageSwitcher.switcher(event,"PieChart.fxml");
     }
+    
+    
 }
