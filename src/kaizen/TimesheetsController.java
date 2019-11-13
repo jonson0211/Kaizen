@@ -285,8 +285,6 @@ public class TimesheetsController implements Initializable {
      
         
     }
-    
-    
 //    @FXML
 //    private void handleBackAction(ActionEvent event) throws IOException {
 //        pageSwitcher.switcher(event, "PieChart.fxml");
