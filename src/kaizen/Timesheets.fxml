@@ -169,7 +169,7 @@
                   <ToggleGroup fx:id="toggleGroup" />
                </toggleGroup>
             </RadioButton>
-            <Rectangle fx:id="categoryColourShape" arcHeight="5.0" arcWidth="5.0" fill="#ff80ff" height="39.0" mouseTransparent="true" stroke="#ffffff00" strokeType="INSIDE" width="304.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Rectangle fx:id="categoryColourShape" arcHeight="5.0" arcWidth="5.0" fill="#ff80ff" height="39.0" mouseTransparent="true" stroke="#ffffff00" strokeType="INSIDE" width="38.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <effect>
                   <Glow />
                </effect>
@@ -187,9 +187,19 @@
             </Text>
             <ComboBox fx:id="categoryComboBox" editable="true" prefHeight="31.0" prefWidth="294.0" promptText="Type" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets left="20.0" />
+                  <Insets left="75.0" right="20.0" />
                </GridPane.margin>
             </ComboBox>
+            <ColorPicker editable="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </ColorPicker>
+            <ListView prefHeight="30.0" prefWidth="58.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="25.0" left="20.0" right="275.0" top="25.0" />
+               </GridPane.margin>
+            </ListView>
          </children>
       </GridPane>
    </children>

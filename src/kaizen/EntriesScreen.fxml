@@ -67,13 +67,13 @@
             </Label>
             <TableView fx:id="entriesView" prefHeight="552.0" prefWidth="950.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
               <columns>
-                <TableColumn fx:id="dateClm" prefWidth="100.0" text="Date" />
-                <TableColumn fx:id="categoryClm" minWidth="5.0" prefWidth="181.0" text="Category" />
-                  <TableColumn fx:id="activityClm" prefWidth="161.0" text="Activity" />
-                  <TableColumn fx:id="startClm" prefWidth="100.0" text="Start Time" />
-                  <TableColumn fx:id="endClm" prefWidth="100.0" text="End Time" />
-                  <TableColumn fx:id="durationClm" prefWidth="100.0" text="Minutes" />
-                  <TableColumn fx:id="descriptionClm" prefWidth="214.0" text="Description" />
+                <TableColumn fx:id="dateClm" prefWidth="87.61062622070312" resizable="false" text="Date" />
+                <TableColumn fx:id="categoryClm" minWidth="5.0" prefWidth="119.38934326171875" text="Category" />
+                  <TableColumn fx:id="activityClm" prefWidth="143.4918212890625" text="Activity" />
+                  <TableColumn fx:id="startClm" prefWidth="76.14068603515625" resizable="false" text="Start Time" />
+                  <TableColumn fx:id="endClm" prefWidth="71.89337158203125" resizable="false" text="End Time" />
+                  <TableColumn fx:id="durationClm" prefWidth="67.77587890625" resizable="false" text="Minutes" />
+                  <TableColumn fx:id="descriptionClm" prefWidth="393.22412109375" text="Description" />
               </columns>
             </TableView>
             <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleTimeSheets" prefHeight="39.0" prefWidth="75.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="2" />
