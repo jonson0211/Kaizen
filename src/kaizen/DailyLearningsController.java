@@ -227,7 +227,7 @@ public class DailyLearningsController {
         String answerTwoString = (String) answerTwo.getValue();
         String date = datePick.getValue().format(DateTimeFormatter.ofPattern("dd/mm/yyyy"));
         
-        userLearn.insertStatement("INSERT INTO LEARNINGS(DATE, DID_WELL, BE_BETTER) VALUES ('" + date + "', " + answerOneString + ", " + answerTwoString + "');");
+        userLearn.insertStatement("INSERT INTO LEARNINGS(DATE, DID_WELL, BE_BETTER) VALUES ('" + date + "', '" + answerOneString + "', '" + answerTwoString + "');");
         System.out.println("Entered in learnings");
         confirmEntry.setVisible(true);
         

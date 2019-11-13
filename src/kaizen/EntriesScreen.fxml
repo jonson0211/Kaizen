@@ -76,7 +76,7 @@
                   <TableColumn fx:id="descriptionClm" prefWidth="214.0" text="Description" />
               </columns>
             </TableView>
-            <Button fx:id="backBtn" mnemonicParsing="false" prefHeight="39.0" prefWidth="75.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleTimeSheets" prefHeight="39.0" prefWidth="75.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </center>

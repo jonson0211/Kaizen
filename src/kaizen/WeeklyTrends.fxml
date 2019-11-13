@@ -82,7 +82,7 @@
                         <Insets bottom="575.0" left="250.0" />
                      </GridPane.margin>
                   </Text>
-                  <Button fx:id="dailyBreakdown" mnemonicParsing="false" onAction="#handleDailyBreakdown" prefHeight="35.0" prefWidth="186.0" text="Daily Breakdown">
+                  <Button fx:id="dailyBreakdown" mnemonicParsing="false" onAction="#handleDailyBreakdown" prefHeight="35.0" prefWidth="186.0" styleClass="buttons" text="Daily Breakdown">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -90,7 +90,7 @@
                         <Insets left="875.0" top="425.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="weeklyBreakdown" mnemonicParsing="false" onAction="#handleWeeklyBreakdown" prefWidth="186.0" text="Weekly Breakdown">
+                  <Button fx:id="weeklyBreakdown" mnemonicParsing="false" onAction="#handleWeeklyBreakdown" prefWidth="186.0" styleClass="buttons" text="Weekly Breakdown">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -149,6 +149,11 @@
                      <font>
                         <Font size="15.0" />
                      </font>
+                  </Button>
+                  <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handlePieChart" prefHeight="13.0" prefWidth="61.0" styleClass="buttons" text="Back">
+                     <GridPane.margin>
+                        <Insets left="40.0" top="-575.0" />
+                     </GridPane.margin>
                   </Button>
                </children>
             </GridPane>
