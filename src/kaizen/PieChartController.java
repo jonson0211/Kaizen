@@ -161,7 +161,7 @@ public class PieChartController implements Initializable {
                 lifePieChart.setData(lifePieChartData);
         
 //colors - please REFERENCE BLAIR'S DEMO IN THE ABOUT SCREEN WHEN WE FINISH- taken straight from the demo:       
-        String[] pieColors = {"#80bfff", "#cc99ff", "#ccffff", "#80ff80", "#ff80ff","#ffb84d"};
+        String[] pieColors = {"#80bfff", "#cc99ff", "#ccffff", "#80ff80", "#ff80ff","#ffb84d","9999ff"};
         int i = 0;
         for (PieChart.Data data : lifePieChartData) {
             data.getNode().setStyle(
