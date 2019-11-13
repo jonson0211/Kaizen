@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -50,11 +51,12 @@
    <right>
       <Pane prefHeight="200.0" prefWidth="1080.0" BorderPane.alignment="CENTER">
          <children>
+            <ImageView fx:id="backgroundImage" fitHeight="720.0" fitWidth="1080.0" opacity="0.6" pickOnBounds="true" />
             <Label layoutX="20.0" layoutY="20.0" prefHeight="53.0" prefWidth="330.0" styleClass="large-label" stylesheets="@stylesheet.css" text="It's time to focus." />
             <Label layoutX="20.0" layoutY="70.0" prefHeight="40.0" prefWidth="400.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Choose a task, set the mood and focus." />
             <Separator layoutX="50.0" layoutY="195.0" prefHeight="2.0" prefWidth="980.0" style="-fx-background-color: 000000;" stylesheets="@stylesheet.css" />
             <Separator layoutX="539.0" layoutY="145.0" orientation="VERTICAL" prefHeight="40.0" prefWidth="2.0" stylesheets="@stylesheet.css" />
-            <Separator layoutX="539.0" layoutY="203.0" orientation="VERTICAL" prefHeight="495.0" prefWidth="2.0" stylesheets="@stylesheet.css" />
+            <Separator layoutX="539.0" layoutY="203.0" orientation="VERTICAL" prefHeight="420.0" prefWidth="2.0" stylesheets="@stylesheet.css" />
             <ImageView fitHeight="40.0" fitWidth="471.0" layoutX="559.0" layoutY="145.0" pickOnBounds="true" style="-fx-opacity: 0.9;" styleClass="menu-panel">
                <image>
                   <Image url="@Resources/mood-toggle-background.png" />
@@ -68,6 +70,8 @@
             <Label layoutX="559.0" layoutY="110.0" prefHeight="40.0" prefWidth="196.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Select Mood" />
             <ChoiceBox fx:id="selectTaskCategory" layoutX="50.0" layoutY="145.0" prefHeight="40.0" prefWidth="220.0" />
             <ChoiceBox fx:id="selectTask" layoutX="299.0" layoutY="145.0" prefHeight="40.0" prefWidth="220.0" />
+            <Circle fill="DODGERBLUE" layoutX="793.0" layoutY="416.0" radius="200.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label fx:id="displayTime" layoutX="618.0" layoutY="368.0" prefHeight="100.0" prefWidth="350.0" styleClass="large-label" stylesheets="@stylesheet.css" />
          </children>
       </Pane>
    </right>
