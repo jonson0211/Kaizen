@@ -76,36 +76,43 @@ public class DeepFocusModeController implements Initializable {
 
     @FXML
     private void handleKanbanBoard(ActionEvent event) throws IOException {
+        MusicPlaybackHelper.stopMusic();
         pageSwitcher.switcher(event, "KanbanBoard.fxml");
     }
 
     @FXML
     private void handleTaskTracker(ActionEvent event) throws IOException {
+        MusicPlaybackHelper.stopMusic();
         pageSwitcher.switcher(event, "TaskTracker.fxml");//TO CHANGE WHEN PAGE IS MADE
     }
 
     @FXML
     private void handleDailyLearnings(ActionEvent event) throws IOException {
+        MusicPlaybackHelper.stopMusic();
         pageSwitcher.switcher(event, "DailyLearnings.fxml");
     }
 
     @FXML
     private void handleTimeDashboard(ActionEvent event) throws IOException {
+        MusicPlaybackHelper.stopMusic();
         pageSwitcher.switcher(event, "PieChart.fxml");
     }
 
     @FXML
     private void handleAboutScreen(ActionEvent event) throws IOException {
+        MusicPlaybackHelper.stopMusic();
         pageSwitcher.switcher(event, "AboutScreen.fxml");
     }
 
     @FXML
     private void handleSettings(ActionEvent event) throws IOException {
+        MusicPlaybackHelper.stopMusic();
         pageSwitcher.switcher(event, "Settings.fxml"); //TO CHANGE WHEN PAGE IS MADE
     }
 
     @FXML
     private void handleSignOut(ActionEvent event) throws IOException {
+        MusicPlaybackHelper.stopMusic();
         pageSwitcher.switcher(event, "LoginScreen.fxml");
     }
 

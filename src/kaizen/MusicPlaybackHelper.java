@@ -14,8 +14,9 @@ import javafx.scene.media.MediaPlayer;
  * @author blair
  */
 public class MusicPlaybackHelper {
+
     public static MediaPlayer globalMediaPlayer;
-    
+
     public static boolean playMusic(String filename) {
         boolean isSuccessful = false;
         try {
@@ -26,7 +27,18 @@ public class MusicPlaybackHelper {
         } catch (Exception e) {
             isSuccessful = false;
         }
-        
+
         return isSuccessful;
+    }
+
+    public static void stopMusic() {
+        boolean isSuccessful = false;
+        try {
+            MusicPlaybackHelper.globalMediaPlayer.stop();
+            isSuccessful = true;
+        } catch (Exception e) {
+            isSuccessful = false;
+        }
+        System.out.println(isSuccessful);
     }
 }
