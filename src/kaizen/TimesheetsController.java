@@ -218,8 +218,6 @@ public class TimesheetsController implements Initializable {
         //if doesn't work, jsut switch to color.RED etc and change data
     }
         
-        
-    
     
     @FXML
     private void handleSubmitAction(ActionEvent event) throws SQLException {
@@ -266,6 +264,8 @@ public class TimesheetsController implements Initializable {
      
         
     }
+    
+    
 //    @FXML
 //    private void handleBackAction(ActionEvent event) throws IOException {
 //        pageSwitcher.switcher(event, "PieChart.fxml");
