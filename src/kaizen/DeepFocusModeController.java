@@ -88,11 +88,12 @@ public class DeepFocusModeController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("Loading DeepFocusMode Default Screen");
         displayTime.setVisible(true);
-        final DateFormat format = DateFormat.getInstance();
+        final DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
+       
         final Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.01), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                String currentTime = (java.time.LocalTime.now()).toString();
+                String currentTime = ((java.time.LocalTime.now()).format(timeFormat));
                 displayTime.setText(currentTime);
             }
         }));
