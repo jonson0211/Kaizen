@@ -100,43 +100,48 @@ public class WeeklyTrendsController implements Initializable {
             weeklyTrendsLineChart.getData().addAll(weeklySeries);
             
             //Calculate duration of activities during selected time period
-            
-            ResultSet weeklyTotalDuration = db.getResultSet("SELECT DURATION, COUNT(ACTIVITY) FROM TIMESHEETS "
-                    + "WHERE DATE BETWEEN date('" + date + "','" + (numWeeks*-7)+ " days') and '" + date + "'"
-                    );
+            ArrayList<Double> durationList = new ArrayList();
             ArrayList<Double> durationWeeklyList = new ArrayList();
             
+            for(int i = 0; i<numWeeks; i++){
+                    
+        ResultSet weeklyTotalDuration = db.getResultSet("SELECT SUM(DURATION) FROM TIMESHEETS "
+                    + "WHERE DATE BETWEEN date('" + date + "','" + ((i+1)*-7)+ " days') "
+                            + "and date('" + date + "','" + (i*-7)+ " days')"
+                    );
             
+                
             while (weeklyTotalDuration.next()){
                 durationWeeklyList.add((weeklyTotalDuration.getDouble(1)));
+            System.out.println("*"+durationWeeklyList);   
             }
             System.out.println("*"+durationWeeklyList);
             
-            ResultSet weekly = db.getResultSet("SELECT ACTIVITY, DURATION FROM TIMESHEETS "
+        ResultSet weekly = db.getResultSet("SELECT ACTIVITY, DURATION FROM TIMESHEETS "
                     + "WHERE ACTIVITY = '" + activity + "'"
-                    + "AND DATE BETWEEN date('" + date + "','" + (numWeeks*-7)+ " days') and '" + date + "'"
+                    + "AND DATE BETWEEN date('" + date + "','" + ((i+1)*-7)+ " days') "
+                            + "and date('" + date + "','" + (i*-7)+ " days')"
                     );
-           
-            ArrayList<Double> durationList = new ArrayList();
-            
-            
-            //durationList/durationWeeklyList;
             
             while (weekly.next()){
                 durationList.add((weekly.getDouble(2)));
-                
-                //System.out.println(weekly.getInt(2));
-                
-                for(int i = 0; i<durationList.size(); i++){
-                    weeklySeries.getData().add(new XYChart.Data("Week " + (i+1), Math.round((durationList.get(i)/durationWeeklyList.get(i))*100)));
-                    System.out.println("*"+Math.round(durationList.get(i)/durationWeeklyList.get(i)));
-                }   
             }
+            }
+            try{
+        
+                for(int n = 0; n<durationList.size(); n++){
+                    weeklySeries.getData().add(new XYChart.Data("Week " + (n+1), Math.round((durationList.get(n)/durationWeeklyList.get(1))*100)));
+                    
+                    System.out.println("*"+Math.round(durationList.get(n)/durationWeeklyList.get(n)));
+                }   
+            
             System.out.println("*" + durationList);
         } catch(Exception ex){
             ex.printStackTrace();
         }
-    }
+        
+    } catch(Exception ex){
+            ex.printStackTrace();}  }
     
     public ObservableList<activityCombo> getActChoice(){
         
