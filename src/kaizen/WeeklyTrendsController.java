@@ -8,9 +8,12 @@ package kaizen;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,6 +28,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import kaizen.DataModels.activityCombo;
 import kaizen.UserData.KaizenDatabase;
 
 
@@ -55,94 +59,99 @@ public class WeeklyTrendsController implements Initializable {
     //@FXML private ChoiceBox activityChoiceBox;
     @FXML
     private ChoiceBox<String> activityChoiceBox;        
-    ObservableList<String> TSH = FXCollections.observableArrayList("Work", "Projects","Relationships","Wellness","Daily","Relaxation");
+    
     
     //datepicker
     @FXML private DatePicker weeklyChartDtPicker;
     
-    
+    ObservableList<activityCombo> activityComboList = FXCollections.observableArrayList();
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO    
+        
+    activityComboList.setAll(this.getActChoice());
+    for(activityCombo d : activityComboList){
+        System.out.println(d.getActChoiceProperty());
+        activityChoiceBox.getItems().addAll(d.getActChoice());
+    }    
     activityChoiceBox.setValue("Choose Type!");
-    activityChoiceBox.setItems(TSH);
+    
     }    
 
     //choose number of weeks back, choose activity, load graph
     
     
     @FXML
-    private void loadGraph(ActionEvent event){
+    private void loadGraph(ActionEvent event) throws SQLException{
         weeklyTrendsLineChart.getData().clear();
         
         String numWeeksBack = numWeeksTxtField.getText();
         
         int numWeeks = Integer.parseInt(numWeeksBack);
         String activity = activityChoiceBox.getValue().toString();
-        
-        //CategoryAxis xAxis = (CategoryAxis) weeklyTrendsLineChart.getXAxis();
-//        ObservableList<String> categories = weeklyTrendsLineChart.observableArrayList("Jan", "Feb", "Mar", "Apr", "May", "Jun",
-//                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-//        );
-        //xAxis.setCategories(categories);
-        
-        
+   
         try{
             LocalDate date = weeklyChartDtPicker.getValue();
-            //test date output:
-//            System.out.println("*"+ date);
-//            System.out.println("*"+ activity);
-//            System.out.println("*"+ numWeeks*7);
-            
-            //XYChart.Series series = new XYChart.Series();
+
             XYChart.Series<String, Number> weeklySeries = new XYChart.Series<String,Number>();
             
             weeklySeries.setName(activity);
             weeklyTrendsLineChart.getData().addAll(weeklySeries);
             
-            ResultSet weekly = db.getResultSet("SELECT CATEGORYNAME, DURATION FROM TIMESHEETS "
-                    + "WHERE CATEGORYNAME = '" + activity + "'"
+            //Calculate duration of activities during selected time period
+            
+            ResultSet weeklyTotalDuration = db.getResultSet("SELECT DURATION FROM TIMESHEETS "
+                    + "WHERE DATE BETWEEN date('" + date + "','" + (numWeeks*-7)+ " days') and '" + date + "'"
+                    );
+            ArrayList<Double> durationWeeklyList = new ArrayList();
+            while (weeklyTotalDuration.next()){
+                durationWeeklyList.add((weeklyTotalDuration.getDouble(1)));
+            }
+            System.out.println("*"+durationWeeklyList);
+            
+            ResultSet weekly = db.getResultSet("SELECT ACTIVITY, DURATION FROM TIMESHEETS "
+                    + "WHERE ACTIVITY = '" + activity + "'"
                     + "AND DATE BETWEEN date('" + date + "','" + (numWeeks*-7)+ " days') and '" + date + "'"
-//                    + "WHERE DATE " 
-//                    + "BETWEEN date('" + date + "','"
-//                    + "- " + (numWeeks*7) + "days') "
-//                    + "and date ('" + date + "')"
-//                    + " AND "
-//                    + "CATEGORYNAME = "
-//                    + "'" + activity + "'"
                     );
            
+            ArrayList<Double> durationList = new ArrayList();
             
-            //ArrayList<String> categoryNameList = new ArrayList();
-            ArrayList<Integer> durationList = new ArrayList();
-            //ArrayList<Integer> numWeeksCount = new ArrayList();
             
-            //test arraylist output:
-            //System.out.println(categoryNameList);
-            //test output:
-            System.out.println(weekly);
+            //durationList/durationWeeklyList;
             
             while (weekly.next()){
-                //categoryNameList.add(weekly.getString(1));
-                //numWeeksCount.add((weekly.getInt(1)));
-                durationList.add((weekly.getInt(2)));
+                durationList.add((weekly.getDouble(2)));
                 
-                System.out.println(weekly.getInt(2));
+                //System.out.println(weekly.getInt(2));
                 
                 for(int i = 0; i<durationList.size(); i++){
-                    weeklySeries.getData().add(new XYChart.Data("Week " + (i+1), durationList.get(i)));
-                    //System.out.println(durationList.get(i));
-                }
-                
+                    weeklySeries.getData().add(new XYChart.Data("Week " + (i+1), Math.round((durationList.get(i)/durationWeeklyList.get(i))*100)));
+                    System.out.println("*"+Math.round(durationList.get(i)/durationWeeklyList.get(i)));
+                }   
             }
-            //test duration output
-            System.out.println(durationList);
-            //weeklyTrendsLineChart.getData().addAll(weeklySeries);
+            System.out.println("*" + durationList);
         } catch(Exception ex){
             ex.printStackTrace();
         }
     }
+    
+    public ObservableList<activityCombo> getActChoice(){
+        
+        ObservableList<activityCombo> activityComboList = FXCollections.observableArrayList();
+        
+        try {
+            ResultSet rsActivityComboTable = db.getResultSet("SELECT DISTINCT(ACTIVITY) FROM TIMESHEETS");
+            
+            while (rsActivityComboTable.next()){
+                activityComboList.add(new activityCombo(rsActivityComboTable.getString(1)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return FXCollections.observableArrayList(activityComboList);
+    }
+    
     
     @FXML 
     private void handlePieChart(ActionEvent event) throws IOException{
