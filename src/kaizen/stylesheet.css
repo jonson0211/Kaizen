@@ -1,4 +1,19 @@
 
+@font-face {
+    font-family: 'Roboto Thin';
+    src: url('Resources/Roboto-Thin.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto Light';
+    src: url('Resources/Roboto-Light.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto Medium';
+    src: url('Resources/Roboto-Medium.ttf');
+}
+
 .menu-panel {
     -fx-background-image: url('Resources/menu-background.png'); 
 }
@@ -8,7 +23,7 @@
     -fx-opacity: 1.0;
     -fx-font-size: 18px;
     -fx-text-fill: #ffffff;
-    -fx-font-family: "Arial Nova Light";
+    -fx-font-family: "Roboto Light";
 }
 
 .menu-toggle:hover {
@@ -17,7 +32,7 @@
     -fx-opacity: 1.0;
     -fx-font-size: 18px;
     -fx-text-fill: #ffffff;
-    -fx-font-family: "Arial Nova Light";
+    -fx-font-family: "Roboto Light";
 
 }
 
@@ -28,7 +43,7 @@
     -fx-opacity: 1.0;
     -fx-font-size: 18px;
     -fx-text-fill: #ffffff;
-    -fx-font-family: "Arial Nova Light";
+    -fx-font-family: "Roboto Light";
 
 }
 
@@ -38,7 +53,7 @@
     -fx-opacity: 1.0;
     -fx-font-size: 18px;
     -fx-text-fill: #ffffff;
-    -fx-font-family: "Arial Nova Light";
+    -fx-font-family: "Roboto Light";
 
 }
 
@@ -46,7 +61,7 @@
 
     -fx-font-size: 36px;
     -fx-text-fill: #404040;
-    -fx-font-family: "Arial Nova Light";
+    -fx-font-family: "Roboto Light";
     -fx-wrap-text: true;
 
 }
@@ -55,7 +70,7 @@
 
     -fx-font-size: 18px;
     -fx-text-fill: #404040;
-    -fx-font-family: "Arial Nova Light";
+    -fx-font-family: "Roboto Light";
     -fx-wrap-text: true;
 
 }
@@ -64,7 +79,7 @@
 
     -fx-font-size: 18px;
     -fx-text-fill: #5271ff;
-    -fx-font-family: "Arial Nova Light";
+    -fx-font-family: "Roboto Light";
     -fx-text-alignment: center;
 
 }
@@ -73,7 +88,7 @@
 
     -fx-font-size: 36px;
     -fx-text-fill: #404040;
-    -fx-font-family: "Arial Nova Light";
+    -fx-font-family: "Roboto Light";
     -fx-wrap-text: true;
 
 }
@@ -82,7 +97,7 @@
 
     -fx-font-size: 18px;
     -fx-text-fill: #404040;
-    -fx-font-family: "Arial Nova Light";
+    -fx-font-family: "Roboto Light";
     -fx-wrap-text: true;
 
 }
@@ -92,7 +107,7 @@
     -fx-font-size: 18px;
     -fx-fill-color: #e1e1e1;
     -fx-text-fill: #4f4e52;
-    -fx-font-family: "Arial Nova Light";
+    -fx-font-family: "Roboto Light";
 
 }
 .buttons:hover {
@@ -100,7 +115,7 @@
     -fx-font-size: 18px;
     -fx-fill-color: #2eb2ff;
     -fx-text-fill: #4f4e52;
-    -fx-font-family: "Arial Nova Light";
+    -fx-font-family: "Roboto Light";
 
 }
 
@@ -109,7 +124,7 @@
     -fx-font-size: 18px;
     -fx-fill-color: #5271ff;
     -fx-text-fill: #4f4e52;
-    -fx-font-family: "Arial Nova Light";
+    -fx-font-family: "Roboto Light";
 
 }
 
@@ -118,7 +133,7 @@
     -fx-font-size: 18px;
     -fx-fill-color: #e1e1e1;
     -fx-text-fill: #4f4e52;
-    -fx-font-family: "Arial Nova Light";
+    -fx-font-family: "Roboto Light";
 
 }
 
@@ -127,7 +142,7 @@
     -fx-font-size: 18px;
     -fx-fill-color: #ffffff;
     -fx-text-fill: #4f4e52;
-    -fx-font-family: "Arial Nova Light";
+    -fx-font-family: "Roboto Light";
 
 }
 
@@ -136,7 +151,7 @@
     -fx-opacity: 1.0;
     -fx-font-size: 18px;
     -fx-text-fill: #ffffff;
-    -fx-font-family: "Arial Nova Light";
+    -fx-font-family: "Roboto Light";
 }
 
 .mood-toggle:hover {
@@ -145,7 +160,7 @@
     -fx-opacity: 1.0;
     -fx-font-size: 18px;
     -fx-text-fill: #ffffff;
-    -fx-font-family: "Arial Nova Light";
+    -fx-font-family: "Roboto Light";
 
 }
 
@@ -156,7 +171,7 @@
     -fx-opacity: 1.0;
     -fx-font-size: 18px;
     -fx-text-fill: #ffffff;
-    -fx-font-family: "Arial Nova Light";
+    -fx-font-family: "Roboto Light";
 
 }
 
@@ -166,33 +181,53 @@
     -fx-opacity: 1.0;
     -fx-font-size: 18px;
     -fx-text-fill: #ffffff;
-    -fx-font-family: "Arial Nova Light";
+    -fx-font-family: "Roboto Light";
 
 }
 
 .daily-radio-button .dot {
-  -fx-mark-highlight-color: #ff80ff ;
-  -fx-mark-color: #ff80ff ;
+    -fx-mark-highlight-color: #ff80ff ;
+    -fx-mark-color: #ff80ff ;
 }
 .wellness-radio-button .dot {
-  -fx-mark-highlight-color: #80ff80 ;
-  -fx-mark-color: #80ff80 ;
+    -fx-mark-highlight-color: #80ff80 ;
+    -fx-mark-color: #80ff80 ;
 }
 .projects-radio-button .dot {
-  -fx-mark-highlight-color: #ccffff ;
-  -fx-mark-color: #ccffff ;
+    -fx-mark-highlight-color: #ccffff ;
+    -fx-mark-color: #ccffff ;
 }
 .work-radio-button .dot {
-  -fx-mark-highlight-color: #80bfff ;
-  -fx-mark-color: #80bfff ;
+    -fx-mark-highlight-color: #80bfff ;
+    -fx-mark-color: #80bfff ;
 }
 .relationships-radio-button .dot {
-  -fx-mark-highlight-color: #cc99ff ;
-  -fx-mark-color: #cc99ff ;
+    -fx-mark-highlight-color: #cc99ff ;
+    -fx-mark-color: #cc99ff ;
 }
 .relaxation-radio-button .dot {
-  -fx-mark-highlight-color: #ffb84d ;
-  -fx-mark-color: #ffb84d ;
+    -fx-mark-highlight-color: #ffb84d ;
+    -fx-mark-color: #ffb84d ;
 }
 
+.moodBackgroundOne {
+    -fx-background-image: url('Resources/moodOne.jpg'); 
+}
 
+.moodBackgroundTwo {
+    -fx-background-image: url('Resources/moodTwo.jpg'); 
+}
+
+.moodBackgroundThree {
+    -fx-background-image: url('Resources/moodThree.jpg'); 
+}
+
+.time-display {
+
+    -fx-font-size: 40px;
+    -fx-text-fill: #404040;
+    -fx-font-family: "Roboto Medium";
+    -fx-wrap-text: true;
+    -fx-alignment: center;
+   
+}

@@ -58,7 +58,7 @@
           <RowConstraints maxHeight="262.0" minHeight="10.0" prefHeight="155.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label styleClass="large-label" stylesheets="@stylesheet.css" text="About">
+            <Label layoutX="20.0" layoutY="20.0" styleClass="large-label" stylesheets="@stylesheet.css" text="About">
                <GridPane.margin>
                   <Insets left="40.0" top="-10.0" />
                </GridPane.margin>
@@ -71,7 +71,7 @@
                   <Insets left="40.0" />
                </GridPane.margin>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="SUBMISSION UUID: 8EB878A9-4F8D-4C3B-997A-89F8F67F7761">
+            <Text layoutX="20.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="SUBMISSION UUID: 8EB878A9-4F8D-4C3B-997A-89F8F67F7761">
                <GridPane.margin>
                   <Insets bottom="-70.0" left="40.0" />
                </GridPane.margin>

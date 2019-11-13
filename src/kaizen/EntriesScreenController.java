@@ -16,12 +16,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleButton;
-import kaizen.DataModels.learningsDidWell;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import kaizen.DataModels.timesheetsDM;
 import kaizen.UserData.KaizenDatabase;
 
@@ -51,9 +55,13 @@ public class EntriesScreenController implements Initializable {
     private ToggleButton settings;
     @FXML
     private Button signOut;
+    @FXML
+    private Button update;
     
     @FXML
-    private TableView<timesheetsDM> entriesView;    
+    private TableView<timesheetsDM> entriesView;  
+    public static TableView<timesheetsDM> entriesView_2;
+    
     @FXML
     private TableColumn<timesheetsDM, String> dateClm;    
     @FXML
@@ -79,6 +87,12 @@ public class EntriesScreenController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+     /*   entriesView.setOnMouseClicked((MouseEvent event) -> {
+        if(event.getClickCount()>1){
+            onEdit();
+        }
+    });*/
+        entriesView_2 = entriesView;
         entriesView.setVisible(true);
         entriesView.setItems(this.getEntries());
         dateClm.setCellValueFactory(cellData -> cellData.getValue().getDateProperty());
@@ -88,6 +102,7 @@ public class EntriesScreenController implements Initializable {
         endClm.setCellValueFactory(cellData -> cellData.getValue().getEndProperty());
         durationClm.setCellValueFactory(cellData -> cellData.getValue().getDurationProperty());
         descriptionClm.setCellValueFactory(cellData -> cellData.getValue().getDescProperty());
+        
     }    
     public ObservableList<timesheetsDM> getEntries(){
         
@@ -104,6 +119,66 @@ public class EntriesScreenController implements Initializable {
         }
         return FXCollections.observableArrayList(entries);
     }
+    
+  /*     
+    public void onEdit(){
+        if(entriesView.getSelectionModel().getSelectedItem()!=null){
+            timesheetsDM ts = entriesView.getSelectionModel().getSelectedItem();
+            dateClm.setText(ts.getDate());
+            
+       }
+    }*/
+    
+    @FXML
+    private void deleteRow(ActionEvent event){
+        timesheetsDM selected = entriesView.getSelectionModel().getSelectedItem();
+        
+        try{
+            db.insertStatement("DELETE FROM TIMESHEETS WHERE DATE = '"+ selected.getDate()+"' "
+                    + "AND CATEGORYNAME = '"+ selected.getCategory()+"'"
+                    + " AND ACTIVITY = '"+selected.getActivity()+"'");
+        } catch (Exception e) {
+            System.out.println("Can't delete from database!");
+            e.printStackTrace();
+        }
+        try{
+            entriesView.getItems().removeAll(entriesView.getSelectionModel().getSelectedItem());
+        } catch(Exception e){
+            System.out.println("can't remove from table");
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    private void editRow(ActionEvent event){
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("EditEntriesPopUp.fxml"));
+
+                try {
+                    Loader.load();
+                } catch (IOException ex) {
+                 ex.printStackTrace();
+
+                    Logger.getLogger(EntriesScreenController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                EditEntriesPopUpController a = Loader.getController();
+                a.setData(""+entriesView.getSelectionModel().getSelectedItem().getDate(),
+                        entriesView.getSelectionModel().getSelectedItem().getActivity(), 
+                        entriesView.getSelectionModel().getSelectedItem().getStart(), 
+                        entriesView.getSelectionModel().getSelectedItem().getEnd(), 
+                        entriesView.getSelectionModel().getSelectedItem().getDuration(), 
+                        entriesView.getSelectionModel().getSelectedItem().getDesc(),
+                        ""+entriesView.getSelectionModel().getSelectedItem().getCategory());
+                Parent p = Loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(p));
+                stage.show();
+
+
+
+            }
+
+        
+    
     
     @FXML
     private void handleKbBoard(ActionEvent event) throws IOException{
@@ -139,6 +214,5 @@ public class EntriesScreenController implements Initializable {
     private void handleTimeSheets(ActionEvent event) throws IOException{
         pageSwitcher.switcher(event,"PieChart.fxml");
     }
-    
-    
 }
+

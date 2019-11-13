@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -70,13 +71,23 @@
                 <TableColumn fx:id="dateClm" prefWidth="87.61062622070312" resizable="false" text="Date" />
                 <TableColumn fx:id="categoryClm" minWidth="5.0" prefWidth="119.38934326171875" text="Category" />
                   <TableColumn fx:id="activityClm" prefWidth="143.4918212890625" text="Activity" />
-                  <TableColumn fx:id="startClm" prefWidth="76.14068603515625" resizable="false" text="Start Time" />
-                  <TableColumn fx:id="endClm" prefWidth="71.89337158203125" resizable="false" text="End Time" />
+                  <TableColumn fx:id="startClm" prefWidth="76.14068603515625" resizable="false" text="Start" />
+                  <TableColumn fx:id="endClm" prefWidth="71.89337158203125" resizable="false" text="End " />
                   <TableColumn fx:id="durationClm" prefWidth="67.77587890625" resizable="false" text="Minutes" />
                   <TableColumn fx:id="descriptionClm" prefWidth="393.22412109375" text="Description" />
               </columns>
             </TableView>
             <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleTimeSheets" prefHeight="39.0" prefWidth="75.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="deleteRow" mnemonicParsing="false" onAction="#deleteRow" styleClass="buttons" text="Delete" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="870.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="update" mnemonicParsing="false" onAction="#editRow" styleClass="buttons" text="Update" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="700.0" />
+               </GridPane.margin>
+            </Button>
          </children>
       </GridPane>
    </center>

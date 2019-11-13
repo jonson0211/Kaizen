@@ -9,6 +9,8 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.ObservableList;
+import kaizen.EntriesScreenController;
 
 /**
  *
@@ -34,7 +36,10 @@ public class timesheetsDM {
         this.duration = new SimpleIntegerProperty(duration);;
         this.timeStart = new SimpleStringProperty(timeStart);;
         this.timeEnd = new SimpleStringProperty(timeEnd);;
+        
+        ObservableList<timesheetsDM> entry = EntriesScreenController.entriesView_2.getSelectionModel().getSelectedItems();
     }
+    
 
     public String getDate(){
         return date.get();

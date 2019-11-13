@@ -7,15 +7,25 @@ package kaizen;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import javafx.util.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.ResourceBundle;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import javafx.scene.image.ImageView;
 import kaizen.UserData.KaizenDatabase;
 
 /**
@@ -68,12 +78,30 @@ public class DeepFocusModeController implements Initializable {
     @FXML
     private ToggleButton dailyLearnings;
 
+    @FXML
+    private ImageView backgroundImage;
+
+    @FXML
+    private Label displayTime;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("Loading DeepFocusMode Default Screen");
+        displayTime.setVisible(true);
+        final DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
+       
+        final Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.01), new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String currentTime = ((java.time.LocalTime.now()).format(timeFormat));
+                displayTime.setText(currentTime);
+            }
+        }));
 
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }
-
+    
     @FXML
     private void handleKanbanBoard(ActionEvent event) throws IOException {
         MusicPlaybackHelper.stopMusic();
@@ -135,7 +163,6 @@ public class DeepFocusModeController implements Initializable {
     @FXML
     private void handleMoodTwo(ActionEvent event) throws IOException {
         System.out.println("Mood Two Selected");
-        moodOne.getStyleClass().add("mood-toggle");
 
         moodOne.getStyleClass().removeAll("mood-toggle", "current-mood-toggle");
         moodTwo.getStyleClass().removeAll("mood-toggle", "current-mood-toggle");

@@ -32,4 +32,10 @@ public class categoryCombo {
         this.catChoice = catChoice;
     }
     
+    public String setCatChoice(String catChoice){
+        this.catChoice.get();
+        return catChoice;
+    }
 }
+
+
