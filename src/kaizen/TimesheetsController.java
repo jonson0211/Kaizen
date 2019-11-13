@@ -210,9 +210,10 @@ public class TimesheetsController implements Initializable {
         categoryColourShape.setFill(Color.RED);
         //categoryColourShape.setFill(Color.web(colour,1));
         //if(catName.equals("Work");
+        
         categoryColourShape.setFill(Color.web("#80bfff",1));
         
-        categoryColourShape.setVisible(true);
+        //categoryColourShape.setVisible(true);
         
         //if doesn't work, jsut switch to color.RED etc and change data
     }
@@ -228,14 +229,14 @@ public class TimesheetsController implements Initializable {
         //pull the category's corresponding colour from database
         
         
-        String date = DtPicker.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        String date = DtPicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         
         String timeStartHr = timeStartHrField.getText();
         String timeStartMin = timeStartMinField.getText();
         String timeEndHr = timeEndHrField.getText();
         String timeEndMin = timeEndMinField.getText();
         
-        String act = (String) tsCombo.getValue();
+        String act = (String) activityComboBox.getValue();
         
         double timeStartHrNum = Double.parseDouble(timeStartHr);
         double timeStartMinNum = Double.parseDouble(timeStartMin);

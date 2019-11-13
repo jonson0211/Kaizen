@@ -8,9 +8,14 @@ package kaizen;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,6 +24,10 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.ToggleButton;
+import kaizen.DataModels.categoryCombo;
+import kaizen.DataModels.dailyBreakdownDM;
+import kaizen.DataModels.learningsCombo;
+import kaizen.DataModels.timesheetsDM;
 import kaizen.UserData.KaizenDatabase;
 
 
@@ -46,55 +55,110 @@ public class DailyBreakdownController implements Initializable {
     //datepicker
     @FXML private DatePicker dailyChartDtPicker;
     
-
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
+        
     }    
+    
+   
     
     @FXML
     private void loadGraph(ActionEvent event){
         dailyBarChart.getData().clear();
+    
+        ArrayList<String> categoryComboList = new ArrayList();
+        ArrayList<Integer> durationList = new ArrayList();
+
         
         try{
             LocalDate date = dailyChartDtPicker.getValue();
-            //test date output:
-            System.out.println("*"+ date);
+            
             XYChart.Series<String, Number> dailySeries = new XYChart.Series<String,Number>();
-            //if(date.equals(today);
             ResultSet daily = db.getResultSet("SELECT CATEGORYNAME, DURATION FROM TIMESHEETS "
                     + "WHERE DATE = '" + date + "'");
            
             
-            ArrayList<String> categoryNameList = new ArrayList();
-            ArrayList<Integer> durationList = new ArrayList();
-            //test arraylist output:
-            System.out.println(categoryNameList);
-            //test output:
-            System.out.println(daily);
-            
+//            ArrayList<String> categoryNameList = new ArrayList();
+//            ArrayList<Integer> durationList = new ArrayList();
+
             while (daily.next()){
-                categoryNameList.add(daily.getString(1));
+                categoryComboList.add(daily.getString(1));
                 durationList.add((daily.getInt(2))/60);
                 
-                for(int i = 0; i<categoryNameList.size(); i++){
-                    dailySeries.getData().add(new XYChart.Data(categoryNameList.get(i), durationList.get(i)));
+                for(int i = 0; i<categoryComboList.size(); i++){
+                    dailySeries.getData().add(new XYChart.Data(categoryComboList.get(i), durationList.get(i)));
                 }
-            //test categoryNameList output:
-            //System.out.println("*" + categoryNameList);
-            //System.out.println("*" + durationList);
-            
-            
             }
             dailyBarChart.getData().addAll(dailySeries);
         } catch(Exception ex){
             ex.printStackTrace();
         }
     }
+  
     
+   public ObservableList<categoryCombo> getCatChoice(){
+        
+        ObservableList<categoryCombo> categoryComboList = FXCollections.observableArrayList();
+        
+        try {
+            ResultSet rsCategoryComboTable = db.getResultSet("SELECT DISTINCT(CATEGORYNAME) FROM CATEGORY");
+            
+            while (rsCategoryComboTable.next()){
+                categoryComboList.add(new categoryCombo(rsCategoryComboTable.getString(1)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return FXCollections.observableArrayList(categoryComboList);
+    }
+   //getting duration from DB
+    public ObservableList<dailyBreakdownDM> getDuration(){
+        
+        ObservableList<dailyBreakdownDM> durationResultList = FXCollections.observableArrayList();
+        
+        try {
+            ResultSet rsDurationTable = db.getResultSet("SELECT ACTIVITY,DURATION,DATE FROM TIMESHEETS");
+            
+            while (rsDurationTable.next()){
+                durationResultList.add(new dailyBreakdownDM(rsDurationTable.getString(1),
+                rsDurationTable.getInt(2),rsDurationTable.getString(3)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return FXCollections.observableArrayList(durationResultList);
+    }
     
+//     public ObservableList<XYChart.Series<String, Number>> getItemGraphStatistics(){
+//    ObservableList<XYChart.Series<String, Number>> dailySeries = FXCollections.observableArrayList();
+//    try{
+//            LocalDate date = dailyChartDtPicker.getValue();
+//            
+//            //XYChart.Series<String, Number> dailySeries = new XYChart.Series<String,Number>();
+//            ResultSet daily = db.getResultSet("SELECT CATEGORYNAME, DURATION FROM TIMESHEETS "
+//                    + "WHERE DATE = '" + date + "'");
+//           
+//            
+////            ArrayList<String> categoryNameList = new ArrayList();
+////            ArrayList<Integer> durationList = new ArrayList();
+//
+////            while (daily.next()){
+////                categoryComboList.add(daily.getString(1));
+////                durationList.add((rsDurationTable.getInt(2))/60);
+////                
+////                for(int i = 0; i<categoryComboList.size(); i++){
+////                    dailySeries.getData().add(new XYChart.Series(categoryComboList.get(i), durationList.get(i)));
+////                }
+//////            }
+//            dailyBarChart.getData().addAll(dailySeries);
+//        } catch(Exception ex){
+//            ex.printStackTrace();
+//        }
+//    }
     
     
     @FXML
@@ -152,3 +216,13 @@ public class DailyBreakdownController implements Initializable {
     
     
 }
+//        categoryComboList.setAll(this.getCatChoice());
+//    for(categoryCombo c : categoryComboList){
+//        System.out.println(c.getCatChoiceProperty());
+//        categoryComboBox.getItems().addAll(c.getCatChoice());
+//    }
+//    durationList.setAll(this.getDuration());
+//    for(activityCombo d : durationList){
+//        System.out.println(d.getDurationProperty());
+//        activityComboBox.getItems().addAll(d.getDuration());
+//    }
