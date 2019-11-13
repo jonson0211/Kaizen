@@ -112,10 +112,9 @@ public class WeeklyTrendsController implements Initializable {
             
                 
             while (weeklyTotalDuration.next()){
-                durationWeeklyList.add((weeklyTotalDuration.getDouble(1)));
-            System.out.println("*"+durationWeeklyList);   
+                durationWeeklyList.add((weeklyTotalDuration.getDouble(1)));   
             }
-            System.out.println("*"+durationWeeklyList);
+            //System.out.println("*"+durationWeeklyList);
             
         ResultSet weekly = db.getResultSet("SELECT ACTIVITY, DURATION FROM TIMESHEETS "
                     + "WHERE ACTIVITY = '" + activity + "'"
@@ -126,16 +125,22 @@ public class WeeklyTrendsController implements Initializable {
             while (weekly.next()){
                 durationList.add((weekly.getDouble(2)));
             }
-            }
+            //System.out.println("*"+durationList);
+        }
+            System.out.println("*"+durationWeeklyList);
+            System.out.println("*"+durationList);
+            
             try{
         
-                for(int n = 0; n<durationList.size(); n++){
+                for(int n = 0, i =0; n<durationList.size()&& i<numWeeks; n++, i++){
                     weeklySeries.getData().add(new XYChart.Data("Week " + (n+1), Math.round((durationList.get(n)/durationWeeklyList.get(1))*100)));
-                    
-                    System.out.println("*"+Math.round(durationList.get(n)/durationWeeklyList.get(n)));
+                    //test output: 
+//                    System.out.println(durationList.get(n));
+//                    System.out.println(durationWeeklyList.get(1));
+//                    System.out.println("*"+Math.round((durationList.get(n)/durationWeeklyList.get(n))*100));
                 }   
-            
-            System.out.println("*" + durationList);
+           
+            //System.out.println("*" + durationList);
         } catch(Exception ex){
             ex.printStackTrace();
         }
