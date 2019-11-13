@@ -136,7 +136,7 @@ public class EntriesScreenController implements Initializable {
         try{
             db.insertStatement("DELETE FROM TIMESHEETS WHERE DATE = '"+ selected.getDate()+"' "
                     + "AND CATEGORYNAME = '"+ selected.getCategory()+"'"
-                    + " AND DESC = '"+selected.getDesc()+"'");
+                    + " AND ACTIVITY = '"+selected.getActivity()+"'");
         } catch (Exception e) {
             System.out.println("Can't delete from database!");
             e.printStackTrace();

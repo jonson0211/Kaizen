@@ -85,12 +85,12 @@ public class EditEntriesPopUpController implements Initializable {
     public void setData(String activity , String category, String date, String description, Integer duration, String timeStart, String timeEnd) {
         categoryComboBox.setValue(category);
         activityComboBox.setValue(activity);
-        
-        durationLabel.setText(duration);
-        timeStartHrField.setValue(timeStart);
-        timeStartMinField.setValue(t)
-        timeEndHrField.setText(time);
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        durationLabel.setUserData(duration);
+        timeStartHrField.setUserData(timeStart);
+        timeStartMinField.setUserData(timeStart);
+        timeEndHrField.setText(timeEnd);
+        timeEndMinField.setText(timeEnd);
+        //To change body of generated methods, choose Tools | Templates.
    
     
     }    
