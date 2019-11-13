@@ -101,10 +101,12 @@ public class WeeklyTrendsController implements Initializable {
             
             //Calculate duration of activities during selected time period
             
-            ResultSet weeklyTotalDuration = db.getResultSet("SELECT DURATION FROM TIMESHEETS "
+            ResultSet weeklyTotalDuration = db.getResultSet("SELECT DURATION, COUNT(ACTIVITY) FROM TIMESHEETS "
                     + "WHERE DATE BETWEEN date('" + date + "','" + (numWeeks*-7)+ " days') and '" + date + "'"
                     );
             ArrayList<Double> durationWeeklyList = new ArrayList();
+            
+            
             while (weeklyTotalDuration.next()){
                 durationWeeklyList.add((weeklyTotalDuration.getDouble(1)));
             }
