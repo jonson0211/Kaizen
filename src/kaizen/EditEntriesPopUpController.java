@@ -6,6 +6,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -16,6 +20,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import kaizen.UserData.KaizenDatabase;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -83,7 +88,7 @@ public class EditEntriesPopUpController implements Initializable {
     activityComboBox.setEditable(true);
     
     }
-    public void setData(String string, String category, String date, String description, Integer duration, String timeStartHr, String timeEndHr) {
+    public void setData(String string, String category, String date, String description, Integer duration, String start, String end) {
         activityComboBox.setValue(string);
         categoryComboBox.setValue(category);    
         DtPicker.setUserData(date);
@@ -91,42 +96,86 @@ public class EditEntriesPopUpController implements Initializable {
         descriptionText.setText(description);
         durationLabel.setUserData(duration);
                
-        timeStartHrField.setUserData(timeStartHr);        
-        timeEndHrField.setText(timeEndHr);
+        timeStartHrField.setText(start);        
+        timeEndHrField.setText(end);
         
         //To change body of generated methods, choose Tools | Templates.
    
         }    
     
     @FXML
-    private void handleSubmit(ActionEvent event) throws SQLException{
+    private void handleUpdate(ActionEvent event) throws SQLException, ParseException{
+        
         String act = activityComboBox.getValue();
         String category = categoryComboBox.getValue();
-        LocalDate date = DtPicker.getValue();
         String desc = descriptionText.getText();
-        String dur = durationLabel.getText();
-        String stHr = timeStartHrField.getText();
-        String stMin = timeStartMinField.getText();
-        String endHr = timeEndHrField.getText();
-        String endMin = timeEndMinField.getText();
+        String date = DtPicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String start = timeStartHrField.getText();
+        String end = timeEndHrField.getText();
+        DateFormat sdf = new SimpleDateFormat("hh:mm aa");
+        Date startTime = sdf.parse(start);
+        Date endTime = sdf.parse(end);
+        
+        double dayDuration = Duration.ofHours(24).toHours();
+        
+        double diffMs = endTime.getTime() - startTime.getTime();
+        System.out.print("*"+diffMs);
+        double diffSec = diffMs / 1000;
+        double minCalc = diffSec / 60;
+        
+        System.out.println("The difference is "+minCalc+" minutes");
+
+        String durationText = Double.toString(minCalc);
         
         addTimesheet.insertStatement("UPDATE TIMESHEETS"
                 + " SET CATEGORYNAME = '"+ category +"'"
-                + " AND ACTIVITY = '"+act+"' "
-                + "AND DATE = '"+date+"'"
-                + "AND DESCR = '"+desc+"'"
-                + "AND ");
+                + ", ACTIVITY = '"+act+"' "
+                + ", DATE = '"+date+"'"
+                + ", DESCR = '"+desc+"'"
+                );
                 
         
     }
    
-      
+     @FXML
+    private void handleInputChangedAction(ActionEvent event) throws SQLException {
         
+       String catName = categoryComboBox.getValue();
+        ResultSet catColourRs = addTimesheet.getResultSet("SELECT CATEGORYNAME, COLOUR from CATEGORY "
+                + "WHERE CATEGORYNAME = '" + catName + "'"
+        );
+
+        String colourShape = catColourRs.getString(2);
     
-//    @FXML
-//    private void handleBackAction(ActionEvent event) throws IOException {
-//        pageSwitcher.switcher(event, "PieChart.fxml");
-//    }    
+        
+        if(catName.equals("Work")){
+            categoryColourShape.setFill(Color.web("#80bfff"));
+        }
+        if (catName.equals("Wellness")){
+            categoryColourShape.setFill(Color.web("#80ff80"));
+        }
+        if (catName.equals("Relationships")){
+            categoryColourShape.setFill(Color.web("#cc99ff"));
+        }
+        if (catName.equals("Projects")){
+            categoryColourShape.setFill(Color.web("#ccffff"));
+        }
+        if (catName.equals("Daily")){
+            categoryColourShape.setFill(Color.web("#ff80ff"));
+        }
+        if (catName.equals("Relaxation")){
+            categoryColourShape.setFill(Color.web("#ffb84d"));
+        }
+        //else{ categoryColourShape.setFill(Color.TRANSPARENT);}
+        
+        
+        categoryColourShape.setVisible(true);
+        
+        //if doesn't work, jsut switch to color.RED etc and change data
+        
+    } 
+
+ 
     @FXML
     private void handleKbBoard(ActionEvent event) throws IOException{
         pageSwitcher.switcher(event, "KanbanBoard.fxml");

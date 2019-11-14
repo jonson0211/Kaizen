@@ -58,8 +58,7 @@ public class TimesheetsController implements Initializable {
  
     @FXML private TextField timeStartHrField;    
     @FXML private TextField timeEndHrField;    
-    @FXML private TextField timeStartMinField;
-    @FXML private TextField timeEndMinField;   
+     
     @FXML private Label durationLabel;    
     @FXML private TextArea descriptionText;   
     @FXML private Rectangle categoryColourShape;    

@@ -11,8 +11,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="kaizen.EditEntriesPopUpController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.EditEntriesPopUpController">
    <children>
       <GridPane layoutX="263.0" layoutY="188.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -34,6 +33,24 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter using the format hh:mm aa" wrappingWidth="120.48046875" GridPane.columnIndex="2" GridPane.rowIndex="5">
+               <font>
+                  <Font />
+               </font>
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Text>
+            <ListView prefHeight="30.0" prefWidth="58.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="25.0" left="20.0" right="275.0" top="25.0" />
+               </GridPane.margin>
+            </ListView>
+            <Rectangle fx:id="categoryColourShape" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="TRANSPARENT" strokeType="INSIDE" width="37.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets bottom="25.0" left="20.0" right="275.0" top="25.0" />
+               </GridPane.margin>
+            </Rectangle>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font size="20.0" />
@@ -82,24 +99,14 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </DatePicker>
-            <TextField fx:id="timeStartHrField" promptText="Hour" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <TextField fx:id="timeStartHrField" promptText="e.g. 10:50 am" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <GridPane.margin>
-                  <Insets left="20.0" right="200.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField fx:id="timeStartMinField" promptText="Minute" GridPane.columnIndex="2" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets left="200.0" right="20.0" />
+                  <Insets left="150.0" right="20.0" />
                </GridPane.margin>
             </TextField>
             <TextField fx:id="timeEndHrField" promptText="Hour" GridPane.columnIndex="2" GridPane.rowIndex="6">
                <GridPane.margin>
-                  <Insets left="20.0" right="200.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField fx:id="timeEndMinField" promptText="Minute" GridPane.columnIndex="2" GridPane.rowIndex="6">
-               <GridPane.margin>
-                  <Insets left="200.0" right="20.0" />
+                  <Insets left="150.0" right="20.0" />
                </GridPane.margin>
             </TextField>
             <Label fx:id="durationLabel" text="Duration of activity" GridPane.columnIndex="2" GridPane.rowIndex="7">
@@ -115,7 +122,7 @@
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextArea>
-            <Button fx:id="submit" mnemonicParsing="false" prefHeight="16.0" prefWidth="98.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Submit" GridPane.columnIndex="2" GridPane.rowIndex="9">
+            <Button fx:id="submit" mnemonicParsing="false" onAction="#handleUpdate" prefHeight="16.0" prefWidth="98.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Update" GridPane.columnIndex="2" GridPane.rowIndex="9">
                <font>
                   <Font size="20.0" />
                </font>
@@ -129,16 +136,6 @@
                </font>
                <GridPane.margin>
                   <Insets left="20.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text=":" GridPane.columnIndex="2" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets left="170.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text=":" GridPane.columnIndex="2" GridPane.rowIndex="6">
-               <GridPane.margin>
-                  <Insets left="170.0" />
                </GridPane.margin>
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Activity" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -170,14 +167,6 @@
                   <ToggleGroup fx:id="toggleGroup" />
                </toggleGroup>
             </RadioButton>
-            <Rectangle fx:id="categoryColourShape" arcHeight="5.0" arcWidth="5.0" fill="#ff80ff" height="39.0" mouseTransparent="true" stroke="#ffffff00" strokeType="INSIDE" width="38.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
-               <effect>
-                  <Glow />
-               </effect>
-               <GridPane.margin>
-                  <Insets left="15.0" />
-               </GridPane.margin>
-            </Rectangle>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Category" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="20.0" />
@@ -186,21 +175,19 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <ComboBox fx:id="categoryComboBox" editable="true" prefHeight="31.0" prefWidth="294.0" promptText="Type" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <ComboBox fx:id="categoryComboBox" editable="true" onAction="#handleInputChangedAction" prefHeight="31.0" prefWidth="294.0" promptText="Type" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="75.0" right="20.0" />
                </GridPane.margin>
             </ComboBox>
-            <ColorPicker editable="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter using the format hh:mm aa" wrappingWidth="120.48046875" GridPane.columnIndex="2" GridPane.rowIndex="6">
+               <font>
+                  <Font />
+               </font>
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
-            </ColorPicker>
-            <ListView prefHeight="30.0" prefWidth="58.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets bottom="25.0" left="20.0" right="275.0" top="25.0" />
-               </GridPane.margin>
-            </ListView>
+            </Text>
          </children>
       </GridPane>
    </children>
