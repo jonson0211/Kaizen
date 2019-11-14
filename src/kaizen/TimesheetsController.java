@@ -51,6 +51,8 @@ import kaizen.DataModels.learningsDidWell;
 import kaizen.DataModels.timesheetsDM;
 import java.awt.*;
 import java.awt.color.*;
+import java.time.Duration;
+import java.time.LocalDate;
 
 public class TimesheetsController implements Initializable {
  
@@ -241,49 +243,47 @@ public class TimesheetsController implements Initializable {
             
     
     @FXML
-    private void handleSubmitAction(ActionEvent event) throws SQLException {
+    private void handleSubmitAction(ActionEvent event) throws SQLException, ParseException {
         
         String catName = categoryComboBox.getValue();
-        
+        String act = (String) activityComboBox.getValue();
+        String desc = descriptionText.getText();
         //pull the category's corresponding colour from database
         
         
         String date = DtPicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String start = timeStartHrField.getText();
+        String end = timeEndHrField.getText();
+        DateFormat sdf = new SimpleDateFormat("hh:mm aa");
+        Date startTime = sdf.parse(start);
+        Date endTime = sdf.parse(end);
         
-        String timeStartHr = timeStartHrField.getText();
-        String timeStartMin = timeStartMinField.getText();
-        String timeEndHr = timeEndHrField.getText();
-        String timeEndMin = timeEndMinField.getText();
+        double dayDuration = Duration.ofHours(24).toHours();
         
-        String act = (String) activityComboBox.getValue();
+        double diffMs = endTime.getTime() - startTime.getTime();
+        System.out.print("*"+diffMs);
+        double diffSec = diffMs / 1000;
+        double minCalc = diffSec / 60;
         
-        double timeStartHrNum = Double.parseDouble(timeStartHr);
-        double timeStartMinNum = Double.parseDouble(timeStartMin);
-        double timeEndHrNum = Double.parseDouble(timeEndHr);
-        double timeEndMinNum = Double.parseDouble(timeEndMin);
-        
-        double startCombined = (timeStartHrNum*60 + timeStartMinNum);
-        double endCombined = (timeEndHrNum*60 + timeEndMinNum);
-        
-        double duration = endCombined - startCombined; 
-        
-        String durationText = Double.toString(duration);
-        String desc = descriptionText.getText();
+        System.out.println("The difference is "+minCalc+" minutes");
+
+        String durationText = Double.toString(minCalc);
        
         
         try {
             
             addTimesheet.insertStatement("INSERT INTO TIMESHEETS (CATEGORYNAME, ACTIVITY,DATE, START, END, DURATION, DESCR)"
-                    + " VALUES('" + catName + "', '" + act + "', '" + date + "','" + startCombined + "', '"+  endCombined + "', '" +
-                    duration + "', '" + desc + "');");
+                    + " VALUES('" + catName + "', '" + act + "', '" + date + "','" + start + "', '"+  end + "', '" +
+                    minCalc + "', '" + desc + "');");
+            
             durationLabel.setText(durationText + " minutes");
             durationLabel.setVisible(true);
             
         } catch (Exception ex) {
+            System.out.println("Could not add entry. Please check your inputs!");
             ex.printStackTrace();
         }
-     
-        
+    
     }
 //    @FXML
 //    private void handleBackAction(ActionEvent event) throws IOException {

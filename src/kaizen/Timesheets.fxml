@@ -33,6 +33,14 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter using the format hh:mm aa" wrappingWidth="120.48046875" GridPane.columnIndex="2" GridPane.rowIndex="5">
+               <font>
+                  <Font />
+               </font>
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Text>
             <ListView prefHeight="30.0" prefWidth="58.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="25.0" left="20.0" right="275.0" top="25.0" />
@@ -91,24 +99,14 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </DatePicker>
-            <TextField fx:id="timeStartHrField" promptText="Hour" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <TextField fx:id="timeStartHrField" promptText="e.g. 10:50 am" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <GridPane.margin>
-                  <Insets left="20.0" right="200.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField fx:id="timeStartMinField" promptText="Minute" GridPane.columnIndex="2" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets left="200.0" right="20.0" />
+                  <Insets left="150.0" right="20.0" />
                </GridPane.margin>
             </TextField>
             <TextField fx:id="timeEndHrField" promptText="Hour" GridPane.columnIndex="2" GridPane.rowIndex="6">
                <GridPane.margin>
-                  <Insets left="20.0" right="200.0" />
-               </GridPane.margin>
-            </TextField>
-            <TextField fx:id="timeEndMinField" promptText="Minute" GridPane.columnIndex="2" GridPane.rowIndex="6">
-               <GridPane.margin>
-                  <Insets left="200.0" right="20.0" />
+                  <Insets left="150.0" right="20.0" />
                </GridPane.margin>
             </TextField>
             <Label fx:id="durationLabel" text="Duration of activity" GridPane.columnIndex="2" GridPane.rowIndex="7">
@@ -138,16 +136,6 @@
                </font>
                <GridPane.margin>
                   <Insets left="20.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text=":" GridPane.columnIndex="2" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets left="170.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text=":" GridPane.columnIndex="2" GridPane.rowIndex="6">
-               <GridPane.margin>
-                  <Insets left="170.0" />
                </GridPane.margin>
             </Text>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Activity" GridPane.columnIndex="1" GridPane.rowIndex="3">
@@ -192,6 +180,14 @@
                   <Insets left="75.0" right="20.0" />
                </GridPane.margin>
             </ComboBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter using the format hh:mm aa" wrappingWidth="120.48046875" GridPane.columnIndex="2" GridPane.rowIndex="6">
+               <font>
+                  <Font />
+               </font>
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Text>
          </children>
       </GridPane>
    </children>
