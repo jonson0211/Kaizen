@@ -77,6 +77,8 @@ public class WeeklyTrendsController implements Initializable {
         activityChoiceBox3.getItems().addAll(d.getActChoice());
     }    
     activityChoiceBox.setValue("Choose Type!");
+    
+   
     activityChoiceBox2.setValue("Choose Type!");
     activityChoiceBox3.setValue("Choose Type!");
     
@@ -87,6 +89,7 @@ public class WeeklyTrendsController implements Initializable {
     @FXML
     private void loadGraph(ActionEvent event) throws SQLException{
         weeklyTrendsLineChart.getData().clear();
+        boolean isMyBoxEmpty0 = activityChoiceBox.getSelectionModel().isEmpty();
         boolean isMyBoxEmpty = activityChoiceBox2.getSelectionModel().isEmpty();
         boolean isMyBoxEmpty2 = activityChoiceBox3.getSelectionModel().isEmpty();
         
@@ -128,29 +131,14 @@ public class WeeklyTrendsController implements Initializable {
                     );
             
             while (weekly.next()){
-                durationList.add((weekly.getDouble(2)));
-                   
+                durationList.add((weekly.getDouble(2)));      
             }
-
             }
-            
-            System.out.println("*"+durationWeeklyList);
-            System.out.println("*"+durationList);
-            System.out.println("*"+ durationPercentageList);
-            
-            
             
             try{
         
                 for(int n = 0, i =0; n<durationList.size()&& i<numWeeks; n++, i++){
                     weeklySeries.getData().add(new XYChart.Data("Week " + (n+1), Math.round((durationList.get(n)/durationWeeklyList.get(1))*100)));
-                    //test output: 
-//                    System.out.println(durationList.get(n));
-//                    System.out.println(durationWeeklyList.get(1));
-                    System.out.println("*"+Math.round((durationList.get(n)/durationWeeklyList.get(n))*100));
-                    System.out.println(Math.round((durationList.get(n)/durationWeeklyList.get(1))*100));
-                    System.out.println(n);
-                    System.out.println(i);
                 }   
            
             //System.out.println("*" + durationList);
