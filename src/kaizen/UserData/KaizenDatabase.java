@@ -332,7 +332,8 @@ public class KaizenDatabase {
             rs = dbmd.getTables(null, null, "TIMESHEETS", null);
             if (!rs.next()) {
                 createTimesheetsTable = conn.prepareStatement("CREATE TABLE TIMESHEETS ("
-                        + "CATEGORYNAME TEXT PRIMARYKEY, "
+                        + "TIMESHEETID INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + "CATEGORYNAME TEXT, "
                         + "ACTIVITY TEXT, "
                         + "DATE TEXT, "
                         + "START TEXT, " //integer

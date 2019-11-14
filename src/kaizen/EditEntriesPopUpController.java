@@ -44,6 +44,7 @@ public class EditEntriesPopUpController implements Initializable {
     
     @FXML private TextField timeStartMinField;
     @FXML private TextField timeEndMinField;
+    @FXML private TextField timeIDField;
     
     @FXML
     private Label durationLabel;
@@ -88,11 +89,11 @@ public class EditEntriesPopUpController implements Initializable {
     activityComboBox.setEditable(true);
     
     }
-    public void setData(String string, String category, String date, String description, Integer duration, String start, String end) {
+    public void setData(String ID, String string, String category, String date, String description, Integer duration, String start, String end) {
         activityComboBox.setValue(string);
         categoryComboBox.setValue(category);    
         DtPicker.setUserData(date);
-        
+        timeIDField.setText(ID);
         descriptionText.setText(description);
         durationLabel.setUserData(duration);
                
@@ -105,7 +106,7 @@ public class EditEntriesPopUpController implements Initializable {
     
     @FXML
     private void handleUpdate(ActionEvent event) throws SQLException, ParseException{
-        
+        String timeID = timeIDField.getText();
         String act = activityComboBox.getValue();
         String category = categoryComboBox.getValue();
         String desc = descriptionText.getText();
@@ -132,6 +133,7 @@ public class EditEntriesPopUpController implements Initializable {
                 + ", ACTIVITY = '"+act+"' "
                 + ", DATE = '"+date+"'"
                 + ", DESCR = '"+desc+"'"
+                + "WHERE TIMESHEETID = '" + timeID + "'"
                 );
                 
         

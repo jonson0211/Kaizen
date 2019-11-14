@@ -17,7 +17,7 @@ import kaizen.EntriesScreenController;
  * @author lienzhu
  */
 public class timesheetsDM {
-    
+    private StringProperty timesheetID;
     private StringProperty activity;
     private StringProperty category;
  //   private StringProperty colour;
@@ -27,7 +27,8 @@ public class timesheetsDM {
     private StringProperty timeStart;
     private StringProperty timeEnd;
 
-    public timesheetsDM(String activity , String category, String date, String description, Integer duration, String timeStart, String timeEnd) {
+    public timesheetsDM(String timesheetID, String activity , String category, String date, String description, Integer duration, String timeStart, String timeEnd) {
+        this.timesheetID = new SimpleStringProperty(timesheetID);
         this.activity = new SimpleStringProperty(activity);
         this.category = new SimpleStringProperty(category);
       //  this.colour = new SimpleStringProperty(colour);
@@ -38,6 +39,18 @@ public class timesheetsDM {
         this.timeEnd = new SimpleStringProperty(timeEnd);;
         
         ObservableList<timesheetsDM> entry = EntriesScreenController.entriesView_2.getSelectionModel().getSelectedItems();
+    }
+
+    public String getTimesheetID() {
+        return timesheetID.get();
+    }
+
+    public StringProperty getTimesheetIDProperty(){
+        return timesheetID;
+    }
+    
+    public void setTimesheetID(String timesheetID) {
+        this.timesheetID.set(timesheetID);
     }
     
 

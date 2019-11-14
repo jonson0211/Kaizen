@@ -77,6 +77,8 @@ public class EntriesScreenController implements Initializable {
     @FXML
     private TableColumn<timesheetsDM, String> descriptionClm;
     @FXML
+    private TableColumn<timesheetsDM, String> IDClm;
+    @FXML
     private Button backBtn;
     
     
@@ -102,7 +104,7 @@ public class EntriesScreenController implements Initializable {
         endClm.setCellValueFactory(cellData -> cellData.getValue().getEndProperty());
         durationClm.setCellValueFactory(cellData -> cellData.getValue().getDurationProperty());
         descriptionClm.setCellValueFactory(cellData -> cellData.getValue().getDescProperty());
-        
+        IDClm.setCellValueFactory(cellData -> cellData.getValue().getTimesheetIDProperty());
     }    
     public ObservableList<timesheetsDM> getEntries(){
         
@@ -112,7 +114,11 @@ public class EntriesScreenController implements Initializable {
             ResultSet rs = db.getResultSet("SELECT * FROM TIMESHEETS");
             
             while (rs.next()){
-                entries.add(new timesheetsDM(rs.getString("ACTIVITY"), rs.getString("CATEGORYNAME"), rs.getString("DATE"), rs.getString("DESCR"), rs.getInt("DURATION"), rs.getString("START"), rs.getString("END")));
+                entries.add(new timesheetsDM(rs.getString("TIMESHEETID"), 
+                        rs.getString("ACTIVITY"), rs.getString("CATEGORYNAME"), 
+                        rs.getString("DATE"), rs.getString("DESCR"), 
+                        rs.getInt("DURATION"), rs.getString("START"), 
+                        rs.getString("END")));
             }
         } catch (SQLException ex) {
             Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
@@ -161,7 +167,8 @@ public class EntriesScreenController implements Initializable {
                 }
 
                 EditEntriesPopUpController a = Loader.getController();
-                a.setData(""+entriesView.getSelectionModel().getSelectedItem().getActivity(),
+                a.setData(""+ entriesView.getSelectionModel().getSelectedItem().getTimesheetID(),
+                        entriesView.getSelectionModel().getSelectedItem().getActivity(),
                         entriesView.getSelectionModel().getSelectedItem().getCategory(), 
                         entriesView.getSelectionModel().getSelectedItem().getDate(), 
                         entriesView.getSelectionModel().getSelectedItem().getDesc(), 

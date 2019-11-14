@@ -75,6 +75,7 @@
                   <TableColumn fx:id="endClm" prefWidth="71.89337158203125" resizable="false" text="End " />
                   <TableColumn fx:id="durationClm" prefWidth="67.77587890625" resizable="false" text="Minutes" />
                   <TableColumn fx:id="descriptionClm" prefWidth="393.22412109375" text="Description" />
+                  <TableColumn fx:id="IDClm" prefWidth="75.0" text="ID" />
               </columns>
             </TableView>
             <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleTimeSheets" prefHeight="39.0" prefWidth="75.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="2" />
