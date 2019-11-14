@@ -90,7 +90,7 @@ public class PieChartController implements Initializable {
     ArrayList<String> catData = new ArrayList();    
     ArrayList<Double> durationData = new ArrayList();
     ArrayList<Double> durationTotal = new ArrayList();
-    
+   
     
     ResultSet rsCategoryData = db.getResultSet("SELECT DISTINCT(CATEGORYNAME)"
                     + " FROM TIMESHEETS GROUP BY CATEGORYNAME");    
@@ -109,7 +109,7 @@ public class PieChartController implements Initializable {
               durationTotal.add(totalDuration1.getDouble(1));
           }
           
-    //ouble totalDurationSum = totalDuration1.getInt(1);
+    double totalDurationSum = durationTotal.get(0);
     
     ObservableList<pieChartDM> categoryDurationList = FXCollections.observableArrayList();
     
@@ -121,7 +121,12 @@ public class PieChartController implements Initializable {
                 ObservableList<PieChart.Data> lifePieChartData = FXCollections.observableArrayList();   
                 for(int i=0; i<catData.size(); i++){
                 
-                    lifePieChartData.add(new PieChart.Data(catData.get(i), 
+                    lifePieChartData.add(new PieChart.Data(
+                    catData.get(i) + " - "
+                    + Math.round(durationData.get(i)/60)  
+                    + " hours (" 
+                    + Math.round((durationData.get(i)/totalDurationSum)*100)
+                            + "%)", 
                     durationData.get(i)
                     ));
                 }
