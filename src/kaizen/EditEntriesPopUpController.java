@@ -88,6 +88,17 @@ public class EditEntriesPopUpController implements Initializable {
     categoryComboBox.setEditable(true);
     activityComboBox.setEditable(true);
     
+    categoryComboList.setAll(this.getCatChoice());
+    for(categoryCombo c : categoryComboList){
+        System.out.println(c.getCatChoiceProperty());
+        categoryComboBox.getItems().addAll(c.getCatChoice());
+    }
+    activityComboList.setAll(this.getActChoice());
+    for(activityCombo d : activityComboList){
+        System.out.println(d.getActChoiceProperty());
+        activityComboBox.getItems().addAll(d.getActChoice());
+    }
+    
     }
     public void setData(String ID, String string, String category, String date, String description, Integer duration, String start, String end) {
         activityComboBox.setValue(string);
@@ -139,6 +150,9 @@ public class EditEntriesPopUpController implements Initializable {
         
     }
    
+    
+    
+    
      @FXML
     private void handleInputChangedAction(ActionEvent event) throws SQLException {
         
@@ -178,6 +192,38 @@ public class EditEntriesPopUpController implements Initializable {
     } 
 
  
+    public ObservableList<categoryCombo> getCatChoice(){
+        
+        ObservableList<categoryCombo> categoryComboList = FXCollections.observableArrayList();
+        
+        try {
+            ResultSet rsCategoryComboTable = addTimesheet.getResultSet("SELECT DISTINCT(CATEGORYNAME) FROM CATEGORY");
+            
+            while (rsCategoryComboTable.next()){
+                categoryComboList.add(new categoryCombo(rsCategoryComboTable.getString(1)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return FXCollections.observableArrayList(categoryComboList);
+    }
+    //get activity choice for combo box
+    public ObservableList<activityCombo> getActChoice(){
+        
+        ObservableList<activityCombo> activityComboList = FXCollections.observableArrayList();
+        
+        try {
+            ResultSet rsActivityComboTable = addTimesheet.getResultSet("SELECT DISTINCT(ACTIVITY) FROM TIMESHEETS");
+            
+            while (rsActivityComboTable.next()){
+                activityComboList.add(new activityCombo(rsActivityComboTable.getString(1)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return FXCollections.observableArrayList(activityComboList);
+    }
+    
     @FXML
     private void handleKbBoard(ActionEvent event) throws IOException{
         pageSwitcher.switcher(event, "KanbanBoard.fxml");

@@ -55,6 +55,10 @@ public class PopUpLearningsController {
     @FXML
     private TableColumn<learningsEntryDM, String> improvements;
     @FXML
+    private TableColumn<learningsEntryDM, String> id;
+
+    
+    @FXML
     DatePicker datePicker;
     @FXML
     private ComboBox achieveBox;
@@ -64,7 +68,7 @@ public class PopUpLearningsController {
     private Button submit;
     @FXML
     private Label confirm;
-    @FXML private TableColumn<learningsEntryDM, Number> id;
+    
     @FXML private TextField pKey;
 
     KaizenDatabase db = new KaizenDatabase();
@@ -76,6 +80,8 @@ public class PopUpLearningsController {
         date.setCellValueFactory(cellData -> cellData.getValue().getDateProperty());
         achievements.setCellValueFactory(cellData -> cellData.getValue().getAchievementsProperty());
         improvements.setCellValueFactory(cellData -> cellData.getValue().getImprovementsProperty());
+        id.setCellValueFactory(cellData -> cellData.getValue().getPkProperty());
+        
         entries.setItems(this.getReport());
         confirm.setVisible(false);
     }
@@ -87,7 +93,7 @@ public class PopUpLearningsController {
             ResultSet tableRs = db.getResultSet("SELECT * FROM LEARNINGS");
 
             while (tableRs.next()) {
-                report.add(new learningsEntryDM(tableRs.getString("DATE"), tableRs.getString("DID_WELL"), tableRs.getString("BE_BETTER"), tableRs.getInt("LEARNINGS_ID")));
+                report.add(new learningsEntryDM(tableRs.getString("DATE"), tableRs.getString("DID_WELL"), tableRs.getString("BE_BETTER"), tableRs.getString("LEARNINGS_ID")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -103,6 +109,7 @@ public class PopUpLearningsController {
 
     @FXML
     private void handleRefresh(MouseEvent event) throws IOException {
+        
     }
     
  /*   private void refreshPage() {
@@ -141,8 +148,9 @@ public class PopUpLearningsController {
         learningsEntryDM delete = entries.getSelectionModel().getSelectedItem();
         try {
             db.insertStatement("DELETE FROM LEARNINGS WHERE DATE = '" + delete.getDate() + "' "
-                    + "AND DID_WELL = '" + delete.getAchievements() + "'"
-                    + " AND BE_BETTER = '" + delete.getImprovements() + "'");
+                    + " AND DID_WELL = '" + delete.getAchievements() + "'"
+                    + " AND BE_BETTER = '" + delete.getImprovements() + "'"
+                    + " AND LEARNINGS_ID = '" + delete.getPk() + "'");
         } catch (Exception e) {
             System.out.println("Can't delete from database!");
             e.printStackTrace();
@@ -165,9 +173,9 @@ public class PopUpLearningsController {
         
         try {
             db.insertStatement("UPDATE LEARNINGS SET "
-                    + "DATE = '" + date + "' "
-                    + ",DID_WELL = '" + a + "' "
-                    + ",BE_BETTER = '" + i + "' WHERE LEARNINGS_ID = '"+ z +"'");
+                    + "DATE = '" + date + "'"
+                    + " , DID_WELL = '" + a + "'"
+                    + " , BE_BETTER = '" + i + "' WHERE LEARNINGS_ID = '" + z +"'");
         } catch (SQLException ex) {
             Logger.getLogger(PopUpLearningsController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -176,14 +184,14 @@ public class PopUpLearningsController {
 
     }
 
-    public void setData(String date, String achievements, String improvements, Integer pk) {
+    public void setData(String date, String achievements, String improvements, String pk) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate myLocalDate = LocalDate.parse(date, formatter);
         datePicker.setValue(myLocalDate);
         achieveBox.setValue(achievements);
         improveBox.setValue(improvements);  
-        Integer.toString(pk);
+        //Integer.toString(pk);
         String number = String.valueOf(pk);
-        id.setText(number);
+        pKey.setText(number);
     }
 }

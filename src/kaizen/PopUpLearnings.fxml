@@ -35,6 +35,7 @@
                 <TableColumn fx:id="date" prefWidth="115.0" text="Date" />
                 <TableColumn fx:id="achievements" prefWidth="359.0" text="Achievements" />
                   <TableColumn fx:id="improvements" minWidth="9.0" prefWidth="370.0" text="Improvements" />
+                  <TableColumn fx:id="id" prefWidth="75.0" text="ID" visible="false" />
               </columns>
                <GridPane.margin>
                   <Insets left="10.0" />
@@ -111,7 +112,7 @@
                      </GridPane.margin>
                   </Button>
                   <Label fx:id="confirm" text="Successfully updated learnings!" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <TextField fx:id="id" promptText="ID" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                  <TextField fx:id="pKey" promptText="ID" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets bottom="100.0" />
                      </GridPane.margin>
