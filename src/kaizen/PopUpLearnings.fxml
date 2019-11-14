@@ -111,12 +111,9 @@
                      </GridPane.margin>
                   </Button>
                   <Label fx:id="confirm" text="Successfully updated learnings!" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <TextField fx:id="idBox" editable="false" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="6">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
+                  <TextField fx:id="id" promptText="ID" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <GridPane.margin>
-                        <Insets bottom="90.0" />
+                        <Insets bottom="100.0" />
                      </GridPane.margin>
                   </TextField>
                </children>
