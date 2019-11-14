@@ -69,9 +69,16 @@ public class DeepFocusModeController implements Initializable {
     private Label displayTime;
     @FXML
     private Label displayMoonPhase;
+    @FXML
+    private Label displayTitle;
+    @FXML
+    private Label displayDescription;
+
+    @FXML
+    private Button button;
 
     ObservableList<taskCategoryChoice> taskCategoryChoiceList = FXCollections.observableArrayList();
-    ObservableList<taskChoice> taskChoiceList = FXCollections.observableArrayList();
+    // ObservableList<taskChoice> taskChoiceList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -109,9 +116,40 @@ public class DeepFocusModeController implements Initializable {
             System.out.println(a.getTaskCategoryChoiceProperty());
             selectTaskCategory.getItems().addAll(a.getTaskCategoryChoice());
         }
+
+        /*
+        //Set up task:
+        taskChoiceList.setAll(this.getTaskChoice());
+        for (taskChoice a : taskChoiceList) {
+            System.out.println(a.getTaskChoiceProperty());
+            selectTask.getItems().addAll(a.getTaskChoice());
+        }
+         */
+ /*
+        //Display task title and description on left pane 
+        String currentTask = selectTask.getValue();
+                displayTitle.setVisible(true);
+                displayTitle.setText(currentTask);
+                
+                displayDescription.setVisible(true);
+        try {
+            displayDescription.setText(getTaskDescription(currentTask).toString());
+        } catch (SQLException ex) {
+            Logger.getLogger(DeepFocusModeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }
+    
+    public ResultSet getTaskDescription(String currentTask) throws SQLException {
+        
+            ResultSet taskDescription = db.getResultSet("SELECT (DESCRIPTION) FROM TASKS WHERE (TITLE) = '" + currentTask + "'");
+        return taskDescription;
+    } 
+         */
     }
 
-    //Get Task Category 
+    //Get Task Category
     public ObservableList<taskCategoryChoice> getTaskCategoryChoice() {
 
         ObservableList<taskCategoryChoice> taskCategoryChoiceList = FXCollections.observableArrayList();
@@ -132,32 +170,42 @@ public class DeepFocusModeController implements Initializable {
     public ObservableList<taskChoice> getTaskChoice() {
 
         ObservableList<taskChoice> taskChoiceList = FXCollections.observableArrayList();
-        String selectedCategory = selectTaskCategory.getValue();
-
+        System.out.println("1:" + selectTaskCategory.getValue());
         try {
+            if (!selectTask.getItems().isEmpty()) {
+                System.out.println("its not empty!");
+                selectTask.getItems().clear();
+            }
             ResultSet rsTaskChoiceTable = db.getResultSet("SELECT DISTINCT(TITLE) FROM TASKS WHERE (CATEGORYNAME)"
-                    + " = '" + selectedCategory + "'");
+                    + " = '" + selectTaskCategory.getValue() + "'");
 
             while (rsTaskChoiceTable.next()) {
-                taskChoiceList.add(new taskChoice(rsTaskChoiceTable.getString(1)));
+                System.out.println(rsTaskChoiceTable.getString("TITLE"));
+                taskChoice T = new taskChoice(rsTaskChoiceTable.getString("TITLE"));
+                taskChoiceList.add(T);
             }
+            for (taskChoice task : taskChoiceList) {
+                selectTask.getItems().addAll(task.getTaskChoice());
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(DeepFocusModeController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return FXCollections.observableArrayList(taskChoiceList);
     }
 
-    @FXML
+    /*@FXML
     private void handleTaskChoice(ActionEvent event) throws IOException {
         //Set up task choice:
+        System.out.println("anything");
         taskChoiceList.setAll(this.getTaskChoice());
         for (taskChoice a : taskChoiceList) {
             System.out.println(a.getTaskChoiceProperty());
             selectTask.getItems().addAll(a.getTaskChoice());
+            System.out.println("finished");
         }
     }
-    
-    
+     */
     @FXML
     private void handleKanbanBoard(ActionEvent event) throws IOException {
         MusicPlaybackHelper.stopMusic();
