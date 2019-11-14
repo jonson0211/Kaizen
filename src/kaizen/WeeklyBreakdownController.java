@@ -71,9 +71,9 @@ public class WeeklyBreakdownController implements Initializable {
             XYChart.Series<String, Number> weeklySeries = new XYChart.Series<String,Number>();
             //if(date.equals(today);
             //db.insertStatement(UPDATE TIMSHEETS);
-            ResultSet weekly = db.getResultSet("SELECT ACTIVITY, DURATION FROM TIMESHEETS "
+            ResultSet weekly = db.getResultSet("SELECT DISTINCT(ACTIVITY), SUM(DURATION) FROM TIMESHEETS "
                     + "WHERE DATE BETWEEN date('" + date + "') and date('" + date + "','+7 days')"
-                    + " ORDER BY DURATION LIMIT 5");
+                    + "GROUP BY ACTIVITY ORDER BY DURATION LIMIT 5");
            
             
             ArrayList<String> categoryNameList = new ArrayList();
