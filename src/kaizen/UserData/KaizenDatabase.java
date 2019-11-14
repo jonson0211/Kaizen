@@ -467,7 +467,7 @@ public class KaizenDatabase {
             rs = db.getTables(null,null,"LEARNINGS", null);
             if(!rs.next()){
             createLearnings = conn.prepareStatement("CREATE TABLE IF NOT EXISTS LEARNINGS("
-                        + "LEARNINGS_ID STRING PRIMARY KEY AUTOINCREMENT, "
+                        + "LEARNINGS_ID INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + "DATE TEXT NOT NULL"
                         + ", DID_WELL TEXT NOT NULL"
                         + ", BE_BETTER TEXT NOT NULL)");
