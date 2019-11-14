@@ -437,6 +437,18 @@ public class KaizenDatabase {
                 
                 createDemoInstance.execute();
                 
+                createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME, ACTIVITY, DATE,START,END,DURATION,DESCR) "
+                        + "VALUES ('Work', "
+                        + "'Networking',"
+                        + "'2019-11-10',"
+                        + "'680',"
+                        + "'600',"
+                        + "'80',"
+                        + " 'Today I had a productive day at the office!'"
+                        + ");"
+                        );
+                createDemoInstance.execute();
+                
             } else {
                 System.out.println("Timesheets table exists");
             }
