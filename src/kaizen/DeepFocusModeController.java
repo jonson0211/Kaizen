@@ -109,13 +109,6 @@ public class DeepFocusModeController implements Initializable {
             System.out.println(a.getTaskCategoryChoiceProperty());
             selectTaskCategory.getItems().addAll(a.getTaskCategoryChoice());
         }
-
-        //Set up task choice:
-        taskChoiceList.setAll(this.getTaskChoice());
-        for (taskChoice a : taskChoiceList) {
-            System.out.println(a.getTaskChoiceProperty());
-            selectTask.getItems().addAll(a.getTaskChoice());
-        }
     }
 
     //Get Task Category 
@@ -154,6 +147,17 @@ public class DeepFocusModeController implements Initializable {
         return FXCollections.observableArrayList(taskChoiceList);
     }
 
+    @FXML
+    private void handleTaskChoice(ActionEvent event) throws IOException {
+        //Set up task choice:
+        taskChoiceList.setAll(this.getTaskChoice());
+        for (taskChoice a : taskChoiceList) {
+            System.out.println(a.getTaskChoiceProperty());
+            selectTask.getItems().addAll(a.getTaskChoice());
+        }
+    }
+    
+    
     @FXML
     private void handleKanbanBoard(ActionEvent event) throws IOException {
         MusicPlaybackHelper.stopMusic();
