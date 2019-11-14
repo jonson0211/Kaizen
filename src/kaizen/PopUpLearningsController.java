@@ -137,7 +137,7 @@ public class PopUpLearningsController {
 
     @FXML
     private void editLearning(ActionEvent event) {
-        LocalDate date = datePicker.getValue();
+        String date = datePicker.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         Object a = achieveBox.getValue();
         Object i = improveBox.getValue();
 
@@ -155,8 +155,9 @@ public class PopUpLearningsController {
     }
 
     public void setData(String date, String achievements, String improvements) {
- //       LocalDate d = LocalDate.parse(date, DateTimeFormatter.ofPattern("YYYY-MM-DD"));
-        datePicker.setUserData(date);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate myLocalDate = LocalDate.parse(date, formatter);
+        datePicker.setValue(myLocalDate);
         achieveBox.setValue(achievements);
         improveBox.setValue(improvements);
 

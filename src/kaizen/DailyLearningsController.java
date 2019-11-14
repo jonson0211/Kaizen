@@ -208,7 +208,7 @@ public class DailyLearningsController {
 
     @FXML
     private void handleAdd(ActionEvent event){
-        String date = datePick.getValue().format(DateTimeFormatter.ofPattern("dd/MM/YYYY"));
+        String date = datePick.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         String did_well = answerOne.getValue();
         String be_better = answerTwo.getValue();
         
