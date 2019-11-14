@@ -5,7 +5,8 @@
  */
 package kaizen.DataModels;
 
-import java.sql.Date;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -51,6 +52,5 @@ public class learningsEntryDM {
     public void setImprovements(String improvements){
         this.improvements.set(improvements);
     }
-    
     
 }

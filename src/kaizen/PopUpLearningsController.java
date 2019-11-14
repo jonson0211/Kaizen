@@ -6,14 +6,12 @@
 package kaizen;
 
 import java.io.IOException;
-import java.sql.Date;
 import kaizen.DataModels.learningsEntryDM;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -26,6 +24,9 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import kaizen.UserData.KaizenDatabase;
 
 /**
@@ -63,6 +64,7 @@ public class PopUpLearningsController {
     private Button submit;
     @FXML
     private Label confirm;
+    @FXML private TextField id;
 
     KaizenDatabase db = new KaizenDatabase();
 
@@ -99,14 +101,23 @@ public class PopUpLearningsController {
     }
 
     @FXML
-    private void handleAdd(ActionEvent event) throws IOException {
-        psh.switcher(event, "DailyLearnings.fxml");
+    private void handleRefresh(MouseEvent event) throws IOException {
     }
-
-    @FXML
-    private void handleRefresh(ActionEvent event) throws IOException {
-        psh.switcher(event, "DailyLearnings.fxml");
+    
+/*    private void refreshPage() {
+        try{
+            loadTable();
+        }catch(Exception e){
+            System.out.println("can't load table");
+            e.printStackTrace();
+        }
     }
+    private void loadTable(){
+        date.setCellValueFactory(new PropertyValueFactory<learningsEntryDM, String>("DATE"));
+        achievements.setCellValueFactory(new PropertyValueFactory<learningsEntryDM, String>("DID_WELL"));
+        improvements.setCellValueFactory(new PropertyValueFactory<learningsEntryDM, String>("BE_BETTER"));
+        entries.setItems(getReport()); */
+    
 
     @FXML
     private void handleSelect(ActionEvent event) {
@@ -133,11 +144,18 @@ public class PopUpLearningsController {
             System.out.println("Can't delete from database!");
             e.printStackTrace();
         }
-    }
+            try{
+                entries.getItems().removeAll(entries.getSelectionModel().getSelectedItem());
+                }catch(Exception ex){
+                    ex.printStackTrace();
+                    System.out.println("Can't remove row from table!");
+            }
+        }
+    
 
     @FXML
     private void editLearning(ActionEvent event) {
-        String date = datePicker.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        String date = datePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         Object a = achieveBox.getValue();
         Object i = improveBox.getValue();
 
@@ -155,11 +173,10 @@ public class PopUpLearningsController {
     }
 
     public void setData(String date, String achievements, String improvements) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate myLocalDate = LocalDate.parse(date, formatter);
         datePicker.setValue(myLocalDate);
         achieveBox.setValue(achievements);
-        improveBox.setValue(improvements);
-
+        improveBox.setValue(improvements);       
     }
 }
