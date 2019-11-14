@@ -5,26 +5,18 @@
  */
 package kaizen;
 
-
 import java.io.IOException;
-import java.net.URL;
+import kaizen.DataModels.learningsEntryDM;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import kaizen.DataModels.learningsDidWell;
-import kaizen.DataModels.learningsDoBetter;
 import kaizen.UserData.KaizenDatabase;
 
 /**
@@ -32,72 +24,87 @@ import kaizen.UserData.KaizenDatabase;
  *
  * @author wongad1
  */
-public class PopUpLearningsController{
-    
+public class PopUpLearningsController {
+
     @FXML
     private Button back;
-    
     @FXML
-    private TableView<learningsDidWell> well30Report;
-    
+    private Button add;
     @FXML
-    private TableView<learningsDoBetter> better30Report;
-    
+    private Button refresh;
     @FXML
-    private TableColumn<learningsDidWell, String> wellColumn;
-    
+    private Button edit;
     @FXML
-    private TableColumn<learningsDoBetter, String> betterColumn;
-    
+    private Button delete;
     @FXML
-    private TableColumn<learningsDidWell, Number> well30Count;
-    
+    private TableView<learningsEntryDM> entries;
     @FXML
-    private TableColumn<learningsDoBetter, Number> better30Count;
-    
+    private TableColumn<learningsEntryDM, String> date;
+    @FXML
+    private TableColumn<learningsEntryDM, String> achievements;
+    @FXML
+    private TableColumn<learningsEntryDM, String> improvements;
+
     KaizenDatabase db = new KaizenDatabase();
-    
+
     PageSwitchHelper psh = new PageSwitchHelper();
-   
-   
+
     @FXML
-    public void initialize(){
-        wellColumn.setCellValueFactory(cellData -> cellData.getValue().getDidWellProperty());
-        well30Count.setCellValueFactory(cellData -> cellData.getValue().getDidWellCountProperty());
-        betterColumn.setCellValueFactory(cellData -> cellData.getValue().getBeBetterProperty());
-        better30Count.setCellValueFactory(cellData -> cellData.getValue().getBeBetterCountProperty());
-        well30Report.setItems(this.getWell30());
-        better30Report.setItems(this.getBetter30());
+    public void initialize() {
+        date.setCellValueFactory(cellData -> cellData.getValue().getDateProperty());
+        achievements.setCellValueFactory(cellData -> cellData.getValue().getAchievementsProperty());
+        improvements.setCellValueFactory(cellData -> cellData.getValue().getImprovementsProperty());
+        entries.setItems(this.getReport());
     }
-    
-        public ObservableList<learningsDidWell> getWell30(){
-        List<learningsDidWell> well30 = FXCollections.observableArrayList();
-        
-        try{
-            ResultSet tableRs = db.getResultSet("SELECT DID_WELL, COUNT(DID_WELL) FROM LEARNINGS GROUP BY DID_WELL ORDER BY COUNT(DID_WELL) DESC");
-            
-            while (tableRs.next()){
-                well30.add(new learningsDidWell(tableRs.getString("DID_WELL"),tableRs.getInt("COUNT(DID_WELL)")));
+
+    public ObservableList<learningsEntryDM> getReport() {
+        List<learningsEntryDM> report = FXCollections.observableArrayList();
+
+        try {
+            ResultSet tableRs = db.getResultSet("SELECT * FROM LEARNINGS ORDER BY DATE DESC");
+
+            while (tableRs.next()) {
+                report.add(new learningsEntryDM(tableRs.getString("DATE"), tableRs.getString("DID_WELL"), tableRs.getString("BE_BETTER")));
             }
         } catch (SQLException ex) {
-           ex.printStackTrace();
+            ex.printStackTrace();
         }
-        System.out.println(well30);
-        return FXCollections.observableArrayList(well30);
-}
-        public ObservableList<learningsDoBetter> getBetter30(){
-        List<learningsDoBetter> better30 = FXCollections.observableArrayList();
-        
+        System.out.println(report);
+        return FXCollections.observableArrayList(report);
+    }
+
+    @FXML
+    private void handleBack(ActionEvent event) throws IOException {
+        psh.switcher(event, "DailyLearnings.fxml");
+    }
+
+    @FXML
+    private void handleAdd(ActionEvent event) throws IOException {
+        psh.switcher(event, "DailyLearnings.fxml");
+    }
+
+    @FXML
+    private void handleEdit(ActionEvent event) {
+        learningsEntryDM edit = entries.getSelectionModel().getSelectedItem();
+
+    }
+
+    @FXML
+    private void handleRefresh(ActionEvent event) throws IOException {
+        psh.switcher(event, "DailyLearnings.fxml");
+    }
+
+    @FXML
+    private void handleDelete(ActionEvent event) {
+        learningsEntryDM edit = entries.getSelectionModel().getSelectedItem();
         try{
-            ResultSet tableRs = db.getResultSet("SELECT BE_BETTER, COUNT(BE_BETTER) FROM LEARNINGS GROUP BY BE_BETTER ORDER BY COUNT(BE_BETTER) DESC");
-            
-            while (tableRs.next()){
-                better30.add(new learningsDoBetter(tableRs.getString("BE_BETTER"),tableRs.getInt("COUNT(BE_BETTER)")));
-            }
-        } catch (SQLException ex) {
-           ex.printStackTrace();
+            db.insertStatement("DELETE FROM TIMESHEETS WHERE DATE = '"+ edit.getDate()+"' "
+                    + "AND CATEGORYNAME = '"+ edit.getAchievements()+"'"
+                    + " AND ACTIVITY = '"+edit.getImprovements()+"'");
+        } catch (Exception e) {
+            System.out.println("Can't delete from database!");
+            e.printStackTrace();
         }
-        System.out.println(better30);
-        return FXCollections.observableArrayList(better30);
-}
+    }
+
 }
