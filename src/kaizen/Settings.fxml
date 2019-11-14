@@ -55,6 +55,12 @@
             <Label layoutX="52.0" layoutY="29.0" styleClass="large-label" text="Settings" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="426.0" layoutX="44.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="399.0" />
             <Label layoutX="180.0" layoutY="116.0" styleClass="small-label" text="Edit Preferences" />
+            <TableView fx:id="catView" layoutX="106.0" layoutY="185.0" prefHeight="275.0" prefWidth="275.0">
+              <columns>
+                <TableColumn fx:id="categoryClm" prefWidth="140.0" resizable="false" text="Category" />
+                <TableColumn fx:id="colourClm" prefWidth="134.0" resizable="false" text="Colour" />
+              </columns>
+            </TableView>
          </children>
       </AnchorPane>
    </center>
