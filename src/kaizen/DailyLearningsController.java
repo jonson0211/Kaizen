@@ -281,6 +281,7 @@ public class DailyLearningsController {
 
             
         } catch (Exception e){
+            e.printStackTrace();
             System.out.println("Can't display window");
         }
     }

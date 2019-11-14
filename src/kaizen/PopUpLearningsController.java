@@ -5,26 +5,27 @@
  */
 package kaizen;
 
-
 import java.io.IOException;
-import java.net.URL;
+import java.sql.Date;
+import kaizen.DataModels.learningsEntryDM;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.ResourceBundle;
+import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import kaizen.DataModels.learningsDidWell;
-import kaizen.DataModels.learningsDoBetter;
 import kaizen.UserData.KaizenDatabase;
 
 /**
@@ -32,72 +33,132 @@ import kaizen.UserData.KaizenDatabase;
  *
  * @author wongad1
  */
-public class PopUpLearningsController{
-    
+public class PopUpLearningsController {
+
     @FXML
     private Button back;
-    
     @FXML
-    private TableView<learningsDidWell> well30Report;
-    
+    private Button add;
     @FXML
-    private TableView<learningsDoBetter> better30Report;
-    
+    private Button refresh;
     @FXML
-    private TableColumn<learningsDidWell, String> wellColumn;
-    
+    private Button edit;
     @FXML
-    private TableColumn<learningsDoBetter, String> betterColumn;
-    
+    private Button delete;
     @FXML
-    private TableColumn<learningsDidWell, Number> well30Count;
-    
+    private TableView<learningsEntryDM> entries;
     @FXML
-    private TableColumn<learningsDoBetter, Number> better30Count;
-    
+    private TableColumn<learningsEntryDM, String> date;
+    @FXML
+    private TableColumn<learningsEntryDM, String> achievements;
+    @FXML
+    private TableColumn<learningsEntryDM, String> improvements;
+    @FXML
+    DatePicker datePicker;
+    @FXML
+    private ComboBox achieveBox;
+    @FXML
+    private ComboBox improveBox;
+    @FXML
+    private Button submit;
+    @FXML
+    private Label confirm;
+
     KaizenDatabase db = new KaizenDatabase();
-    
+
     PageSwitchHelper psh = new PageSwitchHelper();
-   
-   
+
     @FXML
-    public void initialize(){
-        wellColumn.setCellValueFactory(cellData -> cellData.getValue().getDidWellProperty());
-        well30Count.setCellValueFactory(cellData -> cellData.getValue().getDidWellCountProperty());
-        betterColumn.setCellValueFactory(cellData -> cellData.getValue().getBeBetterProperty());
-        better30Count.setCellValueFactory(cellData -> cellData.getValue().getBeBetterCountProperty());
-        well30Report.setItems(this.getWell30());
-        better30Report.setItems(this.getBetter30());
+    public void initialize() {
+        date.setCellValueFactory(cellData -> cellData.getValue().getDateProperty());
+        achievements.setCellValueFactory(cellData -> cellData.getValue().getAchievementsProperty());
+        improvements.setCellValueFactory(cellData -> cellData.getValue().getImprovementsProperty());
+        entries.setItems(this.getReport());
+        confirm.setVisible(false);
     }
-    
-        public ObservableList<learningsDidWell> getWell30(){
-        List<learningsDidWell> well30 = FXCollections.observableArrayList();
-        
-        try{
-            ResultSet tableRs = db.getResultSet("SELECT DID_WELL, COUNT(DID_WELL) FROM LEARNINGS GROUP BY DID_WELL ORDER BY COUNT(DID_WELL) DESC");
-            
-            while (tableRs.next()){
-                well30.add(new learningsDidWell(tableRs.getString("DID_WELL"),tableRs.getInt("COUNT(DID_WELL)")));
+
+    public ObservableList<learningsEntryDM> getReport() {
+        List<learningsEntryDM> report = FXCollections.observableArrayList();
+
+        try {
+            ResultSet tableRs = db.getResultSet("SELECT * FROM LEARNINGS ORDER BY DATE DESC");
+
+            while (tableRs.next()) {
+                report.add(new learningsEntryDM(tableRs.getString("DATE"), tableRs.getString("DID_WELL"), tableRs.getString("BE_BETTER")));
             }
         } catch (SQLException ex) {
-           ex.printStackTrace();
+            ex.printStackTrace();
         }
-        System.out.println(well30);
-        return FXCollections.observableArrayList(well30);
-}
-        public ObservableList<learningsDoBetter> getBetter30(){
-        List<learningsDoBetter> better30 = FXCollections.observableArrayList();
-        
-        try{
-            ResultSet tableRs = db.getResultSet("SELECT BE_BETTER, COUNT(BE_BETTER) FROM LEARNINGS GROUP BY BE_BETTER ORDER BY COUNT(BE_BETTER) DESC");
-            
-            while (tableRs.next()){
-                better30.add(new learningsDoBetter(tableRs.getString("BE_BETTER"),tableRs.getInt("COUNT(BE_BETTER)")));
-            }
+        System.out.println(report);
+        return FXCollections.observableArrayList(report);
+    }
+
+    @FXML
+    private void handleBack(ActionEvent event) throws IOException {
+        psh.switcher(event, "DailyLearnings.fxml");
+    }
+
+    @FXML
+    private void handleAdd(ActionEvent event) throws IOException {
+        psh.switcher(event, "DailyLearnings.fxml");
+    }
+
+    @FXML
+    private void handleRefresh(ActionEvent event) throws IOException {
+        psh.switcher(event, "DailyLearnings.fxml");
+    }
+
+    @FXML
+    private void handleSelect(ActionEvent event) {
+        learningsEntryDM edit = entries.getSelectionModel().getSelectedItem();
+
+        try {
+            setData(entries.getSelectionModel().getSelectedItem().getDate(),
+                    entries.getSelectionModel().getSelectedItem().getAchievements(),
+                    entries.getSelectionModel().getSelectedItem().getImprovements());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void handleDelete(ActionEvent event) {
+        learningsEntryDM delete = entries.getSelectionModel().getSelectedItem();
+        try {
+            db.insertStatement("DELETE FROM TIMESHEETS WHERE DATE = '" + delete.getDate() + "' "
+                    + "AND CATEGORYNAME = '" + delete.getAchievements() + "'"
+                    + " AND ACTIVITY = '" + delete.getImprovements() + "'");
+        } catch (Exception e) {
+            System.out.println("Can't delete from database!");
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void editLearning(ActionEvent event) {
+        LocalDate date = datePicker.getValue();
+        Object a = achieveBox.getValue();
+        Object i = improveBox.getValue();
+
+        try {
+            db.insertStatement("UPDATE LEARNINGS SET "
+                    + "DATE = '" + date + "' "
+                    + "AND DID_WELL = '" + a + "' "
+                    + "AND BE_BETTER = '" + i + "'");
         } catch (SQLException ex) {
-           ex.printStackTrace();
+            Logger.getLogger(PopUpLearningsController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println(better30);
-        return FXCollections.observableArrayList(better30);
-}
+        System.out.println("Updated learnings!");
+        confirm.setVisible(true);
+
+    }
+
+    public void setData(String date, String achievements, String improvements) {
+ //       LocalDate d = LocalDate.parse(date, DateTimeFormatter.ofPattern("YYYY-MM-DD"));
+        datePicker.setUserData(date);
+        achieveBox.setValue(achievements);
+        improveBox.setValue(improvements);
+
+    }
 }
