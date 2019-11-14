@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package kaizen;
 
 import java.io.IOException;
@@ -60,6 +56,9 @@ public class WeeklyTrendsController implements Initializable {
     @FXML
     private ChoiceBox<String> activityChoiceBox;        
     @FXML private ChoiceBox<String> activityChoiceBox2;
+    @FXML private ChoiceBox<String> activityChoiceBox3;
+    
+    //@FXML private ChoiceBox<Integer> numOptionsChoiceBox;
     
     //datepicker
     @FXML private DatePicker weeklyChartDtPicker;
@@ -74,25 +73,24 @@ public class WeeklyTrendsController implements Initializable {
     for(activityCombo d : activityComboList){
         System.out.println(d.getActChoiceProperty());
         activityChoiceBox.getItems().addAll(d.getActChoice());
-    }    
-        activityComboList.setAll(this.getActChoice());
-    for(activityCombo z : activityComboList){
-        System.out.println(z.getActChoiceProperty());
-        activityChoiceBox2.getItems().addAll(z.getActChoice());
+        activityChoiceBox2.getItems().addAll(d.getActChoice());
+        activityChoiceBox3.getItems().addAll(d.getActChoice());
     }    
     activityChoiceBox.setValue("Choose Type!");
-    
     activityChoiceBox2.setValue("Choose Type!");
+    activityChoiceBox3.setValue("Choose Type!");
+    
     
     }    
 
     //choose number of weeks back, choose activity, load graph
-    
-    
     @FXML
     private void loadGraph(ActionEvent event) throws SQLException{
         weeklyTrendsLineChart.getData().clear();
         boolean isMyBoxEmpty = activityChoiceBox2.getSelectionModel().isEmpty();
+        boolean isMyBoxEmpty2 = activityChoiceBox3.getSelectionModel().isEmpty();
+        
+        //int numOptions = numOptionsChoiceBox.getValue();
         String numWeeksBack = numWeeksTxtField.getText();
         
         int numWeeks = Integer.parseInt(numWeeksBack);
@@ -163,6 +161,8 @@ public class WeeklyTrendsController implements Initializable {
     } catch(Exception ex){
             ex.printStackTrace();}  
     
+        
+        
         if(isMyBoxEmpty != true){
         String activity2 = activityChoiceBox2.getValue().toString();
    
@@ -231,6 +231,60 @@ public class WeeklyTrendsController implements Initializable {
     } catch(Exception ex){
             ex.printStackTrace();}
     
+        
+        if(isMyBoxEmpty2 != true){
+        String activity3 = activityChoiceBox3.getValue().toString();
+   
+        try{
+            LocalDate date = weeklyChartDtPicker.getValue();
+
+            XYChart.Series<String, Number> weeklySeries3 = new XYChart.Series<String,Number>();
+            
+            weeklySeries3.setName(activity3);
+            weeklyTrendsLineChart.getData().addAll(weeklySeries3);
+            
+            //Calculate duration of activities during selected time period
+            ArrayList<Double> durationList3 = new ArrayList();
+            ArrayList<Double> durationWeeklyList3 = new ArrayList();
+            ArrayList<Double> durationPercentageList3 = new ArrayList();
+            
+            for(int j = 0; j<numWeeks; j++){
+                    
+        ResultSet weeklyTotalDuration3 = db.getResultSet("SELECT SUM(DURATION) FROM TIMESHEETS "
+                    + "WHERE DATE BETWEEN date('" + date + "','" + ((j+1)*-7)+ " days') "
+                            + "and date('" + date + "','" + (j*-7)+ " days')"
+                    );
+            
+                
+            while (weeklyTotalDuration3.next()){
+                durationWeeklyList3.add((weeklyTotalDuration3.getDouble(1)));   
+            }
+            
+        ResultSet weekly3 = db.getResultSet("SELECT ACTIVITY, SUM(DURATION) FROM TIMESHEETS "
+                    + "WHERE ACTIVITY = '" + activity3 + "'"
+                    + "AND DATE BETWEEN date('" + date + "','" + ((j+1)*-7)+ " days') "
+                            + "and date('" + date + "','" + (j*-7)+ " days')"
+                    );
+            
+            while (weekly3.next()){
+                durationList3.add((weekly3.getDouble(2)));
+            }
+            }
+            
+            try{
+        
+                for(int m = 0, p =0; m<durationList3.size()&& m<numWeeks; m++, p++){
+                    weeklySeries3.getData().add(new XYChart.Data("Week " + (m+1), Math.round((durationList3.get(m)/durationWeeklyList3.get(1))*100)));
+                }   
+           
+            //System.out.println("*" + durationList);
+        } catch(Exception ex){
+            ex.printStackTrace();
+        }
+        
+    } catch(Exception ex){
+            ex.printStackTrace();}
+    }
     }
     }
     public ObservableList<activityCombo> getActChoice(){
