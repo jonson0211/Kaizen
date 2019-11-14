@@ -155,6 +155,11 @@
                         <Insets left="40.0" top="-575.0" />
                      </GridPane.margin>
                   </Button>
+                  <ChoiceBox fx:id="activityChoiceBox2" prefHeight="27.0" prefWidth="191.0">
+                     <GridPane.margin>
+                        <Insets left="850.0" top="300.0" />
+                     </GridPane.margin>
+                  </ChoiceBox>
                </children>
             </GridPane>
          </center></BorderPane>

@@ -102,6 +102,7 @@ public class WeeklyTrendsController implements Initializable {
             //Calculate duration of activities during selected time period
             ArrayList<Double> durationList = new ArrayList();
             ArrayList<Double> durationWeeklyList = new ArrayList();
+            ArrayList<Double> durationPercentageList = new ArrayList();
             
             for(int i = 0; i<numWeeks; i++){
                     
@@ -126,9 +127,18 @@ public class WeeklyTrendsController implements Initializable {
                 durationList.add((weekly.getDouble(2)));
             }
             //System.out.println("*"+durationList);
+            durationPercentageList.add(durationList.get(1)/durationWeeklyList.get(1));
         }
+            
             System.out.println("*"+durationWeeklyList);
             System.out.println("*"+durationList);
+            System.out.println("*"+ durationPercentageList);
+            
+            
+//        for (int x =0;x <durationList.size; x++){
+//                double result = durationList[x] / durationWeeklyList[x];
+//                System.out.println(result);
+//        }
             
             try{
         
@@ -137,7 +147,10 @@ public class WeeklyTrendsController implements Initializable {
                     //test output: 
 //                    System.out.println(durationList.get(n));
 //                    System.out.println(durationWeeklyList.get(1));
-//                    System.out.println("*"+Math.round((durationList.get(n)/durationWeeklyList.get(n))*100));
+                    System.out.println("*"+Math.round((durationList.get(n)/durationWeeklyList.get(n))*100));
+                    System.out.println(Math.round((durationList.get(n)/durationWeeklyList.get(1))*100));
+                    System.out.println(n);
+                    System.out.println(i);
                 }   
            
             //System.out.println("*" + durationList);
