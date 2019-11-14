@@ -157,7 +157,7 @@ public class EditEntriesPopUpController implements Initializable {
     }
     @FXML
     private void handleAboutScreen(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"AboutScreen");
+        pageSwitcher.switcher(event,"AboutScreen.fxml");
     }
 
     //To change body of generated methods, choose Tools | Templates.

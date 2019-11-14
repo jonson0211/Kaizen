@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +24,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import kaizen.DataModels.categoryCombo;
+import kaizen.DataModels.pieChartDM;
 import kaizen.UserData.KaizenDatabase;
 
 public class PieChartController implements Initializable {
@@ -83,83 +86,55 @@ public class PieChartController implements Initializable {
     
         //Getting time spent data for piechart
     public PieChart buildPie() throws SQLException{    
-    ResultSet workRs = db.getResultSet("SELECT SUM(DURATION) from TIMESHEETS "
-                    + "WHERE CATEGORYNAME = 'Work' "
-                    );
-        int workCount = workRs.getInt(1);
-            //workLabel.setText(String.valueOf(workRs.getInt(1)));
     
-    ResultSet relationshipsRs = db.getResultSet("SELECT SUM(DURATION) from TIMESHEETS "
-                    + "WHERE CATEGORYNAME = 'Relationships' "
-                    );
-        int relationshipCount = relationshipsRs.getInt(1);
-            //relationshipsLabel.setText(String.valueOf(relationshipsRs.getInt(1)));
-
-    ResultSet wellnessRs = db.getResultSet(
-            "SELECT SUM(DURATION) from TIMESHEETS "
-                    + "WHERE CATEGORYNAME = 'Wellness' "
-                    );
-        int wellnessCount = wellnessRs.getInt(1);
-            //wellnessLabel.setText(String.valueOf(wellnessRs.getInt(1))); 
+    ArrayList<String> catData = new ArrayList();    
+    ArrayList<Double> durationData = new ArrayList();
+    ArrayList<Double> durationTotal = new ArrayList();
+   
     
-    ResultSet relaxationRs = db.getResultSet(
-            "SELECT SUM(DURATION) from TIMESHEETS "
-                    + "WHERE CATEGORYNAME = 'Relaxation' "
-                    );
-        int relaxationCount = relaxationRs.getInt(1);
-            //relaxationLabel.setText(String.valueOf(relaxationRs.getInt(1)));
-                
-    ResultSet projectsRs = db.getResultSet(
-            "SELECT SUM(DURATION) from TIMESHEETS "
-                    + "WHERE CATEGORYNAME = 'Projects' "
-                    );
-        int projectsCount = projectsRs.getInt(1);
-            //projectsLabel.setText(String.valueOf(projectsRs.getInt(1))); 
-            
-    ResultSet dailyRs = db.getResultSet(
-            "SELECT SUM(DURATION) from TIMESHEETS "
-                    + "WHERE CATEGORYNAME = 'Daily' "
-                    );
-        int dailyCount = dailyRs.getInt(1);
-            //dailyLabel.setText(String.valueOf(dailyRs.getInt(1)));        
-        
-    double totalDuration = (workRs.getInt(1)
-            +relationshipsRs.getInt(1)
-            +projectsRs.getInt(1)
-            +wellnessRs.getInt(1)
-            +dailyRs.getInt(1)
-            +relaxationRs.getInt(1));
+    ResultSet rsCategoryData = db.getResultSet("SELECT DISTINCT(CATEGORYNAME)"
+                    + " FROM TIMESHEETS GROUP BY CATEGORYNAME");    
+    while(rsCategoryData.next()){
+        catData.add(rsCategoryData.getString(1));
+    }
     
-    System.out.println( "*" + Math.round((workRs.getInt(1)/totalDuration)*100) );
-    
+    ResultSet rsCategoryData1 = db.getResultSet("SELECT CATEGORYNAME, SUM(DURATION)"
+                    + " FROM TIMESHEETS GROUP BY CATEGORYNAME");    
+    while(rsCategoryData1.next()){
+        durationData.add(rsCategoryData1.getDouble(2));
+    }
+  
     ResultSet totalDuration1=db.getResultSet("SELECT SUM(DURATION) from TIMESHEETS");
-                double totalDurationSum = totalDuration1.getInt(1);
+          while(totalDuration1.next()){
+              durationTotal.add(totalDuration1.getDouble(1));
+          }
+          
+    double totalDurationSum = durationTotal.get(0);
     
-                System.out.println(workRs.getInt(1));
-    System.out.println(workRs.getInt(1)/totalDurationSum);
-    System.out.println(totalDuration);
-    System.out.println("*" + projectsRs.getInt(1));
+    ObservableList<pieChartDM> categoryDurationList = FXCollections.observableArrayList();
+    
+    //ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
     
     
         try {
                 lifePieChart.getData().clear();
-                ObservableList<PieChart.Data> lifePieChartData = FXCollections.observableArrayList(
-                    new PieChart.Data("Work " + (Math.round((workRs.getInt(1)/totalDuration)*100)) + "%"
-                            + " (" + (Math.round((workRs.getInt(1)/60))) + " hours)", workRs.getInt(1)),
-                    new PieChart.Data("Relationships " + Math.round((relationshipsRs.getInt(1)/totalDuration)*100) + "%"
-                            + " (" + (Math.round((relationshipsRs.getInt(1)/60))) + " hours)", relationshipsRs.getInt(1)),
-                    new PieChart.Data("Projects " + Math.round((projectsRs.getInt(1)/totalDuration)*100) + "%"
-                            + " (" + (Math.round((projectsRs.getInt(1)/60))) + " hours)", projectsRs.getInt(1)),
-                    new PieChart.Data("Wellness " + Math.round((wellnessRs.getInt(1)/totalDuration)*100) + "%"
-                            + " (" + (Math.round((wellnessRs.getInt(1)/60))) + " hours)", wellnessRs.getInt(1)),
-                    new PieChart.Data("Daily "+ Math.round((dailyRs.getInt(1)/totalDuration)*100) + "%"
-                            + " (" + (Math.round((dailyRs.getInt(1)/60))) + " hours)", dailyRs.getInt(1)),
-                    new PieChart.Data("Relaxation " + Math.round((relaxationRs.getInt(1)/totalDuration)*100) + "%"
-                            + " (" + (Math.round((relaxationRs.getInt(1)/60))) + " hours)", relaxationRs.getInt(1)));
-                                      
-                    //System.out.println("Test");
+                ObservableList<PieChart.Data> lifePieChartData = FXCollections.observableArrayList();   
+                for(int i=0; i<catData.size(); i++){
+                
+                    lifePieChartData.add(new PieChart.Data(
+                    catData.get(i) + " - "
+                    + Math.round(durationData.get(i)/60)  
+                    + " hours (" 
+                    + Math.round((durationData.get(i)/totalDurationSum)*100)
+                            + "%)", 
+                    durationData.get(i)
+                    ));
+                }
                 lifePieChart.setData(lifePieChartData);
-        
+                
+                
+                
+                
 //colors - please REFERENCE BLAIR'S DEMO IN THE ABOUT SCREEN WHEN WE FINISH- taken straight from the demo:       
         String[] pieColors = {"#80bfff", "#cc99ff", "#ccffff", "#80ff80", "#ff80ff","#ffb84d","9999ff"};
         int i = 0;
@@ -191,7 +166,28 @@ public class PieChartController implements Initializable {
     }
     
     
-    //switch to daily learnings
+    
+    public ObservableList<pieChartDM> getPieData(){
+        
+        ObservableList<pieChartDM> categoryDurationList = FXCollections.observableArrayList();
+        
+        try {
+            ResultSet rsCategoryComboTable = db.getResultSet("SELECT CATEGORYNAME, SUM(DURATION)"
+                    + " FROM TIMESHEETS GROUP BY CATEGORYNAME");
+            
+            
+            
+            while (rsCategoryComboTable.next()){
+                categoryDurationList.add(new pieChartDM(rsCategoryComboTable.getString(1),rsCategoryComboTable.getInt(2)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return FXCollections.observableArrayList(categoryDurationList);
+    }
+    
+    
+    
     @FXML
     private void handlePopUpScreenAction(ActionEvent event) throws IOException {
         try {

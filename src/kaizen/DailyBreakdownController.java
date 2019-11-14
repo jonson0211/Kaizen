@@ -78,9 +78,9 @@ public class DailyBreakdownController implements Initializable {
             LocalDate date = dailyChartDtPicker.getValue();
             
             XYChart.Series<String, Number> dailySeries = new XYChart.Series<String,Number>();
-            ResultSet daily = db.getResultSet("SELECT ACTIVITY, DURATION FROM TIMESHEETS "
+            ResultSet daily = db.getResultSet("SELECT ACTIVITY, SUM(DURATION) FROM TIMESHEETS "
                     + "WHERE DATE = '" + date + "' "
-                    + "ORDER BY DURATION LIMIT 5");
+                    + "GROUP BY ACTIVITY ORDER BY DURATION LIMIT 5");
            
             
 //            ArrayList<String> categoryNameList = new ArrayList();
