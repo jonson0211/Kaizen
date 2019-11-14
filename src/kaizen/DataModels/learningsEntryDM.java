@@ -50,6 +50,7 @@ public class learningsEntryDM {
     }
     public void setImprovements(String improvements){
         this.improvements.set(improvements);
-    }   
+    }
+    
     
 }
