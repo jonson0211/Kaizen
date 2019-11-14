@@ -86,43 +86,56 @@ public class KaizenDatabase {
             rs = dbmd.getTables(null, null, "CATEGORY", null);
             if (!rs.next()) {
                 createCategoryTable = conn.prepareStatement("CREATE TABLE CATEGORY ("
-                        + "CATEGORYNAME TEXT PRIMARY KEY,"
+                        + "CATEGORYID STRING PRIMARY KEY,"
+                        + "CATEGORYNAME TEXT,"
                         + "COLOUR TEXT"                        
                         +");");
                 createCategoryTable.execute();
                 System.out.println("CATEGORY table created");
-                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
-                        + "VALUES ('Work',"
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYID,CATEGORYNAME, COLOUR) "
+                        + "VALUES ('"
+                        + "1',"
+                        + "'Work',"
                         + "'RED')"
                         //+ "'#80bfff')"
                 );
                 createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
-                        + "VALUES ('Wellness',"
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYID,CATEGORYNAME, COLOUR) "
+                        + "VALUES ('"
+                        + "2',"
+                        + "'Wellness',"
                         +"'GREEN')"
                         //+ "'#80ff80')"
                 );
                 createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
-                        + "VALUES ('Relationships',"
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYID,CATEGORYNAME, COLOUR) "
+                        + "VALUES ('"
+                        + "3',"
+                        + "'Relationships',"
                         + "'BLUE'"
                         //+ "'#cc99ff'"
                         + ")");
                 createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
-                        + "VALUES ('Projects',"
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYID,CATEGORYNAME, COLOUR) "
+                        + "VALUES ('"
+                        + "4',"
+                        + "'Projects',"
                         +"'YELLOW'"
                         //+ "'#ccffff'"
                         + ")");
                 createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
-                        + "VALUES ('Daily',"
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYID,CATEGORYNAME, COLOUR) "
+                        + "VALUES ("
+                        + "'5',"
+                        + "'Daily',"
                         +"'MAGENTA'"
                         //+ "'#ff80ff'"
                         + ")");
                 createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
-                        + "VALUES ('Relaxation',"
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYID,CATEGORYNAME, COLOUR) "
+                        + "VALUES ("
+                        + "'6',"
+                        + "'Relaxation',"
                         +"'PURPLE'"
                         //+ "'#ffb84d'"
                         + ")");
