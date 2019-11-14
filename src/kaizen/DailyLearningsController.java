@@ -208,7 +208,7 @@ public class DailyLearningsController {
 
     @FXML
     private void handleAdd(ActionEvent event){
-        String date = datePick.getValue().format(DateTimeFormatter.ofPattern("dd/MM/YYYY"));
+        String date = datePick.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         String did_well = answerOne.getValue();
         String be_better = answerTwo.getValue();
         
@@ -220,8 +220,8 @@ public class DailyLearningsController {
             System.out.println("learnings update failed");
             e.printStackTrace();
         }
-    }
-    @FXML
+    
+/*    @FXML
     private void updateAnswers(ActionEvent event) throws SQLException{
         String answerOneString = (String) answerOne.getValue();
         String answerTwoString = (String) answerTwo.getValue();
@@ -229,7 +229,7 @@ public class DailyLearningsController {
         
         userLearn.insertStatement("INSERT INTO LEARNINGS(DATE, DID_WELL, BE_BETTER) VALUES ('" + date + "', '" + answerOneString + "', '" + answerTwoString + "');");
         System.out.println("Entered in learnings");
-        confirmEntry.setVisible(true);
+        confirmEntry.setVisible(true);*/
         
     //to do - update combo box values
     }
