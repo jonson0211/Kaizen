@@ -23,6 +23,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import kaizen.DataModels.categoryTableDM;
@@ -73,47 +75,54 @@ public class SettingsController implements Initializable {
     private GridPane grid;
     @FXML
     private Button tsBtn;
+    @FXML private Button deleteButton;
+    @FXML private Button editButton;
 
     @FXML
-    private TableView<categoryTableDM> catView;
+    public TableView<categoryTableDM> catView;
     public static TableView<categoryTableDM> catView_2;
 
     @FXML
     private TableColumn<categoryTableDM, String> colourClm;
     @FXML
     private TableColumn<categoryTableDM, String> categoryClm;
+    @FXML private TableColumn<categoryTableDM, String> IDClm;
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        catView_2 = catView;
-        catView.setVisible(true);
-        catView.setItems(this.getCategoryData());
-
-        categoryClm.setCellValueFactory(cellData -> cellData.getValue().getCategoryNameProperty());
-        colourClm.setCellValueFactory(cellData -> cellData.getValue().getCategoryColourProperty());
+        initTable();
+        loadData();
+        
+//        catView_2 = catView;
+//        catView.setVisible(true);
+//        catView.setItems(this.getCategoryData());
+//
+//        categoryClm.setCellValueFactory(cellData -> cellData.getValue().getCategoryNameProperty());
+//        colourClm.setCellValueFactory(cellData -> cellData.getValue().getCategoryColourProperty());
 
     }
 
-    @FXML
-    private void deleteRow(ActionEvent event) {
-        categoryTableDM selected = catView.getSelectionModel().getSelectedItem();
-
-        try {
-            db.insertStatement("DELETE FROM CATEGORY WHERE CATEGORYNAME = '" + selected.getCategoryNameProperty() + "' "
-                    + "AND COLOUR = '" + selected.getCategoryColourProperty() + "'"
-                    );
-        } catch (Exception e) {
-            System.out.println("Can't delete from database!");
-            e.printStackTrace();
-        }
-        try {
-            catView.getItems().removeAll(catView.getSelectionModel().getSelectedItem());
-        } catch (Exception e) {
-            System.out.println("Can't remove from table");
-            e.printStackTrace();
-        }
-    }
+//    @FXML
+//    private void deleteRow(ActionEvent event) {
+//        categoryTableDM selected = catView.getSelectionModel().getSelectedItem();
+//
+//        try {
+//            db.insertStatement("DELETE FROM CATEGORY WHERE CATEGORYNAME = '" + selected.getCategoryNameProperty() + "' "
+//                    + "AND COLOUR = '" + selected.getCategoryColourProperty() + "'"
+//                    );
+//        } catch (Exception e) {
+//            System.out.println("Can't delete from database!");
+//            e.printStackTrace();
+//        }
+//        try {
+//            catView.getItems().removeAll(catView.getSelectionModel().getSelectedItem());
+//        } catch (Exception e) {
+//            System.out.println("Can't remove from table");
+//            e.printStackTrace();
+//        }
+//    }
 
 //    @FXML
 //    private void editRow(ActionEvent event) {
@@ -142,23 +151,123 @@ public class SettingsController implements Initializable {
 //
 //    }
 
-    public ObservableList<categoryTableDM> getCategoryData() {
+//    public ObservableList<categoryTableDM> getCategoryData() {
+//
+//        ObservableList<categoryTableDM> cat = FXCollections.observableArrayList();
+//
+//        try {
+//            ResultSet rs = db.getResultSet("SELECT * FROM CATEGORY");
+//
+//            while (rs.next()) {
+//                cat.add(new categoryTableDM(rs.getString("CATEGORYNAME"), rs.getString("COLOUR")
+//                ));
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return FXCollections.observableArrayList(cat);
+//    }
 
-        ObservableList<categoryTableDM> cat = FXCollections.observableArrayList();
+    private void initTable(){
+        initCols();
+    }
+    private void initCols(){
+        categoryClm.setCellValueFactory(new PropertyValueFactory<>("categoryName"));
+        colourClm.setCellValueFactory(new PropertyValueFactory<>("colour"));
+        IDClm.setCellValueFactory(new PropertyValueFactory<>("categoryID"));
 
+        editableCols();
+        
+    }
+    private void editableCols(){
+        categoryClm.setCellFactory(TextFieldTableCell.forTableColumn());
+        categoryClm.setOnEditCommit(e->{
+                e.getTableView().getItems().get(e.getTablePosition().getRow()).setCategoryName(e.getNewValue());
+        });
+        
+        colourClm.setCellFactory(TextFieldTableCell.forTableColumn());
+        colourClm.setOnEditCommit(e->{
+                e.getTableView().getItems().get(e.getTablePosition().getRow()).setColour(e.getNewValue());
+        });
+        
+        IDClm.setCellFactory(TextFieldTableCell.forTableColumn());
+        IDClm.setOnEditCommit(e->{
+                e.getTableView().getItems().get(e.getTablePosition().getRow()).setCategoryID(e.getNewValue());
+        });
+        
+        catView.setEditable(true);
+    }
+    
+    private void loadData(){
+        ObservableList<categoryTableDM> data_table = FXCollections.observableArrayList();
+        
         try {
             ResultSet rs = db.getResultSet("SELECT * FROM CATEGORY");
 
             while (rs.next()) {
-                cat.add(new categoryTableDM(rs.getString("CATEGORYNAME"), rs.getString("COLOUR")
+                data_table.add(new categoryTableDM(rs.getString("CATEGORYID"), rs.getString("CATEGORYNAME"), rs.getString("COLOUR")
                 ));
+                System.out.println(rs.getString("CATEGORYID"));
             }
         } catch (SQLException ex) {
             Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return FXCollections.observableArrayList(cat);
+        
+        
+        catView.setItems(data_table);
     }
-
+    @FXML
+    private void deleteData(ActionEvent event)throws IOException{
+    
+            categoryTableDM selected = catView.getSelectionModel().getSelectedItem();
+        
+        try{
+            db.insertStatement("DELETE FROM CATEGORY WHERE "
+                    +"CATEGORYID = '" + selected.getCategoryID() 
+                    + "' AND CATEGORYNAME = '"+ selected.getCategoryName()
+                    + "' AND COLOUR = '"+selected.getColour()+ "'");
+        } catch (Exception e) {
+            System.out.println("Can't delete from database!");
+            e.printStackTrace();
+        }
+        try{
+            catView.getItems().removeAll(catView.getSelectionModel().getSelectedItem());
+        } catch(Exception e){
+            System.out.println("can't remove from table");
+            e.printStackTrace();
+        }
+            
+                
+    }
+    @FXML
+    private void editData(ActionEvent event)throws IOException{
+    
+            categoryTableDM selected = catView.getSelectionModel().getSelectedItem();
+            
+        try{
+            db.insertStatement("UPDATE CATEGORY "
+                    + "SET CATEGORYNAME = '" + selected.getCategoryName()+ "'"
+                    + ", COLOUR = '" +selected.getColour()+ "'"
+                    + " WHERE CATEGORYID = " + selected.getCategoryID());
+            
+            System.out.println(selected.getCategoryName());
+            System.out.println(selected.getColour());
+            System.out.println(selected.getCategoryID());
+            
+        } catch (Exception e) {
+            System.out.println("Can't update from database!");
+            e.printStackTrace();
+        }
+        try{
+            //catView.getItems().removeAll(catView.getSelectionModel().getSelectedItem());
+        } catch(Exception e){
+            System.out.println("Can't update from table");
+            e.printStackTrace();
+        }
+            
+                
+    }
+    
     //switch to daily learnings
     @FXML
     private void handlePopUpEditCategories(ActionEvent event) throws IOException {

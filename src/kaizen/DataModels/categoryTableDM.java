@@ -7,38 +7,56 @@ package kaizen.DataModels;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.scene.control.Button;
+import kaizen.SettingsController;
+import kaizen.UserData.KaizenDatabase;
 
 /**
  *
  * @author lienzhu
  */
 public class categoryTableDM {
-
-    private StringProperty categoryName;
-    private StringProperty colour;
     
-    public categoryTableDM(String categoryName, String categoryColour) {
-        this.categoryName = new SimpleStringProperty(categoryName);
-        this.colour = new SimpleStringProperty(categoryColour);
+    
+    
+    private String categoryName;
+    private String colour;
+    private String categoryID;
+
+    
+    
+    public categoryTableDM(String categoryID, String categoryName, String categoryColour) {
+        this.categoryName = categoryName;
+        this.colour = categoryColour;
+        this.categoryID = categoryID;
+        
+        
     }
 
-      
-    
-    public StringProperty getCategoryNameProperty() {
+
+    public String getCategoryID() {
+        return categoryID;
+    }
+
+    public void setCategoryID(String categoryID) {
+        this.categoryID = categoryID;
+    }
+
+    public String getCategoryName() {
         return categoryName;
     }
 
-    public void setCategoryName(StringProperty categoryName) {
+    public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
 
-    public StringProperty getCategoryColourProperty() {
+    public String getColour() {
         return colour;
     }
 
-    public void setColour(StringProperty colour) {
+    public void setColour(String colour) {
         this.colour = colour;
     }
-  
 
+    
 }

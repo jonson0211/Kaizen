@@ -57,10 +57,13 @@
             <Label layoutX="180.0" layoutY="116.0" styleClass="small-label" text="Edit Preferences" />
             <TableView fx:id="catView" layoutX="106.0" layoutY="185.0" prefHeight="275.0" prefWidth="275.0">
               <columns>
-                <TableColumn fx:id="categoryClm" prefWidth="140.0" resizable="false" text="Category" />
-                <TableColumn fx:id="colourClm" prefWidth="134.0" resizable="false" text="Colour" />
+                <TableColumn fx:id="IDClm" minWidth="0.0" prefWidth="2.0" resizable="false" text="ID" />
+                <TableColumn fx:id="categoryClm" prefWidth="134.0" resizable="false" text="Category" />
+                  <TableColumn fx:id="colourClm" prefWidth="137.0" resizable="false" text="Colour" />
               </columns>
             </TableView>
+            <Button fx:id="deleteButton" layoutX="106.0" layoutY="473.0" mnemonicParsing="false" onAction="#deleteData" text="Delete" />
+            <Button fx:id="editButton" layoutX="186.0" layoutY="473.0" mnemonicParsing="false" onAction="#editData" text="Update" />
          </children>
       </AnchorPane>
    </center>
