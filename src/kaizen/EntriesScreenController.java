@@ -161,13 +161,13 @@ public class EntriesScreenController implements Initializable {
                 }
 
                 EditEntriesPopUpController a = Loader.getController();
-                a.setData(""+entriesView.getSelectionModel().getSelectedItem().getDate(),
-                        entriesView.getSelectionModel().getSelectedItem().getActivity(), 
-                        entriesView.getSelectionModel().getSelectedItem().getStart(), 
-                        entriesView.getSelectionModel().getSelectedItem().getEnd(), 
+                a.setData(""+entriesView.getSelectionModel().getSelectedItem().getActivity(),
+                        entriesView.getSelectionModel().getSelectedItem().getCategory(), 
+                        entriesView.getSelectionModel().getSelectedItem().getDate(), 
+                        entriesView.getSelectionModel().getSelectedItem().getDesc(), 
                         entriesView.getSelectionModel().getSelectedItem().getDuration(), 
-                        entriesView.getSelectionModel().getSelectedItem().getDesc(),
-                        ""+entriesView.getSelectionModel().getSelectedItem().getCategory());
+                        entriesView.getSelectionModel().getSelectedItem().getStart(),
+                        ""+entriesView.getSelectionModel().getSelectedItem().getEnd());
                 Parent p = Loader.getRoot();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(p));

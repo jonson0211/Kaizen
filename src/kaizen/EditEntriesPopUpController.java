@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -82,18 +83,42 @@ public class EditEntriesPopUpController implements Initializable {
     activityComboBox.setEditable(true);
     
     }
-    public void setData(String activity , String category, String date, String description, Integer duration, String timeStart, String timeEnd) {
-        categoryComboBox.setValue(category);
-        activityComboBox.setValue(activity);
+    public void setData(String string, String category, String date, String description, Integer duration, String timeStartHr, String timeEndHr) {
+        activityComboBox.setValue(string);
+        categoryComboBox.setValue(category);    
+        DtPicker.setUserData(date);
+        
+        descriptionText.setText(description);
         durationLabel.setUserData(duration);
-        timeStartHrField.setUserData(timeStart);
-        timeStartMinField.setUserData(timeStart);
-        timeEndHrField.setText(timeEnd);
-        timeEndMinField.setText(timeEnd);
+               
+        timeStartHrField.setUserData(timeStartHr);        
+        timeEndHrField.setText(timeEndHr);
+        
         //To change body of generated methods, choose Tools | Templates.
    
+        }    
     
-    }    
+    @FXML
+    private void handleSubmit(ActionEvent event) throws SQLException{
+        String act = activityComboBox.getValue();
+        String category = categoryComboBox.getValue();
+        LocalDate date = DtPicker.getValue();
+        String desc = descriptionText.getText();
+        String dur = durationLabel.getText();
+        String stHr = timeStartHrField.getText();
+        String stMin = timeStartMinField.getText();
+        String endHr = timeEndHrField.getText();
+        String endMin = timeEndMinField.getText();
+        
+        addTimesheet.insertStatement("UPDATE TIMESHEETS"
+                + " SET CATEGORYNAME = '"+ category +"'"
+                + " AND ACTIVITY = '"+act+"' "
+                + "AND DATE = '"+date+"'"
+                + "AND DESCR = '"+desc+"'"
+                + "AND ");
+                
+        
+    }
    
       
         
@@ -135,6 +160,9 @@ public class EditEntriesPopUpController implements Initializable {
         pageSwitcher.switcher(event,"AboutScreen");
     }
 
+    //To change body of generated methods, choose Tools | Templates.
+    }
+
     
  
-}
+
