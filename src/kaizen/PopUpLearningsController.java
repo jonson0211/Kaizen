@@ -64,7 +64,8 @@ public class PopUpLearningsController {
     private Button submit;
     @FXML
     private Label confirm;
-    @FXML private TextField id;
+    @FXML private TableColumn<learningsEntryDM, Number> id;
+    @FXML private TextField pKey;
 
     KaizenDatabase db = new KaizenDatabase();
 
@@ -83,10 +84,10 @@ public class PopUpLearningsController {
         List<learningsEntryDM> report = FXCollections.observableArrayList();
 
         try {
-            ResultSet tableRs = db.getResultSet("SELECT * FROM LEARNINGS ORDER BY DATE DESC");
+            ResultSet tableRs = db.getResultSet("SELECT * FROM LEARNINGS");
 
             while (tableRs.next()) {
-                report.add(new learningsEntryDM(tableRs.getString("DATE"), tableRs.getString("DID_WELL"), tableRs.getString("BE_BETTER")));
+                report.add(new learningsEntryDM(tableRs.getString("DATE"), tableRs.getString("DID_WELL"), tableRs.getString("BE_BETTER"), tableRs.getInt("LEARNINGS_ID")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -104,7 +105,7 @@ public class PopUpLearningsController {
     private void handleRefresh(MouseEvent event) throws IOException {
     }
     
-/*    private void refreshPage() {
+ /*   private void refreshPage() {
         try{
             loadTable();
         }catch(Exception e){
@@ -116,7 +117,8 @@ public class PopUpLearningsController {
         date.setCellValueFactory(new PropertyValueFactory<learningsEntryDM, String>("DATE"));
         achievements.setCellValueFactory(new PropertyValueFactory<learningsEntryDM, String>("DID_WELL"));
         improvements.setCellValueFactory(new PropertyValueFactory<learningsEntryDM, String>("BE_BETTER"));
-        entries.setItems(getReport()); */
+        entries.setItems(getReport()); 
+    } */
     
 
     @FXML
@@ -126,7 +128,8 @@ public class PopUpLearningsController {
         try {
             setData(entries.getSelectionModel().getSelectedItem().getDate(),
                     entries.getSelectionModel().getSelectedItem().getAchievements(),
-                    entries.getSelectionModel().getSelectedItem().getImprovements());
+                    entries.getSelectionModel().getSelectedItem().getImprovements(),
+                    entries.getSelectionModel().getSelectedItem().getPk());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -137,9 +140,9 @@ public class PopUpLearningsController {
     private void handleDelete(ActionEvent event) {
         learningsEntryDM delete = entries.getSelectionModel().getSelectedItem();
         try {
-            db.insertStatement("DELETE FROM TIMESHEETS WHERE DATE = '" + delete.getDate() + "' "
-                    + "AND CATEGORYNAME = '" + delete.getAchievements() + "'"
-                    + " AND ACTIVITY = '" + delete.getImprovements() + "'");
+            db.insertStatement("DELETE FROM LEARNINGS WHERE DATE = '" + delete.getDate() + "' "
+                    + "AND DID_WELL = '" + delete.getAchievements() + "'"
+                    + " AND BE_BETTER = '" + delete.getImprovements() + "'");
         } catch (Exception e) {
             System.out.println("Can't delete from database!");
             e.printStackTrace();
@@ -156,14 +159,15 @@ public class PopUpLearningsController {
     @FXML
     private void editLearning(ActionEvent event) {
         String date = datePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        Object a = achieveBox.getValue();
-        Object i = improveBox.getValue();
-
+        String a = (String) achieveBox.getValue();
+        String i = (String) improveBox.getValue();
+        String z = (String) pKey.getText();
+        
         try {
             db.insertStatement("UPDATE LEARNINGS SET "
                     + "DATE = '" + date + "' "
-                    + "AND DID_WELL = '" + a + "' "
-                    + "AND BE_BETTER = '" + i + "'");
+                    + ",DID_WELL = '" + a + "' "
+                    + ",BE_BETTER = '" + i + "' WHERE LEARNINGS_ID = '"+ z +"'");
         } catch (SQLException ex) {
             Logger.getLogger(PopUpLearningsController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -172,11 +176,14 @@ public class PopUpLearningsController {
 
     }
 
-    public void setData(String date, String achievements, String improvements) {
+    public void setData(String date, String achievements, String improvements, Integer pk) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate myLocalDate = LocalDate.parse(date, formatter);
         datePicker.setValue(myLocalDate);
         achieveBox.setValue(achievements);
-        improveBox.setValue(improvements);       
+        improveBox.setValue(improvements);  
+        Integer.toString(pk);
+        String number = String.valueOf(pk);
+        id.setText(number);
     }
 }

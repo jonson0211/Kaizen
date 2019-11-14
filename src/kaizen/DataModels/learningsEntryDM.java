@@ -18,11 +18,13 @@ public class learningsEntryDM {
     private StringProperty date;
     private StringProperty achievements;
     private StringProperty improvements;
+    private IntegerProperty pk;
     
-    public learningsEntryDM(String date, String achievements, String improvements){
+    public learningsEntryDM(String date, String achievements, String improvements, Integer pk){
         this.date = new SimpleStringProperty(date);
         this.achievements = new SimpleStringProperty(achievements);
         this.improvements = new SimpleStringProperty(improvements);
+        this.pk = new SimpleIntegerProperty(pk);
     }
     
     public String getDate(){
@@ -51,6 +53,15 @@ public class learningsEntryDM {
     }
     public void setImprovements(String improvements){
         this.improvements.set(improvements);
+    }
+    public Integer getPk(){
+       return pk.get(); 
+    }
+    public IntegerProperty getPkProperty(){
+        return pk;
+    }
+    public void setPk(Integer pk){
+        this.pk.set(pk);
     }
     
 }
