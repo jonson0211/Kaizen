@@ -55,8 +55,8 @@
             <Label layoutX="20.0" layoutY="20.0" prefHeight="53.0" prefWidth="330.0" styleClass="large-label" stylesheets="@stylesheet.css" text="It's time to focus." />
             <Label layoutX="20.0" layoutY="70.0" prefHeight="40.0" prefWidth="400.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Choose a task, set the mood and focus." />
             <Separator layoutX="50.0" layoutY="195.0" prefHeight="2.0" prefWidth="980.0" style="-fx-background-color: 000000;" stylesheets="@stylesheet.css" />
-            <Separator layoutX="539.0" layoutY="145.0" orientation="VERTICAL" prefHeight="40.0" prefWidth="2.0" stylesheets="@stylesheet.css" />
-            <Separator layoutX="539.0" layoutY="203.0" orientation="VERTICAL" prefHeight="420.0" prefWidth="2.0" stylesheets="@stylesheet.css" />
+            <Separator layoutX="539.0" layoutY="145.0" orientation="VERTICAL" prefHeight="40.0" prefWidth="1.0" stylesheets="@stylesheet.css" />
+            <Separator layoutX="539.0" layoutY="203.0" orientation="VERTICAL" prefHeight="480.0" prefWidth="1.0" stylesheets="@stylesheet.css" />
             <ImageView fitHeight="40.0" fitWidth="471.0" layoutX="559.0" layoutY="145.0" pickOnBounds="true" style="-fx-opacity: 0.9;" styleClass="menu-panel">
                <image>
                   <Image url="@Resources/mood-toggle-background.png" />
@@ -65,15 +65,19 @@
             <ToggleButton fx:id="moodOne" layoutX="559.0" layoutY="145.0" mnemonicParsing="false" onAction="#handleMoodOne" prefHeight="40.0" prefWidth="157.0" styleClass="mood-toggle" stylesheets="@stylesheet.css" text="Gentle Piano" />
             <ToggleButton fx:id="moodTwo" layoutX="716.0" layoutY="145.0" mnemonicParsing="false" onAction="#handleMoodTwo" prefHeight="40.0" prefWidth="157.0" styleClass="mood-toggle" stylesheets="@stylesheet.css" text="Café Jazz" />
             <ToggleButton fx:id="moodThree" layoutX="873.0" layoutY="145.0" mnemonicParsing="false" onAction="#handleMoodThree" prefHeight="40.0" prefWidth="157.0" styleClass="mood-toggle" stylesheets="@stylesheet.css" text="Folk Guitar" />
-            <Label layoutX="50.0" layoutY="105.0" prefHeight="40.0" prefWidth="196.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Select Task Category" />
-            <Label layoutX="299.0" layoutY="110.0" prefHeight="40.0" prefWidth="196.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Select Task" />
+            <Label layoutX="50.0" layoutY="105.0" prefHeight="40.0" prefWidth="195.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Select Task Category" />
+            <Label layoutX="265.0" layoutY="110.0" prefHeight="40.0" prefWidth="195.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Select Task" />
             <Label layoutX="559.0" layoutY="110.0" prefHeight="40.0" prefWidth="196.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Select Mood" />
-            <ChoiceBox fx:id="selectTaskCategory" layoutX="50.0" layoutY="145.0" prefHeight="40.0" prefWidth="220.0" styleClass="c-boxes" stylesheets="@stylesheet.css" />
-            <ChoiceBox fx:id="selectTask" layoutX="299.0" layoutY="145.0" prefHeight="40.0" prefWidth="220.0" styleClass="c-boxes" stylesheets="@stylesheet.css" />
+            <ChoiceBox fx:id="selectTaskCategory" layoutX="50.0" layoutY="145.0" prefHeight="40.0" prefWidth="195.0" styleClass="c-boxes" stylesheets="@stylesheet.css" />
+            <ChoiceBox fx:id="selectTask" layoutX="265.0" layoutY="145.0" onMouseEntered="#getTaskChoice" prefHeight="40.0" prefWidth="195.0" styleClass="c-boxes" stylesheets="@stylesheet.css" />
             <Circle fill="DODGERBLUE" layoutX="793.0" layoutY="416.0" radius="200.0" stroke="BLACK" strokeType="INSIDE" />
             <Label fx:id="displayTime" layoutX="618.0" layoutY="368.0" prefHeight="100.0" prefWidth="350.0" styleClass="time-display" stylesheets="@stylesheet.css" />
             <Label fx:id="displayMoonPhase" layoutX="620.0" layoutY="426.0" prefHeight="100.0" prefWidth="350.0" styleClass="moonPhase-display" stylesheets="@stylesheet.css" />
-            <Button fx:id="button" layoutX="409.0" layoutY="78.0" mnemonicParsing="false" onAction="#getTaskChoice" text="Button" />
+            <Button fx:id="button" layoutX="480.0" layoutY="145.0" mnemonicParsing="false" onAction="#getTaskText" prefHeight="40.0" prefWidth="40.0" text="Button" />
+            <Label layoutX="50.0" layoutY="205.0" prefHeight="40.0" prefWidth="200.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Task Title" />
+            <Label fx:id="displayTitle" layoutX="61.0" layoutY="245.0" prefHeight="40.0" prefWidth="458.0" styleClass="small-label" stylesheets="@stylesheet.css" />
+            <Label layoutX="50.0" layoutY="285.0" prefHeight="40.0" prefWidth="200.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Task Description" />
+            <Label fx:id="displayDescription" layoutX="61.0" layoutY="325.0" prefHeight="360.0" prefWidth="458.0" styleClass="small-label" stylesheets="@stylesheet.css" />
          </children>
       </Pane>
    </right>

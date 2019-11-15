@@ -77,11 +77,17 @@ public class DeepFocusModeController implements Initializable {
     @FXML
     private Button button;
 
+    //@FXML
+    //private Button button2;
+
     ObservableList<taskCategoryChoice> taskCategoryChoiceList = FXCollections.observableArrayList();
     // ObservableList<taskChoice> taskChoiceList = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        displayTitle.setVisible(false);
+        displayDescription.setVisible(false);
 
         //Print feedback
         System.out.println("Loading DeepFocusMode Default Screen");
@@ -116,37 +122,18 @@ public class DeepFocusModeController implements Initializable {
             System.out.println(a.getTaskCategoryChoiceProperty());
             selectTaskCategory.getItems().addAll(a.getTaskCategoryChoice());
         }
-
-        /*
-        //Set up task:
-        taskChoiceList.setAll(this.getTaskChoice());
-        for (taskChoice a : taskChoiceList) {
-            System.out.println(a.getTaskChoiceProperty());
-            selectTask.getItems().addAll(a.getTaskChoice());
-        }
-         */
- /*
-        //Display task title and description on left pane 
-        String currentTask = selectTask.getValue();
-                displayTitle.setVisible(true);
-                displayTitle.setText(currentTask);
-                
-                displayDescription.setVisible(true);
-        try {
-            displayDescription.setText(getTaskDescription(currentTask).toString());
-        } catch (SQLException ex) {
-            Logger.getLogger(DeepFocusModeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
     }
-    
-    public ResultSet getTaskDescription(String currentTask) throws SQLException {
-        
-            ResultSet taskDescription = db.getResultSet("SELECT (DESCRIPTION) FROM TASKS WHERE (TITLE) = '" + currentTask + "'");
-        return taskDescription;
-    } 
-         */
+
+    //Display current Task Title and Task Description
+    public void getTaskText() throws SQLException {
+        displayTitle.setVisible(true);
+        String currentTask = selectTask.getValue();
+        System.out.println(currentTask);
+        displayTitle.setText(currentTask);
+        displayDescription.setVisible(true);
+        ResultSet rsDescription = db.getResultSet("SELECT (DESCRIPTION) FROM TASKS WHERE (TITLE)"
+                + " = '" + currentTask + "'");
+        displayDescription.setText(rsDescription.getString("DESCRIPTION"));
     }
 
     //Get Task Category
@@ -178,7 +165,6 @@ public class DeepFocusModeController implements Initializable {
             }
             ResultSet rsTaskChoiceTable = db.getResultSet("SELECT DISTINCT(TITLE) FROM TASKS WHERE (CATEGORYNAME)"
                     + " = '" + selectTaskCategory.getValue() + "'");
-
             while (rsTaskChoiceTable.next()) {
                 System.out.println(rsTaskChoiceTable.getString("TITLE"));
                 taskChoice T = new taskChoice(rsTaskChoiceTable.getString("TITLE"));
@@ -187,7 +173,6 @@ public class DeepFocusModeController implements Initializable {
             for (taskChoice task : taskChoiceList) {
                 selectTask.getItems().addAll(task.getTaskChoice());
             }
-
         } catch (SQLException ex) {
             Logger.getLogger(DeepFocusModeController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -206,6 +191,15 @@ public class DeepFocusModeController implements Initializable {
         }
     }
      */
+    
+    public void testClass() {
+            System.out.println("Test Complete");
+}
+    
+        public void categoryOptionClicked() {
+            System.out.println("Click has been registered");
+}
+    
     @FXML
     private void handleKanbanBoard(ActionEvent event) throws IOException {
         MusicPlaybackHelper.stopMusic();
@@ -251,7 +245,7 @@ public class DeepFocusModeController implements Initializable {
     @FXML
     private void handleMoodOne(ActionEvent event) throws IOException {
         System.out.println("Mood One Selected");
-
+        MusicPlaybackHelper.stopMusic();
         moodOne.getStyleClass().removeAll("mood-toggle", "current-mood-toggle");
         moodTwo.getStyleClass().removeAll("mood-toggle", "current-mood-toggle");
         moodThree.getStyleClass().removeAll("mood-toggle", "current-mood-toggle");
@@ -266,7 +260,7 @@ public class DeepFocusModeController implements Initializable {
     @FXML
     private void handleMoodTwo(ActionEvent event) throws IOException {
         System.out.println("Mood Two Selected");
-
+        MusicPlaybackHelper.stopMusic();
         moodOne.getStyleClass().removeAll("mood-toggle", "current-mood-toggle");
         moodTwo.getStyleClass().removeAll("mood-toggle", "current-mood-toggle");
         moodThree.getStyleClass().removeAll("mood-toggle", "current-mood-toggle");
@@ -281,7 +275,7 @@ public class DeepFocusModeController implements Initializable {
     @FXML
     private void handleMoodThree(ActionEvent event) throws IOException {
         System.out.println("Mood Three Selected");
-
+        MusicPlaybackHelper.stopMusic();
         moodOne.getStyleClass().removeAll("mood-toggle", "current-mood-toggle");
         moodTwo.getStyleClass().removeAll("mood-toggle", "current-mood-toggle");
         moodThree.getStyleClass().removeAll("mood-toggle", "current-mood-toggle");
