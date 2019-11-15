@@ -78,9 +78,12 @@ public class EditTaskPopUpController implements Initializable {
     }
     public void setTaskData(String ID, String title, String category, String doDate, String dueDate, String description, String priority) {
         titleTextField.setText(title);
-        categoryComboBox.setValue(category);    
-        DoDtPicker.setUserData(doDate);
-        DueDtPicker.setUserData(dueDate);
+        categoryComboBox.setValue(category);  
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate doDateParsed = LocalDate.parse(doDate, formatter);
+        DoDtPicker.setValue(doDateParsed);
+        LocalDate dueDateParsed = LocalDate.parse(dueDate, formatter);
+        DueDtPicker.setValue(dueDateParsed);
         IDTextField.setText(ID); 
         descriptionText.setText(description);    
         priorityTextField.setText(priority);        
