@@ -26,16 +26,6 @@ import javafx.stage.Stage;
 import kaizen.DataModels.timesheetsDM;
 import kaizen.UserData.KaizenDatabase;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author jonso
- */
 public class TaskTrackerController implements Initializable {
     
     PageSwitchHelper psh = new PageSwitchHelper();

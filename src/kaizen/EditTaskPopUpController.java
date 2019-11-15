@@ -151,7 +151,6 @@ public class EditTaskPopUpController implements Initializable {
         
         categoryColourShape.setVisible(true);
         
-        //if doesn't work, jsut switch to color.RED etc and change data
         
     } 
 
@@ -198,7 +197,7 @@ public class EditTaskPopUpController implements Initializable {
     }
     @FXML
     private void handleTaskTracker(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"TaskTracker.fxml");//TO CHANGE WHEN PAGE IS MADE
+        pageSwitcher.switcher(event,"TaskTracker.fxml");
     }
     @FXML
     private void handleTimeSheets(ActionEvent event) throws IOException{
@@ -221,7 +220,7 @@ public class EditTaskPopUpController implements Initializable {
         pageSwitcher.switcher(event,"AboutScreen.fxml");
     }
 
-    //To change body of generated methods, choose Tools | Templates.
+    
     }
 
     

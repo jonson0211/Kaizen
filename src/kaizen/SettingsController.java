@@ -77,6 +77,7 @@ public class SettingsController implements Initializable {
     private Button tsBtn;
     @FXML private Button deleteButton;
     @FXML private Button editButton;
+    @FXML private Button addButton;
 
     @FXML
     public TableView<categoryTableDM> catView;
@@ -94,79 +95,9 @@ public class SettingsController implements Initializable {
 
         initTable();
         loadData();
-        
-//        catView_2 = catView;
-//        catView.setVisible(true);
-//        catView.setItems(this.getCategoryData());
-//
-//        categoryClm.setCellValueFactory(cellData -> cellData.getValue().getCategoryNameProperty());
-//        colourClm.setCellValueFactory(cellData -> cellData.getValue().getCategoryColourProperty());
 
     }
 
-//    @FXML
-//    private void deleteRow(ActionEvent event) {
-//        categoryTableDM selected = catView.getSelectionModel().getSelectedItem();
-//
-//        try {
-//            db.insertStatement("DELETE FROM CATEGORY WHERE CATEGORYNAME = '" + selected.getCategoryNameProperty() + "' "
-//                    + "AND COLOUR = '" + selected.getCategoryColourProperty() + "'"
-//                    );
-//        } catch (Exception e) {
-//            System.out.println("Can't delete from database!");
-//            e.printStackTrace();
-//        }
-//        try {
-//            catView.getItems().removeAll(catView.getSelectionModel().getSelectedItem());
-//        } catch (Exception e) {
-//            System.out.println("Can't remove from table");
-//            e.printStackTrace();
-//        }
-//    }
-
-//    @FXML
-//    private void editRow(ActionEvent event) {
-//        FXMLLoader Loader = new FXMLLoader(getClass().getResource("EditEntriesPopUp.fxml"));
-//
-//        try {
-//            Loader.load();
-//        } catch (IOException ex) {
-//            ex.printStackTrace();
-//
-//            Logger.getLogger(EntriesScreenController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        EditEntriesPopUpController a = Loader.getController();
-//        a.setData("" + entriesView.getSelectionModel().getSelectedItem().getDate(),
-//                entriesView.getSelectionModel().getSelectedItem().getActivity(),
-//                entriesView.getSelectionModel().getSelectedItem().getStart(),
-//                entriesView.getSelectionModel().getSelectedItem().getEnd(),
-//                entriesView.getSelectionModel().getSelectedItem().getDuration(),
-//                entriesView.getSelectionModel().getSelectedItem().getDesc(),
-//                "" + entriesView.getSelectionModel().getSelectedItem().getCategory());
-//        Parent p = Loader.getRoot();
-//        Stage stage = new Stage();
-//        stage.setScene(new Scene(p));
-//        stage.show();
-//
-//    }
-
-//    public ObservableList<categoryTableDM> getCategoryData() {
-//
-//        ObservableList<categoryTableDM> cat = FXCollections.observableArrayList();
-//
-//        try {
-//            ResultSet rs = db.getResultSet("SELECT * FROM CATEGORY");
-//
-//            while (rs.next()) {
-//                cat.add(new categoryTableDM(rs.getString("CATEGORYNAME"), rs.getString("COLOUR")
-//                ));
-//            }
-//        } catch (SQLException ex) {
-//            Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return FXCollections.observableArrayList(cat);
-//    }
 
     private void initTable(){
         initCols();
@@ -270,9 +201,9 @@ public class SettingsController implements Initializable {
     
     //switch to daily learnings
     @FXML
-    private void handlePopUpEditCategories(ActionEvent event) throws IOException {
+    private void handlePopUpAddCategory(ActionEvent event) throws IOException {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Timesheets.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddCategory.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
             stage.setTitle("New entry");
@@ -284,20 +215,7 @@ public class SettingsController implements Initializable {
         }
     }
 
-    @FXML
-    private void handlePopUpEditActivities(ActionEvent event) throws IOException {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Timesheets.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setTitle("New entry");
-            stage.setScene(new Scene(root1));
-            stage.show();
-
-        } catch (Exception e) {
-            System.out.println("Cannot load this new window!");
-        }
-    }
+    
 
     @FXML
     private void handleDailyBreakdown(ActionEvent event) throws IOException {
