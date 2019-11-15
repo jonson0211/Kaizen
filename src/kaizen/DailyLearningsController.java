@@ -10,6 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -31,7 +33,10 @@ import kaizen.DataModels.learningsDidWell;
 import kaizen.DataModels.learningsDoBetter;
 import kaizen.UserData.KaizenDatabase;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import javafx.scene.control.Alert;
 import kaizen.DataModels.learningsCombo;
+import kaizen.DataModels.learningsEntryDM;
 /**
  * FXML Controller class
  *
@@ -101,7 +106,9 @@ public class DailyLearningsController {
     private TableColumn<learningsDoBetter, Number> doBetterCount;  
     
     @FXML
-    private Button viewPast;       
+    private Button viewPast;    
+    @FXML private Label warning;
+    @FXML private Button check;
                
     PreparedStatement pst;
     
@@ -128,7 +135,7 @@ public class DailyLearningsController {
         doBetterColumn.setCellValueFactory(cellData -> cellData.getValue().getBeBetterProperty());
         doBetterCount.setCellValueFactory(cellData -> cellData.getValue().getBeBetterCountProperty());
         doBetterView.setItems(this.getLearningsDoBetter());
-        
+        warning.setVisible(false);
         try{
             answerOnes.setAll(this.getComboOne());
             for(learningsCombo c : answerOnes){
@@ -144,16 +151,47 @@ public class DailyLearningsController {
         } catch(SQLException ex){
             ex.printStackTrace();
         }
+        
     }    
     
     //return observable list of done well and do betters
+    @FXML
+    private void checkMissing(ActionEvent event) throws SQLException{
+        //finding most recent learnings_ID
+        ResultSet rs = userLearn.getResultSet("SELECT MAX(LEARNINGS_ID), DATE FROM LEARNINGS");
+        //converting the string to a date
+        LocalDate date = LocalDate.parse(rs.getString("DATE"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        //finding the current date
+        LocalDate currentDate = LocalDate.now();
+        //converting the date format to ours
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        //parsing the date as a String
+        String currentDateString = currentDate.format(formatter);
+        //
+        LocalDate currentDateParsed = LocalDate.parse(currentDateString, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        long daysBetween = ChronoUnit.DAYS.between(currentDateParsed, date);
+        if(daysBetween !=0){
+            try{
+                
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Missing entres!");
+            alert.setHeaderText("You have not entered in learnings since " + date);
+            alert.showAndWait();
+            }catch(Exception ex){
+                Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }else{
+            System.out.println("User has inputted all entries to date!");
+        }
+    }
    
     public ObservableList<learningsDidWell> getLearningsDidWell(){
         
         ObservableList<learningsDidWell> didWellList = FXCollections.observableArrayList();
         
         try {
-            ResultSet rsDidWellTable = userLearn.getResultSet("SELECT DID_WELL, COUNT(DID_WELL) FROM LEARNINGS GROUP BY DID_WELL ORDER BY DATE DESC LIMIT 7");
+            ResultSet rsDidWellTable = userLearn.getResultSet("SELECT DID_WELL, COUNT(DID_WELL) FROM LEARNINGS GROUP BY DID_WELL ORDER BY COUNT(DID_WELL) DESC LIMIT 7");
             
             while (rsDidWellTable.next()){
                 didWellList.add(new learningsDidWell(rsDidWellTable.getString("DID_WELL"), rsDidWellTable.getInt("COUNT(DID_WELL)")));
@@ -169,7 +207,7 @@ public class DailyLearningsController {
         ObservableList<learningsDoBetter> doBetterList = FXCollections.observableArrayList();
         
         try {
-            ResultSet rsDoBetterTable = userLearn.getResultSet("SELECT BE_BETTER, COUNT(BE_BETTER) FROM LEARNINGS GROUP BY BE_BETTER ORDER BY DATE DESC LIMIT 7");
+            ResultSet rsDoBetterTable = userLearn.getResultSet("SELECT BE_BETTER, COUNT(BE_BETTER) FROM LEARNINGS GROUP BY BE_BETTER ORDER BY COUNT(DID_WELL) DESC LIMIT 7");
             
             while (rsDoBetterTable.next()){
                 doBetterList.add(new learningsDoBetter(rsDoBetterTable.getString("BE_BETTER"), rsDoBetterTable.getInt("COUNT(BE_BETTER)")));
