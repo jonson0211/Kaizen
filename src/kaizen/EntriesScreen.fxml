@@ -89,6 +89,11 @@
                   <Insets left="700.0" />
                </GridPane.margin>
             </Button>
+            <Label fx:id="status" prefHeight="26.0" prefWidth="106.0" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="575.0" />
+               </GridPane.margin>
+            </Label>
          </children>
       </GridPane>
    </center>

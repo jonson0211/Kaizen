@@ -21,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleButton;
@@ -57,6 +58,7 @@ public class EntriesScreenController implements Initializable {
     private Button signOut;
     @FXML
     private Button update;
+    @FXML private Label status;
     
     @FXML
     private TableView<timesheetsDM> entriesView;  
@@ -88,7 +90,7 @@ public class EntriesScreenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
+       status.setVisible(false);
         entriesView_2 = entriesView;
         entriesView.setVisible(true);
         entriesView.setItems(this.getEntries());
@@ -142,14 +144,21 @@ public class EntriesScreenController implements Initializable {
                     + "AND CATEGORYNAME = '"+ selected.getCategory()+"'"
                     + " AND ACTIVITY = '"+selected.getActivity()+ "'"
                     + " AND TIMESHEETID = '" + selected.getTimesheetID() + "'");
+            status.setText("Entry deleted!");
+            status.setVisible(true);
         } catch (Exception e) {
             System.out.println("Can't delete from database!");
+            status.setText("Can't delete from database! Please try again.");
+            status.setVisible(true);
             e.printStackTrace();
         }
         try{
             entriesView.getItems().removeAll(entriesView.getSelectionModel().getSelectedItem());
         } catch(Exception e){
             System.out.println("can't remove from table");
+            status.setText("Can't remove from table. Please try again.");
+            status.setVisible(true);
+            
             e.printStackTrace();
         }
     }
