@@ -487,13 +487,13 @@ public class KaizenDatabase {
             createLearnings.execute();
             System.out.println("LEARNINGS table created!");
             insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('2019-11-16', 'went to the gym', 'spend time with family');");
+                    + "VALUES ('2019-11-16', 'Went to the gym', 'Spend time with family');");
             insertDemoData.execute();
             insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('2019-11-15', 'went to the gym', 'picked up java earlier');");
+                    + "VALUES ('2019-11-15', 'Gave good peer reviews', 'Picked up java earlier');");
             insertDemoData.execute();
             insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('2019-11-14', 'went to the work', 'study 2605');");
+                    + "VALUES ('2019-11-14', 'Went to Blair's consultation, 'Study 2605');");
             insertDemoData.execute();           
         } else{
                 System.out.println("LEARNINGS table exists!");
