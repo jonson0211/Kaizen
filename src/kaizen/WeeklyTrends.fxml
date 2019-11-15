@@ -61,7 +61,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eef7ff80" height="401.0" stroke="BLACK" strokeType="INSIDE" width="217.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eef7ff80" height="440.0" stroke="BLACK" strokeType="INSIDE" width="217.0">
                      <GridPane.margin>
                         <Insets bottom="50.0" left="850.0" />
                      </GridPane.margin>
@@ -87,7 +87,7 @@
                         <Font size="18.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="875.0" top="425.0" />
+                        <Insets left="875.0" top="450.0" />
                      </GridPane.margin>
                   </Button>
                   <Button fx:id="weeklyBreakdown" mnemonicParsing="false" onAction="#handleWeeklyBreakdown" prefWidth="186.0" styleClass="buttons" text="Weekly Breakdown">
@@ -95,7 +95,7 @@
                         <Font size="18.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="875.0" top="525.0" />
+                        <Insets left="875.0" top="555.0" />
                      </GridPane.margin>
                   </Button>
                   <DatePicker fx:id="weeklyChartDtPicker">
@@ -189,6 +189,11 @@
                         <Insets left="865.0" top="175.0" />
                      </GridPane.margin>
                   </Text>
+                  <Label fx:id="status" prefHeight="29.0" prefWidth="160.0" text="Label" wrapText="true">
+                     <GridPane.margin>
+                        <Insets left="875.0" top="345.0" />
+                     </GridPane.margin>
+                  </Label>
                </children>
             </GridPane>
          </center></BorderPane>
