@@ -42,7 +42,7 @@
                   <Insets bottom="15.0" left="100.0" />
                </GridPane.margin>
             </Button>
-            <Label text="Updated!" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label fx:id="catOutput" text="Updated!" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="100.0" />
                </GridPane.margin>

@@ -33,7 +33,7 @@ public class AddCategoryController implements Initializable {
     @FXML private Label catOutput;
 
     @FXML private Button exit;
-    @FXML private Label success;
+    
 
     
     KaizenDatabase database = new KaizenDatabase();   
@@ -44,7 +44,7 @@ public class AddCategoryController implements Initializable {
 
         catOutput.setVisible(false);
 
-        success.setVisible(false);
+        
 
     }    
     
@@ -66,7 +66,7 @@ public class AddCategoryController implements Initializable {
             catOutput.setText("Category added!");
             catOutput.setVisible(true);
 
-            success.setVisible(true);
+            
 
 
         } catch (Exception ex) {

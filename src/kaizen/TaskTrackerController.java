@@ -210,6 +210,10 @@ public class TaskTrackerController implements Initializable {
     }
     
     @FXML
+    private void handleSettings(ActionEvent event) throws IOException{
+        psh.switcher(event,"Settings.fxml"); //TO CHANGE WHEN PAGE IS MADE
+    }
+    @FXML
     public void handleTimesheets(ActionEvent event) throws IOException{
         psh.switcher(event, "Timesheets.fxml");
     }
