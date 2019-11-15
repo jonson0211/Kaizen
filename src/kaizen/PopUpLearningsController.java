@@ -90,7 +90,7 @@ public class PopUpLearningsController {
         List<learningsEntryDM> report = FXCollections.observableArrayList();
 
         try {
-            ResultSet tableRs = db.getResultSet("SELECT * FROM LEARNINGS");
+            ResultSet tableRs = db.getResultSet("SELECT * FROM LEARNINGS ORDER BY DATE DESC");
 
             while (tableRs.next()) {
                 report.add(new learningsEntryDM(tableRs.getString("DATE"), tableRs.getString("DID_WELL"), tableRs.getString("BE_BETTER"), tableRs.getString("LEARNINGS_ID")));
@@ -107,27 +107,7 @@ public class PopUpLearningsController {
         psh.switcher(event, "DailyLearnings.fxml");
     }
 
-    @FXML
-    private void handleRefresh(MouseEvent event) throws IOException {
-        
-    }
-    
- /*   private void refreshPage() {
-        try{
-            loadTable();
-        }catch(Exception e){
-            System.out.println("can't load table");
-            e.printStackTrace();
-        }
-    }
-    private void loadTable(){
-        date.setCellValueFactory(new PropertyValueFactory<learningsEntryDM, String>("DATE"));
-        achievements.setCellValueFactory(new PropertyValueFactory<learningsEntryDM, String>("DID_WELL"));
-        improvements.setCellValueFactory(new PropertyValueFactory<learningsEntryDM, String>("BE_BETTER"));
-        entries.setItems(getReport()); 
-    } */
-    
-
+   
     @FXML
     private void handleSelect(ActionEvent event) {
         learningsEntryDM edit = entries.getSelectionModel().getSelectedItem();
