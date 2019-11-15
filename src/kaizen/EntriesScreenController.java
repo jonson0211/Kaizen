@@ -88,15 +88,11 @@ public class EntriesScreenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-     /*   entriesView.setOnMouseClicked((MouseEvent event) -> {
-        if(event.getClickCount()>1){
-            onEdit();
-        }
-    });*/
+       
         entriesView_2 = entriesView;
         entriesView.setVisible(true);
         entriesView.setItems(this.getEntries());
+        
         dateClm.setCellValueFactory(cellData -> cellData.getValue().getDateProperty());
         categoryClm.setCellValueFactory(cellData -> cellData.getValue().getCategoryProperty());
         activityClm.setCellValueFactory(cellData -> cellData.getValue().getActivityProperty());
@@ -105,6 +101,8 @@ public class EntriesScreenController implements Initializable {
         durationClm.setCellValueFactory(cellData -> cellData.getValue().getDurationProperty());
         descriptionClm.setCellValueFactory(cellData -> cellData.getValue().getDescProperty());
         IDClm.setCellValueFactory(cellData -> cellData.getValue().getTimesheetIDProperty());
+        
+        
     }    
     public ObservableList<timesheetsDM> getEntries(){
         

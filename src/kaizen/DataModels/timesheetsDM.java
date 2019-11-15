@@ -27,7 +27,8 @@ public class timesheetsDM {
     private StringProperty timeStart;
     private StringProperty timeEnd;
 
-    public timesheetsDM(String timesheetID, String activity , String category, String date, String description, Integer duration, String timeStart, String timeEnd) {
+    public timesheetsDM(String timesheetID, String activity , String category, String date, 
+            String description, Integer duration, String timeStart, String timeEnd) {
         this.timesheetID = new SimpleStringProperty(timesheetID);
         this.activity = new SimpleStringProperty(activity);
         this.category = new SimpleStringProperty(category);

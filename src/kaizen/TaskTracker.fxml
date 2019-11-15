@@ -65,11 +65,13 @@
                               <TableColumn fx:id="doDateColumn" prefWidth="150.0" text="Do Date" />
                               <TableColumn fx:id="dueDateColumn" prefWidth="150.0" text="Due Date" />
                               <TableColumn fx:id="priorityColumn" prefWidth="106.0" text="Priority" />
+                              <TableColumn fx:id="IDColumn" prefWidth="75.0" text="ID" visible="false" />
                           </columns>
                         </TableView>
                      </children>
                   </AnchorPane>
-                  <Button layoutX="848.0" layoutY="80.0" mnemonicParsing="false" text="Update Tasks" />
+                  <Button layoutX="767.0" layoutY="80.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="122.0" text="Update Tasks" />
+                  <Button fx:id="addTask" layoutX="911.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleAddTaskPopUp" prefHeight="36.0" prefWidth="102.0" text="Add Task" />
                </children>
             </Pane>
          </center></BorderPane>
