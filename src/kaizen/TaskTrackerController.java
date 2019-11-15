@@ -41,6 +41,7 @@ public class TaskTrackerController implements Initializable {
     PageSwitchHelper psh = new PageSwitchHelper();
     
     @FXML private Button addTask;
+    @FXML private Button updateTask;
     
     @FXML
     private TableView<TaskDM> taskList;
@@ -121,6 +122,34 @@ public class TaskTrackerController implements Initializable {
         }
     }
     
+    @FXML
+    private void editRow(ActionEvent event){
+        FXMLLoader Loader = new FXMLLoader(getClass().getResource("EditTaskPopUp.fxml"));
+
+                try {
+                    Loader.load();
+                } catch (IOException ex) {
+                 ex.printStackTrace();
+
+                    Logger.getLogger(EntriesScreenController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                EditTaskPopUpController a = Loader.getController();
+                a.setTaskData(""+ taskList.getSelectionModel().getSelectedItem().getTaskID(),
+                        taskList.getSelectionModel().getSelectedItem().getTitle(),
+                        taskList.getSelectionModel().getSelectedItem().getCategory(), 
+                        taskList.getSelectionModel().getSelectedItem().getDoDate(), 
+                        taskList.getSelectionModel().getSelectedItem().getDueDate(), 
+                        taskList.getSelectionModel().getSelectedItem().getDescription(), 
+                        ""+taskList.getSelectionModel().getSelectedItem().getPriority());
+                Parent p = Loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(p));
+                stage.show();
+
+
+
+            }
     //method to change the scene from due date mode back to the default do date mode
     @FXML
     public void HandleKanbanBoard(ActionEvent event) throws IOException {

@@ -138,7 +138,7 @@ public class EditEntriesPopUpController implements Initializable {
         System.out.println("The difference is "+minCalc+" minutes");
 
         String durationText = Double.toString(minCalc);
-        
+        try {
         addTimesheet.insertStatement("UPDATE TIMESHEETS"
                 + " SET CATEGORYNAME = '"+ category +"'"
                 + ", ACTIVITY = '"+act+"' "
@@ -146,14 +146,16 @@ public class EditEntriesPopUpController implements Initializable {
                 + ", DESCR = '"+desc+"'"
                 + "WHERE TIMESHEETID = '" + timeID + "'"
                 );
-                
+           } catch (Exception e) { 
+            e.printStackTrace();
+            System.out.println("Could not update database! Please check your inputs.");
         
     }
    
+    }
     
     
-    
-     @FXML
+    @FXML
     private void handleInputChangedAction(ActionEvent event) throws SQLException {
         
        String catName = categoryComboBox.getValue();
