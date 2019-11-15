@@ -221,3 +221,11 @@
     -fx-text-fill: #4f4e52;
     -fx-font-family: "Roboto Light";
 }
+
+.getText_button {
+    -fx-background-radius: 20;
+    -fx-text-fill: transparent;
+    -fx-background-color: #01717a;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+}

@@ -18,6 +18,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
@@ -33,6 +35,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import kaizen.UserData.KaizenDatabase;
 import static kaizen.UserData.KaizenDatabase.conn;
 
@@ -65,24 +68,7 @@ public class KanbanBoardController implements Initializable {
     @FXML
     private ToggleButton dueDateView;
     @FXML
-    private Label welcome;
-    @FXML
-    private Label welcomeSubheading;
-
-    @FXML
     private GridPane grid;
-
-    @FXML
-    private Pane pane0;
-
-    @FXML
-    private Pane pane1;
-
-    @FXML
-    private Pane pane2;
-
-    @FXML
-    private Pane pane3;
 
     KaizenDatabase KanbanDatabase = new KaizenDatabase();
 
@@ -115,43 +101,126 @@ public class KanbanBoardController implements Initializable {
         // Pane pane = new Pane();
         for (int i = 0; i < 7; i++) {
             Label taskLabel = new Label();
-  
+            taskLabel.setTextAlignment(TextAlignment.CENTER);
+            grid.setHalignment(taskLabel, HPos.CENTER);
+
             try {
                 if (rs.next()) {
-                  taskLabel.setText((rs.getString("TITLE") + "\n" + rs.getString("DO_DATE") + "\n" + rs.getString("DUE_DATE") + "\n" + rs.getString("PRIORITY")));
+                    taskLabel.setText((rs.getString("TITLE") + "\n" + "Do Date: " + rs.getString("DO_DATE") + "\n" + "Priority: " + rs.getString("PRIORITY")));
                     grid.add(taskLabel, num, i);
-               
-                } else {
-                    while (i < 7) {
-                       Label taskLabel1 = new Label("Add Task");
-                        grid.add(taskLabel1, num, i);
-      
-                        
-                        
-                        taskLabel1.setOnDragDetected(new EventHandler<MouseEvent>() {
+                    taskLabel.setOnDragDetected(new EventHandler<MouseEvent>() {
                         public void handle(MouseEvent event) {
                             /* drag was detected, start a drag-and-drop gesture*/
  /* allow any transfer mode */
-                            if(!"Add Task".equals(taskLabel1.getText())) {
-                            Dragboard db = taskLabel1.startDragAndDrop(TransferMode.ANY);
-                            
-                            /* Put a string on a dragboard */
-                            ClipboardContent content = new ClipboardContent();
-                            content.putString(taskLabel1.getText());
-                            db.setContent(content);
+                            if (!"Drag Here".equals(taskLabel.getText())) {
+                                Dragboard db = taskLabel.startDragAndDrop(TransferMode.ANY);
+
+                                /* Put a string on a dragboard */
+                                ClipboardContent content = new ClipboardContent();
+                                content.putString(taskLabel.getText());
+                                db.setContent(content);
+
+                                event.consume();
+                            }
+
+                        }
+                    });
+
+                    taskLabel.setOnDragOver(new EventHandler<DragEvent>() {
+                        public void handle(DragEvent event) {
+                            /* data is dragged over the target */
+ /* accept it only if it is not dragged from the same node 
+         * and if it has a string data */
+                            if (event.getGestureSource() != taskLabel && event.getDragboard().hasString()) {
+                                /* allow for moving */
+                                event.acceptTransferModes(TransferMode.MOVE);
+                            }
 
                             event.consume();
                         }
-                            
+                    });
+
+                    taskLabel.setOnDragEntered(new EventHandler<DragEvent>() {
+                        public void handle(DragEvent event) {
+                            /* the drag-and-drop gesture entered the target */
+ /* show to the user that it is an actual gesture target */
+
+                            event.consume();
                         }
                     });
-            
-              taskLabel1.setOnDragOver(new EventHandler<DragEvent>() {
+
+                    taskLabel.setOnDragExited(new EventHandler<DragEvent>() {
+                        public void handle(DragEvent event) {
+                            /* mouse moved away, remove the graphical cues */
+
+                            event.consume();
+                        }
+                    });
+
+                    taskLabel.setOnDragDropped(new EventHandler<DragEvent>() {
+                        public void handle(DragEvent event) {
+                            /* data dropped */
+ /* if there is a string data on dragboard, read it and use it */
+                            Dragboard db = event.getDragboard();
+                            String[] parts = db.getString().split("\n");
+                            boolean success = false;
+                            if (grid.getColumnIndex(taskLabel) == 2) {
+                                //update the database entry where the task name = 1st part of the string (title), setting date as XXX
+                                parts[1] = "Do Date: 2019-11-19";
+                            } else if (grid.getColumnIndex(taskLabel) == 0) {
+                                parts[1] = "Do Date: 2019-11-18";
+                            } else {
+
+                            }
+                            taskLabel.setText(parts[0] + "\n" + parts[1] + "\n" + parts[2]);
+                            success = true;
+                            event.setDropCompleted(success);
+                            event.consume();
+                        }
+                    });
+
+                    taskLabel.setOnDragDone(new EventHandler<DragEvent>() {
+                        public void handle(DragEvent event) {
+                            /* the drag and drop gesture ended */
+ /* if the data was successfully moved, clear it */
+                            if (event.getTransferMode() == TransferMode.MOVE) {
+                                taskLabel.setText("Drag Here");
+                            }
+                            event.consume();
+                        }
+                    });
+
+                } else {
+                    while (i < 7) {
+                        Label taskLabel1 = new Label("Drag Here");
+                        taskLabel1.setTextAlignment(TextAlignment.CENTER);
+                        grid.setHalignment(taskLabel1, HPos.CENTER);
+                        grid.add(taskLabel1, num, i);
+
+                        taskLabel1.setOnDragDetected(new EventHandler<MouseEvent>() {
+                            public void handle(MouseEvent event) {
+                                /* drag was detected, start a drag-and-drop gesture*/
+ /* allow any transfer mode */
+                                if (!"Drag Here".equals(taskLabel1.getText())) {
+                                    Dragboard db = taskLabel1.startDragAndDrop(TransferMode.ANY);
+
+                                    /* Put a string on a dragboard */
+                                    ClipboardContent content = new ClipboardContent();
+                                    content.putString(taskLabel1.getText());
+                                    db.setContent(content);
+
+                                    event.consume();
+                                }
+
+                            }
+                        });
+
+                        taskLabel1.setOnDragOver(new EventHandler<DragEvent>() {
                             public void handle(DragEvent event) {
                                 /* data is dragged over the target */
  /* accept it only if it is not dragged from the same node 
          * and if it has a string data */
-                                if (event.getDragboard().hasString()) {
+                                if (event.getGestureSource() != taskLabel1 && event.getDragboard().hasString()) {
                                     /* allow for moving */
                                     event.acceptTransferModes(TransferMode.MOVE);
                                 }
@@ -164,10 +233,8 @@ public class KanbanBoardController implements Initializable {
                             public void handle(DragEvent event) {
                                 /* the drag-and-drop gesture entered the target */
  /* show to the user that it is an actual gesture target */
-//                        if (event.getDragboard().hasString()) {
-//                            grid.gridLinesVisibleProperty();
-//                        }
 
+                                // if the the label exists in column 3, 
                                 event.consume();
                             }
                         });
@@ -185,132 +252,36 @@ public class KanbanBoardController implements Initializable {
                                 /* data dropped */
  /* if there is a string data on dragboard, read it and use it */
                                 Dragboard db = event.getDragboard();
+                                String[] parts = db.getString().split("\n");
                                 boolean success = false;
-                                if (db.hasString()) {
-                                    taskLabel1.setText(db.getString());
-                                    success = true;
+                                if (grid.getColumnIndex(taskLabel1) == 2) {
+                                    //update the database entry where the task name = 1st part of the string (title), setting date as XXX
+                                    parts[1] = "Do Date: 2019-11-19";
+                                } else if (grid.getColumnIndex(taskLabel1) == 0) {
+                                    parts[1] = "Do Date: 2019-11-18";
                                 }
-                                /* let the source know whether the string was successfully 
-         * transferred and used */
+                                taskLabel1.setText(parts[0] + "\n" + parts[1] + "\n" + parts[2]);
+                                success = true;
                                 event.setDropCompleted(success);
-
                                 event.consume();
                             }
                         });
-                        
-                             
-                    taskLabel1.setOnDragDone(new EventHandler<DragEvent>() {
-                        public void handle(DragEvent event) {
-                            /* the drag and drop gesture ended */
+
+                        taskLabel1.setOnDragDone(new EventHandler<DragEvent>() {
+                            public void handle(DragEvent event) {
+                                /* the drag and drop gesture ended */
  /* if the data was successfully moved, clear it */
-                            if (event.getTransferMode() == TransferMode.MOVE) {
-                                taskLabel1.setText("Add Task");
+                                if (event.getTransferMode() == TransferMode.MOVE) {
+                                    taskLabel1.setText("Drag Here");
+                                }
+                                event.consume();
                             }
-                            event.consume();
-                        }
-                    });
-            
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
+                        });
                         i++;
                     }
                     break;
 
                 }
-                
-        
-            taskLabel.setOnDragDetected(new EventHandler<MouseEvent>() {
-                        public void handle(MouseEvent event) {
-                            /* drag was detected, start a drag-and-drop gesture*/
- /* allow any transfer mode */
-    if(!"Add Task".equals(taskLabel.getText())) {
-         Dragboard db = taskLabel.startDragAndDrop(TransferMode.ANY);
-
-                            /* Put a string on a dragboard */
-                            ClipboardContent content = new ClipboardContent();
-                            content.putString(taskLabel.getText());
-                            db.setContent(content);
-
-                            event.consume();
-    }
-                           
-                        }
-                    });
-            
-              taskLabel.setOnDragOver(new EventHandler<DragEvent>() {
-                            public void handle(DragEvent event) {
-                                /* data is dragged over the target */
- /* accept it only if it is not dragged from the same node 
-         * and if it has a string data */
-                                if (event.getDragboard().hasString()) {
-                                    /* allow for moving */
-                                    event.acceptTransferModes(TransferMode.MOVE);
-                                }
-
-                                event.consume();
-                            }
-                        });
-
-                        taskLabel.setOnDragEntered(new EventHandler<DragEvent>() {
-                            public void handle(DragEvent event) {
-                                /* the drag-and-drop gesture entered the target */
- /* show to the user that it is an actual gesture target */
-//                        if (event.getDragboard().hasString()) {
-//                            grid.gridLinesVisibleProperty();
-//                        }
-
-                                event.consume();
-                            }
-                        });
-
-                        taskLabel.setOnDragExited(new EventHandler<DragEvent>() {
-                            public void handle(DragEvent event) {
-                                /* mouse moved away, remove the graphical cues */
-
-                                event.consume();
-                            }
-                        });
-
-                        taskLabel.setOnDragDropped(new EventHandler<DragEvent>() {
-                            public void handle(DragEvent event) {
-                                /* data dropped */
- /* if there is a string data on dragboard, read it and use it */
-                                Dragboard db = event.getDragboard();
-                                boolean success = false;
-                                if (db.hasString()) {
-                                    taskLabel.setText(db.getString());
-                                    success = true;
-                                }
-                                /* let the source know whether the string was successfully 
-         * transferred and used */
-                                event.setDropCompleted(success);
-
-                                event.consume();
-                            }
-                        });
-                        
-                             
-                    taskLabel.setOnDragDone(new EventHandler<DragEvent>() {
-                        public void handle(DragEvent event) {
-                            /* the drag and drop gesture ended */
- /* if the data was successfully moved, clear it */
-                            if (event.getTransferMode() == TransferMode.MOVE) {
-                                taskLabel.setText("Add Task");
-                            }
-                            event.consume();
-                        }
-                    });
-            
-                
-                
-                
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }

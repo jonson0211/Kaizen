@@ -73,13 +73,13 @@ public class DeepFocusModeController implements Initializable {
     private Label displayTitle;
     @FXML
     private Label displayDescription;
-
     @FXML
     private Button button;
+    @FXML
+    private Label catchLabel;
 
     //@FXML
     //private Button button2;
-
     ObservableList<taskCategoryChoice> taskCategoryChoiceList = FXCollections.observableArrayList();
     // ObservableList<taskChoice> taskChoiceList = FXCollections.observableArrayList();
 
@@ -88,6 +88,7 @@ public class DeepFocusModeController implements Initializable {
 
         displayTitle.setVisible(false);
         displayDescription.setVisible(false);
+        catchLabel.setVisible(false);
 
         //Print feedback
         System.out.println("Loading DeepFocusMode Default Screen");
@@ -125,15 +126,20 @@ public class DeepFocusModeController implements Initializable {
     }
 
     //Display current Task Title and Task Description
-    public void getTaskText() throws SQLException {
-        displayTitle.setVisible(true);
-        String currentTask = selectTask.getValue();
-        System.out.println(currentTask);
-        displayTitle.setText(currentTask);
-        displayDescription.setVisible(true);
-        ResultSet rsDescription = db.getResultSet("SELECT (DESCRIPTION) FROM TASKS WHERE (TITLE)"
-                + " = '" + currentTask + "'");
-        displayDescription.setText(rsDescription.getString("DESCRIPTION"));
+    public void getTaskText() {
+        try {
+            displayTitle.setVisible(true);
+            String currentTask = selectTask.getValue();
+            System.out.println(currentTask);
+            displayTitle.setText(currentTask);
+            displayDescription.setVisible(true);
+            ResultSet rsDescription = db.getResultSet("SELECT (DESCRIPTION) FROM TASKS WHERE (TITLE)"
+                    + " = '" + currentTask + "'");
+            displayDescription.setText(rsDescription.getString("DESCRIPTION"));
+        } catch (SQLException ex) {
+            catchLabel.setText("Choose a task.");
+            catchLabel.setVisible(true);
+        }
     }
 
     //Get Task Category
@@ -155,7 +161,7 @@ public class DeepFocusModeController implements Initializable {
 
     //Get Task Choice 
     public ObservableList<taskChoice> getTaskChoice() {
-
+        catchLabel.setVisible(false);
         ObservableList<taskChoice> taskChoiceList = FXCollections.observableArrayList();
         System.out.println("1:" + selectTaskCategory.getValue());
         try {
@@ -191,15 +197,14 @@ public class DeepFocusModeController implements Initializable {
         }
     }
      */
-    
     public void testClass() {
-            System.out.println("Test Complete");
-}
-    
-        public void categoryOptionClicked() {
-            System.out.println("Click has been registered");
-}
-    
+        System.out.println("Test Complete");
+    }
+
+    public void categoryOptionClicked() {
+        System.out.println("Click has been registered");
+    }
+
     @FXML
     private void handleKanbanBoard(ActionEvent event) throws IOException {
         MusicPlaybackHelper.stopMusic();

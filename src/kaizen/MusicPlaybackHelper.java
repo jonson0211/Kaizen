@@ -23,6 +23,7 @@ public class MusicPlaybackHelper {
             Media media = new Media(new File(filename).toURI().toString());
             MusicPlaybackHelper.globalMediaPlayer = new MediaPlayer(media);
             MusicPlaybackHelper.globalMediaPlayer.play();
+            //Loop
             isSuccessful = true;
         } catch (Exception e) {
             isSuccessful = false;

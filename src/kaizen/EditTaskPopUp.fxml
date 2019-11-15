@@ -149,6 +149,8 @@
                </GridPane.margin>
             </TextField>
             <TextField fx:id="IDTextField" editable="false" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="exit" mnemonicParsing="false" onAction="#handleExit" styleClass="buttons" stylesheets="@stylesheet.css" text="Exit" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Label fx:id="success" styleClass="small-label" stylesheets="@stylesheet.css" text="Updated!" GridPane.columnIndex="2" GridPane.rowIndex="9" />
          </children>
       </GridPane>
    </children>
