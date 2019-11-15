@@ -135,7 +135,6 @@
                         <Insets bottom="-40.0" left="40.0" />
                      </GridPane.margin>
                   </Button>
-                  <Label fx:id="warning" text="Missing entries" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="Click to check your missing entries" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
