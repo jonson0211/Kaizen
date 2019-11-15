@@ -70,8 +70,9 @@
                         </TableView>
                      </children>
                   </AnchorPane>
-                  <Button fx:id="updateTask" layoutX="767.0" layoutY="80.0" mnemonicParsing="false" onAction="#editRow" prefHeight="32.0" prefWidth="122.0" text="Update Tasks" />
+                  <Button fx:id="updateTask" layoutX="767.0" layoutY="80.0" mnemonicParsing="false" onAction="#editRow" prefHeight="32.0" prefWidth="122.0" text="Update Task" />
                   <Button fx:id="addTask" layoutX="911.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleAddTaskPopUp" prefHeight="36.0" prefWidth="102.0" text="Add Task" />
+                  <Button fx:id="deleteTask" layoutX="604.0" layoutY="80.0" mnemonicParsing="false" onAction="#deleteRow" prefHeight="32.0" prefWidth="122.0" text="Delete Task" />
                </children>
             </Pane>
          </center></BorderPane>

@@ -42,6 +42,7 @@ public class TaskTrackerController implements Initializable {
     
     @FXML private Button addTask;
     @FXML private Button updateTask;
+    @FXML private Button deleteTask;
     
     @FXML
     private TableView<TaskDM> taskList;
@@ -62,6 +63,7 @@ public class TaskTrackerController implements Initializable {
     
     @FXML private TableColumn<TaskDM, String> IDColumn;
     
+
     
     KaizenDatabase database = new KaizenDatabase();
     
@@ -148,8 +150,35 @@ public class TaskTrackerController implements Initializable {
                 stage.show();
 
 
-
             }
+    
+    @FXML
+    private void deleteRow(ActionEvent event){
+        TaskDM selected = taskList.getSelectionModel().getSelectedItem();
+        
+        try{
+            database.insertStatement("DELETE FROM TASKS WHERE"
+            + " TITLE = '" + selected.getTitle() + "'"
+            + "AND CATEGORYNAME = '" + selected.getCategory() + "'"
+            + "AND DESCRIPTION = '" + selected.getDescription() + "'"
+            + "AND DO_DATE = '" + selected.getDoDate() + "'"
+            + "AND DUE_DATE = '" + selected.getDueDate() + "'"
+            + "AND PRIORITY = '" + selected.getPriority() + "'"
+            + "AND TASK_ID = '" + selected.getTaskID() + "'"
+            );
+        
+        } catch (Exception e) {
+            System.out.println("Can't delete from database!");
+            e.printStackTrace();
+        }
+        try{
+            taskList.getItems().removeAll(taskList.getSelectionModel().getSelectedItem());
+        } catch(Exception e){
+            System.out.println("can't remove from table");
+            e.printStackTrace();
+        }
+    }
+    
     //method to change the scene from due date mode back to the default do date mode
     @FXML
     public void HandleKanbanBoard(ActionEvent event) throws IOException {
