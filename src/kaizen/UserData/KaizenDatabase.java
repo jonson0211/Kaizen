@@ -86,58 +86,58 @@ public class KaizenDatabase {
             rs = dbmd.getTables(null, null, "CATEGORY", null);
             if (!rs.next()) {
                 createCategoryTable = conn.prepareStatement("CREATE TABLE CATEGORY ("
-                        + "CATEGORYID STRING PRIMARY KEY,"
+                        + "CATEGORYID INTEGER PRIMARY KEY AUTOINCREMENT,"
                         + "CATEGORYNAME TEXT,"
                         + "COLOUR TEXT"                        
                         +");");
                 createCategoryTable.execute();
                 System.out.println("CATEGORY table created");
-                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYID,CATEGORYNAME, COLOUR) "
-                        + "VALUES ('"
-                        + "1',"
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
+                        + "VALUES ("
+                        
                         + "'Work',"
-                        + "'RED')"
-                        //+ "'#80bfff')"
+                        //+ "'RED')"
+                        + "'#80bfff')"
                 );
                 createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYID,CATEGORYNAME, COLOUR) "
-                        + "VALUES ('"
-                        + "2',"
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
+                        + "VALUES ("
+                        
                         + "'Wellness',"
-                        +"'GREEN')"
-                        //+ "'#80ff80')"
+                        //+"'GREEN')"
+                        + "'#80ff80')"
                 );
                 createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYID,CATEGORYNAME, COLOUR) "
-                        + "VALUES ('"
-                        + "3',"
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
+                        + "VALUES ("
+                        
                         + "'Relationships',"
-                        + "'BLUE'"
-                        //+ "'#cc99ff'"
+                        //+ "'BLUE'"
+                        + "'#cc99ff'"
                         + ")");
                 createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYID,CATEGORYNAME, COLOUR) "
-                        + "VALUES ('"
-                        + "4',"
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
+                        + "VALUES ("
+                        
                         + "'Projects',"
-                        +"'YELLOW'"
-                        //+ "'#ccffff'"
+                        //+"'YELLOW'"
+                        + "'#ccffff'"
                         + ")");
                 createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYID,CATEGORYNAME, COLOUR) "
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
                         + "VALUES ("
-                        + "'5',"
+                      
                         + "'Daily',"
-                        +"'MAGENTA'"
-                        //+ "'#ff80ff'"
+                        //+"'MAGENTA'"
+                        +"'#ff80ff'"
                         + ")");
                 createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYID,CATEGORYNAME, COLOUR) "
+                createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
                         + "VALUES ("
-                        + "'6',"
+                     
                         + "'Relaxation',"
-                        +"'PURPLE'"
-                        //+ "'#ffb84d'"
+                        //+"'PURPLE'"
+                        + "'#ffb84d'"
                         + ")");
                 createDemoInstance.execute();
             } else {
@@ -181,9 +181,8 @@ public class KaizenDatabase {
                 //Insert dummy data 1
                 createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
-                        
                         + "'Finish ACF homework', "
-                        + "'Work',"
+                        + "'Work', "
                         + "'Finish the weekly homework for ACF Topic 7', "
                         + "'2019-11-18', "
                         + "'2019-11-19',"
@@ -196,7 +195,7 @@ public class KaizenDatabase {
                         + " VALUES ("
                                 
                         + "'ACF Call', "
-                        + "'Work',"
+                        + "'Work', "
                         + "'Discuss with the team on how we will handle presentation', "
                         + "'2019-11-18', "
                         + "'2019-11-18', "
@@ -236,7 +235,7 @@ public class KaizenDatabase {
                         + " VALUES ("
                                 
                         + "'Apply for Microsoft', "
-                        + "'Work',"
+                        + "'Work', "
                         + "'Apply for an internship with Microsoft', "
                         + "'2019-11-21', "
                         + "'2019-11-25', "

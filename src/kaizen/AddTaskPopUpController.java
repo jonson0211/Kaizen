@@ -53,6 +53,7 @@ import java.awt.*;
 import java.awt.color.*;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class AddTaskPopUpController implements Initializable {
  
@@ -119,40 +120,22 @@ public class AddTaskPopUpController implements Initializable {
         return FXCollections.observableArrayList(colourShapeList);
     }
 
+    
     @FXML
     private void handleInputChangedAction(ActionEvent event) throws SQLException {
-        
+        ArrayList<String> colourList = new ArrayList<String>();
+        //getColourChoice();
        String catName = categoryComboBox.getValue();
         ResultSet catColourRs = database.getResultSet("SELECT CATEGORYNAME, COLOUR from CATEGORY "
-                + "WHERE CATEGORYNAME = '" + catName + "'"
-        );
-        
-        
-        String colourShape = catColourRs.getString(2);
-       
-        if(catName.equals("Work")){
-            categoryColourShape.setFill(Color.web("#80bfff"));
-        }
-        if (catName.equals("Wellness")){
-            categoryColourShape.setFill(Color.web("#80ff80"));
-        }
-        if (catName.equals("Relationships")){
-            categoryColourShape.setFill(Color.web("#cc99ff"));
-        }
-        if (catName.equals("Projects")){
-            categoryColourShape.setFill(Color.web("#ccffff"));
-        }
-        if (catName.equals("Daily")){
-            categoryColourShape.setFill(Color.web("#ff80ff"));
-        }
-        if (catName.equals("Relaxation")){
-            categoryColourShape.setFill(Color.web("#ffb84d"));
-        }
-        //else{ categoryColourShape.setFill(Color.TRANSPARENT);}
+                + "WHERE CATEGORYNAME = '" + catName + "'");
+        while(catColourRs.next()){
+                colourList.add(catColourRs.getString(2));
+                };
+
+        String colourString = colourList.get(0);
+        categoryColourShape.setFill(Color.web(colourString));
         categoryColourShape.setVisible(true);
-        
-        //if doesn't work, jsut switch to color.RED etc and change data
-        
+   
     }
             
     

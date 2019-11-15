@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="289.0" prefWidth="298.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.AddCategoryController">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="303.0" prefWidth="298.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.AddCategoryController">
    <children>
       <GridPane layoutY="1.0" prefHeight="286.0" prefWidth="298.0">
         <columnConstraints>
@@ -38,9 +38,14 @@
             </ColorPicker>
             <Button fx:id="addCat" mnemonicParsing="false" onAction="#handleSubmitAction" text="Submit" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets left="100.0" />
+                  <Insets bottom="15.0" left="100.0" />
                </GridPane.margin>
             </Button>
+            <Label fx:id="catOutput" text="Category added!" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="80.0" top="75.0" />
+               </GridPane.margin>
+            </Label>
          </children>
       </GridPane>
    </children>

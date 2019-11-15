@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import kaizen.UserData.KaizenDatabase;
 
@@ -23,12 +24,14 @@ public class AddCategoryController implements Initializable {
     @FXML private Button addCat;
     @FXML private TextField catName;
     @FXML private ColorPicker catColour;
+    @FXML private Label catOutput;
     
     KaizenDatabase database = new KaizenDatabase();   
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        catOutput.setVisible(false);
     }    
     
     @FXML
@@ -45,9 +48,13 @@ public class AddCategoryController implements Initializable {
             + " VALUES('" + category + "', '" 
             + colour + "');"
             );
+            catOutput.setText("Category added!");
+            catOutput.setVisible(true);
 
         } catch (Exception ex) {
             System.out.println("Could not add entry. Please check your inputs!");
+            catOutput.setText("Could not add entry. Please check your inputs!");
+            catOutput.setVisible(true);
             ex.printStackTrace();
         }
     

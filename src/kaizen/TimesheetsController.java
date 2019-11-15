@@ -68,9 +68,7 @@ public class TimesheetsController implements Initializable {
     @FXML private DatePicker DtPicker;   
     @FXML private ComboBox<String> categoryComboBox;
     @FXML private ComboBox<String> activityComboBox;
-    //@FXML private TableView<Item<String>> colourTableView = new TableView<>();
-//    private TableView<Colour> ColourTable;
-//    private TableColumn<Colour> String>> colourColumn;        
+    @FXML private Label status; 
     
     
     ObservableList<categoryCombo> categoryComboList = FXCollections.observableArrayList();
@@ -89,6 +87,7 @@ public class TimesheetsController implements Initializable {
     categoryComboBox.setEditable(true);
     activityComboBox.setEditable(true);
     
+    status.setVisible(false);
     
     
     categoryComboList.setAll(this.getCatChoice());
@@ -154,51 +153,13 @@ public class TimesheetsController implements Initializable {
     }
     
    
-//    colourTable.setRowFactory(tv -> new TableRow<CustomItem>() {
-//    @Override
-//    protected void updateItem(CustomItemitem, boolean empty) {
-//        super.updateItem(item, empty);
-//        if (item == null || item.getValue() == null)
-//            setStyle("");
-//        else if (item.getValue() > 0)
-//            setStyle("-fx-background-color: #baffba;");
-//        else if (item.getValue() < 0)
-//            setStyle("-fx-background-color: #ffd7d1;");
-//        else
-//            setStyle("");
-//    }
-//});
-   
-//   private void customiseFactory(TableColumn<CallLogs, String> calltypel) {
-//    calltypel.setCellFactory(column -> {
-//        return new TableCell<CallLogs, String>() {
-//            @Override
-//            protected void updateItem(String item, boolean empty) {
-//                super.updateItem(item, empty);
-//
-//                setText(empty ? "" : getItem().toString());
-//                setGraphic(null);
-//
-//                TableRow<CallLogs> currentRow = getTableRow();
-//
-//                if (!isEmpty()) {
-//
-//                    if(item.equals("a")) 
-//                        currentRow.setStyle("-fx-background-color:lightcoral");
-//                    else
-//                        currentRow.setStyle("-fx-background-color:lightgreen");
-//                }
-//            }
-//        };
-//    });
-//}
-   
     @FXML
     private void handleInputChangedAction(ActionEvent event) throws SQLException {
         ArrayList<String> colourList = new ArrayList<String>();
         //getColourChoice();
        String catName = categoryComboBox.getValue();
-        ResultSet catColourRs = addTimesheet.getResultSet("SELECT CATEGORYNAME, COLOUR from CATEGORY "
+            try{
+       ResultSet catColourRs = addTimesheet.getResultSet("SELECT CATEGORYNAME, COLOUR from CATEGORY "
                 + "WHERE CATEGORYNAME = '" + catName + "'");
         while(catColourRs.next()){
                 colourList.add(catColourRs.getString(2));
@@ -207,7 +168,9 @@ public class TimesheetsController implements Initializable {
         String colourString = colourList.get(0);
         categoryColourShape.setFill(Color.web(colourString));
         categoryColourShape.setVisible(true);
-   
+            }catch (Exception e) {
+            
+            }
     }
   
     @FXML
@@ -215,28 +178,32 @@ public class TimesheetsController implements Initializable {
         
         String catName = categoryComboBox.getValue();
         String act = (String) activityComboBox.getValue();
-        String desc = descriptionText.getText();
-        //pull the category's corresponding colour from database
-        
-        
+        String desc = descriptionText.getText();    
         String date = DtPicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         String start = timeStartHrField.getText();
         String end = timeEndHrField.getText();
+        //Handling time
         DateFormat sdf = new SimpleDateFormat("hh:mm aa");
         Date startTime = sdf.parse(start);
         Date endTime = sdf.parse(end);
         
-        double dayDuration = Duration.ofHours(24).toHours();
+        double dayDuration = Duration.ofHours(24).toMinutes();
         
         double diffMs = endTime.getTime() - startTime.getTime();
         System.out.print("*"+diffMs);
         double diffSec = diffMs / 1000;
-        double minCalc = diffSec / 60;
-        
-        System.out.println("The difference is "+minCalc+" minutes");
+        //double minCalc = diffSec / 60;
+
+        double minCalc;
+        if(diffMs<0){
+            minCalc = diffSec/60 + dayDuration;
+        }else if(diffMs > 0)
+        {minCalc = diffSec/60;
+        }else {
+            minCalc = 0;
+        }
 
         String durationText = Double.toString(minCalc);
-       
         
         try {
             
@@ -246,9 +213,13 @@ public class TimesheetsController implements Initializable {
             
             durationLabel.setText(durationText + " minutes");
             durationLabel.setVisible(true);
+            status.setText("Entry added!");
+            status.setVisible(true);
             
         } catch (Exception ex) {
             System.out.println("Could not add entry. Please check your inputs!");
+            status.setText("Could not add entry. Please check your inputs.");
+            status.setVisible(true);
             ex.printStackTrace();
         }
     

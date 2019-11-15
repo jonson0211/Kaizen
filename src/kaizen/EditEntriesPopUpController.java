@@ -20,6 +20,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import kaizen.UserData.KaizenDatabase;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -154,43 +155,21 @@ public class EditEntriesPopUpController implements Initializable {
    
     }
     
-    
     @FXML
     private void handleInputChangedAction(ActionEvent event) throws SQLException {
-        
+        ArrayList<String> colourList = new ArrayList<String>();
+        //getColourChoice();
        String catName = categoryComboBox.getValue();
         ResultSet catColourRs = addTimesheet.getResultSet("SELECT CATEGORYNAME, COLOUR from CATEGORY "
-                + "WHERE CATEGORYNAME = '" + catName + "'"
-        );
+                + "WHERE CATEGORYNAME = '" + catName + "'");
+        while(catColourRs.next()){
+                colourList.add(catColourRs.getString(2));
+                };
 
-        String colourShape = catColourRs.getString(2);
-    
-        
-        if(catName.equals("Work")){
-            categoryColourShape.setFill(Color.web("#80bfff"));
-        }
-        if (catName.equals("Wellness")){
-            categoryColourShape.setFill(Color.web("#80ff80"));
-        }
-        if (catName.equals("Relationships")){
-            categoryColourShape.setFill(Color.web("#cc99ff"));
-        }
-        if (catName.equals("Projects")){
-            categoryColourShape.setFill(Color.web("#ccffff"));
-        }
-        if (catName.equals("Daily")){
-            categoryColourShape.setFill(Color.web("#ff80ff"));
-        }
-        if (catName.equals("Relaxation")){
-            categoryColourShape.setFill(Color.web("#ffb84d"));
-        }
-        //else{ categoryColourShape.setFill(Color.TRANSPARENT);}
-        
-        
+        String colourString = colourList.get(0);
+        categoryColourShape.setFill(Color.web(colourString));
         categoryColourShape.setVisible(true);
-        
-        //if doesn't work, jsut switch to color.RED etc and change data
-        
+   
     } 
 
  

@@ -78,6 +78,7 @@ public class SettingsController implements Initializable {
     @FXML private Button deleteButton;
     @FXML private Button editButton;
     @FXML private Button addButton;
+    @FXML private Label status;
 
     @FXML
     public TableView<categoryTableDM> catView;
@@ -92,7 +93,7 @@ public class SettingsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        status.setVisible(false);
         initTable();
         loadData();
 
@@ -157,14 +158,21 @@ public class SettingsController implements Initializable {
                     +"CATEGORYID = '" + selected.getCategoryID() 
                     + "' AND CATEGORYNAME = '"+ selected.getCategoryName()
                     + "' AND COLOUR = '"+selected.getColour()+ "'");
+            
+            status.setText("Category deleted!");
+            status.setVisible(true);
         } catch (Exception e) {
             System.out.println("Can't delete from database!");
+            status.setText("Can't delete from database! Please try again.");
+            status.setVisible(true);
             e.printStackTrace();
         }
         try{
             catView.getItems().removeAll(catView.getSelectionModel().getSelectedItem());
         } catch(Exception e){
-            System.out.println("can't remove from table");
+            System.out.println("Can't remove from table");
+             status.setText("Can't remove from table! Please try again.");
+            status.setVisible(true);
             e.printStackTrace();
         }
             
@@ -181,12 +189,17 @@ public class SettingsController implements Initializable {
                     + ", COLOUR = '" +selected.getColour()+ "'"
                     + " WHERE CATEGORYID = " + selected.getCategoryID());
             
-            System.out.println(selected.getCategoryName());
-            System.out.println(selected.getColour());
-            System.out.println(selected.getCategoryID());
+//            System.out.println(selected.getCategoryName());
+//            System.out.println(selected.getColour());
+//            System.out.println(selected.getCategoryID());
+            
+            status.setText("Category updated!");
+            status.setVisible(true);
             
         } catch (Exception e) {
             System.out.println("Can't update from database!");
+            status.setText("Can't update database! Please check inputs.");
+            status.setVisible(true);
             e.printStackTrace();
         }
         try{
@@ -206,7 +219,7 @@ public class SettingsController implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddCategory.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
-            stage.setTitle("New entry");
+            stage.setTitle("Add category");
             stage.setScene(new Scene(root1));
             stage.show();
 
