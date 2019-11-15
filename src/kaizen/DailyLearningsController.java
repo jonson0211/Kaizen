@@ -107,7 +107,6 @@ public class DailyLearningsController {
     
     @FXML
     private Button viewPast;    
-    @FXML private Label warning;
     @FXML private Button check;
                
     PreparedStatement pst;
@@ -135,7 +134,6 @@ public class DailyLearningsController {
         doBetterColumn.setCellValueFactory(cellData -> cellData.getValue().getBeBetterProperty());
         doBetterCount.setCellValueFactory(cellData -> cellData.getValue().getBeBetterCountProperty());
         doBetterView.setItems(this.getLearningsDoBetter());
-        warning.setVisible(false);
         try{
             answerOnes.setAll(this.getComboOne());
             for(learningsCombo c : answerOnes){
