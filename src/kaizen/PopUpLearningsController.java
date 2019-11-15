@@ -27,6 +27,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import kaizen.UserData.KaizenDatabase;
 
 /**
@@ -36,8 +37,6 @@ import kaizen.UserData.KaizenDatabase;
  */
 public class PopUpLearningsController {
 
-    @FXML
-    private Button back;
     @FXML
     private Button add;
     @FXML
@@ -56,7 +55,8 @@ public class PopUpLearningsController {
     private TableColumn<learningsEntryDM, String> improvements;
     @FXML
     private TableColumn<learningsEntryDM, String> id;
-
+    @FXML
+    private Button exit;
     
     @FXML
     DatePicker datePicker;
@@ -103,8 +103,9 @@ public class PopUpLearningsController {
     }
 
     @FXML
-    private void handleBack(ActionEvent event) throws IOException {
-        psh.switcher(event, "DailyLearnings.fxml");
+    private void handleExit(ActionEvent event) throws IOException {
+        Stage stage = (Stage) exit.getScene().getWindow();
+        stage.close();
     }
 
    

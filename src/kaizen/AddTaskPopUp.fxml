@@ -148,6 +148,15 @@
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextField>
+            <Label fx:id="success" styleClass="small-label" stylesheets="@stylesheet.css" text="Entry updated!" GridPane.columnIndex="2" GridPane.rowIndex="9">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Label>
+            <Button fx:id="exit" mnemonicParsing="false" onAction="#handleExit" styleClass="buttons" stylesheets="@stylesheet.css" text="Exit" GridPane.columnIndex="1" GridPane.rowIndex="9" />
          </children>
       </GridPane>
    </children>

@@ -31,6 +31,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import kaizen.DataModels.activityCombo;
 import kaizen.DataModels.categoryCombo;
 import kaizen.DataModels.colourDM;
@@ -47,6 +48,8 @@ public class EditTaskPopUpController implements Initializable {
     @FXML private Rectangle categoryColourShape;  
     @FXML private TextField IDTextField;
     @FXML private Button update;   
+    @FXML private Button exit;
+    @FXML private Label success;
     
     
     
@@ -62,6 +65,7 @@ public class EditTaskPopUpController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb){
     
+        success.setVisible(false);
     categoryColourShape.setVisible(false);
     categoryComboBox.setEditable(true);
 
@@ -106,6 +110,8 @@ public class EditTaskPopUpController implements Initializable {
              + ", PRIORITY = '" + priority + "'"
             + " WHERE TASK_ID = '" + taskID + "'"
             );
+            
+            success.setVisible(true);
 
         } catch (Exception ex) {
             System.out.println("Could not add entry. Please check your inputs!");
@@ -114,7 +120,11 @@ public class EditTaskPopUpController implements Initializable {
         
     }
    
-    
+    @FXML
+    private void handleExit(ActionEvent event) throws IOException{
+        Stage stage = (Stage) exit.getScene().getWindow();
+        stage.close();
+    }
     
     
      @FXML

@@ -10,7 +10,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -28,12 +27,11 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 import kaizen.DataModels.activityCombo;
 import kaizen.DataModels.categoryCombo;
-import kaizen.DataModels.timesheetsDM;
 
 public class EditEntriesPopUpController implements Initializable {
        
@@ -66,6 +64,10 @@ public class EditEntriesPopUpController implements Initializable {
     
     @FXML private DatePicker DtPicker;
     
+    @FXML private Label success;
+    
+    @FXML private Button exit;
+    
     ToggleGroup toggleGroup = new ToggleGroup(); 
  
     KaizenDatabase addTimesheet = new KaizenDatabase();
@@ -83,6 +85,7 @@ public class EditEntriesPopUpController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb){
+        success.setVisible(false);
     durationLabel.setVisible(false);
     categoryColourShape.setVisible(false);
     categoryComboBox.setEditable(true);
@@ -146,6 +149,7 @@ public class EditEntriesPopUpController implements Initializable {
                 + ", DESCR = '"+desc+"'"
                 + "WHERE TIMESHEETID = '" + timeID + "'"
                 );
+        success.setVisible(true);
            } catch (Exception e) { 
             e.printStackTrace();
             System.out.println("Could not update database! Please check your inputs.");
@@ -154,6 +158,11 @@ public class EditEntriesPopUpController implements Initializable {
    
     }
     
+    @FXML
+    private void handleExit(ActionEvent event){
+        Stage stage = (Stage) exit.getScene().getWindow();
+        stage.close();
+    }
     
     @FXML
     private void handleInputChangedAction(ActionEvent event) throws SQLException {

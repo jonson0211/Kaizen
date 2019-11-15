@@ -6,6 +6,7 @@ package kaizen;
  * and open the template in the editor.
  */
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -15,7 +16,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import kaizen.UserData.KaizenDatabase;
 
 /**
@@ -29,12 +32,15 @@ public class AddCategoryController implements Initializable {
     @FXML private Button addCat;
     @FXML private TextField catName;
     @FXML private ColorPicker catColour;
+    @FXML private Button exit;
+    @FXML private Label success;
     
     KaizenDatabase database = new KaizenDatabase();   
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        success.setVisible(false);
     }    
     
     @FXML
@@ -51,12 +57,18 @@ public class AddCategoryController implements Initializable {
             + " VALUES('" + category + "', '" 
             + colour + "');"
             );
+            success.setVisible(true);
 
         } catch (Exception ex) {
             System.out.println("Could not add entry. Please check your inputs!");
             ex.printStackTrace();
         }
     
+    }
+    
+    @FXML private void handleExit(ActionEvent event) throws IOException{
+        Stage stage = (Stage) exit.getScene().getWindow();
+        stage.close();
     }
     
 }
