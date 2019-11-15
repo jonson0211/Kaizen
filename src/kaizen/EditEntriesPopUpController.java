@@ -10,6 +10,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -106,8 +107,10 @@ public class EditEntriesPopUpController implements Initializable {
     }
     public void setData(String ID, String string, String category, String date, String description, Integer duration, String start, String end) {
         activityComboBox.setValue(string);
-        categoryComboBox.setValue(category);    
-        DtPicker.setUserData(date);
+        categoryComboBox.setValue(category);   
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate dateParsed = LocalDate.parse(date, formatter);
+        DtPicker.setUserData(dateParsed);
         timeIDField.setText(ID);
         descriptionText.setText(description);
         durationLabel.setUserData(duration);
@@ -150,11 +153,12 @@ public class EditEntriesPopUpController implements Initializable {
                 + ", DESCR = '"+desc+"'"
                 + "WHERE TIMESHEETID = '" + timeID + "'"
                 );
+        success.setText("Entry updated!");
         success.setVisible(true);
            } catch (Exception e) { 
             e.printStackTrace();
             System.out.println("Could not update database! Please check your inputs.");
-        
+        success.setText("Could not update database! Please check your inputs.");
     }
    
     }
