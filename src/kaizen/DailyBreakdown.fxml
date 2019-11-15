@@ -59,9 +59,9 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Daily Breakdown of Time Spent">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Top 5 Activities of Each Day">
                      <GridPane.margin>
-                        <Insets bottom="575.0" left="300.0" />
+                        <Insets bottom="575.0" left="350.0" />
                      </GridPane.margin>
                   </Text>
                   <Button fx:id="weeklyBreakdown" mnemonicParsing="false" onAction="#handleWeeklyBreakdown" prefHeight="39.0" prefWidth="179.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Weekly Breakdown">
@@ -91,7 +91,7 @@
                         <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
                      </GridPane.margin>
                   </BarChart>
-                  <DatePicker fx:id="dailyChartDtPicker" onAction="#loadGraph" promptText="Date of day">
+                  <DatePicker fx:id="dailyChartDtPicker" onAction="#loadGraph" prefHeight="33.0" prefWidth="194.0" promptText="Date of day">
                      <GridPane.margin>
                         <Insets left="300.0" top="575.0" />
                      </GridPane.margin>
@@ -106,7 +106,7 @@
                         <Insets left="50.0" top="35.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select day:" wrappingWidth="73.79385375976562">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select day:" textAlignment="RIGHT" wrappingWidth="73.79385375976562">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -119,6 +119,14 @@
                         <Insets left="50.0" top="575.0" />
                      </GridPane.margin>
                   </Button>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="Top 5 Activities" visible="false">
+                     <font>
+                        <Font size="12.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets bottom="500.0" left="500.0" />
+                     </GridPane.margin>
+                  </Text>
                </children>
             </GridPane>
          </center></BorderPane>

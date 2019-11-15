@@ -74,7 +74,7 @@
                       <NumberAxis side="LEFT" />
                     </yAxis>
                      <GridPane.margin>
-                        <Insets bottom="50.0" left="75.0" right="250.0" top="100.0" />
+                        <Insets bottom="75.0" left="100.0" right="250.0" top="100.0" />
                      </GridPane.margin>
                   </LineChart>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Weekly Trends of Time Spent">
@@ -95,7 +95,7 @@
                         <Font size="18.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="875.0" top="550.0" />
+                        <Insets left="875.0" top="525.0" />
                      </GridPane.margin>
                   </Button>
                   <DatePicker fx:id="weeklyChartDtPicker">
@@ -152,7 +152,7 @@
                   </Button>
                   <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handlePieChart" prefHeight="35.0" prefWidth="79.0" styleClass="buttons" text="Back">
                      <GridPane.margin>
-                        <Insets left="40.0" top="-575.0" />
+                        <Insets left="40.0" top="575.0" />
                      </GridPane.margin>
                   </Button>
                   <ChoiceBox fx:id="activityChoiceBox2" prefHeight="27.0" prefWidth="170.0">

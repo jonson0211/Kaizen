@@ -59,9 +59,9 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Weekly Breakdown of Time Spent">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Top 5 Activities of Each Week">
                      <GridPane.margin>
-                        <Insets bottom="575.0" left="250.0" />
+                        <Insets bottom="575.0" left="350.0" />
                      </GridPane.margin>
                   </Text>
                   <Button fx:id="dailyBreakdown" mnemonicParsing="false" onAction="#handleDailyBreakdown" prefHeight="39.0" prefWidth="174.0" styleClass="buttons" text="Daily Breakdown">
@@ -91,7 +91,7 @@
                         <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
                      </GridPane.margin>
                   </BarChart>
-                  <DatePicker fx:id="weeklyChartDtPicker" onAction="#loadGraph" promptText="Date of week">
+                  <DatePicker fx:id="weeklyChartDtPicker" onAction="#loadGraph" prefHeight="36.0" prefWidth="194.0" promptText="Date of week">
                      <GridPane.margin>
                         <Insets left="300.0" top="575.0" />
                      </GridPane.margin>
@@ -106,9 +106,9 @@
                         <Insets left="50.0" top="35.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select start of week:" wrappingWidth="117.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select start of week:" textAlignment="RIGHT" wrappingWidth="88.0">
                      <GridPane.margin>
-                        <Insets left="200.0" top="575.0" />
+                        <Insets left="205.0" top="575.0" />
                      </GridPane.margin>
                      <font>
                         <Font size="15.0" />
