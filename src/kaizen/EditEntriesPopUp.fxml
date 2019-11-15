@@ -194,6 +194,7 @@
                </GridPane.margin>
             </Label>
             <Button fx:id="exit" mnemonicParsing="false" onAction="#handleExit" styleClass="buttons" stylesheets="@stylesheet.css" text="Exit" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <TextField fx:id="timeIDField" editable="false" visible="false" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </children>

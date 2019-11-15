@@ -492,7 +492,7 @@ public class KaizenDatabase {
                     + "VALUES ('2019-11-15', 'Gave good peer reviews', 'Picked up java earlier');");
             insertDemoData.execute();
             insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
-                    + "VALUES ('2019-11-14', 'Went to Blair's consultation, 'Study 2605');");
+                    + "VALUES ('2019-11-14', 'Went to Blair for consultation', 'Study 2605');");
             insertDemoData.execute();           
         } else{
                 System.out.println("LEARNINGS table exists!");
