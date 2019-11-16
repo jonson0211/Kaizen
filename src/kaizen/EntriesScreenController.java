@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package kaizen;
 
 import java.io.IOException;
@@ -25,25 +20,19 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import kaizen.DataModels.timesheetsDM;
 import kaizen.UserData.KaizenDatabase;
 
-/**
- * FXML Controller class
- *
- * @author wongad1
- */
 public class EntriesScreenController implements Initializable {
 
     PageSwitchHelper pageSwitcher = new PageSwitchHelper();
-    
+
     KaizenDatabase db = new KaizenDatabase();
 
     @FXML
     private ToggleButton handleKb;
-    
+
     @FXML
     private ToggleButton deepFocus;
     @FXML
@@ -58,14 +47,15 @@ public class EntriesScreenController implements Initializable {
     private Button signOut;
     @FXML
     private Button update;
-    @FXML private Label status;
-    
     @FXML
-    private TableView<timesheetsDM> entriesView;  
+    private Label status;
+
+    @FXML
+    private TableView<timesheetsDM> entriesView;
     public static TableView<timesheetsDM> entriesView_2;
-    
+
     @FXML
-    private TableColumn<timesheetsDM, String> dateClm;    
+    private TableColumn<timesheetsDM, String> dateClm;
     @FXML
     private TableColumn<timesheetsDM, String> categoryClm;
     @FXML
@@ -82,9 +72,7 @@ public class EntriesScreenController implements Initializable {
     private TableColumn<timesheetsDM, String> IDClm;
     @FXML
     private Button backBtn;
-    
-    
-        
+
     /**
      * Initializes the controller class.
      */
@@ -94,7 +82,7 @@ public class EntriesScreenController implements Initializable {
         entriesView_2 = entriesView;
         entriesView.setVisible(true);
         entriesView.setItems(this.getEntries());
-        
+
         dateClm.setCellValueFactory(cellData -> cellData.getValue().getDateProperty());
         categoryClm.setCellValueFactory(cellData -> cellData.getValue().getCategoryProperty());
         activityClm.setCellValueFactory(cellData -> cellData.getValue().getActivityProperty());
@@ -103,21 +91,21 @@ public class EntriesScreenController implements Initializable {
         durationClm.setCellValueFactory(cellData -> cellData.getValue().getDurationProperty());
         descriptionClm.setCellValueFactory(cellData -> cellData.getValue().getDescProperty());
         IDClm.setCellValueFactory(cellData -> cellData.getValue().getTimesheetIDProperty());
-        
-        
-    }    
-    public ObservableList<timesheetsDM> getEntries(){
-        
+
+    }
+
+    public ObservableList<timesheetsDM> getEntries() {
+
         ObservableList<timesheetsDM> entries = FXCollections.observableArrayList();
-        
+
         try {
             ResultSet rs = db.getResultSet("SELECT * FROM TIMESHEETS");
-            
-            while (rs.next()){
-                entries.add(new timesheetsDM(rs.getString("TIMESHEETID"), 
-                        rs.getString("ACTIVITY"), rs.getString("CATEGORYNAME"), 
-                        rs.getString("DATE"), rs.getString("DESCR"), 
-                        rs.getInt("DURATION"), rs.getString("START"), 
+
+            while (rs.next()) {
+                entries.add(new timesheetsDM(rs.getString("TIMESHEETID"),
+                        rs.getString("ACTIVITY"), rs.getString("CATEGORYNAME"),
+                        rs.getString("DATE"), rs.getString("DESCR"),
+                        rs.getInt("DURATION"), rs.getString("START"),
                         rs.getString("END")));
             }
         } catch (SQLException ex) {
@@ -126,15 +114,14 @@ public class EntriesScreenController implements Initializable {
         return FXCollections.observableArrayList(entries);
     }
 
-    
     @FXML
-    private void deleteRow(ActionEvent event){
+    private void deleteRow(ActionEvent event) {
         timesheetsDM selected = entriesView.getSelectionModel().getSelectedItem();
-        
-        try{
-            db.insertStatement("DELETE FROM TIMESHEETS WHERE DATE = '"+ selected.getDate()+"' "
-                    + "AND CATEGORYNAME = '"+ selected.getCategory()+"'"
-                    + " AND ACTIVITY = '"+selected.getActivity()+ "'"
+
+        try {
+            db.insertStatement("DELETE FROM TIMESHEETS WHERE DATE = '" + selected.getDate() + "' "
+                    + "AND CATEGORYNAME = '" + selected.getCategory() + "'"
+                    + " AND ACTIVITY = '" + selected.getActivity() + "'"
                     + " AND TIMESHEETID = '" + selected.getTimesheetID() + "'");
             status.setText("Entry deleted!");
             status.setVisible(true);
@@ -144,82 +131,82 @@ public class EntriesScreenController implements Initializable {
             status.setVisible(true);
             e.printStackTrace();
         }
-        try{
+        try {
             entriesView.getItems().removeAll(entriesView.getSelectionModel().getSelectedItem());
-        } catch(Exception e){
+        } catch (Exception e) {
             System.out.println("can't remove from table");
             status.setText("Can't remove from table. Please try again.");
             status.setVisible(true);
-            
+
             e.printStackTrace();
         }
     }
+
     @FXML
-    private void editRow(ActionEvent event){
+    private void editRow(ActionEvent event) {
         FXMLLoader Loader = new FXMLLoader(getClass().getResource("EditEntriesPopUp.fxml"));
 
-                try {
-                    Loader.load();
-                } catch (IOException ex) {
-                 ex.printStackTrace();
+        try {
+            Loader.load();
+        } catch (IOException ex) {
+            ex.printStackTrace();
 
-                    Logger.getLogger(EntriesScreenController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            Logger.getLogger(EntriesScreenController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-                EditEntriesPopUpController a = Loader.getController();
-                a.setData(""+ entriesView.getSelectionModel().getSelectedItem().getTimesheetID(),
-                        entriesView.getSelectionModel().getSelectedItem().getActivity(),
-                        entriesView.getSelectionModel().getSelectedItem().getCategory(), 
-                        entriesView.getSelectionModel().getSelectedItem().getDate(), 
-                        entriesView.getSelectionModel().getSelectedItem().getDesc(), 
-                        entriesView.getSelectionModel().getSelectedItem().getDuration(), 
-                        entriesView.getSelectionModel().getSelectedItem().getStart(),
-                        ""+entriesView.getSelectionModel().getSelectedItem().getEnd());
-                Parent p = Loader.getRoot();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(p));
-                stage.show();
+        EditEntriesPopUpController a = Loader.getController();
+        a.setData("" + entriesView.getSelectionModel().getSelectedItem().getTimesheetID(),
+                entriesView.getSelectionModel().getSelectedItem().getActivity(),
+                entriesView.getSelectionModel().getSelectedItem().getCategory(),
+                entriesView.getSelectionModel().getSelectedItem().getDate(),
+                entriesView.getSelectionModel().getSelectedItem().getDesc(),
+                entriesView.getSelectionModel().getSelectedItem().getDuration(),
+                entriesView.getSelectionModel().getSelectedItem().getStart(),
+                "" + entriesView.getSelectionModel().getSelectedItem().getEnd());
+        Parent p = Loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(p));
+        stage.show();
 
+    }
 
-
-            }
-
-        
-    
-    
     @FXML
-    private void handleKbBoard(ActionEvent event) throws IOException{
+    private void handleKbBoard(ActionEvent event) throws IOException {
         pageSwitcher.switcher(event, "KanbanBoard.fxml");
-            }
-    @FXML
-    private void handleDeepFocus(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"DeepFocusMode.fxml");  
     }
-    @FXML
-    private void handleTaskTracker(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"TaskTracker.fxml");//TO CHANGE WHEN PAGE IS MADE
-    }
-        
-    @FXML
-    private void handleAbout(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"AboutScreen.fxml");
-    }
-    
-    @FXML
-    private void handleSettings(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"Settings.fxml"); //TO CHANGE WHEN PAGE IS MADE
-    }
-    @FXML
-    private void handleSignOut(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"LoginScreen.fxml");
-    }
-    @FXML
-    private void handleLearnings(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"DailyLearnings.fxml");   
-}
-    @FXML
-    private void handleTimeSheets(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"PieChart.fxml");
-    }
-}
 
+    @FXML
+    private void handleDeepFocus(ActionEvent event) throws IOException {
+        pageSwitcher.switcher(event, "DeepFocusMode.fxml");
+    }
+
+    @FXML
+    private void handleTaskTracker(ActionEvent event) throws IOException {
+        pageSwitcher.switcher(event, "TaskTracker.fxml");//TO CHANGE WHEN PAGE IS MADE
+    }
+
+    @FXML
+    private void handleAbout(ActionEvent event) throws IOException {
+        pageSwitcher.switcher(event, "AboutScreen.fxml");
+    }
+
+    @FXML
+    private void handleSettings(ActionEvent event) throws IOException {
+        pageSwitcher.switcher(event, "Settings.fxml"); //TO CHANGE WHEN PAGE IS MADE
+    }
+
+    @FXML
+    private void handleSignOut(ActionEvent event) throws IOException {
+        pageSwitcher.switcher(event, "LoginScreen.fxml");
+    }
+
+    @FXML
+    private void handleLearnings(ActionEvent event) throws IOException {
+        pageSwitcher.switcher(event, "DailyLearnings.fxml");
+    }
+
+    @FXML
+    private void handleTimeSheets(ActionEvent event) throws IOException {
+        pageSwitcher.switcher(event, "PieChart.fxml");
+    }
+}

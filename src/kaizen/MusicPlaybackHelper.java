@@ -31,7 +31,8 @@ public class MusicPlaybackHelper {
 
         return isSuccessful;
     }
-
+    
+    //Write new method to stop music when playing:
     public static void stopMusic() {
         boolean isSuccessful = false;
         try {

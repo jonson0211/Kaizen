@@ -6,9 +6,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.sql.Date;
 
 public class KaizenDatabase {
 
@@ -25,14 +22,14 @@ public class KaizenDatabase {
         return conn;
     }
 
-     public ResultSet getResultSet(String sqlstatement) throws SQLException {
+    public ResultSet getResultSet(String sqlstatement) throws SQLException {
         openConnection();
         java.sql.Statement statement = conn.createStatement();
         ResultSet RS = statement.executeQuery(sqlstatement);
         return RS;
     }
-     
-     public void insertStatement(String insert_query) throws SQLException {
+
+    public void insertStatement(String insert_query) throws SQLException {
         java.sql.Statement stmt = null;
         openConnection();
         try {
@@ -41,13 +38,13 @@ public class KaizenDatabase {
             System.out.println("the query was: " + insert_query);
             stmt.executeUpdate(insert_query);
             stmt.close();
-        } catch(Exception e){
-            System.err.println(e.getClass().getName() + ": " +e.getMessage());
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
         stmt.close();
     }
-    
+
     public static void createUserTable() {
         PreparedStatement createUserTable = null;
         PreparedStatement createDemoInstance = null;
@@ -75,6 +72,7 @@ public class KaizenDatabase {
             e.printStackTrace();
         }
     }
+
     public static void createCategoryTable() {
         PreparedStatement createCategoryTable = null;
         PreparedStatement createDemoInstance = null;
@@ -88,13 +86,12 @@ public class KaizenDatabase {
                 createCategoryTable = conn.prepareStatement("CREATE TABLE CATEGORY ("
                         + "CATEGORYID INTEGER PRIMARY KEY AUTOINCREMENT,"
                         + "CATEGORYNAME TEXT,"
-                        + "COLOUR TEXT"                        
-                        +");");
+                        + "COLOUR TEXT"
+                        + ");");
                 createCategoryTable.execute();
                 System.out.println("CATEGORY table created");
                 createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
                         + "VALUES ("
-                        
                         + "'Work',"
                         //+ "'RED')"
                         + "'#80bfff')"
@@ -102,7 +99,6 @@ public class KaizenDatabase {
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
                         + "VALUES ("
-                        
                         + "'Wellness',"
                         //+"'GREEN')"
                         + "'#80ff80')"
@@ -110,7 +106,6 @@ public class KaizenDatabase {
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
                         + "VALUES ("
-                        
                         + "'Relationships',"
                         //+ "'BLUE'"
                         + "'#cc99ff'"
@@ -118,7 +113,6 @@ public class KaizenDatabase {
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
                         + "VALUES ("
-                        
                         + "'Projects',"
                         //+"'YELLOW'"
                         + "'#ccffff'"
@@ -126,15 +120,13 @@ public class KaizenDatabase {
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
                         + "VALUES ("
-                      
                         + "'Daily',"
                         //+"'MAGENTA'"
-                        +"'#ff80ff'"
+                        + "'#ff80ff'"
                         + ")");
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO CATEGORY(CATEGORYNAME, COLOUR) "
                         + "VALUES ("
-                     
                         + "'Relaxation',"
                         //+"'PURPLE'"
                         + "'#ffb84d'"
@@ -147,11 +139,12 @@ public class KaizenDatabase {
             e.printStackTrace();
         }
     }
+
     public static void createTasksTable() {
         PreparedStatement createTasksTable = null;
         PreparedStatement createDummyTasks = null;
         PreparedStatement dropTable = null;
-        
+
         ResultSet rs = null;
         openConnection();
         try {
@@ -160,18 +153,15 @@ public class KaizenDatabase {
             DatabaseMetaData dbmd = conn.getMetaData();
             rs = dbmd.getTables(null, null, "TASKS", null);
             if (!rs.next()) {
-                
+
                 createTasksTable = conn.prepareStatement("CREATE TABLE IF NOT EXISTS TASKS ("
                         + " TASK_ID INTEGER PRIMARY KEY AUTOINCREMENT"
-                        
                         + ", TITLE TEXT NOT NULL"
                         + ", CATEGORYNAME TEXT NOT NULL"
-                        
                         + ", DESCRIPTION TEXT NOT NULL"
                         + ", DO_DATE TEXT NOT NULL"
                         + ", DUE_DATE TEXT NOT NULL"
-                        + ", PRIORITY TEXT NOT NULL"    
-                        
+                        + ", PRIORITY TEXT NOT NULL"
                         + ", FOREIGN KEY (CATEGORYNAME)"
                         + " REFERENCES CATEGORY(CATEGORYNAME)"
                         + ");");
@@ -189,11 +179,10 @@ public class KaizenDatabase {
                         + "'70'"
                         + ");");
                 createDummyTasks.execute();
-                
+
                 //Insert dummy data 2
                 createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
-                                
                         + "'ACF Call', "
                         + "'Work', "
                         + "'Discuss with the team on how we will handle presentation', "
@@ -202,12 +191,10 @@ public class KaizenDatabase {
                         + "'100'"
                         + ");");
                 createDummyTasks.execute();
-                
-                
+
                 //insert dummy data 3
                 createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
-                                
                         + "'Watch new My Hero Academia new episode', "
                         + "'Relaxation',"
                         + "'Watch new episode 4 of My Hero Academia season 4', "
@@ -216,11 +203,10 @@ public class KaizenDatabase {
                         + "'20'"
                         + ");");
                 createDummyTasks.execute();
-                
+
                 //insert dummy data 4
                 createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
-                                
                         + "'Decide on movie for date', "
                         + "'Relationships',"
                         + "'Decide on what movie to watch for date with Kara on her birthday', "
@@ -229,11 +215,10 @@ public class KaizenDatabase {
                         + "'40'"
                         + ");");
                 createDummyTasks.execute();
-                
+
                 //insert dummy data 5
                 createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
-                                
                         + "'Apply for Microsoft', "
                         + "'Work', "
                         + "'Apply for an internship with Microsoft', "
@@ -242,11 +227,10 @@ public class KaizenDatabase {
                         + "'70'"
                         + ");");
                 createDummyTasks.execute();
-                
+
                 //insert dummy data 6
                 createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
-                                
                         + "'Learn how to code', "
                         + "'Projects',"
                         + "'Self learn the basics of Java coding', "
@@ -255,11 +239,10 @@ public class KaizenDatabase {
                         + "'80'"
                         + ");");
                 createDummyTasks.execute();
-                
+
                 //insert dummy data 7
                 createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
-                                
                         + "'Finish Zelda', "
                         + "'Relaxation',"
                         + "'Finish the game The Legend of Zelda: Breath of the Wild on Nintendo Switch', "
@@ -268,11 +251,10 @@ public class KaizenDatabase {
                         + "'10'"
                         + ");");
                 createDummyTasks.execute();
-                
-                 //insert dummy data 8
+
+                //insert dummy data 8
                 createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
-                                
                         + "'Form Oztag group', "
                         + "'Wellness',"
                         + "'Gather people who are interested in forming an Oztag team', "
@@ -281,11 +263,10 @@ public class KaizenDatabase {
                         + "'40'"
                         + ");");
                 createDummyTasks.execute();
-                
-                 //insert dummy data 9
+
+                //insert dummy data 9
                 createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
-                                
                         + "'Organise Interfaculty Party', "
                         + "'Work',"
                         + "'Plan and organise the logistics of the Annual Interfactulty Student Society Party ', "
@@ -294,11 +275,10 @@ public class KaizenDatabase {
                         + "'60'"
                         + ");");
                 createDummyTasks.execute();
-                
-                 //insert dummy data 10
+
+                //insert dummy data 10
                 createDummyTasks = conn.prepareStatement("INSERT INTO TASKS (TITLE,CATEGORYNAME, DESCRIPTION, DO_DATE, DUE_DATE, PRIORITY) "
                         + " VALUES ("
-                                
                         + "'Shopping for groceries', "
                         + "'Daily',"
                         + "'Shopping for eggs, milk, bread, lettuce', "
@@ -307,9 +287,9 @@ public class KaizenDatabase {
                         + "'80'"
                         + ");");
                 createDummyTasks.execute();
-                
+
             } else {
-               System.out.println("TASKS table already exists");
+                System.out.println("TASKS table already exists");
 //        dropTable = conn.prepareStatement("DROP TABLE TASKS");
 //        dropTable.execute();
 //                System.out.println("dropped");
@@ -336,7 +316,7 @@ public class KaizenDatabase {
                         + "DATE TEXT, "
                         + "START TEXT, " //integer
                         + "END TEXT, " //integer
-                        + "DURATION INTEGER," 
+                        + "DURATION INTEGER,"
                         + "DESCR TEXT,"
                         + "FOREIGN KEY (CATEGORYNAME)"
                         + "REFERENCES CATEGORY(CATEGORYNAME)"
@@ -352,9 +332,9 @@ public class KaizenDatabase {
                         + "'60',"
                         + " 'Today I had a productive day at the office!'"
                         + ");"
-                        );
+                );
                 createDemoInstance.execute();
-                
+
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,ACTIVITY,DATE,START,END,DURATION,DESCR) "
                         + "VALUES ('Work', "
                         + "'Networking', "
@@ -364,11 +344,11 @@ public class KaizenDatabase {
                         + "'240',"
                         + " 'Today I had a productive day at the office launch!'"
                         + ");"
-                        );
-                
+                );
+
                 createDemoInstance.execute();
-                
-                createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,ACTIVITY,DATE,START,END,DURATION,DESCR) " 
+
+                createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,ACTIVITY,DATE,START,END,DURATION,DESCR) "
                         + "VALUES ('Relaxation',"
                         + "'Gaming', "
                         + "'2019-11-14',"
@@ -377,65 +357,65 @@ public class KaizenDatabase {
                         + "'120',"
                         + "'Today I played League with my friends'"
                         + ");"
-                        );
+                );
                 createDemoInstance.execute();
-                
+
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,ACTIVITY,DATE,START,END,DURATION,DESCR) "
-                + "VALUES('Wellness', "
-                + "'Exercise',"
-                + "'2019-11-15',"
-                + "'10:20 am',"
-                + "'11:05 am',"
-                + "'45',"
-                + "'I ran with to the park with my dog'"
-                + ");"
+                        + "VALUES('Wellness', "
+                        + "'Exercise',"
+                        + "'2019-11-15',"
+                        + "'10:20 am',"
+                        + "'11:05 am',"
+                        + "'45',"
+                        + "'I ran with to the park with my dog'"
+                        + ");"
                 );
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,ACTIVITY,DATE,START,END,DURATION,DESCR) "
-                + "VALUES('Projects',"
-                + "'Painting', "
-                + "'2019-11-15',"
-                + "'09:20 pm',"
-                + "'11:00 pm',"
-                + "'120',"
-                + "'I completed my painting of my 2D girlfriend!'"
-                + ");"
+                        + "VALUES('Projects',"
+                        + "'Painting', "
+                        + "'2019-11-15',"
+                        + "'09:20 pm',"
+                        + "'11:00 pm',"
+                        + "'120',"
+                        + "'I completed my painting of my 2D girlfriend!'"
+                        + ");"
                 );
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,ACTIVITY,DATE,START,END,DURATION,DESCR) "
-                + "VALUES('Projects',"
-                + "'DIY', "
-                + "'2019-11-16',"
-                + "'12:00 pm',"
-                + "'02:30 pm',"
-                + "'90',"
-                + "'I made a wooden kennel for my dog!'"
-                + ");"
+                        + "VALUES('Projects',"
+                        + "'DIY', "
+                        + "'2019-11-16',"
+                        + "'12:00 pm',"
+                        + "'02:30 pm',"
+                        + "'90',"
+                        + "'I made a wooden kennel for my dog!'"
+                        + ");"
                 );
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,ACTIVITY,DATE,START,END,DURATION,DESCR) "
-                + "VALUES('Daily',"
-                + "'Chores',"
-                + "'2019-11-17',"
-                + "'07:20 am',"
-                + "'08:40 am',"
-                + "'140',"
-                + "'I went to Woolies to buy some groceries'"
-                + ");"
+                        + "VALUES('Daily',"
+                        + "'Chores',"
+                        + "'2019-11-17',"
+                        + "'07:20 am',"
+                        + "'08:40 am',"
+                        + "'140',"
+                        + "'I went to Woolies to buy some groceries'"
+                        + ");"
                 );
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,ACTIVITY,DATE,START,END,DURATION,DESCR) "
-                + "VALUES('Relationships',"
-                + "'Family', "
-                + "'2019-11-17',"
-                + "'08:20 pm',"
-                + "'09:40 pm',"
-                + "'140',"
-                + "'I had dinner with my family tonight'"
-                + ");"
+                        + "VALUES('Relationships',"
+                        + "'Family', "
+                        + "'2019-11-17',"
+                        + "'08:20 pm',"
+                        + "'09:40 pm',"
+                        + "'140',"
+                        + "'I had dinner with my family tonight'"
+                        + ");"
                 );
                 createDemoInstance.execute();
-                
+
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME,ACTIVITY,DATE,START,END,DURATION,DESCR)  "
                         + "VALUES ('Projects',"
                         + "'DIY', "
@@ -445,10 +425,10 @@ public class KaizenDatabase {
                         + "'360',"
                         + "'Today I learnt how to carve wood'"
                         + ");"
-                        );
-                
+                );
+
                 createDemoInstance.execute();
-                
+
                 createDemoInstance = conn.prepareStatement("INSERT INTO TIMESHEETS(CATEGORYNAME, ACTIVITY, DATE,START,END,DURATION,DESCR) "
                         + "VALUES ('Work', "
                         + "'Networking',"
@@ -458,9 +438,9 @@ public class KaizenDatabase {
                         + "'480', "
                         + "'I successfully presented our team strategy to the board!'"
                         + ");"
-                        );
+                );
                 createDemoInstance.execute();
-                
+
             } else {
                 System.out.println("Timesheets table exists");
             }
@@ -468,24 +448,25 @@ public class KaizenDatabase {
             e.printStackTrace();
         }
     }
-    public static void createLearnings(){
+
+    public static void createLearnings() {
         PreparedStatement createLearnings;
         PreparedStatement insertDemoData;
         ResultSet rs;
         openConnection();
-        try{
+        try {
             System.out.println("Checking LEARNINGS table");
             DatabaseMetaData db = conn.getMetaData();
-            rs = db.getTables(null,null,"LEARNINGS", null);
-            if(!rs.next()){
-            createLearnings = conn.prepareStatement("CREATE TABLE IF NOT EXISTS LEARNINGS("
+            rs = db.getTables(null, null, "LEARNINGS", null);
+            if (!rs.next()) {
+                createLearnings = conn.prepareStatement("CREATE TABLE IF NOT EXISTS LEARNINGS("
                         + "LEARNINGS_ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-                    + "DATE TEXT NOT NULL"
+                        + "DATE TEXT NOT NULL"
                         + ", DID_WELL TEXT NOT NULL"
                         + ", BE_BETTER TEXT NOT NULL)");
-            createLearnings.execute();
-            System.out.println("LEARNINGS table created!");
-    /*        insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
+                createLearnings.execute();
+                System.out.println("LEARNINGS table created!");
+                /*        insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
                     + "VALUES ('2019-11-16', 'Went to the gym', 'Spend time with family');");
             insertDemoData.execute();
             insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
@@ -493,15 +474,16 @@ public class KaizenDatabase {
             insertDemoData.execute();
             insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
                     + "VALUES ('2019-11-14', 'Went to Blair for consultation', 'Study 2605');");
-            insertDemoData.execute();   */        
-        } else{
+            insertDemoData.execute();   */
+            } else {
                 System.out.println("LEARNINGS table exists!");
-                }
-        }catch(Exception ex){
+            }
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
-public static void createErrorsTable() {
+
+    public static void createErrorsTable() {
         PreparedStatement createCategoryTable = null;
         PreparedStatement createDemoInstance = null;
         ResultSet rs = null;
@@ -516,9 +498,9 @@ public static void createErrorsTable() {
                         + " DATE TEXT NOT NULL,"
                         + " ERRORNAME TEXT,"
                         + " ERRORPAGE TEXT, "
-                        + " DESCRIPTION TEXT NOT NULL"     
+                        + " DESCRIPTION TEXT NOT NULL"
                         + ");"
-                        );
+                );
                 createCategoryTable.execute();
                 System.out.println("ERRORS table created");
                 createDemoInstance = conn.prepareStatement("INSERT INTO ERRORS(DATE, ERRORNAME, ERRORPAGE, DESCRIPTION) "
@@ -582,12 +564,5 @@ public static void createErrorsTable() {
             e.printStackTrace();
         }
     }
-    
+
 }
-   
-    
-
-
-
-    
-    

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package kaizen;
 
 import java.io.IOException;
@@ -37,11 +32,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.DateCell;
 import kaizen.DataModels.learningsCombo;
 
-/**
- * FXML Controller class
- *
- * @author wongad1
- */
 public class DailyLearningsController {
 
     KaizenDatabase userLearn = new KaizenDatabase();
@@ -398,7 +388,7 @@ public class DailyLearningsController {
     //
 
     //populating combobox
-   /* private void FillComboOne() {
+    /* private void FillComboOne() {
      try {
      String queryOne = "SELECT DID_WELL FROM LEARNINGS";
      pst = conn.prepareStatement(queryOne);
