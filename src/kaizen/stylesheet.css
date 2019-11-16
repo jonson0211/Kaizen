@@ -400,6 +400,12 @@
     -fx-font-size: 18px;
     -fx-border-width: 1;
     -fx-border-color: rgba(197, 227, 230, 1.00); 
+    -fx-min-width: 238;
+    -fx-pref-width: 238;
+    -fx-max-width: 238;
+        -fx-min-height: 72;
+    -fx-pref-height: 72;
+    -fx-max-height: 72;
 }
 
 .kanban-task:hover {
@@ -410,4 +416,10 @@
     -fx-font-size: 18px;
     -fx-border-width: 1;
     -fx-border-color: rgba(84, 182, 191, 1.00); 
+        -fx-min-width: 238;
+    -fx-pref-width: 238;
+    -fx-max-width: 238;
+        -fx-min-height: 72;
+    -fx-pref-height: 72;
+    -fx-max-height: 72;
 }
