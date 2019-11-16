@@ -17,13 +17,17 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import kaizen.DataModels.taskCategoryChoice;
 import kaizen.DataModels.taskChoice;
 import kaizen.UserData.KaizenDatabase;
@@ -243,7 +247,17 @@ public class DeepFocusModeController implements Initializable {
     @FXML
     private void handleSignOut(ActionEvent event) throws IOException {
         MusicPlaybackHelper.stopMusic();
-        pageSwitcher.switcher(event, "ReportBugPopUp.fxml");
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ReportBugPopUp.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Report a bug");
+            stage.setScene(new Scene(root1));
+            stage.show();
+
+        } catch (Exception e) {
+            System.out.println("Cannot load this new window!");
+        }
     }
 
     @FXML

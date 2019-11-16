@@ -287,7 +287,17 @@ public class PieChartController implements Initializable {
 
     @FXML
     private void handleSignOut(ActionEvent event) throws IOException {
-        pageSwitcher.switcher(event, "ReportBugPopUp.fxml");
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ReportBugPopUp.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Report a bug");
+            stage.setScene(new Scene(root1));
+            stage.show();
+
+        } catch (Exception e) {
+            System.out.println("Cannot load this new window!");
+        }
     }
 
     @FXML

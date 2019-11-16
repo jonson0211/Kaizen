@@ -10,8 +10,11 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.HPos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
@@ -22,6 +25,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.TextAlignment;
+import javafx.stage.Stage;
 import kaizen.UserData.KaizenDatabase;
 
 public class KanbanBoardController implements Initializable {
@@ -366,7 +370,17 @@ public class KanbanBoardController implements Initializable {
     //switch to register screen
     @FXML
     public void handleSignOut(ActionEvent event) throws IOException {
-        psh.switcher(event, "ReportBugPopUp.fxml");
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ReportBugPopUp.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Report a bug");
+            stage.setScene(new Scene(root1));
+            stage.show();
+
+        } catch (Exception e) {
+            System.out.println("Cannot load this new window!");
+        }
     }
 
     @FXML
@@ -374,7 +388,6 @@ public class KanbanBoardController implements Initializable {
         psh.switcher(event, "TaskTracker.fxml");
     }
 
-    //switch to time dashboard
     @FXML
     public void handleTimeDashboard(ActionEvent event) throws IOException {
         psh.switcher(event, "PieChart.fxml");
