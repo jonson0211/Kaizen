@@ -4,20 +4,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import javafx.util.Duration;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -27,6 +21,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
 import kaizen.DataModels.taskCategoryChoice;
@@ -70,15 +66,15 @@ public class DeepFocusModeController implements Initializable {
     @FXML
     private Label displayMoonPhase;
     @FXML
-    private Label displayTitle;
+    private TextArea displayTitle;
     @FXML
-    private Label displayDescription;
+    private TextArea displayDescription;
     @FXML
     private Button button;
     @FXML
     private Label catchLabel;
     @FXML
-            private Label secondsDisplay;
+    private Label secondsDisplay;
 
     //@FXML
     //private Button button2;
@@ -88,8 +84,6 @@ public class DeepFocusModeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        displayTitle.setVisible(false);
-        displayDescription.setVisible(false);
         catchLabel.setVisible(false);
 
         //Print feedback

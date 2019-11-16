@@ -142,12 +142,20 @@
     -fx-font-family: "Roboto Light";
 }
 
+.input-field-big {
+    -fx-font-size: 18px;
+    -fx-fill-color: #e1e1e1;
+    -fx-text-fill: #4f4e52;
+    -fx-font-family: "Roboto Light";
+    -fx-wrap-text: true;
+}
+
 
 .input-fields {
     -fx-font-size: 18px;
     -fx-fill-color: #e1e1e1;
     -fx-text-fill: #4f4e52;
-    -fx-font-family: "Roboto Thin";
+    -fx-font-family: "Roboto Light";
     -fx-min-height: 40;
     -fx-pref-height: 40;
 }
@@ -156,7 +164,7 @@
     -fx-font-size: 18px;
     -fx-fill-color: #ffffff;
     -fx-text-fill: #4f4e52;
-    -fx-font-family: "Roboto Thin";
+    -fx-font-family: "Roboto Light";
     -fx-max-height: 40;
     -fx-min-height: 40;
     -fx-pref-height: 40;
@@ -301,7 +309,7 @@
 .textBox-label {
     -fx-font-size: 18px;
     -fx-text-fill: #404040;
-    -fx-font-family: "Roboto Thin";
+    -fx-font-family: "Roboto Light";
     -fx-vertical-align: text-top;
     -fx-text-origin: top;
 }
@@ -309,11 +317,97 @@
 .setText {
     -fx-font-size: 18px;
     -fx-text-fill: #404040;
-    -fx-font-family: "Roboto Thin";
+    -fx-font-family: "Roboto Light";
 }
 
-.kanban-background {
-    -fx-background-image:url('Resources/LoginScreenImage.jpg'); 
-    -fx-background-opacity: 0.3;
-     -fx-background-size: cover;
+/*
+.table-view {
+    -fx-background-color: rgb(176, 209, 212, 1.00);
+    -fx-font-family: "Roboto Thin";
+    -fx-text-fill: #404040;
+    -fx-font-size: 18px;        
+}
+
+.table-view:focused {
+    -fx-background-color: rgb(176, 209, 212, 1.00);
+    -fx-font-family: "Roboto Thin";
+    -fx-text-fill: #404040;
+    -fx-font-size: 18px;        
+}
+*/
+
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    -fx-background-color: rgba(1, 113, 122, 1.00); 
+    -fx-font-family: "Roboto Light";
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 18px;   
+}
+.table-view .column-header .label{
+    -fx-text-fill: white;
+    -fx-font-weight: bold; 
+    -fx-alignment: CENTER_LEFT;
+}
+.table-view .cell{
+    -fx-alignment: center-left;
+    -fx-font-family: "Roboto Light";
+    -fx-text-fill: #404040;
+    -fx-font-size: 18px;   
+}
+
+.table-view .cell:hover {
+    -fx-alignment: center-left;
+    -fx-font-family: "Roboto Light";
+    -fx-font-size: 18px;
+    -fx-background-color: rgba(197, 227, 230, 1.00); 
+}
+
+
+.table-view .cell:selected {
+    -fx-alignment: center-left;
+    -fx-font-family: "Roboto Light";
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 18px;
+    -fx-background-color: rgba(84, 182, 191, 1.00); 
+}
+
+.table-view .increment-button ,.table-view .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 2em;
+}
+
+.table-view .scroll-bar:horizontal .track,
+.table-view .scroll-bar:vertical .track{
+    -fx-background-color: rgba(1, 113, 122, 1.00); 
+    -fx-border-color: transparent;
+    -fx-background-radius: 2em;
+    -fx-border-radius:2em;
+}
+
+.table-view .scroll-bar:horizontal .thumb,
+.table-view .scroll-bar:vertical .thumb {
+    -fx-background-color: rgba(1, 113, 122, 1.00); 
+    -fx-border-color: transparent;
+    -fx-background-radius: 2em;
+    -fx-border-radius:2em;
+}
+
+.kanban-task {
+    -fx-background-color: #ffffff;
+    -fx-alignment: CENTER;
+    -fx-font-family: "Roboto Light";
+    -fx-text-fill: #404040;
+    -fx-font-size: 18px;
+    -fx-border-width: 1;
+    -fx-border-color: rgba(197, 227, 230, 1.00); 
+}
+
+.kanban-task:hover {
+    -fx-background-color: rgba(197, 227, 230, 1.00); 
+    -fx-alignment: CENTER;
+    -fx-font-family: "Roboto Light";
+    -fx-text-fill: #404040;
+    -fx-font-size: 18px;
+    -fx-border-width: 1;
+    -fx-border-color: rgba(84, 182, 191, 1.00); 
 }
