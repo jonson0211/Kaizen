@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package kaizen.DataModels;
 
 import javafx.beans.property.IntegerProperty;
@@ -10,39 +5,37 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-/**
- *
- * @author lienzhu
- */
 public class pieChartDM {
+
     private StringProperty category;
     private IntegerProperty duration;
 
     public StringProperty getCategoryProperty() {
         return category;
     }
-    
-     public String getCategory(){
+
+    public String getCategory() {
         return category.get();
     }
 
     public void setCatChoice(StringProperty catChoice) {
         this.category = catChoice;
     }
-    
-    public String setCatChoice(String catChoice){
+
+    public String setCatChoice(String catChoice) {
         this.category.get();
         return catChoice;
     }
 
-    public Integer getDuration(){
+    public Integer getDuration() {
         return duration.get();
     }
-    
-    public IntegerProperty getDurationProperty(){
+
+    public IntegerProperty getDurationProperty() {
         return duration;
     }
-    public void setDuration(Integer duration){
+
+    public void setDuration(Integer duration) {
         this.duration.set(duration);
     }
 
@@ -50,5 +43,5 @@ public class pieChartDM {
         this.category = new SimpleStringProperty(category);
         this.duration = new SimpleIntegerProperty(duration);
     }
-    
+
 }

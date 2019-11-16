@@ -1,7 +1,5 @@
 package kaizen;
 
-
-
 import java.io.IOException;
 
 import java.net.URL;
@@ -18,56 +16,45 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import kaizen.UserData.KaizenDatabase;
 
-/**
- * FXML Controller class
- *
- * @author lienzhu
- */
 public class AddCategoryController implements Initializable {
 
-    
-    @FXML private Button addCat;
-    @FXML private TextField catName;
-    @FXML private ColorPicker catColour;
+    @FXML
+    private Button addCat;
+    @FXML
+    private TextField catName;
+    @FXML
+    private ColorPicker catColour;
+    @FXML
+    private Label catOutput;
+    @FXML
+    private Button exit;
 
-    @FXML private Label catOutput;
+    KaizenDatabase database = new KaizenDatabase();
 
-    @FXML private Button exit;
-    
-
-    
-    KaizenDatabase database = new KaizenDatabase();   
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
 
         catOutput.setVisible(false);
 
-        
+    }
 
-    }    
-    
     @FXML
     private void handleSubmitAction(ActionEvent event) throws SQLException, ParseException {
-        
+
         String category = catName.getText();
         String colour = catColour.getValue().toString();
-        
+
         try {
-            
+
             database.insertStatement(
-             "INSERT INTO CATEGORY ("
-            + "CATEGORYNAME, COLOUR)"
-            + " VALUES('" + category + "', '" 
-            + colour + "');"
+                    "INSERT INTO CATEGORY ("
+                    + "CATEGORYNAME, COLOUR)"
+                    + " VALUES('" + category + "', '"
+                    + colour + "');"
             );
 
             catOutput.setText("Category added!");
             catOutput.setVisible(true);
-
-            
-
 
         } catch (Exception ex) {
             System.out.println("Could not add entry. Please check your inputs!");
@@ -75,12 +62,13 @@ public class AddCategoryController implements Initializable {
             catOutput.setVisible(true);
             ex.printStackTrace();
         }
-    
+
     }
-    
-    @FXML private void handleExit(ActionEvent event) throws IOException{
+
+    @FXML
+    private void handleExit(ActionEvent event) throws IOException {
         Stage stage = (Stage) exit.getScene().getWindow();
         stage.close();
     }
-    
+
 }
