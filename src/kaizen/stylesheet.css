@@ -77,7 +77,7 @@
 
 .output-label {
     -fx-font-size: 18px;
-    -fx-text-fill: #5271ff;
+    -fx-text-fill: rgba(1, 113, 122, 1.00);
     -fx-font-family: "Roboto Light";
     -fx-text-alignment: center;
 }
@@ -98,21 +98,21 @@
 
 .buttons {
     -fx-font-size: 18px;
-    -fx-fill-color: #e1e1e1;
-    -fx-text-fill: #4f4e52;
+    -fx-background-color: rgba(1, 113, 122, 1.00);
+    -fx-text-fill: #ffffff;
     -fx-font-family: "Roboto Light";
 }
 .buttons:hover {
     -fx-font-size: 18px;
-    -fx-fill-color: #2eb2ff;
-    -fx-text-fill: #4f4e52;
+    -fx-background-color: rgba(0, 90, 97, 1.00);
+    -fx-text-fill: #ffffff;
     -fx-font-family: "Roboto Light";
 }
 
 .buttons:pressed {
     -fx-font-size: 18px;
-    -fx-fill-color: #5271ff;
-    -fx-text-fill: #4f4e52;
+    -fx-background-color: rgba(0, 67, 71, 1.00);
+    -fx-text-fill: #ffffff;
     -fx-font-family: "Roboto Light";
 }
 
@@ -203,7 +203,7 @@
 .time-display {
     -fx-font-size: 40px;
     -fx-text-fill: #404040;
-    -fx-font-family: "Digital";
+    -fx-font-family: "Roboto Light";
     -fx-wrap-text: true;
     -fx-alignment: center;
 }
@@ -211,7 +211,15 @@
 .moonPhase-display {
     -fx-font-size: 36px;
     -fx-text-fill: #404040;
-    -fx-font-family: "Digital";
+    -fx-font-family: "Roboto Light";
+    -fx-wrap-text: true;
+    -fx-alignment: center;
+}
+
+.seconds-display {
+    -fx-font-size: 32px;
+    -fx-text-fill: #404040;
+    -fx-font-family: "Roboto Thin";
     -fx-wrap-text: true;
     -fx-alignment: center;
 }
@@ -223,9 +231,50 @@
 }
 
 .getText_button {
+    -fx-background-image: url('Resources/play-button.png'); 
     -fx-background-radius: 20;
     -fx-text-fill: transparent;
-    -fx-background-color: #01717a;
     -fx-border-color: transparent;
     -fx-border-width: 0;
+    -fx-background-color: rgba(1, 113, 122, 1.00);
+}
+
+.getText_button:hover {
+    -fx-background-radius: 20;
+    -fx-text-fill: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-color: rgba(0, 90, 97, 1.00);
+    -fx-background-image: url('Resources/play-button.png'); 
+}
+
+.getText_button:pressed {
+    -fx-background-radius: 20;
+    -fx-text-fill: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 0;
+    -fx-background-color: rgba(0, 67, 71, 1.00);
+    -fx-opacity: 1.0;
+    -fx-background-image: url('Resources/play-button.png'); 
+}
+
+.timeIs {
+    -fx-font-size: 24px;
+    -fx-text-fill: #404040;
+    -fx-font-family: "Roboto Light";
+    -fx-wrap-text: true;
+    -fx-alignment: center;
+}
+
+.textBox-label {
+    -fx-font-size: 18px;
+    -fx-text-fill: #404040;
+    -fx-font-family: "Roboto Thin";
+    -fx-vertical-align: text-top;
+}
+
+.setText {
+    -fx-font-size: 18px;
+    -fx-text-fill: #404040;
+    -fx-font-family: "Roboto Thin";
 }
