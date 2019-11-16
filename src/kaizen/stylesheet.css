@@ -311,3 +311,9 @@
     -fx-text-fill: #404040;
     -fx-font-family: "Roboto Thin";
 }
+
+.kanban-background {
+    -fx-background-image:url('Resources/LoginScreenImage.jpg'); 
+    -fx-background-opacity: 0.3;
+     -fx-background-size: cover;
+}

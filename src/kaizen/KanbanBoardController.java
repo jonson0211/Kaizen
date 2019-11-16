@@ -28,6 +28,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
@@ -74,6 +75,9 @@ public class KanbanBoardController implements Initializable {
     private ToggleButton dueDateView;
     @FXML
     private GridPane grid;
+
+   // Image image = new Image(url('Resources/moodOne.jpg'));
+    //grid.getChildren().add(new ImageView(image));
 
     KaizenDatabase KanbanDatabase = new KaizenDatabase();
 
