@@ -18,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -80,11 +81,14 @@ public class SettingsController implements Initializable {
     @FXML private Button editButton;
     @FXML private Button addButton;
     @FXML private Label status;
-
+    @FXML private Button help;
+    @FXML private Button report;
+    
+    
     @FXML
     public TableView<categoryTableDM> catView;
     public static TableView<categoryTableDM> catView_2;
-
+    
     @FXML
     private TableColumn<categoryTableDM, String> colourClm;
     @FXML
@@ -106,7 +110,7 @@ public class SettingsController implements Initializable {
     @FXML
     private TableColumn<errorsDM, String> errorPageClm;
     
-    @FXML private Button report;
+    
     
 
     @Override
@@ -275,8 +279,29 @@ public class SettingsController implements Initializable {
             System.out.println("Cannot load this new window!");
         }
     }
-
     
+    @FXML
+    private void handleReportBug(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AddCategory.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Report a bug");
+            stage.setScene(new Scene(root1));
+            stage.show();
+
+        } catch (Exception e) {
+            System.out.println("Cannot load this new window!");
+        }
+    }
+
+    @FXML
+    private void handleHelp(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Editing the Category table");
+                alert.setHeaderText("To DELETE: Select row and click delete. \n To UPDATE: Double-click an entry, edit, press ENTER, then click UPDATE.");
+                alert.showAndWait();
+    }
 
     @FXML
     private void handleDailyBreakdown(ActionEvent event) throws IOException {
