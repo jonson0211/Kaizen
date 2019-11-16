@@ -11,6 +11,11 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +28,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
@@ -70,6 +76,9 @@ public class KanbanBoardController implements Initializable {
     @FXML
     private GridPane grid;
 
+   // Image image = new Image(url('Resources/moodOne.jpg'));
+    //grid.getChildren().add(new ImageView(image));
+
     KaizenDatabase KanbanDatabase = new KaizenDatabase();
 
 //    
@@ -80,16 +89,16 @@ public class KanbanBoardController implements Initializable {
 //        DISPLAY ITEMS IN GRIDPANE BASED ON DATABASE
         try {
 
-            ResultSet rs = KanbanDatabase.getResultSet("SELECT * FROM TASKS WHERE DO_DATE = '2019-11-18'");
+            ResultSet rs = KanbanDatabase.getResultSet("SELECT * FROM TASKS WHERE DO_DATE = date('now') ");
             makeElements(rs, 0);
 
             rs = KanbanDatabase.getResultSet("SELECT * FROM TASKS WHERE DO_DATE = '1990-11-19'");
             makeElements(rs, 1);
 
-            rs = KanbanDatabase.getResultSet("SELECT * FROM TASKS WHERE DO_DATE = '2019-11-19'");
+            rs = KanbanDatabase.getResultSet("SELECT * FROM TASKS WHERE DO_DATE =  date('now', '+1 days') ");
             makeElements(rs, 2);
 
-            rs = KanbanDatabase.getResultSet("SELECT * FROM TASKS WHERE DO_DATE > '2019-11-19'");
+            rs = KanbanDatabase.getResultSet("SELECT * FROM TASKS WHERE DO_DATE > date('now', '+1 days')");
             makeElements(rs, 3);
 
         } catch (SQLException ex) {
@@ -98,6 +107,19 @@ public class KanbanBoardController implements Initializable {
     }
 
     public void makeElements(ResultSet rs, int num) throws SQLException {
+        
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd"); 
+        
+        LocalDate now = LocalDate.now();  
+        String nowDate = now.format(dtf); 
+        
+        LocalDate tmr = now.plusDays(1);
+        String tmrDate = tmr.format(dtf); 
+        
+        LocalDate week = now.plusDays(7);
+        String weekDate = week.format(dtf); 
+    
+        
         // Pane pane = new Pane();
         for (int i = 0; i < 7; i++) {
             Label taskLabel = new Label();
@@ -170,27 +192,27 @@ public class KanbanBoardController implements Initializable {
                             boolean success = false;
                             if (grid.getColumnIndex(taskLabel) == 2) {
                                 //update the database entry where the task name = parts[0]
-                                parts[1] = "Do Date: 2019-11-19";
+                                parts[1] = "Do Date: " + tmrDate + "";
                                 
                                 try {
-                                    KanbanDatabase.insertStatement("UPDATE TASKS SET DO_DATE = '2019-11-19' WHERE TITLE = '" + parts[0] + "'");
+                                    KanbanDatabase.insertStatement("UPDATE TASKS SET DO_DATE = '" + tmrDate + "'  WHERE TITLE = '" + parts[0] + "'");
                                 } catch (Exception ex) {
                                     ex.printStackTrace();
                                 }
                                 
                             } else if (grid.getColumnIndex(taskLabel) == 0) {
-                                parts[1] = "Do Date: 2019-11-18";
+                                parts[1] = "Do Date: " + nowDate + "";
                                 
                                  try {
-                                    KanbanDatabase.insertStatement("UPDATE TASKS SET DO_DATE = '2019-11-18' WHERE TITLE = '" + parts[0] + "'");
+                                    KanbanDatabase.insertStatement("UPDATE TASKS SET DO_DATE =  '"+ nowDate+ "'  WHERE TITLE = '" + parts[0] + "'");
                                 } catch (Exception ex) {
                                     ex.printStackTrace();
                                 }
                             } else if (grid.getColumnIndex(taskLabel) == 3){
-                                parts[1] = "Do Date: 2019-11-25";
+                                parts[1] = "Do Date: " + weekDate + "";
                                 
                                  try {
-                                    KanbanDatabase.insertStatement("UPDATE TASKS SET DO_DATE = '2019-11-25' WHERE TITLE = '" + parts[0] + "'");
+                                    KanbanDatabase.insertStatement("UPDATE TASKS SET DO_DATE =  '" + weekDate + "'  WHERE TITLE = '" + parts[0] + "'");
                                 } catch (Exception ex) {
                                     ex.printStackTrace();
                                 }
@@ -284,26 +306,26 @@ public class KanbanBoardController implements Initializable {
                                 boolean success = false;
                                 if (grid.getColumnIndex(taskLabel1) == 2) {
                                     //update the database entry where the task name = 1st part of the string (title), setting date as XXX
-                                    parts[1] = "Do Date: 2019-11-19";
+                                    parts[1] = "Do Date: " + tmrDate;
                                         try {
-                                    KanbanDatabase.insertStatement("UPDATE TASKS SET DO_DATE = '2019-11-19' WHERE TITLE = '" + parts[0] + "'");
+                                    KanbanDatabase.insertStatement("UPDATE TASKS SET DO_DATE =  '"+ tmrDate+  "' WHERE TITLE = '" + parts[0] + "'");
                                 } catch (Exception ex) {
                                     ex.printStackTrace();
                                 }
                                 } else if (grid.getColumnIndex(taskLabel1) == 0) {
-                                    parts[1] = "Do Date: 2019-11-18";
+                                    parts[1] = "Do Date: " + nowDate;
                                     
                                      try {
-                                    KanbanDatabase.insertStatement("UPDATE TASKS SET DO_DATE = '2019-11-18' WHERE TITLE = '" + parts[0] + "'");
+                                    KanbanDatabase.insertStatement("UPDATE TASKS SET DO_DATE =  '" + nowDate +"'  WHERE TITLE = '" + parts[0] + "'");
                                 } catch (Exception ex) {
                                     ex.printStackTrace();
                                 }
                                     
                                 } else if (grid.getColumnIndex(taskLabel1) == 3){
-                                parts[1] = "Do Date: 2019-11-25";
+                                parts[1] = "Do Date: " + weekDate;
                                 
                                  try {
-                                    KanbanDatabase.insertStatement("UPDATE TASKS SET DO_DATE = '2019-11-25' WHERE TITLE = '" + parts[0] + "'");
+                                    KanbanDatabase.insertStatement("UPDATE TASKS SET DO_DATE = '" + weekDate + "'  WHERE TITLE = '" + parts[0] + "'");
                                 } catch (Exception ex) {
                                     ex.printStackTrace();
                                 }

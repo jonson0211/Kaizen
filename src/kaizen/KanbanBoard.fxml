@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -56,7 +57,7 @@
                   <Label layoutX="33.0" layoutY="88.0" prefHeight="40.0" prefWidth="400.0" styleClass="small-label" text="What would you like to do today?" />
                   <ToggleButton fx:id="dueDateView" layoutX="861.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleDueDateView" text="Due Date View" />
                   <ToggleButton fx:id="doDateView" layoutX="664.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleDoDateView" text="Do Date View" />
-                  <GridPane fx:id="grid" gridLinesVisible="true" layoutX="64.0" layoutY="180.0" prefHeight="498.0" prefWidth="950.0" styleClass="small-label" stylesheets="@stylesheet.css">
+                  <GridPane fx:id="grid" layoutX="65.0" layoutY="179.0" prefHeight="498.0" prefWidth="950.0" styleClass="small-label" stylesheets="@stylesheet.css">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -73,10 +74,34 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Pane fx:id="pane0" prefHeight="26.0" prefWidth="211.0" />
-                        <Pane fx:id="pane1" prefHeight="26.0" prefWidth="211.0" GridPane.columnIndex="1" />
-                        <Pane fx:id="pane2" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" />
-                        <Pane fx:id="pane3" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.rowIndex="1" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.rowIndex="2" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.rowIndex="3" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.rowIndex="4" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.rowIndex="5" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.rowIndex="6" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="moodBackgroundThree" width="238.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="1" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="3" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="72.0" stroke="BLACK" strokeType="INSIDE" styleClass="kanban-background" width="238.0" GridPane.columnIndex="2" />
                      </children>
                   </GridPane>
                   <GridPane layoutX="64.0" layoutY="152.0" prefHeight="27.0" prefWidth="952.0">

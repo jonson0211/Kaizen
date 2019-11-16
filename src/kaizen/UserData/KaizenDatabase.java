@@ -501,125 +501,93 @@ public class KaizenDatabase {
             ex.printStackTrace();
         }
     }
+public static void createErrorsTable() {
+        PreparedStatement createCategoryTable = null;
+        PreparedStatement createDemoInstance = null;
+        ResultSet rs = null;
+        openConnection();
+        try {
+            System.out.println("Checking ERRORS Table");
+            DatabaseMetaData dbmd = conn.getMetaData();
+            rs = dbmd.getTables(null, null, "ERRORS", null);
+            if (!rs.next()) {
+                createCategoryTable = conn.prepareStatement("CREATE TABLE ERRORS ("
+                        + " ERRORID INTEGER PRIMARY KEY AUTOINCREMENT,"
+                        + " DATE TEXT NOT NULL,"
+                        + " ERRORNAME TEXT,"
+                        + " ERRORPAGE TEXT, "
+                        + " DESCRIPTION TEXT NOT NULL"     
+                        + ");"
+                        );
+                createCategoryTable.execute();
+                System.out.println("ERRORS table created");
+                createDemoInstance = conn.prepareStatement("INSERT INTO ERRORS(DATE, ERRORNAME, ERRORPAGE, DESCRIPTION) "
+                        + "VALUES ("
+                        + "'2019-11-19',"
+                        + "'Could not add entry',"
+                        + "'Add Entry',"
+                        + "'When attempting to add a new time entry, the page crashed'"
+                        + "')"
+                );
+                createDemoInstance.execute();
+                createDemoInstance = conn.prepareStatement("INSERT INTO ERRORS(DATE, ERRORNAME, ERRORPAGE, DESCRIPTION) "
+                        + "VALUES ("
+                        + "'2019-11-19',"
+                        + "'Could not add entry',"
+                        + "'Add Entry',"
+                        + "'When attempting to add a new time entry, the page crashed'"
+                        + "')"
+                );
+                createDemoInstance.execute();
+                createDemoInstance = conn.prepareStatement("INSERT INTO ERRORS(DATE, ERRORNAME, ERRORPAGE, DESCRIPTION) "
+                        + "VALUES ("
+                        + "'2019-12-01',"
+                        + "'Category not displayed',"
+                        + "'Settings',"
+                        + "'When I tried to add a new category and colour, it did not show up'"
+                        + "')"
+                );
+                createDemoInstance.execute();
+                createDemoInstance = conn.prepareStatement("INSERT INTO ERRORS(DATE, ERRORNAME, ERRORPAGE, DESCRIPTION) "
+                        + "VALUES ("
+                        + "'2019-11-19',"
+                        + "'Could not drag tasks',"
+                        + "'Kanban board',"
+                        + "'Tried dragging tasks to Do-Date, it would not move'"
+                        + "')"
+                );
+                createDemoInstance.execute();
+                createDemoInstance = conn.prepareStatement("INSERT INTO ERRORS(DATE, ERRORNAME, ERRORPAGE, DESCRIPTION) "
+                        + "VALUES ("
+                        + "'2019-11-20',"
+                        + "'Could not see graph',"
+                        + "'Weekly Trends',"
+                        + "'When attempting to load graph, the page crashed'"
+                        + "')"
+                );
+                createDemoInstance.execute();
+                createDemoInstance = conn.prepareStatement("INSERT INTO ERRORS(DATE, ERRORNAME, ERRORPAGE, DESCRIPTION) "
+                        + "VALUES ("
+                        + "'2019-11-19',"
+                        + "'Could not play music',"
+                        + "'Deep focus screen',"
+                        + "'Clicking Mood 1 does not play music'"
+                        + "')"
+                );
+                createDemoInstance.execute();
+            } else {
+                System.out.println("ERRORS table exists");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
 }
    
     
 
 
-/*      public static void createDailyLearningsTable() {
-        PreparedStatement createDailyLearningsTable = null;
-        PreparedStatement createDemoInstance = null;
-        ResultSet rs = null;
-        openConnection();
-        try {
-            System.out.println("Checking Learnings table ");
-            DatabaseMetaData dbmd = conn.getMetaData();
-            rs = dbmd.getTables(null, null, "LEARNINGS", null);
-            if (!rs.next()) {
-                createDailyLearningsTable = conn.prepareStatement("CREATE TABLE IF NOT EXISTS LEARNINGS (USERNAME TEXT NOT NULL "
-                        + ", ENTRY_DATE TEXT NOT NULL"
-                        + ", DID_WELL TEXT NOT NULL "
-                        + ", BE_BETTER TEXT NOT NULL "
-                        + ");");
-                createDailyLearningsTable.execute();
-                System.out.println("Daily Learnings table created");
-                createDemoInstance = conn.prepareStatement("INSERT INTO LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
-                        + "VALUES ('lienzhu', TO_DATE('03/11/2019','DDMMYYY'), "
-                        + "'Today I spent 40 minutes exercising intensely', "
-                        + "'Today I didn't watch the newest episode of MHA...');");
-                createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
-                        + "VALUES ('lienzhu','03/11/2019', 'Today I spent 20 minutes exercising intensely', "
-                        + "'Today I could have spent more time with my family');");
-                createDemoInstance.execute();
-            } else {
-                System.out.println("Daily Learnings table exists");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }    
-        }*/
-    
-    /*
-        public static void createDailyLearnings() {
-        PreparedStatement createDailyLearnings= null;
-        PreparedStatement createDemoInstance = null;
-        ResultSet rs = null;
-        openConnection();
-        try {
-            System.out.println("Checking Learnings table ");
-            DatabaseMetaData dbmd = conn.getMetaData();
-            rs = dbmd.getTables(null, null, "DAILY_LEARNINGS", null);
-            if (rs.next()) {
-                createDailyLearnings = conn.prepareStatement("DROP TABLE DAILY_LEARNINGS ("
-                        + "USERNAME TEXT NOT NULL "
-                        + ", ENTRY_DATE TEXT NOT NULL"
-                        + ", DID_WELL TEXT NOT NULL "
-                        + ", BE_BETTER TEXT NOT NULL "
-                        + ");");
-                createDailyLearnings.execute();
-                System.out.println("Daily Learnings table created");
-                createDemoInstance = conn.prepareStatement("INSERT INTO DAILY_LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
-                        + "VALUES ('lienzhu','01/02/2019', 'Today I spent 40 minutes exercising intensely', "
-                        + "'Today I didn't watch the newest episode of MHA...');");
-                createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO DAILY_LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
-                        + "VALUES ('lienzhu','02/02/2019', 'Today I spent 40 minutes exercising intensely', "
-                        + "'Today I didn't watch the newest episode of MHA...');");
-                createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO DAILY_LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
-                        + "VALUES ('lienzhu','03/02/2019', 'Today I spent 40 minutes exercising intensely', "
-                        + "'Today I didn't watch the newest episode of MHA...');");
-                createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO DAILY_LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
-                        + "VALUES ('lienzhu','04/02/2019', 'I went to the gym', "
-                        + "'Today I didn't watch the newest episode of NBA...');");
-                createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO DAILY_LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
-                        + "VALUES ('lienzhu','05/02/2019', 'I played the piano', "
-                        + "'Today I didn't spend enough time with my family');");
-                createDemoInstance.execute();
-                createDemoInstance = conn.prepareStatement("INSERT INTO DAILY_LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
-                        + "VALUES ('lienzhu','06/02/2019', 'I played the violin', "
-                        + "'Today I didn't spend enough time with my family');");
-                createDemoInstance = conn.prepareStatement("INSERT INTO DAILY_LEARNINGS(USERNAME, ENTRY_DATE, DID_WELL, BE_BETTER) "
-                        + "VALUES ('lienzhu','07/02/2019', 'I gave good peer reviews', "
-                        + "'Today I didn't spend enough time with my family');");
-                createDemoInstance.execute();
-            } else {
-                System.out.println("Daily Learnings table exists");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }    
-        }
-        
-        public static void insertLearnings(){
-            PreparedStatement pst;
-            openConnection();
-            System.out.println("Pre-insertion of learnings");
-        try {
-            pst = conn.prepareStatement("INSERT INTO LEARNINGS VALUES(?,?,?,?)");
-            pst.setString(1,"lienzhu");
-            pst.setString(2,"01/11/2019");
-            pst.setString(3,"I went to the gym today");
-            pst.setString(4,"I didn't walk the dog");
-            pst.setString(1,"lienzhu");
-            pst.setString(2,"02/11/2019");
-            pst.setString(3,"I went to the gym today");
-            pst.setString(4,"I didn't walk the dog");
-            pst.setString(1,"lienzhu");
-            pst.setString(2,"31/11/2019");
-            pst.setString(3,"I went to the gym today");
-            pst.setString(4,"I didn't walk the dog");
-            
-            System.out.println("Learnings inserted");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-            
-        }
-    }*/
 
     
     
