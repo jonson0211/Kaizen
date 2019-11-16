@@ -485,7 +485,7 @@ public class KaizenDatabase {
                         + ", BE_BETTER TEXT NOT NULL)");
             createLearnings.execute();
             System.out.println("LEARNINGS table created!");
-            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
+    /*        insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
                     + "VALUES ('2019-11-16', 'Went to the gym', 'Spend time with family');");
             insertDemoData.execute();
             insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
@@ -493,7 +493,7 @@ public class KaizenDatabase {
             insertDemoData.execute();
             insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
                     + "VALUES ('2019-11-14', 'Went to Blair for consultation', 'Study 2605');");
-            insertDemoData.execute();           
+            insertDemoData.execute();   */        
         } else{
                 System.out.println("LEARNINGS table exists!");
                 }
@@ -527,7 +527,7 @@ public static void createErrorsTable() {
                         + "'Could not add entry',"
                         + "'Add Entry',"
                         + "'When attempting to add a new time entry, the page crashed'"
-                        + "')"
+                        + ");"
                 );
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO ERRORS(DATE, ERRORNAME, ERRORPAGE, DESCRIPTION) "
@@ -536,7 +536,7 @@ public static void createErrorsTable() {
                         + "'Could not add entry',"
                         + "'Add Entry',"
                         + "'When attempting to add a new time entry, the page crashed'"
-                        + "')"
+                        + ");"
                 );
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO ERRORS(DATE, ERRORNAME, ERRORPAGE, DESCRIPTION) "
@@ -545,7 +545,7 @@ public static void createErrorsTable() {
                         + "'Category not displayed',"
                         + "'Settings',"
                         + "'When I tried to add a new category and colour, it did not show up'"
-                        + "')"
+                        + ");"
                 );
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO ERRORS(DATE, ERRORNAME, ERRORPAGE, DESCRIPTION) "
@@ -554,7 +554,7 @@ public static void createErrorsTable() {
                         + "'Could not drag tasks',"
                         + "'Kanban board',"
                         + "'Tried dragging tasks to Do-Date, it would not move'"
-                        + "')"
+                        + ");"
                 );
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO ERRORS(DATE, ERRORNAME, ERRORPAGE, DESCRIPTION) "
@@ -563,7 +563,7 @@ public static void createErrorsTable() {
                         + "'Could not see graph',"
                         + "'Weekly Trends',"
                         + "'When attempting to load graph, the page crashed'"
-                        + "')"
+                        + ");"
                 );
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO ERRORS(DATE, ERRORNAME, ERRORPAGE, DESCRIPTION) "
@@ -572,7 +572,7 @@ public static void createErrorsTable() {
                         + "'Could not play music',"
                         + "'Deep focus screen',"
                         + "'Clicking Mood 1 does not play music'"
-                        + "')"
+                        + ");"
                 );
                 createDemoInstance.execute();
             } else {

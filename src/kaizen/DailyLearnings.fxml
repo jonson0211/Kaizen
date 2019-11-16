@@ -53,19 +53,20 @@
          <left>
             <GridPane prefHeight="720.0" prefWidth="506.0" BorderPane.alignment="CENTER">
               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1154.0" minWidth="10.0" prefWidth="349.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="670.0" minWidth="10.0" prefWidth="157.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="1154.0" minWidth="10.0" prefWidth="398.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="670.0" minWidth="10.0" prefWidth="108.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="283.33332347869873" minHeight="10.0" prefHeight="88.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="283.33332347869873" minHeight="10.0" prefHeight="88.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="489.33331298828125" minHeight="0.0" prefHeight="57.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="752.0" minHeight="0.0" prefHeight="51.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="669.3333435058594" minHeight="0.0" prefHeight="81.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="669.3333435058594" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="669.3333435058594" minHeight="0.0" prefHeight="145.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="121.0" minHeight="121.0" prefHeight="121.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="121.0" minHeight="121.0" prefHeight="121.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="283.33332347869873" minHeight="10.0" prefHeight="81.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="283.33332347869873" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="283.33332347869873" minHeight="10.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="283.33332347869873" minHeight="10.0" prefHeight="83.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="489.33331298828125" minHeight="0.0" prefHeight="41.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="752.0" minHeight="0.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="669.3333435058594" minHeight="0.0" prefHeight="38.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="669.3333435058594" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="669.3333435058594" minHeight="0.0" prefHeight="129.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="121.0" minHeight="20.0" prefHeight="89.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Text layoutX="20.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Your daily learnings">
@@ -76,7 +77,7 @@
                         <Insets left="20.0" />
                      </GridPane.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="What did you do well today?" GridPane.rowIndex="2">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="What did you do well today?" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets left="40.0" />
                      </GridPane.margin>
@@ -84,12 +85,12 @@
                         <Font name="Roboto Thin" size="18.0" />
                      </font>
                   </Text>
-                  <ComboBox fx:id="answerOne" prefHeight="31.0" prefWidth="515.0" styleClass="input-fields" stylesheets="@stylesheet.css" GridPane.rowIndex="3">
+                  <ComboBox fx:id="answerOne" prefHeight="41.0" prefWidth="311.0" styleClass="input-fields" stylesheets="@stylesheet.css" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="40.0" />
                      </GridPane.margin>
                   </ComboBox>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="What could you have done better today?" GridPane.rowIndex="4">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="What could you have done better today?" GridPane.rowIndex="6">
                      <font>
                         <Font name="Roboto Thin" size="18.0" />
                      </font>
@@ -97,12 +98,12 @@
                         <Insets left="40.0" />
                      </GridPane.margin>
                   </Text>
-                  <ComboBox fx:id="answerTwo" prefHeight="31.0" prefWidth="515.0" styleClass="input-fields" stylesheets="@stylesheet.css" GridPane.rowIndex="5">
+                  <ComboBox fx:id="answerTwo" prefHeight="31.0" prefWidth="312.0" styleClass="input-fields" stylesheets="@stylesheet.css" GridPane.rowIndex="7">
                      <GridPane.margin>
                         <Insets left="40.0" />
                      </GridPane.margin>
                   </ComboBox>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="Date of learnings" GridPane.rowIndex="6">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="Date of learnings" GridPane.rowIndex="8">
                      <font>
                         <Font name="Roboto Thin" size="18.0" />
                      </font>
@@ -110,33 +111,33 @@
                         <Insets left="40.0" top="-100.0" />
                      </GridPane.margin>
                   </Text>
-                  <DatePicker fx:id="datePick" prefWidth="311.0" styleClass="input-fields" stylesheets="@stylesheet.css" GridPane.rowIndex="6">
+                  <DatePicker fx:id="datePick" prefWidth="312.0" styleClass="input-fields" stylesheets="@stylesheet.css" GridPane.rowIndex="8">
                      <GridPane.margin>
                         <Insets left="40.0" />
                      </GridPane.margin>
                   </DatePicker>
-                  <Label fx:id="confirmEntry" prefHeight="80.0" prefWidth="253.0" styleClass="output-label" stylesheets="@stylesheet.css" text="Successfully updated learnings!" GridPane.rowIndex="8">
+                  <Label fx:id="confirmEntry" prefHeight="59.0" prefWidth="279.0" styleClass="output-label" stylesheets="@stylesheet.css" text="Successfully updated learnings! Please refresh." wrapText="true" GridPane.rowIndex="9">
                      <GridPane.margin>
-                        <Insets left="47.0" />
+                        <Insets left="60.0" top="10.0" />
                      </GridPane.margin>
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Button fx:id="addLearning" mnemonicParsing="false" onAction="#handleAdd" prefHeight="40.0" prefWidth="130.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Add learning" GridPane.rowIndex="7">
+                  <Button fx:id="addLearning" mnemonicParsing="false" onAction="#handleAdd" prefHeight="35.0" prefWidth="141.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Add Learnings" GridPane.rowIndex="8">
                      <GridPane.margin>
-                        <Insets bottom="81.0" left="219.0" />
+                        <Insets bottom="-110.0" left="240.0" />
                      </GridPane.margin>
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Button>
-                  <Button fx:id="check" mnemonicParsing="false" onAction="#checkMissing" prefHeight="40.0" prefWidth="120.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Check" GridPane.rowIndex="1">
+                  <Button fx:id="check" mnemonicParsing="false" onAction="#checkMissing" prefHeight="40.0" prefWidth="120.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Check" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets bottom="-40.0" left="40.0" />
                      </GridPane.margin>
                   </Button>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="Click to check your missing entries" GridPane.rowIndex="1">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="Click to check your missing entries" GridPane.rowIndex="3">
                      <font>
                         <Font name="Roboto Thin" size="18.0" />
                      </font>
@@ -144,6 +145,24 @@
                         <Insets bottom="40.0" left="40.0" />
                      </GridPane.margin>
                   </Text>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="New user?" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Roboto Thin" size="18.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets left="40.0" />
+                     </GridPane.margin>
+                  </Text>
+                  <Button fx:id="yes" mnemonicParsing="false" onAction="#handleNew" prefHeight="31.0" prefWidth="59.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Yes" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="40.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button fx:id="no" mnemonicParsing="false" onAction="#handleOld" prefHeight="31.0" prefWidth="59.0" styleClass="buttons" stylesheets="@stylesheet.css" text="No" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="120.0" />
+                     </GridPane.margin>
+                  </Button>
                </children>
             </GridPane>
          </left>
@@ -197,7 +216,7 @@
                   <Button fx:id="viewPast" mnemonicParsing="false" onAction="#handlePopUpScreenAction" prefHeight="40.0" prefWidth="120.0" styleClass="buttons" stylesheets="@stylesheet.css" text="View Diary" GridPane.rowIndex="5" />
                   <Button fx:id="refreshBtn" mnemonicParsing="false" onAction="#handleRefresh" prefHeight="40.0" prefWidth="100.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Refresh" GridPane.rowIndex="1">
                      <GridPane.margin>
-                        <Insets left="465.0" right="20.0" />
+                        <Insets left="450.0" right="20.0" />
                      </GridPane.margin>
                   </Button>
                </children>

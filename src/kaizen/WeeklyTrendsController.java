@@ -199,10 +199,7 @@ public class WeeklyTrendsController implements Initializable {
         
                 for(int k = 0, j =0; k<durationList2.size()&& j<numWeeks; k++, j++){
                     weeklySeries2.getData().add(new XYChart.Data("Week " + (k+1), Math.round((durationList2.get(k)/durationWeeklyList2.get(j))*100)));
-//                    System.out.println("*"+Math.round((durationList2.get(k)/durationWeeklyList2.get(k))*100));
-//                    System.out.println(Math.round((durationList2.get(k)/durationWeeklyList2.get(1))*100));
-//                    System.out.println(k);
-//                    System.out.println(j);
+
                 }   
         } catch(Exception ex){
             ex.printStackTrace();
@@ -211,6 +208,7 @@ public class WeeklyTrendsController implements Initializable {
         status.setVisible(true);
     } catch(Exception ex){
             ex.printStackTrace();}
+        
 //Loading Activity 2 line
 if(isMyBoxEmpty2 != true){
         String activity3 = activityChoiceBox3.getValue().toString();
