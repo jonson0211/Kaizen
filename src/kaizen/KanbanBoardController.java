@@ -366,7 +366,7 @@ public class KanbanBoardController implements Initializable {
     //switch to register screen
     @FXML
     public void handleSignOut(ActionEvent event) throws IOException {
-        psh.switcher(event, "LoginScreen.fxml");
+        psh.switcher(event, "ReportBugPopUp.fxml");
     }
 
     @FXML

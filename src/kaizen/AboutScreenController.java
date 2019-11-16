@@ -66,7 +66,7 @@ public class AboutScreenController implements Initializable {
 
     @FXML
     private void handleSignOut(ActionEvent event) throws IOException {
-        pageSwitcher.switcher(event, "LoginScreen.fxml");
+        pageSwitcher.switcher(event, "ReportBugPopUp.fxml");
     }
 
     @FXML
