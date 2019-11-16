@@ -187,8 +187,8 @@
                   </Text>
                   <TableView fx:id="didWellView" prefHeight="294.0" prefWidth="554.0" GridPane.rowIndex="2">
                     <columns>
-                      <TableColumn fx:id="didWellColumn" prefWidth="404.0" text="Things you learnt" />
-                      <TableColumn fx:id="didWellCount" minWidth="0.0" prefWidth="149.0" text="How many times" />
+                      <TableColumn fx:id="didWellColumn" prefWidth="448.0" text="Things you learnt" />
+                      <TableColumn fx:id="didWellCount" minWidth="0.0" prefWidth="105.0" text="Encounters" />
                     </columns>
                      <GridPane.margin>
                         <Insets bottom="40.0" right="20.0" />
@@ -206,8 +206,8 @@
                   </Text>
                   <TableView fx:id="doBetterView" prefHeight="100.0" prefWidth="554.0" GridPane.rowIndex="4">
                     <columns>
-                      <TableColumn fx:id="doBetterColumn" prefWidth="403.0" text="Things you could have done better" />
-                      <TableColumn fx:id="doBetterCount" minWidth="0.0" prefWidth="149.0" text="How many times" />
+                      <TableColumn fx:id="doBetterColumn" prefWidth="445.0" text="Things you could have done better" />
+                      <TableColumn fx:id="doBetterCount" minWidth="0.0" prefWidth="108.0" text="Encounters" />
                     </columns>
                      <GridPane.margin>
                         <Insets right="20.0" />

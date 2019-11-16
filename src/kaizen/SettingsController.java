@@ -226,8 +226,8 @@ public class SettingsController implements Initializable {
             status.setVisible(true);
             
         } catch (Exception e) {
-            System.out.println("Can't update from database!");
-            status.setText("Can't update database! Please check inputs.");
+            System.out.println("No row selected");
+            status.setText("Please select row.");
             status.setVisible(true);
             e.printStackTrace();
         }

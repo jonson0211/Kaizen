@@ -18,6 +18,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -25,8 +26,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import kaizen.UserData.KaizenDatabase;
 
@@ -120,6 +119,10 @@ public class PopUpLearningsController {
                     entries.getSelectionModel().getSelectedItem().getPk());
 
         } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No entry selected");
+            alert.setHeaderText("Please select an entry!");
+            alert.showAndWait();
             e.printStackTrace();
         }
     }
@@ -147,21 +150,27 @@ public class PopUpLearningsController {
 
     @FXML
     private void editLearning(ActionEvent event) {
-        String date = datePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        
+        try {
+            String date = datePicker.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         String a = (String) achieveBox.getValue();
         String i = (String) improveBox.getValue();
         String z = (String) pKey.getText();
         
-        try {
             db.insertStatement("UPDATE LEARNINGS SET "
                     + "DATE = '" + date + "'"
                     + " , DID_WELL = '" + a + "'"
                     + " , BE_BETTER = '" + i + "' WHERE LEARNINGS_ID = '" + z +"'");
-        } catch (SQLException ex) {
+            System.out.println("Updated learnings!");
+        confirm.setVisible(true);
+        } catch (Exception ex) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No entry selected");
+            alert.setHeaderText("Please select an entry!");
+            alert.showAndWait();
             Logger.getLogger(PopUpLearningsController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("Updated learnings!");
-        confirm.setVisible(true);
+        
 
     }
 

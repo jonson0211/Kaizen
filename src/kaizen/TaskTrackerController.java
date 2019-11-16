@@ -19,6 +19,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -120,13 +121,7 @@ public class TaskTrackerController implements Initializable {
 
                 try {
                     Loader.load();
-                } catch (IOException ex) {
-                 ex.printStackTrace();
-
-                    Logger.getLogger(EntriesScreenController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                EditTaskPopUpController a = Loader.getController();
+            EditTaskPopUpController a = Loader.getController();
                 a.setTaskData(""+ taskList.getSelectionModel().getSelectedItem().getTaskID(),
                         taskList.getSelectionModel().getSelectedItem().getTitle(),
                         taskList.getSelectionModel().getSelectedItem().getCategory(), 
@@ -138,6 +133,17 @@ public class TaskTrackerController implements Initializable {
                 Stage stage = new Stage();
                 stage.setScene(new Scene(p));
                 stage.show();
+                } catch (Exception ex) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No entry selected");
+            alert.setHeaderText("Please select an entry!");
+            alert.showAndWait();
+                 ex.printStackTrace();
+
+                    Logger.getLogger(EntriesScreenController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                
 
 
             }
@@ -158,6 +164,10 @@ public class TaskTrackerController implements Initializable {
             );
         
         } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No entry selected");
+            alert.setHeaderText("Please select an entry!");
+            alert.showAndWait();
             System.out.println("Can't delete from database!");
             e.printStackTrace();
         }

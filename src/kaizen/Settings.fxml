@@ -66,7 +66,7 @@
             <Button fx:id="deleteButton" layoutX="106.0" layoutY="473.0" mnemonicParsing="false" onAction="#deleteData" text="Delete" />
             <Button fx:id="editButton" layoutX="209.0" layoutY="473.0" mnemonicParsing="false" onAction="#editData" text="Update" />
             <Button fx:id="addButton" layoutX="318.0" layoutY="473.0" mnemonicParsing="false" onAction="#handlePopUpAddCategory" prefHeight="27.0" prefWidth="62.0" text="Add" />
-            <Label fx:id="status" layoutX="279.0" layoutY="146.0" prefHeight="36.0" prefWidth="103.0" text="Label" wrapText="true" />
+            <Label fx:id="status" layoutX="279.0" layoutY="122.0" prefHeight="60.0" prefWidth="122.0" text="Label" wrapText="true" />
             <Label layoutX="100.0" layoutY="512.0" text="To DELETE: Select row and click delete" />
             <Label layoutX="100.0" layoutY="529.0" prefHeight="35.0" prefWidth="246.0" text="To UPDATE: Double-click an entry, edit, press ENTER, then click Update" textAlignment="JUSTIFY" wrapText="true" />
             <Label fx:id="status1" layoutX="732.0" layoutY="146.0" prefHeight="36.0" prefWidth="97.0" text="Label" wrapText="true" />

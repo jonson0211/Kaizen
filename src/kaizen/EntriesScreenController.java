@@ -20,6 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -167,6 +168,7 @@ public class EntriesScreenController implements Initializable {
                 }
 
                 EditEntriesPopUpController a = Loader.getController();
+                try{
                 a.setData(""+ entriesView.getSelectionModel().getSelectedItem().getTimesheetID(),
                         entriesView.getSelectionModel().getSelectedItem().getActivity(),
                         entriesView.getSelectionModel().getSelectedItem().getCategory(), 
@@ -179,6 +181,12 @@ public class EntriesScreenController implements Initializable {
                 Stage stage = new Stage();
                 stage.setScene(new Scene(p));
                 stage.show();
+                } catch(Exception ex){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No entry selected");
+            alert.setHeaderText("Please select an entry!");
+            alert.showAndWait();
+                }
 
 
 

@@ -11,7 +11,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import kaizen.UserData.KaizenDatabase;
@@ -20,40 +19,21 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
-import javafx.scene.control.Toggle;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
-import javafx.util.Callback;
 import kaizen.DataModels.activityCombo;
 import kaizen.DataModels.categoryCombo;
 import kaizen.DataModels.colourDM;
-import kaizen.DataModels.learningsDidWell;
-import kaizen.DataModels.timesheetsDM;
-import java.awt.*;
-import java.awt.color.*;
 import java.time.Duration;
-import java.time.LocalDate;
 import java.util.ArrayList;
+import javafx.stage.Stage;
 
 public class TimesheetsController implements Initializable {
  
@@ -69,6 +49,7 @@ public class TimesheetsController implements Initializable {
     @FXML private ComboBox<String> categoryComboBox;
     @FXML private ComboBox<String> activityComboBox;
     @FXML private Label status; 
+    @FXML private Button exit;
     
     
     ObservableList<categoryCombo> categoryComboList = FXCollections.observableArrayList();
@@ -234,6 +215,11 @@ public class TimesheetsController implements Initializable {
 //    private void handleBackAction(ActionEvent event) throws IOException {
 //        pageSwitcher.switcher(event, "PieChart.fxml");
 //    }
+    @FXML
+    private void handleExit(ActionEvent event){
+        Stage stage = (Stage) exit.getScene().getWindow();
+        stage.close();
+    }
     
     @FXML
     private void handleKbBoard(ActionEvent event) throws IOException{
