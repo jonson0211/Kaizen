@@ -61,10 +61,10 @@
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Top 5 Activities of Each Day">
                      <GridPane.margin>
-                        <Insets bottom="575.0" left="350.0" />
+                        <Insets bottom="575.0" left="320.0" />
                      </GridPane.margin>
                   </Text>
-                  <Button fx:id="weeklyBreakdown" mnemonicParsing="false" onAction="#handleWeeklyBreakdown" prefHeight="39.0" prefWidth="179.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Weekly Breakdown">
+                  <Button fx:id="weeklyBreakdown" mnemonicParsing="false" onAction="#handleWeeklyBreakdown" prefHeight="40.0" prefWidth="180.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Weekly Breakdown">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -72,7 +72,7 @@
                         <Insets left="575.0" top="575.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="weeklyTrends" mnemonicParsing="false" onAction="#handleWeeklyTrends" prefHeight="39.0" prefWidth="174.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Weekly Trends">
+                  <Button fx:id="weeklyTrends" mnemonicParsing="false" onAction="#handleWeeklyTrends" prefHeight="40.0" prefWidth="180.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Weekly Trends">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -91,7 +91,7 @@
                         <Insets bottom="100.0" left="100.0" right="100.0" top="100.0" />
                      </GridPane.margin>
                   </BarChart>
-                  <DatePicker fx:id="dailyChartDtPicker" onAction="#loadGraph" prefHeight="33.0" prefWidth="194.0" promptText="Date of day">
+                  <DatePicker fx:id="dailyChartDtPicker" onAction="#loadGraph" prefHeight="40.0" prefWidth="200.0" promptText="Date of day" styleClass="input-fields">
                      <GridPane.margin>
                         <Insets left="300.0" top="575.0" />
                      </GridPane.margin>
@@ -100,23 +100,29 @@
                      <GridPane.margin>
                         <Insets left="50.0" />
                      </GridPane.margin>
+                     <font>
+                        <Font name="Roboto Thin" size="18.0" />
+                     </font>
                   </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="(hours)">
                      <GridPane.margin>
                         <Insets left="50.0" top="35.0" />
                      </GridPane.margin>
+                     <font>
+                        <Font name="Roboto Thin" size="18.0" />
+                     </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select day:" textAlignment="RIGHT" wrappingWidth="73.79385375976562">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="Select day:" textAlignment="RIGHT" wrappingWidth="92.79385375976562">
                      <font>
                         <Font size="15.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="220.0" top="575.0" />
+                        <Insets left="200.0" top="575.0" />
                      </GridPane.margin>
                   </Text>
-                  <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleTimeSheets" prefHeight="39.0" prefWidth="75.0" styleClass="buttons" text="Back">
+                  <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleTimeSheets" prefHeight="40.0" prefWidth="100.0" styleClass="cancel-buttons" text="Back">
                      <GridPane.margin>
-                        <Insets left="50.0" top="575.0" />
+                        <Insets left="42.0" top="575.0" />
                      </GridPane.margin>
                   </Button>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="small-label" text="Top 5 Activities" visible="false">

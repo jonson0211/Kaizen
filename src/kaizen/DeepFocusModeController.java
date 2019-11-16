@@ -77,6 +77,8 @@ public class DeepFocusModeController implements Initializable {
     private Button button;
     @FXML
     private Label catchLabel;
+    @FXML
+            private Label secondsDisplay;
 
     //@FXML
     //private Button button2;
@@ -96,9 +98,11 @@ public class DeepFocusModeController implements Initializable {
         //Set labels visible
         displayTime.setVisible(true);
         displayMoonPhase.setVisible(true);
+        secondsDisplay.setVisible(true);
 
         //Establish format for clock and AM/PM label
-        final DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("hh:mm:ss");
+        final DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("hh:mm");
+        final DateTimeFormatter secondsFormat = DateTimeFormatter.ofPattern("ss");
         final DateTimeFormatter moonPhaseFormat = DateTimeFormatter.ofPattern("a");
 
         //Create timeline for dynamic time display
@@ -108,8 +112,10 @@ public class DeepFocusModeController implements Initializable {
             public void handle(ActionEvent event) {
                 String currentTime = ((java.time.LocalTime.now()).format(timeFormat));
                 String moonPhase = ((java.time.LocalTime.now()).format(moonPhaseFormat));
+                String seconds = ((java.time.LocalTime.now()).format(secondsFormat));
                 displayTime.setText(currentTime);
                 displayMoonPhase.setText(moonPhase);
+                secondsDisplay.setText(seconds);
             }
         }));
 

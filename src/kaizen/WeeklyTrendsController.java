@@ -22,6 +22,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import kaizen.DataModels.activityCombo;
@@ -41,6 +42,7 @@ public class WeeklyTrendsController implements Initializable {
     @FXML private ToggleButton about;
     @FXML private ToggleButton timeDashboard;
     @FXML private ToggleButton dailyLearnings;
+    @FXML private Label status;
     //chart buttons
     @FXML private Button dailyBreakdown;
     @FXML private Button weeklyBreakdown;
@@ -68,7 +70,8 @@ public class WeeklyTrendsController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO    
-        
+    status.setVisible(false);
+    
     activityComboList.setAll(this.getActChoice());
     for(activityCombo d : activityComboList){
         System.out.println(d.getActChoiceProperty());
@@ -116,18 +119,18 @@ public class WeeklyTrendsController implements Initializable {
                     
         ResultSet weeklyTotalDuration = db.getResultSet("SELECT SUM(DURATION) FROM TIMESHEETS "
                     + "WHERE DATE BETWEEN date('" + date + "','" + ((i+1)*-7)+ " days') "
-                            + "and date('" + date + "','" + (i*-7)+ " days')"
+                            + "and date('" + date + "','" + (i*-7)+ " days') "
                     );
             
                 
             while (weeklyTotalDuration.next()){
-                durationWeeklyList.add((weeklyTotalDuration.getDouble(1)));   
+                durationWeeklyList.add((weeklyTotalDuration.getDouble("SUM(DURATION)")));   
             }
             
         ResultSet weekly = db.getResultSet("SELECT ACTIVITY, SUM(DURATION) FROM TIMESHEETS "
                     + "WHERE ACTIVITY = '" + activity + "'"
                     + "AND DATE BETWEEN date('" + date + "','" + ((i+1)*-7)+ " days') "
-                            + "and date('" + date + "','" + (i*-7)+ " days')"
+                    + "and date('" + date + "','" + (i*-7)+ " days') GROUP BY ACTIVITY"
                     );
             
             while (weekly.next()){
@@ -137,20 +140,23 @@ public class WeeklyTrendsController implements Initializable {
             
             try{
         
-                for(int n = 0, i =0; n<durationList.size()&& i<numWeeks; n++, i++){
-                    weeklySeries.getData().add(new XYChart.Data("Week " + (n+1), Math.round((durationList.get(n)/durationWeeklyList.get(1))*100)));
+                for(int n = 0, i =0; n<durationList.size() && i<numWeeks; n++, i++){
+                    weeklySeries.getData().add(new XYChart.Data("Week " + (n+1), Math.round((durationList.get(n)/durationWeeklyList.get(i))*100)));
                 }   
            
             //System.out.println("*" + durationList);
         } catch(Exception ex){
             ex.printStackTrace();
         }
-        
+        status.setText("Graph loaded!");
+        status.setVisible(true);
     } catch(Exception ex){
-            ex.printStackTrace();}  
+        
+            ex.printStackTrace();
+    }  
     
         
-        
+//load Activity 2 line        
         if(isMyBoxEmpty != true){
         String activity2 = activityChoiceBox2.getValue().toString();
    
@@ -171,56 +177,42 @@ public class WeeklyTrendsController implements Initializable {
                     
         ResultSet weeklyTotalDuration2 = db.getResultSet("SELECT SUM(DURATION) FROM TIMESHEETS "
                     + "WHERE DATE BETWEEN date('" + date + "','" + ((j+1)*-7)+ " days') "
-                            + "and date('" + date + "','" + (j*-7)+ " days')"
+                            + "and date('" + date + "','" + (j*-7)+ " days') "
                     );
             
                 
             while (weeklyTotalDuration2.next()){
-                durationWeeklyList2.add((weeklyTotalDuration2.getDouble(1)));   
+                durationWeeklyList2.add((weeklyTotalDuration2.getDouble("SUM(DURATION)")));   
             }
             
         ResultSet weekly2 = db.getResultSet("SELECT ACTIVITY, SUM(DURATION) FROM TIMESHEETS "
                     + "WHERE ACTIVITY = '" + activity2 + "'"
                     + "AND DATE BETWEEN date('" + date + "','" + ((j+1)*-7)+ " days') "
-                            + "and date('" + date + "','" + (j*-7)+ " days')"
+                            + "and date('" + date + "','" + (j*-7)+ " days') GROUP BY ACTIVITY"
                     );
             
             while (weekly2.next()){
-                durationList2.add((weekly2.getDouble(2)));
-                   
+                durationList2.add((weekly2.getDouble(2)));                 
             }
-
-            }
-            
-            System.out.println("*"+durationWeeklyList2);
-            System.out.println("*"+durationList2);
-            System.out.println("*"+ durationPercentageList2);
-            
-            
-            
+}
             try{
         
                 for(int k = 0, j =0; k<durationList2.size()&& j<numWeeks; k++, j++){
-                    weeklySeries2.getData().add(new XYChart.Data("Week " + (k+1), Math.round((durationList2.get(k)/durationWeeklyList2.get(1))*100)));
-                    //test output: 
-//                    System.out.println(durationList.get(n));
-//                    System.out.println(durationWeeklyList.get(1));
-                    System.out.println("*"+Math.round((durationList2.get(k)/durationWeeklyList2.get(k))*100));
-                    System.out.println(Math.round((durationList2.get(k)/durationWeeklyList2.get(1))*100));
-                    System.out.println(k);
-                    System.out.println(j);
+                    weeklySeries2.getData().add(new XYChart.Data("Week " + (k+1), Math.round((durationList2.get(k)/durationWeeklyList2.get(j))*100)));
+//                    System.out.println("*"+Math.round((durationList2.get(k)/durationWeeklyList2.get(k))*100));
+//                    System.out.println(Math.round((durationList2.get(k)/durationWeeklyList2.get(1))*100));
+//                    System.out.println(k);
+//                    System.out.println(j);
                 }   
-           
-            //System.out.println("*" + durationList);
         } catch(Exception ex){
             ex.printStackTrace();
         }
-        
+        status.setText("Graph loaded!");
+        status.setVisible(true);
     } catch(Exception ex){
             ex.printStackTrace();}
-    
-        
-        if(isMyBoxEmpty2 != true){
+//Loading Activity 2 line
+if(isMyBoxEmpty2 != true){
         String activity3 = activityChoiceBox3.getValue().toString();
    
         try{
@@ -240,18 +232,18 @@ public class WeeklyTrendsController implements Initializable {
                     
         ResultSet weeklyTotalDuration3 = db.getResultSet("SELECT SUM(DURATION) FROM TIMESHEETS "
                     + "WHERE DATE BETWEEN date('" + date + "','" + ((j+1)*-7)+ " days') "
-                            + "and date('" + date + "','" + (j*-7)+ " days')"
+                            + "and date('" + date + "','" + (j*-7)+ " days') "
                     );
             
                 
             while (weeklyTotalDuration3.next()){
-                durationWeeklyList3.add((weeklyTotalDuration3.getDouble(1)));   
+                durationWeeklyList3.add((weeklyTotalDuration3.getDouble("SUM(DURATION)")));   
             }
             
         ResultSet weekly3 = db.getResultSet("SELECT ACTIVITY, SUM(DURATION) FROM TIMESHEETS "
                     + "WHERE ACTIVITY = '" + activity3 + "'"
                     + "AND DATE BETWEEN date('" + date + "','" + ((j+1)*-7)+ " days') "
-                            + "and date('" + date + "','" + (j*-7)+ " days')"
+                            + "and date('" + date + "','" + (j*-7)+ " days') GROUP BY ACTIVITY"
                     );
             
             while (weekly3.next()){
@@ -261,20 +253,22 @@ public class WeeklyTrendsController implements Initializable {
             
             try{
         
-                for(int m = 0, p =0; m<durationList3.size()&& m<numWeeks; m++, p++){
-                    weeklySeries3.getData().add(new XYChart.Data("Week " + (m+1), Math.round((durationList3.get(m)/durationWeeklyList3.get(1))*100)));
-                }   
-           
-            //System.out.println("*" + durationList);
+                for(int m = 0, p =0; m<durationList3.size()&& p<numWeeks; m++, p++){
+                    weeklySeries3.getData().add(new XYChart.Data("Week " + (m+1), Math.round((durationList3.get(m)/durationWeeklyList3.get(p))*100)));
+                }
+        
         } catch(Exception ex){
             ex.printStackTrace();
         }
-        
+        status.setText("Graph loaded!");
+        status.setVisible(true);
     } catch(Exception ex){
-            ex.printStackTrace();}
+        status.setText("Could not load graph! Please check your inputs. Ensure activities are selected in order of 1 to 3.");
+        status.setVisible(true); 
+        ex.printStackTrace();}
     }
     }
-    }
+}
     public ObservableList<activityCombo> getActChoice(){
         
         ObservableList<activityCombo> activityComboList = FXCollections.observableArrayList();
@@ -335,7 +329,7 @@ public class WeeklyTrendsController implements Initializable {
     }
     @FXML
     private void handleSettings(ActionEvent event) throws IOException{
-        pageSwitcher.switcher(event,"Settings.fxml"); //TO CHANGE WHEN PAGE IS MADE
+        pageSwitcher.switcher(event,"Settings.fxml"); 
     }
     @FXML
     private void handleTimeDashboard(ActionEvent event) throws IOException{

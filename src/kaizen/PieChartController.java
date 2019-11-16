@@ -135,12 +135,27 @@ public class PieChartController implements Initializable {
                 
                 
                 
-//colors - please REFERENCE BLAIR'S DEMO IN THE ABOUT SCREEN WHEN WE FINISH- taken straight from the demo:       
-        String[] pieColors = {"#80bfff", "#cc99ff", "#ccffff", "#80ff80", "#ff80ff","#ffb84d","9999ff"};
+//colors - please REFERENCE BLAIR'S DEMO IN THE ABOUT SCREEN WHEN WE FINISH- taken straight from the demo:  
+    ArrayList<String> pieColours = new ArrayList<String>();
+    
+//    try{
+//    ResultSet colourRs = db.getResultSet("SELECT COLOUR FROM CATEGORY");    
+//    while(colourRs.next()){
+//        pieColours.add(colourRs.getString(0));
+//    }} catch (Exception ex) {
+//            
+//        }
+//     String[] pieColors = pieColours.toArray(new String[pieColours.size()]);
+         //System.out.println(pieColors);
+//         System.out.println(pieColors.length);
+        
+        String[] pieColors = {"#80bfff", "#cc99ff", "#ccffff", "#80ff80", "#ff80ff","#ffb84d","#9999ff"};
         int i = 0;
         for (PieChart.Data data : lifePieChartData) {
             data.getNode().setStyle(
-                    "-fx-pie-color: " + pieColors[i % pieColors.length] + ";"
+                    "-fx-pie-color: " + pieColors[
+                            i % 
+                                    pieColors.length] + ";"
             );
             i++;
         }
@@ -151,7 +166,9 @@ public class PieChartController implements Initializable {
                 for (Legend.LegendItem li : l.getItems()) {
                     Node thisNode = li.getSymbol();
                     thisNode.setStyle(
-                            "-fx-pie-color: " + pieColors[i % pieColors.length] + ";"
+                            "-fx-pie-color: " + pieColors[
+                                    i % 
+                                            pieColors.length] + ";"
                     );
                     i++;
                 }

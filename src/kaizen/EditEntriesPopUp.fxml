@@ -11,17 +11,17 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.EditEntriesPopUpController">
+<AnchorPane id="AnchorPane" maxHeight="820.0" maxWidth="520.0" minHeight="820.0" minWidth="520.0" prefHeight="820.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kaizen.EditEntriesPopUpController">
    <children>
-      <GridPane layoutX="263.0" layoutY="188.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <GridPane maxHeight="820.0" maxWidth="620.0" minHeight="820.0" minWidth="520.0" prefHeight="820.0" prefWidth="520.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="150.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="333.0" minWidth="10.0" prefWidth="333.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="193.0" minWidth="10.0" prefWidth="67.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="10.0" minWidth="10.0" prefWidth="10.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -31,67 +31,69 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="1.0" prefHeight="1.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter using the format hh:mm aa" wrappingWidth="120.48046875" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <font>
-                  <Font />
+                  <Font name="Roboto Thin" size="12.0" />
                </font>
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <ListView prefHeight="30.0" prefWidth="58.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <ListView maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" prefHeight="40.0" prefWidth="40.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="25.0" left="20.0" right="275.0" top="25.0" />
                </GridPane.margin>
             </ListView>
-            <Rectangle fx:id="categoryColourShape" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="30.0" stroke="TRANSPARENT" strokeType="INSIDE" width="37.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Rectangle fx:id="categoryColourShape" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" stroke="TRANSPARENT" strokeType="INSIDE" width="40.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="25.0" left="20.0" right="275.0" top="25.0" />
                </GridPane.margin>
             </Rectangle>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Roboto Thin" size="18.0" />
                </font>
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Start time" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Start time" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Roboto Thin" size="18.0" />
                </font>
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="End Time" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="End Time" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Roboto Thin" size="18.0" />
                </font>
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time spent" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Time spent" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Roboto Thin" size="18.0" />
                </font>
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Description" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Roboto Thin" size="18.0" />
                </font>
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <DatePicker fx:id="DtPicker" prefHeight="31.0" prefWidth="294.0" promptText="Select your date" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <DatePicker fx:id="DtPicker" prefHeight="40.0" prefWidth="294.0" promptText="Select your date" styleClass="input-fields" stylesheets="@stylesheet.css" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -99,17 +101,17 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </DatePicker>
-            <TextField fx:id="timeStartHrField" promptText="e.g. 10:50 am" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <TextField fx:id="timeStartHrField" prefHeight="40.0" prefWidth="163.0" promptText="e.g. 10:50 am" styleClass="input-fields" stylesheets="@stylesheet.css" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="150.0" right="20.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="timeEndHrField" promptText="e.g. 11:05 am" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <TextField fx:id="timeEndHrField" prefHeight="40.0" prefWidth="163.0" promptText="Hour" styleClass="input-fields" stylesheets="@stylesheet.css" GridPane.columnIndex="2" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets left="150.0" right="20.0" />
                </GridPane.margin>
             </TextField>
-            <Label fx:id="durationLabel" text="Duration of activity" GridPane.columnIndex="2" GridPane.rowIndex="6">
+            <Label fx:id="durationLabel" prefHeight="40.0" prefWidth="148.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Duration of activity" GridPane.columnIndex="2" GridPane.rowIndex="7">
                <font>
                   <Font size="20.0" />
                </font>
@@ -117,17 +119,17 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Label>
-            <TextArea fx:id="descriptionText" prefHeight="200.0" prefWidth="200.0" promptText="Description" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="7">
+            <TextArea fx:id="descriptionText" prefHeight="200.0" prefWidth="200.0" promptText="Description" styleClass="input-fields" stylesheets="@stylesheet.css" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="8">
                <GridPane.margin>
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextArea>
-            <Button fx:id="submit" mnemonicParsing="false" onAction="#handleUpdate" prefHeight="16.0" prefWidth="98.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Update" GridPane.columnIndex="2" GridPane.rowIndex="8">
+            <Button fx:id="submit" mnemonicParsing="false" onAction="#handleUpdate" prefHeight="40.0" prefWidth="100.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Update" GridPane.columnIndex="2" GridPane.rowIndex="9">
                <font>
                   <Font size="20.0" />
                </font>
                <GridPane.margin>
-                  <Insets left="100.0" right="20.0" />
+                  <Insets left="40.0" />
                </GridPane.margin>
             </Button>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
@@ -138,20 +140,20 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Activity" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Activity" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Roboto Thin" size="18.0" />
                </font>
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <ComboBox fx:id="activityComboBox" editable="true" prefHeight="31.0" prefWidth="294.0" promptText="Type" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <ComboBox fx:id="activityComboBox" editable="true" prefHeight="40.0" prefWidth="294.0" promptText="Type" styleClass="input-fields" stylesheets="@stylesheet.css" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
             </ComboBox>
-            <Label styleClass="large-label" stylesheets="@stylesheet.css" text="Timesheet Entry" GridPane.columnIndex="2">
+            <Label styleClass="large-label" stylesheets="@stylesheet.css" text="Timesheet Entry" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="-30.0" top="10.0" />
                </GridPane.margin>
@@ -167,34 +169,45 @@
                   <ToggleGroup fx:id="toggleGroup" />
                </toggleGroup>
             </RadioButton>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Category" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Category" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Roboto Thin" size="18.0" />
                </font>
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <ComboBox fx:id="categoryComboBox" editable="true" onAction="#handleInputChangedAction" prefHeight="31.0" prefWidth="294.0" promptText="Type" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <ComboBox fx:id="categoryComboBox" editable="true" onAction="#handleInputChangedAction" prefHeight="40.0" prefWidth="294.0" promptText="Type" styleClass="input-fields" stylesheets="@stylesheet.css" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="75.0" right="20.0" />
                </GridPane.margin>
             </ComboBox>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter using the format hh:mm aa" wrappingWidth="120.48046875" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <font>
-                  <Font />
+                  <Font name="Roboto Thin" size="12.0" />
                </font>
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <Label fx:id="success" alignment="CENTER" styleClass="small-label" stylesheets="@stylesheet.css" text="Entry added!" GridPane.columnIndex="2" GridPane.rowIndex="9">
+            <Label fx:id="success" alignment="CENTER" styleClass="output-label" stylesheets="@stylesheet.css" text="Entry added!" GridPane.columnIndex="2" GridPane.rowIndex="10">
                <GridPane.margin>
                   <Insets left="30.0" />
                </GridPane.margin>
             </Label>
-            <Button fx:id="exit" mnemonicParsing="false" onAction="#handleExit" styleClass="buttons" stylesheets="@stylesheet.css" text="Exit" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Button fx:id="exit" mnemonicParsing="false" onAction="#handleExit" prefHeight="40.0" prefWidth="100.0" styleClass="cancel-buttons" stylesheets="@stylesheet.css" text="Exit" GridPane.columnIndex="1" GridPane.rowIndex="9">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></Button>
             <TextField fx:id="timeIDField" editable="false" visible="false" GridPane.columnIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Please enter using the format hh:mm aa" wrappingWidth="120.48046875" GridPane.columnIndex="2" GridPane.rowIndex="6">
+               <font>
+                  <Font name="Roboto Thin" size="12.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Text>
          </children>
       </GridPane>
    </children>

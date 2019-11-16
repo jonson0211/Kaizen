@@ -71,16 +71,18 @@
             <Label layoutX="559.0" layoutY="110.0" prefHeight="40.0" prefWidth="196.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Select Mood" />
             <ChoiceBox fx:id="selectTaskCategory" layoutX="50.0" layoutY="145.0" prefHeight="40.0" prefWidth="195.0" styleClass="c-boxes" stylesheets="@stylesheet.css" />
             <ChoiceBox fx:id="selectTask" layoutX="265.0" layoutY="145.0" onMouseEntered="#getTaskChoice" prefHeight="40.0" prefWidth="195.0" styleClass="c-boxes" stylesheets="@stylesheet.css" />
-            <Circle fill="DODGERBLUE" layoutX="793.0" layoutY="416.0" radius="200.0" stroke="BLACK" strokeType="INSIDE" />
-            <Label fx:id="displayTime" layoutX="618.0" layoutY="368.0" prefHeight="100.0" prefWidth="350.0" styleClass="time-display" stylesheets="@stylesheet.css" />
-            <Label fx:id="displayMoonPhase" layoutX="620.0" layoutY="426.0" prefHeight="100.0" prefWidth="350.0" styleClass="moonPhase-display" stylesheets="@stylesheet.css" />
+            <Circle fill="#1f93ff00" layoutX="795.0" layoutY="430.0" radius="162.0" stroke="BLACK" strokeType="INSIDE" styleClass="clock-background" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f4f4f4" height="42.0" layoutX="755.0" layoutY="566.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="80.0" />
+            <Label fx:id="displayTime1" layoutX="620.0" layoutY="320.0" prefHeight="100.0" prefWidth="350.0" styleClass="timeIs" stylesheets="@stylesheet.css" text="THE TIME IS" />
+            <Label fx:id="displayTime" layoutX="620.0" layoutY="393.0" prefHeight="100.0" prefWidth="350.0" styleClass="time-display" stylesheets="@stylesheet.css" />
+            <Label fx:id="displayMoonPhase" layoutX="620.0" layoutY="533.0" prefHeight="100.0" prefWidth="350.0" styleClass="timeIs" stylesheets="@stylesheet.css" />
             <Button fx:id="button" layoutX="480.0" layoutY="145.0" mnemonicParsing="false" onAction="#getTaskText" prefHeight="40.0" prefWidth="40.0" styleClass="getText_button" stylesheets="@stylesheet.css" text="Button" />
             <Label layoutX="50.0" layoutY="205.0" prefHeight="40.0" prefWidth="200.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Task Title" />
-            <Label fx:id="displayTitle" layoutX="61.0" layoutY="245.0" prefHeight="40.0" prefWidth="458.0" styleClass="small-label" stylesheets="@stylesheet.css" />
+            <Label fx:id="displayTitle" layoutX="50.0" layoutY="245.0" prefHeight="40.0" prefWidth="469.0" styleClass="textBox-label" stylesheets="@stylesheet.css" />
             <Label layoutX="50.0" layoutY="285.0" prefHeight="40.0" prefWidth="200.0" styleClass="small-label" stylesheets="@stylesheet.css" text="Task Description" />
-            <Label fx:id="displayDescription" layoutX="61.0" layoutY="325.0" prefHeight="360.0" prefWidth="458.0" styleClass="small-label" stylesheets="@stylesheet.css" />
+            <Label fx:id="displayDescription" layoutX="50.0" layoutY="325.0" prefHeight="357.0" prefWidth="469.0" styleClass="textBox-label" stylesheets="@stylesheet.css" />
             <Label fx:id="catchLabel" layoutX="270.0" layoutY="145.0" prefHeight="40.0" prefWidth="163.0" styleClass="small-label" />
-            <Circle fill="DODGERBLUE" layoutX="492.0" layoutY="245.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" styleClass="getText_button" />
+            <Label fx:id="secondsDisplay" layoutX="620.0" layoutY="442.0" prefHeight="100.0" prefWidth="350.0" styleClass="seconds-display" stylesheets="@stylesheet.css" />
          </children>
       </Pane>
    </right>

@@ -153,11 +153,12 @@ public class EditEntriesPopUpController implements Initializable {
                 + ", DESCR = '"+desc+"'"
                 + "WHERE TIMESHEETID = '" + timeID + "'"
                 );
+        success.setText("Entry updated!");
         success.setVisible(true);
            } catch (Exception e) { 
             e.printStackTrace();
             System.out.println("Could not update database! Please check your inputs.");
-        
+        success.setText("Could not update database! Please check your inputs.");
     }
    
     }
