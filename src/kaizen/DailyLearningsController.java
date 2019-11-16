@@ -116,6 +116,7 @@ public class DailyLearningsController {
     @FXML
     private Label checkLabel;
 
+
     PreparedStatement pst;
 
     Connection conn;
@@ -155,7 +156,15 @@ public class DailyLearningsController {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-        } 
+        }
+        datePick.setDayCellFactory(picker -> new DateCell() {
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate today = LocalDate.now();
+
+                setDisable(empty || date.compareTo(today) < 0);
+            }
+        });
 
     }
 
@@ -177,7 +186,8 @@ public class DailyLearningsController {
             doBetterColumn.setCellValueFactory(cellData -> cellData.getValue().getBeBetterProperty());
             doBetterCount.setCellValueFactory(cellData -> cellData.getValue().getBeBetterCountProperty());
             doBetterView.setItems(this.getLearningsDoBetter());
-/*            try {
+            
+            try {
             answerOnes.setAll(this.getComboOne());
             for (learningsCombo c : answerOnes) {
                 System.out.println(c.getDwProperty());
@@ -190,15 +200,24 @@ public class DailyLearningsController {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } */
-            pageSwitcher.switcher(event, "DailyLearnings.fxml");
+        }
     } catch (SQLException e) {
             e.printStackTrace();
     }
+        no.setVisible(false);
+        yes.setDisable(true);
         
     }
     @FXML
     private void handleOld(ActionEvent event) throws IOException {
+        datePick.setDayCellFactory(picker -> new DateCell() {
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate today = LocalDate.now();
+
+                setDisable(empty || date.compareTo(today) > 0);
+            }
+        });
         try {
             userLearn.insertStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
                     + "VALUES ('2019-11-12', 'Went to the gym', 'Spend time with family');");
@@ -242,6 +261,7 @@ public class DailyLearningsController {
             Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
         }
         yes.setVisible(false);
+        no.setDisable(true);
     }
 
     //return observable list of done well and do betters
