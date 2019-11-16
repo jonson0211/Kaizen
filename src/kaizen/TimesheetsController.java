@@ -175,7 +175,7 @@ public class TimesheetsController implements Initializable {
   
     @FXML
     private void handleSubmitAction(ActionEvent event) throws SQLException, ParseException {
-        
+        try{
         String catName = categoryComboBox.getValue();
         String act = (String) activityComboBox.getValue();
         String desc = descriptionText.getText();    
@@ -223,6 +223,12 @@ public class TimesheetsController implements Initializable {
             ex.printStackTrace();
         }
     
+        } catch (Exception ex) {
+            System.out.println("Could not add entry. Please check your inputs!");
+            status.setText("Could not add entry. Please check your inputs.");
+            status.setVisible(true);
+            ex.printStackTrace();
+        }
     }
 //    @FXML
 //    private void handleBackAction(ActionEvent event) throws IOException {
