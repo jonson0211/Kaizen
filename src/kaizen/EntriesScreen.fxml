@@ -78,18 +78,18 @@
                   <TableColumn fx:id="IDClm" prefWidth="75.0" text="ID" />
               </columns>
             </TableView>
-            <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleTimeSheets" prefHeight="39.0" prefWidth="75.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button fx:id="deleteRow" mnemonicParsing="false" onAction="#deleteRow" styleClass="buttons" text="Delete" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleTimeSheets" prefHeight="40.0" prefWidth="100.0" styleClass="cancel-buttons" stylesheets="@stylesheet.css" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="deleteRow" maxHeight="40.0" maxWidth="100.0" minHeight="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#deleteRow" prefHeight="40.0" prefWidth="100.0" styleClass="buttons" text="Delete" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets left="870.0" />
+                  <Insets left="850.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="update" mnemonicParsing="false" onAction="#editRow" styleClass="buttons" text="Update" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button fx:id="update" mnemonicParsing="false" onAction="#editRow" prefHeight="40.0" prefWidth="100.0" styleClass="buttons" text="Update" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="700.0" />
                </GridPane.margin>
             </Button>
-            <Label fx:id="status" prefHeight="26.0" prefWidth="106.0" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="status" prefHeight="26.0" prefWidth="106.0" styleClass="output-label" stylesheets="@stylesheet.css" text="Label" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="575.0" />
                </GridPane.margin>
