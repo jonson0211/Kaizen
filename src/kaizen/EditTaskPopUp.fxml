@@ -149,7 +149,7 @@
                </GridPane.margin>
             </TextField>
             <TextField fx:id="IDTextField" editable="false" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button fx:id="exit" mnemonicParsing="false" onAction="#handleExit" prefHeight="40.0" prefWidth="100.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Exit" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Button fx:id="exit" mnemonicParsing="false" onAction="#handleExit" prefHeight="40.0" prefWidth="100.0" styleClass="cancel-buttons" stylesheets="@stylesheet.css" text="Exit" GridPane.columnIndex="1" GridPane.rowIndex="8" />
             <Label fx:id="success" styleClass="output-label" stylesheets="@stylesheet.css" text="Updated!" GridPane.columnIndex="2" GridPane.rowIndex="9">
                <GridPane.margin>
                   <Insets left="65.0" />

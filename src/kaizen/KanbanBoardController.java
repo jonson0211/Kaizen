@@ -131,7 +131,7 @@ public class KanbanBoardController implements Initializable {
                             /* data is dragged over the target */
  /* accept it only if it is not dragged from the same node 
          * and if it has a string data */
-                            if (event.getGestureSource() != taskLabel && event.getDragboard().hasString()) {
+                            if (event.getGestureSource() != taskLabel && event.getDragboard().hasString() && taskLabel.getText() == "Drag Here") {
                                 /* allow for moving */
                                 event.acceptTransferModes(TransferMode.MOVE);
                             }
@@ -144,7 +144,11 @@ public class KanbanBoardController implements Initializable {
                         public void handle(DragEvent event) {
                             /* the drag-and-drop gesture entered the target */
  /* show to the user that it is an actual gesture target */
-
+                            if (event.getGestureSource() != taskLabel && event.getDragboard().hasString() && taskLabel.getText() == "Drag Here") {
+                                taskLabel.setStyle("-fx-text-fill: #50E513");
+                            } else{
+                                taskLabel.setStyle("-fx-text-fill: #ff3333");
+                            }
                             event.consume();
                         }
                     });
@@ -152,7 +156,7 @@ public class KanbanBoardController implements Initializable {
                     taskLabel.setOnDragExited(new EventHandler<DragEvent>() {
                         public void handle(DragEvent event) {
                             /* mouse moved away, remove the graphical cues */
-
+                            taskLabel.setStyle("-fx-text-fill: #000000");
                             event.consume();
                         }
                     });
@@ -165,12 +169,31 @@ public class KanbanBoardController implements Initializable {
                             String[] parts = db.getString().split("\n");
                             boolean success = false;
                             if (grid.getColumnIndex(taskLabel) == 2) {
-                                //update the database entry where the task name = 1st part of the string (title), setting date as XXX
+                                //update the database entry where the task name = parts[0]
                                 parts[1] = "Do Date: 2019-11-19";
+                                
+                                try {
+                                    KanbanDatabase.insertStatement("UPDATE TASKS SET DO_DATE = '2019-11-19' WHERE TITLE = '" + parts[0] + "'");
+                                } catch (Exception ex) {
+                                    ex.printStackTrace();
+                                }
+                                
                             } else if (grid.getColumnIndex(taskLabel) == 0) {
                                 parts[1] = "Do Date: 2019-11-18";
-                            } else {
-
+                                
+                                 try {
+                                    KanbanDatabase.insertStatement("UPDATE TASKS SET DO_DATE = '2019-11-18' WHERE TITLE = '" + parts[0] + "'");
+                                } catch (Exception ex) {
+                                    ex.printStackTrace();
+                                }
+                            } else if (grid.getColumnIndex(taskLabel) == 3){
+                                parts[1] = "Do Date: 2019-11-25";
+                                
+                                 try {
+                                    KanbanDatabase.insertStatement("UPDATE TASKS SET DO_DATE = '2019-11-25' WHERE TITLE = '" + parts[0] + "'");
+                                } catch (Exception ex) {
+                                    ex.printStackTrace();
+                                }
                             }
                             taskLabel.setText(parts[0] + "\n" + parts[1] + "\n" + parts[2]);
                             success = true;
@@ -220,7 +243,7 @@ public class KanbanBoardController implements Initializable {
                                 /* data is dragged over the target */
  /* accept it only if it is not dragged from the same node 
          * and if it has a string data */
-                                if (event.getGestureSource() != taskLabel1 && event.getDragboard().hasString()) {
+                                if (event.getGestureSource() != taskLabel1 && event.getDragboard().hasString() && taskLabel1.getText() == "Drag Here") {
                                     /* allow for moving */
                                     event.acceptTransferModes(TransferMode.MOVE);
                                 }
@@ -233,6 +256,11 @@ public class KanbanBoardController implements Initializable {
                             public void handle(DragEvent event) {
                                 /* the drag-and-drop gesture entered the target */
  /* show to the user that it is an actual gesture target */
+                                if (event.getGestureSource() != taskLabel1 && event.getDragboard().hasString() && taskLabel1.getText() == "Drag Here") {
+                                    taskLabel1.setStyle("-fx-text-fill: #50E513");
+                                } else {
+                                    taskLabel1.setStyle("-fx-text-fill: #ff3333");
+                                }
 
                                 // if the the label exists in column 3, 
                                 event.consume();
@@ -242,7 +270,7 @@ public class KanbanBoardController implements Initializable {
                         taskLabel1.setOnDragExited(new EventHandler<DragEvent>() {
                             public void handle(DragEvent event) {
                                 /* mouse moved away, remove the graphical cues */
-
+                                taskLabel1.setStyle("-fx-text-fill: #000000");
                                 event.consume();
                             }
                         });
@@ -257,9 +285,29 @@ public class KanbanBoardController implements Initializable {
                                 if (grid.getColumnIndex(taskLabel1) == 2) {
                                     //update the database entry where the task name = 1st part of the string (title), setting date as XXX
                                     parts[1] = "Do Date: 2019-11-19";
+                                        try {
+                                    KanbanDatabase.insertStatement("UPDATE TASKS SET DO_DATE = '2019-11-19' WHERE TITLE = '" + parts[0] + "'");
+                                } catch (Exception ex) {
+                                    ex.printStackTrace();
+                                }
                                 } else if (grid.getColumnIndex(taskLabel1) == 0) {
                                     parts[1] = "Do Date: 2019-11-18";
+                                    
+                                     try {
+                                    KanbanDatabase.insertStatement("UPDATE TASKS SET DO_DATE = '2019-11-18' WHERE TITLE = '" + parts[0] + "'");
+                                } catch (Exception ex) {
+                                    ex.printStackTrace();
                                 }
+                                    
+                                } else if (grid.getColumnIndex(taskLabel1) == 3){
+                                parts[1] = "Do Date: 2019-11-25";
+                                
+                                 try {
+                                    KanbanDatabase.insertStatement("UPDATE TASKS SET DO_DATE = '2019-11-25' WHERE TITLE = '" + parts[0] + "'");
+                                } catch (Exception ex) {
+                                    ex.printStackTrace();
+                                }
+                            }
                                 taskLabel1.setText(parts[0] + "\n" + parts[1] + "\n" + parts[2]);
                                 success = true;
                                 event.setDropCompleted(success);

@@ -78,7 +78,7 @@
                   <TableColumn fx:id="IDClm" prefWidth="75.0" text="ID" />
               </columns>
             </TableView>
-            <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleTimeSheets" prefHeight="40.0" prefWidth="100.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handleTimeSheets" prefHeight="40.0" prefWidth="100.0" styleClass="cancel-buttons" stylesheets="@stylesheet.css" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Button fx:id="deleteRow" maxHeight="40.0" maxWidth="100.0" minHeight="40.0" minWidth="100.0" mnemonicParsing="false" onAction="#deleteRow" prefHeight="40.0" prefWidth="100.0" styleClass="buttons" text="Delete" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="850.0" />
