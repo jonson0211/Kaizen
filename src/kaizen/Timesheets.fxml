@@ -179,7 +179,7 @@
                   <Insets left="40.0" />
                </GridPane.margin>
             </Label>
-            <Button fx:id="exit" mnemonicParsing="false" onAction="#handleExit" prefHeight="40.0" prefWidth="100.0" styleClass="cancel-buttons" stylesheets="@stylesheet.css" text="Exit" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <Button fx:id="exit1" mnemonicParsing="false" onAction="#handleExit" prefHeight="40.0" prefWidth="100.0" styleClass="cancel-buttons" stylesheets="@stylesheet.css" text="Exit" GridPane.columnIndex="1" GridPane.rowIndex="11" />
          </children>
       </GridPane>
    </children>

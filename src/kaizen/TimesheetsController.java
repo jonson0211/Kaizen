@@ -2,6 +2,7 @@ package kaizen;
 
 import javafx.scene.shape.Rectangle;
 import java.io.IOException;
+import static java.lang.System.exit;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,6 +33,7 @@ import kaizen.DataModels.categoryCombo;
 import kaizen.DataModels.colourDM;
 import java.time.Duration;
 import java.util.ArrayList;
+import static javafx.application.Platform.exit;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -62,6 +64,8 @@ public class TimesheetsController implements Initializable {
     private ComboBox<String> activityComboBox;
     @FXML
     private Label status;
+    @FXML
+            private Button exit1;
 
     ObservableList<categoryCombo> categoryComboList = FXCollections.observableArrayList();
     ObservableList<activityCombo> activityComboList = FXCollections.observableArrayList();
@@ -225,9 +229,10 @@ public class TimesheetsController implements Initializable {
 //    private void handleBackAction(ActionEvent event) throws IOException {
 //        pageSwitcher.switcher(event, "PieChart.fxml");
 //    }
+    
     @FXML
-    private void handleExit(ActionEvent event){
-        Stage stage = (Stage) exit.getScene().getWindow();
+    private void handleExit(ActionEvent event) throws IOException {
+        Stage stage = (Stage) exit1.getScene().getWindow();
         stage.close();
     }
     
