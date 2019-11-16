@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package kaizen;
 
 import java.io.IOException;
@@ -29,11 +24,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import kaizen.UserData.KaizenDatabase;
 
-/**
- * FXML Controller class
- *
- * @author wongad1
- */
 public class PopUpLearningsController {
 
     @FXML
@@ -56,7 +46,7 @@ public class PopUpLearningsController {
     private TableColumn<learningsEntryDM, String> id;
     @FXML
     private Button exit;
-    
+
     @FXML
     DatePicker datePicker;
     @FXML
@@ -67,8 +57,9 @@ public class PopUpLearningsController {
     private Button submit;
     @FXML
     private Label confirm;
-    
-    @FXML private TextField pKey;
+
+    @FXML
+    private TextField pKey;
 
     KaizenDatabase db = new KaizenDatabase();
 
@@ -80,7 +71,7 @@ public class PopUpLearningsController {
         achievements.setCellValueFactory(cellData -> cellData.getValue().getAchievementsProperty());
         improvements.setCellValueFactory(cellData -> cellData.getValue().getImprovementsProperty());
         id.setCellValueFactory(cellData -> cellData.getValue().getPkProperty());
-        
+
         entries.setItems(this.getReport());
         confirm.setVisible(false);
     }
@@ -107,7 +98,6 @@ public class PopUpLearningsController {
         stage.close();
     }
 
-   
     @FXML
     private void handleSelect(ActionEvent event) {
         learningsEntryDM edit = entries.getSelectionModel().getSelectedItem();
@@ -139,14 +129,13 @@ public class PopUpLearningsController {
             System.out.println("Can't delete from database!");
             e.printStackTrace();
         }
-            try{
-                entries.getItems().removeAll(entries.getSelectionModel().getSelectedItem());
-                }catch(Exception ex){
-                    ex.printStackTrace();
-                    System.out.println("Can't remove row from table!");
-            }
+        try {
+            entries.getItems().removeAll(entries.getSelectionModel().getSelectedItem());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            System.out.println("Can't remove row from table!");
         }
-    
+    }
 
     @FXML
     private void editLearning(ActionEvent event) {
@@ -179,7 +168,7 @@ public class PopUpLearningsController {
         LocalDate myLocalDate = LocalDate.parse(date, formatter);
         datePicker.setValue(myLocalDate);
         achieveBox.setValue(achievements);
-        improveBox.setValue(improvements);  
+        improveBox.setValue(improvements);
         //Integer.toString(pk);
         String number = String.valueOf(pk);
         pKey.setText(number);

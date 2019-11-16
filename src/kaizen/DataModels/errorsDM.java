@@ -1,24 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package kaizen.DataModels;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-/**
- *
- * @author lienzhu
- */
 public class errorsDM {
-    
-            private StringProperty errorID;
-            private StringProperty date;
-            private StringProperty errorName;
-            private StringProperty errorPage;
-            private StringProperty errorDesc;
+
+    private StringProperty errorID;
+    private StringProperty date;
+    private StringProperty errorName;
+    private StringProperty errorPage;
+    private StringProperty errorDesc;
 
     public errorsDM(String errorID, String date, String errorName, String errorPage, String errorDesc) {
         this.errorID = new SimpleStringProperty(errorID);
@@ -26,70 +17,66 @@ public class errorsDM {
         this.errorName = new SimpleStringProperty(errorName);
         this.errorPage = new SimpleStringProperty(errorPage);
         this.errorDesc = new SimpleStringProperty(errorDesc);
-    }   
+    }
+
     public String getErrorID() {
         return errorID.get();
     }
 
-    public StringProperty getErrorIDProperty(){
+    public StringProperty getErrorIDProperty() {
         return errorID;
     }
-    
+
     public void setID(String errorID) {
         this.errorID.set(errorID);
     }
-    public String getDate(){
+
+    public String getDate() {
         return date.get();
     }
-    
-    public StringProperty getDateProperty(){
+
+    public StringProperty getDateProperty() {
         return date;
     }
-    
-    public void setDate(String date){
+
+    public void setDate(String date) {
         this.date.set(date);
     }
-    public String getErrorName(){
+
+    public String getErrorName() {
         return errorName.get();
     }
-    
-    public StringProperty getErrorNameProperty(){
+
+    public StringProperty getErrorNameProperty() {
         return errorName;
     }
-    
-    public void setErrorName(String errorName){
+
+    public void setErrorName(String errorName) {
         this.errorName.set(errorName);
     }
-    public String getErrorPage(){
+
+    public String getErrorPage() {
         return errorPage.get();
     }
-    
-    public StringProperty getErrorPageProperty(){
+
+    public StringProperty getErrorPageProperty() {
         return errorPage;
     }
-    
-    public void setErrorPage(String errorPage){
+
+    public void setErrorPage(String errorPage) {
         this.errorPage.set(errorPage);
     }
-    public String getErrorDesc(){
+
+    public String getErrorDesc() {
         return errorDesc.get();
     }
-    
-    public StringProperty getErrorDescProperty(){
+
+    public StringProperty getErrorDescProperty() {
         return errorDesc;
     }
-    
-    public void setErrorDesc(String errorDesc){
+
+    public void setErrorDesc(String errorDesc) {
         this.errorDesc.set(errorDesc);
     }
-    
-    
-    
-    
-    
-        
-    
-         
-            
-                   
+
 }

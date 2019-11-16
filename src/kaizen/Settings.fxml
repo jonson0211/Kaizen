@@ -37,7 +37,7 @@
                <children>
                   <ToggleButton fx:id="settingsButton" mnemonicParsing="false" onAction="#handleSettings" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="ABOUT" />
                   <ToggleButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" styleClass="current-menu-toggle" stylesheets="@stylesheet.css" text="SETTINGS" />
-                  <Button fx:id="signOutButtons" mnemonicParsing="false" onAction="#handleSignOut" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="SIGN OUT" />
+                  <Button fx:id="signOutButtons" mnemonicParsing="false" onAction="#handleSignOut" prefHeight="50.0" prefWidth="200.0" styleClass="menu-toggle" stylesheets="@stylesheet.css" text="REPORT ERROR" />
                </children></VBox>
          </bottom>
          <top>
@@ -52,35 +52,37 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="466.0" layoutX="497.0" layoutY="107.0" stroke="BLACK" strokeType="INSIDE" width="521.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="274.0" layoutX="44.0" layoutY="422.0" stroke="BLACK" strokeType="INSIDE" width="948.0" />
             <Label layoutX="52.0" layoutY="29.0" styleClass="large-label" text="Settings" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="466.0" layoutX="44.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="399.0" />
-            <Label layoutX="120.0" layoutY="150.0" styleClass="small-label" text="Edit Categories" />
-            <TableView fx:id="catView" layoutX="106.0" layoutY="185.0" prefHeight="275.0" prefWidth="275.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="284.0" layoutX="44.0" layoutY="109.0" stroke="BLACK" strokeType="INSIDE" width="473.0" />
+            <Label layoutX="113.0" layoutY="136.0" styleClass="small-label" text="Edit Categories" />
+            <TableView fx:id="catView" layoutX="95.0" layoutY="175.0" prefHeight="194.0" prefWidth="286.0">
               <columns>
-                <TableColumn fx:id="IDClm" minWidth="0.0" prefWidth="2.0" resizable="false" text="ID" />
-                <TableColumn fx:id="categoryClm" prefWidth="134.0" resizable="false" text="Category" />
-                  <TableColumn fx:id="colourClm" prefWidth="137.0" resizable="false" text="Colour" />
+                <TableColumn fx:id="IDClm" editable="false" minWidth="0.0" prefWidth="2.0" resizable="false" text="ID" visible="false" />
+                <TableColumn fx:id="categoryClm" prefWidth="156.39968872070312" resizable="false" text="Category" />
+                  <TableColumn fx:id="colourClm" prefWidth="128.60028076171875" resizable="false" text="Colour" />
               </columns>
             </TableView>
-            <Button fx:id="deleteButton" layoutX="106.0" layoutY="473.0" mnemonicParsing="false" onAction="#deleteData" text="Delete" />
-            <Button fx:id="editButton" layoutX="209.0" layoutY="473.0" mnemonicParsing="false" onAction="#editData" text="Update" />
-            <Button fx:id="addButton" layoutX="318.0" layoutY="473.0" mnemonicParsing="false" onAction="#handlePopUpAddCategory" prefHeight="27.0" prefWidth="62.0" text="Add" />
-            <Label fx:id="status" layoutX="279.0" layoutY="122.0" prefHeight="60.0" prefWidth="122.0" text="Label" wrapText="true" />
-            <Label layoutX="100.0" layoutY="512.0" text="To DELETE: Select row and click delete" />
-            <Label layoutX="100.0" layoutY="529.0" prefHeight="35.0" prefWidth="246.0" text="To UPDATE: Double-click an entry, edit, press ENTER, then click Update" textAlignment="JUSTIFY" wrapText="true" />
-            <Label fx:id="status1" layoutX="732.0" layoutY="146.0" prefHeight="36.0" prefWidth="97.0" text="Label" wrapText="true" />
-            <Button fx:id="addButton1" layoutX="563.0" layoutY="474.0" mnemonicParsing="false" onAction="#handlePopUpAddCategory" prefHeight="27.0" prefWidth="127.0" text="Report new bug" />
-            <TableView fx:id="errorsView" layoutX="558.0" layoutY="185.0" prefHeight="275.0" prefWidth="409.0">
+            <Button fx:id="deleteButton" layoutX="420.0" layoutY="329.0" mnemonicParsing="false" onAction="#deleteData" prefHeight="27.0" prefWidth="62.0" text="Delete" />
+            <Button fx:id="editButton" layoutX="420.0" layoutY="269.0" mnemonicParsing="false" onAction="#editData" text="Update" />
+            <Button fx:id="addButton" layoutX="420.0" layoutY="209.0" mnemonicParsing="false" onAction="#handlePopUpAddCategory" prefHeight="27.0" prefWidth="62.0" text="Add" />
+            <Label fx:id="status" layoutX="274.0" layoutY="130.0" prefHeight="36.0" prefWidth="103.0" text="Label" wrapText="true" />
+            <Button fx:id="report" layoutX="790.0" layoutY="442.0" mnemonicParsing="false" onAction="#handleReportBug" prefHeight="27.0" prefWidth="127.0" text="Report a bug" />
+            <TableView fx:id="errorsView" layoutX="94.0" layoutY="481.0" prefHeight="185.0" prefWidth="824.0">
                <columns>
-                  <TableColumn fx:id="errorIDClm" minWidth="0.0" prefWidth="2.0" resizable="false" text="ID" />
-                  <TableColumn fx:id="errorDateClm" prefWidth="73.51959228515625" resizable="false" text="Date" />
-                  <TableColumn fx:id="errorNameClm" prefWidth="105.68768310546875" resizable="false" text="Error" />
-                  <TableColumn fx:id="errorPageClm" prefWidth="102.7447509765625" text="Location" />
-                  <TableColumn fx:id="errorDescClm" prefWidth="140.2552490234375" text="Description" />
+                  <TableColumn fx:id="errorIDClm" editable="false" minWidth="0.0" prefWidth="2.0" resizable="false" text="ID" visible="false" />
+                  <TableColumn fx:id="errorDateClm" prefWidth="68.83090209960938" resizable="false" text="Date" />
+                  <TableColumn fx:id="errorNameClm" prefWidth="191.90719604492188" text="Error" />
+                  <TableColumn fx:id="errorPageClm" prefWidth="139.0927734375" text="Location" />
+                  <TableColumn fx:id="errorDescClm" prefWidth="423.69305419921875" text="Description" />
                </columns>
             </TableView>
-            <Label layoutX="555.0" layoutY="153.0" styleClass="small-label" text="History of Errors" />
+            <Label layoutX="119.0" layoutY="445.0" styleClass="small-label" text="History of Bugs" />
+            <Button fx:id="help" layoutX="449.0" layoutY="122.0" mnemonicParsing="false" onAction="#handleHelp" text="Help?">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </center>

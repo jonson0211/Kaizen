@@ -10,53 +10,25 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import kaizen.UserData.KaizenDatabase;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
-import javafx.scene.control.Toggle;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
-import javafx.util.Callback;
-import kaizen.DataModels.activityCombo;
 import kaizen.DataModels.categoryCombo;
 import kaizen.DataModels.colourDM;
-import kaizen.DataModels.learningsDidWell;
-import kaizen.DataModels.timesheetsDM;
-import java.awt.*;
-import java.awt.color.*;
-import java.time.Duration;
-import java.time.LocalDate;
 
 import java.util.ArrayList;
 
 import javafx.stage.Stage;
-
 
 public class AddTaskPopUpController implements Initializable {
 
@@ -103,7 +75,6 @@ public class AddTaskPopUpController implements Initializable {
     }
 
     //get Category Choice for combo box
-
     public ObservableList<categoryCombo> getCatChoice() {
 
         ObservableList<categoryCombo> categoryComboList = FXCollections.observableArrayList();
@@ -136,22 +107,18 @@ public class AddTaskPopUpController implements Initializable {
         return FXCollections.observableArrayList(colourShapeList);
     }
 
-    
     @FXML
     private void handleInputChangedAction(ActionEvent event) throws SQLException {
 
         ArrayList<String> colourList = new ArrayList<String>();
         //getColourChoice();
-       String catName = categoryComboBox.getValue();
-
-
+        String catName = categoryComboBox.getValue();
 
         ResultSet catColourRs = database.getResultSet("SELECT CATEGORYNAME, COLOUR from CATEGORY "
-
                 + "WHERE CATEGORYNAME = '" + catName + "'");
-        while(catColourRs.next()){
-                colourList.add(catColourRs.getString(2));
-                };
+        while (catColourRs.next()) {
+            colourList.add(catColourRs.getString(2));
+        };
 
         String colourString = colourList.get(0);
         categoryColourShape.setFill(Color.web(colourString));

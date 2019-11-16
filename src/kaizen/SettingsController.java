@@ -1,6 +1,5 @@
 package kaizen;
 
-import com.sun.javafx.charts.Legend;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -14,10 +13,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -29,8 +27,6 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import kaizen.DataModels.categoryTableDM;
 import kaizen.DataModels.errorsDM;
-import kaizen.DataModels.timesheetsDM;
-import static kaizen.EntriesScreenController.entriesView_2;
 import kaizen.UserData.KaizenDatabase;
 
 public class SettingsController implements Initializable {
@@ -76,10 +72,18 @@ public class SettingsController implements Initializable {
     private GridPane grid;
     @FXML
     private Button tsBtn;
-    @FXML private Button deleteButton;
-    @FXML private Button editButton;
-    @FXML private Button addButton;
-    @FXML private Label status;
+    @FXML
+    private Button deleteButton;
+    @FXML
+    private Button editButton;
+    @FXML
+    private Button addButton;
+    @FXML
+    private Label status;
+    @FXML
+    private Button help;
+    @FXML
+    private Button report;
 
     @FXML
     public TableView<categoryTableDM> catView;
@@ -89,14 +93,15 @@ public class SettingsController implements Initializable {
     private TableColumn<categoryTableDM, String> colourClm;
     @FXML
     private TableColumn<categoryTableDM, String> categoryClm;
-    @FXML private TableColumn<categoryTableDM, String> IDClm;
-    
     @FXML
-    private TableView<errorsDM> errorsView;  
+    private TableColumn<categoryTableDM, String> IDClm;
+
+    @FXML
+    private TableView<errorsDM> errorsView;
     public static TableView<errorsDM> errorsView_2;
-    
+
     @FXML
-    private TableColumn<errorsDM, String> errorIDClm;    
+    private TableColumn<errorsDM, String> errorIDClm;
     @FXML
     private TableColumn<errorsDM, String> errorNameClm;
     @FXML
@@ -105,9 +110,6 @@ public class SettingsController implements Initializable {
     private TableColumn<errorsDM, String> errorDescClm;
     @FXML
     private TableColumn<errorsDM, String> errorPageClm;
-    
-    @FXML private Button report;
-    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -118,50 +120,50 @@ public class SettingsController implements Initializable {
         errorsView_2 = errorsView;
         errorsView.setVisible(true);
         errorsView.setItems(this.getErrors());
-        
+
         errorDateClm.setCellValueFactory(cellData -> cellData.getValue().getDateProperty());
         errorNameClm.setCellValueFactory(cellData -> cellData.getValue().getErrorNameProperty());
         errorPageClm.setCellValueFactory(cellData -> cellData.getValue().getErrorPageProperty());
         errorDescClm.setCellValueFactory(cellData -> cellData.getValue().getErrorDescProperty());
         errorIDClm.setCellValueFactory(cellData -> cellData.getValue().getErrorIDProperty());
-        
-        
+
     }
 
-
-    private void initTable(){
+    private void initTable() {
         initCols();
     }
-    private void initCols(){
+
+    private void initCols() {
         categoryClm.setCellValueFactory(new PropertyValueFactory<>("categoryName"));
         colourClm.setCellValueFactory(new PropertyValueFactory<>("colour"));
         IDClm.setCellValueFactory(new PropertyValueFactory<>("categoryID"));
 
         editableCols();
-        
+
     }
-    private void editableCols(){
+
+    private void editableCols() {
         categoryClm.setCellFactory(TextFieldTableCell.forTableColumn());
-        categoryClm.setOnEditCommit(e->{
-                e.getTableView().getItems().get(e.getTablePosition().getRow()).setCategoryName(e.getNewValue());
+        categoryClm.setOnEditCommit(e -> {
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setCategoryName(e.getNewValue());
         });
-        
+
         colourClm.setCellFactory(TextFieldTableCell.forTableColumn());
-        colourClm.setOnEditCommit(e->{
-                e.getTableView().getItems().get(e.getTablePosition().getRow()).setColour(e.getNewValue());
+        colourClm.setOnEditCommit(e -> {
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setColour(e.getNewValue());
         });
-        
+
         IDClm.setCellFactory(TextFieldTableCell.forTableColumn());
-        IDClm.setOnEditCommit(e->{
-                e.getTableView().getItems().get(e.getTablePosition().getRow()).setCategoryID(e.getNewValue());
+        IDClm.setOnEditCommit(e -> {
+            e.getTableView().getItems().get(e.getTablePosition().getRow()).setCategoryID(e.getNewValue());
         });
-        
+
         catView.setEditable(true);
     }
-    
-    private void loadData(){
+
+    private void loadData() {
         ObservableList<categoryTableDM> data_table = FXCollections.observableArrayList();
-        
+
         try {
             ResultSet rs = db.getResultSet("SELECT * FROM CATEGORY");
 
@@ -173,21 +175,21 @@ public class SettingsController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
         catView.setItems(data_table);
     }
+
     @FXML
-    private void deleteData(ActionEvent event)throws IOException{
-    
-            categoryTableDM selected = catView.getSelectionModel().getSelectedItem();
-        
-        try{
+    private void deleteData(ActionEvent event) throws IOException {
+
+        categoryTableDM selected = catView.getSelectionModel().getSelectedItem();
+
+        try {
             db.insertStatement("DELETE FROM CATEGORY WHERE "
-                    +"CATEGORYID = '" + selected.getCategoryID() 
-                    + "' AND CATEGORYNAME = '"+ selected.getCategoryName()
-                    + "' AND COLOUR = '"+selected.getColour()+ "'");
-            
+                    + "CATEGORYID = '" + selected.getCategoryID()
+                    + "' AND CATEGORYNAME = '" + selected.getCategoryName()
+                    + "' AND COLOUR = '" + selected.getColour() + "'");
+
             status.setText("Category deleted!");
             status.setVisible(true);
         } catch (Exception e) {
@@ -196,70 +198,68 @@ public class SettingsController implements Initializable {
             status.setVisible(true);
             e.printStackTrace();
         }
-        try{
+        try {
             catView.getItems().removeAll(catView.getSelectionModel().getSelectedItem());
-        } catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Can't remove from table");
-             status.setText("Can't remove from table! Please try again.");
+            status.setText("Can't remove from table! Please try again.");
             status.setVisible(true);
             e.printStackTrace();
         }
-            
-                
+
     }
+
     @FXML
-    private void editData(ActionEvent event)throws IOException{
-    
-            categoryTableDM selected = catView.getSelectionModel().getSelectedItem();
-            
-        try{
+    private void editData(ActionEvent event) throws IOException {
+
+        categoryTableDM selected = catView.getSelectionModel().getSelectedItem();
+
+        try {
             db.insertStatement("UPDATE CATEGORY "
-                    + "SET CATEGORYNAME = '" + selected.getCategoryName()+ "'"
-                    + ", COLOUR = '" +selected.getColour()+ "'"
+                    + "SET CATEGORYNAME = '" + selected.getCategoryName() + "'"
+                    + ", COLOUR = '" + selected.getColour() + "'"
                     + " WHERE CATEGORYID = " + selected.getCategoryID());
-            
+
 //            System.out.println(selected.getCategoryName());
 //            System.out.println(selected.getColour());
 //            System.out.println(selected.getCategoryID());
-            
             status.setText("Category updated!");
             status.setVisible(true);
-            
+
         } catch (Exception e) {
             System.out.println("No row selected");
             status.setText("Please select row.");
             status.setVisible(true);
             e.printStackTrace();
         }
-        try{
+        try {
             //catView.getItems().removeAll(catView.getSelectionModel().getSelectedItem());
-        } catch(Exception e){
+        } catch (Exception e) {
             System.out.println("Can't update from table");
             e.printStackTrace();
         }
-            
-                
+
     }
-    
-    public ObservableList<errorsDM> getErrors(){
-        
+
+    public ObservableList<errorsDM> getErrors() {
+
         ObservableList<errorsDM> errors = FXCollections.observableArrayList();
-        
+
         try {
             ResultSet rsErrors = db.getResultSet("SELECT * FROM ERRORS");
-            
-            while (rsErrors.next()){
-                errors.add(new errorsDM(rsErrors.getString("ERRORID"), 
-                        rsErrors.getString("DATE"), rsErrors.getString("ERRORNAME"), 
-                        rsErrors.getString("ERRORPAGE"), rsErrors.getString("DESCRIPTION") 
-                        ));
+
+            while (rsErrors.next()) {
+                errors.add(new errorsDM(rsErrors.getString("ERRORID"),
+                        rsErrors.getString("DATE"), rsErrors.getString("ERRORNAME"),
+                        rsErrors.getString("ERRORPAGE"), rsErrors.getString("DESCRIPTION")
+                ));
             }
         } catch (SQLException ex) {
             Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return FXCollections.observableArrayList(errors);
     }
-    
+
     //switch to daily learnings
     @FXML
     private void handlePopUpAddCategory(ActionEvent event) throws IOException {
@@ -276,7 +276,28 @@ public class SettingsController implements Initializable {
         }
     }
 
-    
+    @FXML
+    private void handleReportBug(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ReportBugPopUp.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Report a bug");
+            stage.setScene(new Scene(root1));
+            stage.show();
+
+        } catch (Exception e) {
+            System.out.println("Cannot load this new window!");
+        }
+    }
+
+    @FXML
+    private void handleHelp(ActionEvent event) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Editing the Category table");
+        alert.setHeaderText("To DELETE: Select row and click delete. \n To UPDATE: Double-click an entry, edit, press ENTER, then click UPDATE.");
+        alert.showAndWait();
+    }
 
     @FXML
     private void handleDailyBreakdown(ActionEvent event) throws IOException {
@@ -340,7 +361,17 @@ public class SettingsController implements Initializable {
 
     @FXML
     private void handleSignOut(ActionEvent event) throws IOException {
-        pageSwitcher.switcher(event, "LoginScreen.fxml");
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ReportBugPopUp.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Report a bug");
+            stage.setScene(new Scene(root1));
+            stage.show();
+
+        } catch (Exception e) {
+            System.out.println("Cannot load this new window!");
+        }
     }
 
     @FXML

@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package kaizen.DataModels;
 
-/**
- *
- * @author wongad1
- */
 public class UserDataModels {
-    
+
     private String username;
     private String password;
     private String fName;
@@ -54,6 +45,5 @@ public class UserDataModels {
     public void setLName(String LName) {
         this.LName = LName;
     }
-    
-    
+
 }
