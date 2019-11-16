@@ -116,12 +116,38 @@
     -fx-font-family: "Roboto Light";
 }
 
+.cancel-buttons {
+    -fx-font-size: 18px;
+    -fx-background-color: transparent;
+    -fx-text-fill: rgba(1, 113, 122, 1.00);
+    -fx-border-color: rgba(1, 113, 122, 1.00);
+    -fx-border-width: 1;
+    -fx-font-family: "Roboto Light";
+}
+.cancel-buttons:hover {
+    -fx-font-size: 18px;
+    -fx-background-color: #0b8e99;
+    -fx-text-fill: rgba(255, 255, 255, 1.00);
+    -fx-border-color: rgba(1, 113, 122, 1.00);
+    -fx-border-width: 1;
+    -fx-font-family: "Roboto Light";
+}
+
+.cancel-buttons:pressed {
+    -fx-font-size: 18px;
+    -fx-background-color: #0b6f78;
+    -fx-text-fill: rgba(255, 255, 255, 1.00);
+    -fx-border-color: rgba(1, 113, 122, 1.00);
+    -fx-border-width: 1;
+    -fx-font-family: "Roboto Light";
+}
+
+
 .input-fields {
     -fx-font-size: 18px;
     -fx-fill-color: #e1e1e1;
     -fx-text-fill: #4f4e52;
     -fx-font-family: "Roboto Thin";
-    -fx-max-height: 40;
     -fx-min-height: 40;
     -fx-pref-height: 40;
 }

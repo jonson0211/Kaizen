@@ -61,9 +61,9 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eef7ff80" height="440.0" stroke="BLACK" strokeType="INSIDE" width="217.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#eef7ff80" height="440.0" stroke="BLACK" strokeType="INSIDE" width="282.0">
                      <GridPane.margin>
-                        <Insets bottom="50.0" left="850.0" />
+                        <Insets left="785.0" />
                      </GridPane.margin>
                   </Rectangle>
                   <LineChart fx:id="weeklyTrendsLineChart">
@@ -74,7 +74,7 @@
                       <NumberAxis side="LEFT" />
                     </yAxis>
                      <GridPane.margin>
-                        <Insets bottom="75.0" left="100.0" right="250.0" top="100.0" />
+                        <Insets bottom="75.0" left="100.0" right="300.0" top="100.0" />
                      </GridPane.margin>
                   </LineChart>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Weekly Trends of Time Spent">
@@ -82,116 +82,119 @@
                         <Insets bottom="575.0" left="250.0" />
                      </GridPane.margin>
                   </Text>
-                  <Button fx:id="dailyBreakdown" mnemonicParsing="false" onAction="#handleDailyBreakdown" prefHeight="35.0" prefWidth="186.0" styleClass="buttons" text="Daily Breakdown">
+                  <Button fx:id="dailyBreakdown" mnemonicParsing="false" onAction="#handleDailyBreakdown" prefHeight="40.0" prefWidth="180.0" styleClass="buttons" text="Daily Breakdown">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="875.0" top="450.0" />
+                        <Insets left="845.0" top="500.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="weeklyBreakdown" mnemonicParsing="false" onAction="#handleWeeklyBreakdown" prefWidth="186.0" styleClass="buttons" text="Weekly Breakdown">
+                  <Button fx:id="weeklyBreakdown" mnemonicParsing="false" onAction="#handleWeeklyBreakdown" prefHeight="40.0" prefWidth="180.0" styleClass="buttons" text="Weekly Breakdown">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="875.0" top="555.0" />
+                        <Insets left="845.0" top="605.0" />
                      </GridPane.margin>
                   </Button>
-                  <DatePicker fx:id="weeklyChartDtPicker">
+                  <DatePicker fx:id="weeklyChartDtPicker" styleClass="input-fields" stylesheets="@stylesheet.css">
                      <GridPane.margin>
-                        <Insets bottom="350.0" left="865.0" right="25.0" />
+                        <Insets bottom="340.0" left="800.0" right="25.0" />
                      </GridPane.margin>
                   </DatePicker>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Percentage of hours spent" textAlignment="RIGHT" wrappingWidth="73.68728637695312">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Percentage of hours spent" textAlignment="RIGHT" wrappingWidth="111.02059936523438">
                      <GridPane.margin>
-                        <Insets left="20.0" />
+                        <Insets left="7.0" />
                      </GridPane.margin>
+                     <font>
+                        <Font name="Roboto Thin" size="18.0" />
+                     </font>
                   </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select a start date:" wrappingWidth="173.0">
                      <GridPane.margin>
-                        <Insets bottom="400.0" left="865.0" />
+                        <Insets bottom="410.0" left="800.0" />
                      </GridPane.margin>
                      <font>
-                        <Font size="15.0" />
+                        <Font name="Roboto Thin" size="18.0" />
                      </font>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="How many weeks back do you want to view?" wrappingWidth="173.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="How many weeks back do you want to view?" wrappingWidth="254.3333740234375">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="Roboto Thin" size="18.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets bottom="250.0" left="865.0" right="25.0" />
+                        <Insets bottom="245.0" left="800.0" right="25.0" />
                      </GridPane.margin>
                   </Text>
-                  <TextField fx:id="numWeeksTxtField">
+                  <TextField fx:id="numWeeksTxtField" styleClass="input-fields" stylesheets="@stylesheet.css">
                      <GridPane.margin>
-                        <Insets bottom="170.0" left="865.0" right="25.0" />
+                        <Insets bottom="160.0" left="800.0" right="25.0" />
                      </GridPane.margin>
                   </TextField>
-                  <ChoiceBox fx:id="activityChoiceBox" prefHeight="27.0" prefWidth="170.0">
+                  <ChoiceBox fx:id="activityChoiceBox" prefHeight="27.0" prefWidth="240.0" styleClass="input-fields" stylesheets="@stylesheet.css">
                      <GridPane.margin>
-                        <Insets bottom="15.0" left="885.0" right="25.0" />
+                        <Insets bottom="-10.0" left="815.0" right="25.0" />
                      </GridPane.margin>
                   </ChoiceBox>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select an activity (up to 3)" wrappingWidth="193.4444580078125">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select an activity (up to 3)" wrappingWidth="253.4444580078125">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="Roboto Thin" size="18.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets bottom="75.0" left="865.0" right="25.0" />
+                        <Insets bottom="75.0" left="800.0" right="25.0" />
                      </GridPane.margin>
                   </Text>
-                  <Button fx:id="loadGraphButton" mnemonicParsing="false" onAction="#loadGraph" prefHeight="29.0" prefWidth="112.0" text="Load graph">
+                  <Button fx:id="loadGraphButton" mnemonicParsing="false" onAction="#loadGraph" prefHeight="30.0" prefWidth="140.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Load graph">
                      <GridPane.margin>
-                        <Insets left="885.0" top="275.0" />
+                        <Insets bottom="-40.0" left="860.0" top="275.0" />
                      </GridPane.margin>
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Button>
-                  <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handlePieChart" prefHeight="35.0" prefWidth="79.0" styleClass="buttons" text="Back">
+                  <Button fx:id="backBtn" mnemonicParsing="false" onAction="#handlePieChart" prefHeight="40.0" prefWidth="100.0" styleClass="cancel-buttons" text="Back">
                      <GridPane.margin>
-                        <Insets left="40.0" top="575.0" />
+                        <Insets left="40.0" top="605.0" />
                      </GridPane.margin>
                   </Button>
-                  <ChoiceBox fx:id="activityChoiceBox2" prefHeight="27.0" prefWidth="170.0">
+                  <ChoiceBox fx:id="activityChoiceBox2" prefHeight="27.0" prefWidth="240.0" styleClass="input-fields">
                      <GridPane.margin>
-                        <Insets left="885.0" top="75.0" />
+                        <Insets bottom="-40.0" left="815.0" top="75.0" />
                      </GridPane.margin>
                   </ChoiceBox>
-                  <ChoiceBox fx:id="activityChoiceBox3" prefHeight="27.0" prefWidth="170.0">
+                  <ChoiceBox fx:id="activityChoiceBox3" prefHeight="40.0" prefWidth="240.0" styleClass="input-fields">
                      <GridPane.margin>
-                        <Insets left="885.0" top="175.0" />
+                        <Insets bottom="-40.0" left="815.0" top="175.0" />
                      </GridPane.margin>
                   </ChoiceBox>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1." wrappingWidth="12.4444580078125">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="Roboto Thin" size="18.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets bottom="20.0" left="865.0" top="5.0" />
+                        <Insets bottom="-10.0" left="800.0" top="5.0" />
                      </GridPane.margin>
                   </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2." wrappingWidth="18.4444580078125">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="Roboto Thin" size="18.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="865.0" top="75.0" />
+                        <Insets bottom="-40.0" left="800.0" top="75.0" />
                      </GridPane.margin>
                   </Text>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3." wrappingWidth="18.4444580078125">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="Roboto Thin" size="18.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets left="865.0" top="175.0" />
+                        <Insets bottom="-40.0" left="800.0" top="175.0" />
                      </GridPane.margin>
                   </Text>
-                  <Label fx:id="status" prefHeight="29.0" prefWidth="160.0" text="Label" wrapText="true">
+                  <Label fx:id="status" prefHeight="29.0" prefWidth="175.0" styleClass="output-label" stylesheets="@stylesheet.css" text="Label" wrapText="true">
                      <GridPane.margin>
-                        <Insets left="875.0" top="345.0" />
+                        <Insets bottom="-50.0" left="900.0" top="345.0" />
                      </GridPane.margin>
                   </Label>
                </children>
