@@ -371,7 +371,7 @@ public class KanbanBoardDueDateController implements Initializable {
     //method to change the scene from due date mode back to the default do date mode
     @FXML
     public void handleDoDateView(ActionEvent event) throws IOException {
-        psh.switcher(event, "KanbanBoardDoDateView.fxml");
+        psh.switcher(event, "KanbanBoard.fxml");
     }
 
     //switch to about
