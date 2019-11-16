@@ -485,7 +485,7 @@ public class KaizenDatabase {
                         + ", BE_BETTER TEXT NOT NULL)");
             createLearnings.execute();
             System.out.println("LEARNINGS table created!");
-            insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
+    /*        insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
                     + "VALUES ('2019-11-16', 'Went to the gym', 'Spend time with family');");
             insertDemoData.execute();
             insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
@@ -493,7 +493,7 @@ public class KaizenDatabase {
             insertDemoData.execute();
             insertDemoData = conn.prepareStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
                     + "VALUES ('2019-11-14', 'Went to Blair for consultation', 'Study 2605');");
-            insertDemoData.execute();           
+            insertDemoData.execute();   */        
         } else{
                 System.out.println("LEARNINGS table exists!");
                 }
