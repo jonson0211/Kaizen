@@ -124,7 +124,7 @@ public class WeeklyTrendsController implements Initializable {
             
                 
             while (weeklyTotalDuration.next()){
-                durationWeeklyList.add((weeklyTotalDuration.getDouble(1)));   
+                durationWeeklyList.add((weeklyTotalDuration.getDouble("SUM(DURATION)")));   
             }
             
         ResultSet weekly = db.getResultSet("SELECT ACTIVITY, SUM(DURATION) FROM TIMESHEETS "
@@ -182,7 +182,7 @@ public class WeeklyTrendsController implements Initializable {
             
                 
             while (weeklyTotalDuration2.next()){
-                durationWeeklyList2.add((weeklyTotalDuration2.getDouble(1)));   
+                durationWeeklyList2.add((weeklyTotalDuration2.getDouble("SUM(DURATION)")));   
             }
             
         ResultSet weekly2 = db.getResultSet("SELECT ACTIVITY, SUM(DURATION) FROM TIMESHEETS "
@@ -199,10 +199,10 @@ public class WeeklyTrendsController implements Initializable {
         
                 for(int k = 0, j =0; k<durationList2.size()&& j<numWeeks; k++, j++){
                     weeklySeries2.getData().add(new XYChart.Data("Week " + (k+1), Math.round((durationList2.get(k)/durationWeeklyList2.get(j))*100)));
-                    System.out.println("*"+Math.round((durationList2.get(k)/durationWeeklyList2.get(k))*100));
-                    System.out.println(Math.round((durationList2.get(k)/durationWeeklyList2.get(1))*100));
-                    System.out.println(k);
-                    System.out.println(j);
+//                    System.out.println("*"+Math.round((durationList2.get(k)/durationWeeklyList2.get(k))*100));
+//                    System.out.println(Math.round((durationList2.get(k)/durationWeeklyList2.get(1))*100));
+//                    System.out.println(k);
+//                    System.out.println(j);
                 }   
         } catch(Exception ex){
             ex.printStackTrace();
@@ -237,7 +237,7 @@ if(isMyBoxEmpty2 != true){
             
                 
             while (weeklyTotalDuration3.next()){
-                durationWeeklyList3.add((weeklyTotalDuration3.getDouble(1)));   
+                durationWeeklyList3.add((weeklyTotalDuration3.getDouble("SUM(DURATION)")));   
             }
             
         ResultSet weekly3 = db.getResultSet("SELECT ACTIVITY, SUM(DURATION) FROM TIMESHEETS "
