@@ -527,7 +527,7 @@ public static void createErrorsTable() {
                         + "'Could not add entry',"
                         + "'Add Entry',"
                         + "'When attempting to add a new time entry, the page crashed'"
-                        + "')"
+                        + ");"
                 );
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO ERRORS(DATE, ERRORNAME, ERRORPAGE, DESCRIPTION) "
@@ -536,7 +536,7 @@ public static void createErrorsTable() {
                         + "'Could not add entry',"
                         + "'Add Entry',"
                         + "'When attempting to add a new time entry, the page crashed'"
-                        + "')"
+                        + ");"
                 );
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO ERRORS(DATE, ERRORNAME, ERRORPAGE, DESCRIPTION) "
@@ -545,7 +545,7 @@ public static void createErrorsTable() {
                         + "'Category not displayed',"
                         + "'Settings',"
                         + "'When I tried to add a new category and colour, it did not show up'"
-                        + "')"
+                        + ");"
                 );
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO ERRORS(DATE, ERRORNAME, ERRORPAGE, DESCRIPTION) "
@@ -554,7 +554,7 @@ public static void createErrorsTable() {
                         + "'Could not drag tasks',"
                         + "'Kanban board',"
                         + "'Tried dragging tasks to Do-Date, it would not move'"
-                        + "')"
+                        + ");"
                 );
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO ERRORS(DATE, ERRORNAME, ERRORPAGE, DESCRIPTION) "
@@ -563,7 +563,7 @@ public static void createErrorsTable() {
                         + "'Could not see graph',"
                         + "'Weekly Trends',"
                         + "'When attempting to load graph, the page crashed'"
-                        + "')"
+                        + ");"
                 );
                 createDemoInstance.execute();
                 createDemoInstance = conn.prepareStatement("INSERT INTO ERRORS(DATE, ERRORNAME, ERRORPAGE, DESCRIPTION) "
@@ -572,7 +572,7 @@ public static void createErrorsTable() {
                         + "'Could not play music',"
                         + "'Deep focus screen',"
                         + "'Clicking Mood 1 does not play music'"
-                        + "')"
+                        + ");"
                 );
                 createDemoInstance.execute();
             } else {

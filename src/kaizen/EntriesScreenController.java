@@ -90,7 +90,7 @@ public class EntriesScreenController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       status.setVisible(false);
+        status.setVisible(false);
         entriesView_2 = entriesView;
         entriesView.setVisible(true);
         entriesView.setItems(this.getEntries());
@@ -125,15 +125,7 @@ public class EntriesScreenController implements Initializable {
         }
         return FXCollections.observableArrayList(entries);
     }
-    
-  /*     
-    public void onEdit(){
-        if(entriesView.getSelectionModel().getSelectedItem()!=null){
-            timesheetsDM ts = entriesView.getSelectionModel().getSelectedItem();
-            dateClm.setText(ts.getDate());
-            
-       }
-    }*/
+
     
     @FXML
     private void deleteRow(ActionEvent event){

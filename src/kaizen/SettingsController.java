@@ -28,6 +28,7 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import kaizen.DataModels.categoryTableDM;
+import kaizen.DataModels.errorsDM;
 import kaizen.DataModels.timesheetsDM;
 import static kaizen.EntriesScreenController.entriesView_2;
 import kaizen.UserData.KaizenDatabase;
@@ -90,6 +91,23 @@ public class SettingsController implements Initializable {
     private TableColumn<categoryTableDM, String> categoryClm;
     @FXML private TableColumn<categoryTableDM, String> IDClm;
     
+    @FXML
+    private TableView<errorsDM> errorsView;  
+    public static TableView<errorsDM> errorsView_2;
+    
+    @FXML
+    private TableColumn<errorsDM, String> errorIDClm;    
+    @FXML
+    private TableColumn<errorsDM, String> errorNameClm;
+    @FXML
+    private TableColumn<errorsDM, String> errorDateClm;
+    @FXML
+    private TableColumn<errorsDM, String> errorDescClm;
+    @FXML
+    private TableColumn<errorsDM, String> errorPageClm;
+    
+    @FXML private Button report;
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -97,6 +115,17 @@ public class SettingsController implements Initializable {
         initTable();
         loadData();
 
+        errorsView_2 = errorsView;
+        errorsView.setVisible(true);
+        errorsView.setItems(this.getErrors());
+        
+        errorDateClm.setCellValueFactory(cellData -> cellData.getValue().getDateProperty());
+        errorNameClm.setCellValueFactory(cellData -> cellData.getValue().getErrorNameProperty());
+        errorPageClm.setCellValueFactory(cellData -> cellData.getValue().getErrorPageProperty());
+        errorDescClm.setCellValueFactory(cellData -> cellData.getValue().getErrorDescProperty());
+        errorIDClm.setCellValueFactory(cellData -> cellData.getValue().getErrorIDProperty());
+        
+        
     }
 
 
@@ -210,6 +239,25 @@ public class SettingsController implements Initializable {
         }
             
                 
+    }
+    
+    public ObservableList<errorsDM> getErrors(){
+        
+        ObservableList<errorsDM> errors = FXCollections.observableArrayList();
+        
+        try {
+            ResultSet rsErrors = db.getResultSet("SELECT * FROM ERRORS");
+            
+            while (rsErrors.next()){
+                errors.add(new errorsDM(rsErrors.getString("ERRORID"), 
+                        rsErrors.getString("DATE"), rsErrors.getString("ERRORNAME"), 
+                        rsErrors.getString("ERRORPAGE"), rsErrors.getString("DESCRIPTION") 
+                        ));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return FXCollections.observableArrayList(errors);
     }
     
     //switch to daily learnings
