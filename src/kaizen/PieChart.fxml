@@ -75,11 +75,6 @@
                         <String fx:value="buttons" />
                      </styleClass>
                   </Button>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="large-label" text="Pie Chart Of My Life">
-                     <GridPane.margin>
-                        <Insets bottom="575.0" left="350.0" />
-                     </GridPane.margin>
-                  </Text>
                   <Button fx:id="dailyBreakdown" mnemonicParsing="false" onAction="#handleDailyBreakdown" prefHeight="40.0" prefWidth="180.0" stylesheets="@stylesheet.css" text="Daily Breakdown">
                      <font>
                         <Font size="24.0" />
@@ -121,6 +116,16 @@
                         <Insets left="240.0" top="575.0" />
                      </GridPane.margin>
                   </Button>
+                  <Label prefHeight="50.0" prefWidth="400.0" styleClass="large-label" text="My Chart">
+                     <GridPane.margin>
+                        <Insets bottom="640.0" left="20.0" />
+                     </GridPane.margin>
+                  </Label>
+                  <Label prefHeight="40.0" prefWidth="300.0" styleClass="small-label" text="A Pie Chart breakdown of my life">
+                     <GridPane.margin>
+                        <Insets bottom="560.0" left="20.0" />
+                     </GridPane.margin>
+                  </Label>
                </children>
             </GridPane>
          </center></BorderPane>
