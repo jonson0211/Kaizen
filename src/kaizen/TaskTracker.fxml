@@ -52,8 +52,8 @@
          <center>
             <Pane prefHeight="1066.0" prefWidth="1595.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="35.0" layoutY="32.0" styleClass="large-label" text="Welcome" />
-                  <Label layoutX="35.0" layoutY="92.0" styleClass="small-label" text="What would you like to do today?" />
+                  <Label layoutX="20.0" layoutY="20.0" prefHeight="50.0" prefWidth="300.0" styleClass="large-label" text="Welcome" />
+                  <Label layoutX="20.0" layoutY="70.0" prefHeight="40.0" prefWidth="270.0" styleClass="small-label" text="What would you like to do today?" />
                   <AnchorPane layoutX="55.0" layoutY="160.0" prefHeight="509.0" prefWidth="967.0">
                      <children>
                         <TableView fx:id="taskList" prefHeight="514.0" prefWidth="970.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
@@ -70,9 +70,9 @@
                         </TableView>
                      </children>
                   </AnchorPane>
-                  <Button fx:id="updateTask" layoutX="712.0" layoutY="80.0" mnemonicParsing="false" onAction="#editRow" prefHeight="40.0" prefWidth="140.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Update Task" />
-                  <Button fx:id="addTask" layoutX="882.0" layoutY="80.0" mnemonicParsing="false" onAction="#handleAddTaskPopUp" prefHeight="40.0" prefWidth="140.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Add Task" />
-                  <Button fx:id="deleteTask" layoutX="542.0" layoutY="80.0" mnemonicParsing="false" onAction="#deleteRow" prefHeight="40.0" prefWidth="140.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Delete Task" />
+                  <Button fx:id="updateTask" layoutX="712.0" layoutY="70.0" mnemonicParsing="false" onAction="#editRow" prefHeight="40.0" prefWidth="140.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Update Task" />
+                  <Button fx:id="addTask" layoutX="882.0" layoutY="70.0" mnemonicParsing="false" onAction="#handleAddTaskPopUp" prefHeight="40.0" prefWidth="140.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Add Task" />
+                  <Button fx:id="deleteTask" layoutX="540.0" layoutY="70.0" mnemonicParsing="false" onAction="#deleteRow" prefHeight="40.0" prefWidth="140.0" styleClass="buttons" stylesheets="@stylesheet.css" text="Delete Task" />
                </children>
             </Pane>
          </center></BorderPane>
