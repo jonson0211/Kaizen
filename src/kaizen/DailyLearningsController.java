@@ -155,7 +155,15 @@ public class DailyLearningsController {
 
         } catch (SQLException ex) {
             ex.printStackTrace();
-        } 
+        }
+        datePick.setDayCellFactory(picker -> new DateCell() {
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate today = LocalDate.now();
+
+                setDisable(empty || date.compareTo(today) < 0);
+            }
+        });
 
     }
 
@@ -177,28 +185,39 @@ public class DailyLearningsController {
             doBetterColumn.setCellValueFactory(cellData -> cellData.getValue().getBeBetterProperty());
             doBetterCount.setCellValueFactory(cellData -> cellData.getValue().getBeBetterCountProperty());
             doBetterView.setItems(this.getLearningsDoBetter());
-/*            try {
-            answerOnes.setAll(this.getComboOne());
-            for (learningsCombo c : answerOnes) {
-                System.out.println(c.getDwProperty());
-                answerOne.getItems().removeAll(c.getDw());
-            }
-            answerTwos.setAll(this.getComboTwo());
-            for (learningsCombo d : answerTwos) {
-                System.out.println(d.getDwProperty());
-                answerTwo.getItems().removeAll(d.getDw());
+
+            try {
+                answerOnes.setAll(this.getComboOne());
+                for (learningsCombo c : answerOnes) {
+                    System.out.println(c.getDwProperty());
+                    answerOne.getItems().removeAll(c.getDw());
+                }
+                answerTwos.setAll(this.getComboTwo());
+                for (learningsCombo d : answerTwos) {
+                    System.out.println(d.getDwProperty());
+                    answerTwo.getItems().removeAll(d.getDw());
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } */
-            pageSwitcher.switcher(event, "DailyLearnings.fxml");
-    } catch (SQLException e) {
-            e.printStackTrace();
+        }
+        no.setVisible(false);
+        yes.setDisable(true);
+
     }
-        
-    }
+
     @FXML
     private void handleOld(ActionEvent event) throws IOException {
+        datePick.setDayCellFactory(picker -> new DateCell() {
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate today = LocalDate.now();
+
+                setDisable(empty || date.compareTo(today) > 0);
+            }
+        });
         try {
             userLearn.insertStatement("INSERT INTO LEARNINGS (DATE, DID_WELL, BE_BETTER) "
                     + "VALUES ('2019-11-12', 'Went to the gym', 'Spend time with family');");
@@ -212,9 +231,9 @@ public class DailyLearningsController {
                     + "VALUES ('2019-11-16', 'Gave fantastic peer reviews', 'Picked up java earlier');");
             System.out.println("Inserted dummy data");
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("System Status");
-                alert.setHeaderText("Old user data inserted!");
-                alert.showAndWait();
+            alert.setTitle("System Status");
+            alert.setHeaderText("Old user data inserted!");
+            alert.showAndWait();
             didWellColumn.setCellValueFactory(cellData -> cellData.getValue().getDidWellProperty());
             didWellCount.setCellValueFactory(cellData -> cellData.getValue().getDidWellCountProperty());
             didWellView.setItems(this.getLearningsDidWell());
@@ -222,72 +241,72 @@ public class DailyLearningsController {
             doBetterCount.setCellValueFactory(cellData -> cellData.getValue().getBeBetterCountProperty());
             doBetterView.setItems(this.getLearningsDoBetter());
             try {
-            answerOnes.setAll(this.getComboOne());
-            for (learningsCombo c : answerOnes) {
-                System.out.println(c.getDwProperty());
-                answerOne.getItems().addAll(c.getDw());
+                answerOnes.setAll(this.getComboOne());
+                for (learningsCombo c : answerOnes) {
+                    System.out.println(c.getDwProperty());
+                    answerOne.getItems().addAll(c.getDw());
+                }
+                answerTwos.setAll(this.getComboTwo());
+                for (learningsCombo d : answerTwos) {
+                    System.out.println(d.getDwProperty());
+                    answerTwo.getItems().addAll(d.getDw());
+                }
+
+            } catch (SQLException ex) {
+                ex.printStackTrace();
             }
-            answerTwos.setAll(this.getComboTwo());
-            for (learningsCombo d : answerTwos) {
-                System.out.println(d.getDwProperty());
-                answerTwo.getItems().addAll(d.getDw());
-            }
-            
 
         } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-                
-       } catch (SQLException ex) {
             Logger.getLogger(DailyLearningsController.class.getName()).log(Level.SEVERE, null, ex);
         }
         yes.setVisible(false);
+        no.setDisable(true);
     }
 
     //return observable list of done well and do betters
     @FXML
     private void checkMissing(ActionEvent event) throws SQLException {
         //finding most recent learnings_ID
-        try{
-        ResultSet rs = userLearn.getResultSet("SELECT MAX(LEARNINGS_ID), DATE FROM LEARNINGS");
-        //converting the string to a date
-        LocalDate date = LocalDate.parse(rs.getString("DATE"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        //finding the current date
-        LocalDate currentDate = LocalDate.now();
-        //converting the date format to ours
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        //parsing the date as a String
-        String currentDateString = currentDate.format(formatter);
-        //
-        LocalDate currentDateParsed = LocalDate.parse(currentDateString, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        long daysBetween = ChronoUnit.DAYS.between(currentDateParsed, date);
-        if (daysBetween != 0) {
-            try {
+        try {
+            ResultSet rs = userLearn.getResultSet("SELECT MAX(LEARNINGS_ID), DATE FROM LEARNINGS");
+            //converting the string to a date
+            LocalDate date = LocalDate.parse(rs.getString("DATE"), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            //finding the current date
+            LocalDate currentDate = LocalDate.now();
+            //converting the date format to ours
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            //parsing the date as a String
+            String currentDateString = currentDate.format(formatter);
+            //
+            LocalDate currentDateParsed = LocalDate.parse(currentDateString, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            long daysBetween = ChronoUnit.DAYS.between(currentDateParsed, date);
+            if (daysBetween != 0) {
+                try {
 
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Missing entres!");
-                alert.setHeaderText("You have not entered in learnings since " + date);
-                alert.showAndWait();
-            } catch (Exception ex) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("No missing entries!");
-                alert.setHeaderText("You have no missing entries.");
-                alert.showAndWait();
-            }
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Missing entres!");
+                    alert.setHeaderText("You have not entered in learnings since " + date);
+                    alert.showAndWait();
+                } catch (Exception ex) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("No missing entries!");
+                    alert.setHeaderText("You have no missing entries.");
+                    alert.showAndWait();
+                }
 
-        } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Up to date entres!");
                 alert.setHeaderText("Your learnings are up to date!");
                 alert.showAndWait();
-            System.out.println("User has inputted all entries to date!");
+                System.out.println("User has inputted all entries to date!");
+            }
+        } catch (Exception ex) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("No missing entries!");
+            alert.setHeaderText("You have no missing entries.");
+            alert.showAndWait();
         }
-    } catch(Exception ex){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("No missing entries!");
-                alert.setHeaderText("You have no missing entries.");
-                alert.showAndWait();
-    }
     }
 
     public ObservableList<learningsDidWell> getLearningsDidWell() {
