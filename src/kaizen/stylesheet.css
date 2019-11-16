@@ -142,6 +142,14 @@
     -fx-font-family: "Roboto Light";
 }
 
+.input-field-big {
+    -fx-font-size: 18px;
+    -fx-fill-color: #e1e1e1;
+    -fx-text-fill: #4f4e52;
+    -fx-font-family: "Roboto Thin";
+    -fx-wrap-text: true;
+}
+
 
 .input-fields {
     -fx-font-size: 18px;
@@ -310,4 +318,8 @@
     -fx-font-size: 18px;
     -fx-text-fill: #404040;
     -fx-font-family: "Roboto Thin";
+}
+
+.table-view {
+    -fx-background-color: 
 }
