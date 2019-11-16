@@ -243,7 +243,7 @@ public class DeepFocusModeController implements Initializable {
     @FXML
     private void handleSignOut(ActionEvent event) throws IOException {
         MusicPlaybackHelper.stopMusic();
-        pageSwitcher.switcher(event, "ReportBubPopUp.fxml");
+        pageSwitcher.switcher(event, "ReportBugPopUp.fxml");
     }
 
     @FXML
