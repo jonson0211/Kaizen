@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -35,8 +34,8 @@ import kaizen.UserData.KaizenDatabase;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import javafx.scene.control.Alert;
+import javafx.scene.control.DateCell;
 import kaizen.DataModels.learningsCombo;
-import kaizen.DataModels.learningsEntryDM;
 /**
  * FXML Controller class
  *
@@ -134,6 +133,15 @@ public class DailyLearningsController {
         doBetterColumn.setCellValueFactory(cellData -> cellData.getValue().getBeBetterProperty());
         doBetterCount.setCellValueFactory(cellData -> cellData.getValue().getBeBetterCountProperty());
         doBetterView.setItems(this.getLearningsDoBetter());
+        datePick.setDayCellFactory(picker -> new DateCell(){
+            public void updateItem(LocalDate date, boolean empty) {
+            super.updateItem(date, empty);
+            LocalDate today = LocalDate.now();
+
+            setDisable(empty || date.compareTo(today) < 0 );
+            }
+        });
+        
         try{
             answerOnes.setAll(this.getComboOne());
             for(learningsCombo c : answerOnes){
@@ -150,7 +158,8 @@ public class DailyLearningsController {
             ex.printStackTrace();
         }
         
-    }    
+    }   
+    
     
     //return observable list of done well and do betters
     @FXML
